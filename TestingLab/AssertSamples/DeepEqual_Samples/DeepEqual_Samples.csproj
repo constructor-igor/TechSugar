@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DeepEqual">
-      <HintPath>..\packages\DeepEqual.1.0.0.0\lib\net40\DeepEqual.dll</HintPath>
+    <Reference Include="DeepEqual, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DeepEqual.1.1.0.0\lib\net40\DeepEqual.dll</HintPath>
     </Reference>
     <Reference Include="KellermanSoftware.Compare-NET-Objects">
       <HintPath>..\packages\CompareNETObjects.3.01.0.0\lib\net45\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
@@ -49,14 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompareNETObjects\AssertC.cs" />
+    <Compile Include="CompareNETObjects\CompareNetObjectsClassSamples.cs" />
+    <Compile Include="CompareNETObjects\CompareNETObjectsMessagesSamples.cs" />
     <Compile Include="CompareNETObjects\CompareNetObjectsSimpleTypesSamples.cs" />
+    <Compile Include="Data.cs" />
+    <Compile Include="AssertHelper.cs" />
     <Compile Include="NUnitConstraint\ContentsEqualConstraint.cs" />
     <Compile Include="DeepEqual\DeepEqualClassSamples.cs" />
     <Compile Include="DeepEqual\DeepEqualSimpleTypesSamples.cs" />
+    <Compile Include="NUnitSamples\NUnitSamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

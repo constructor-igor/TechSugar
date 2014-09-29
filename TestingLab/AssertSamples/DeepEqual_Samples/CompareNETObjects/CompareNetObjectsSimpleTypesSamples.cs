@@ -4,13 +4,13 @@ using NUnit.Framework;
 namespace DeepEqual_Samples.CompareNETObjects
 {
     [TestFixture]
-    class CompareNetObjectsSimpleTypesSamples
+    public class CompareNetObjectsSimpleTypesSamples
     {
         [Test]
         [ExpectedException]
         public void IntTypeTesting()
         {
-            Helper.Wrapper(()=>
+            AssertHelper.Wrapper(()=>
             {
                 const int expected = 5;
                 const int actual = 6;
@@ -26,7 +26,7 @@ namespace DeepEqual_Samples.CompareNETObjects
         [ExpectedException]
         public void CheckStringAssert()
         {
-            Helper.Wrapper(() =>
+            AssertHelper.Wrapper(() =>
             {
                 const string expected = "Joe";
                 const string actual = "Chandler";

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DeepEqual;
 using DeepEqual.Syntax;
 using NUnit.Framework;
@@ -8,7 +9,7 @@ using NUnit.Framework;
  * 
  * */
 
-namespace DeepEqual_Samples
+namespace DeepEqual_Samples.DeepEqual
 {
     [TestFixture]
     public class DeepEqualSimpleTypesSamples
@@ -23,6 +24,28 @@ namespace DeepEqual_Samples
             actual.WithDeepEqual(expected)
                 .Assert();
         }
+
+        [Test]
+        public void CheckSeveralStrings()
+        {
+            var expected = new List<string> { "Joe", "data 10", "Sam1", "finish"};
+            var actual = new List<string> { "Joe", "data 20", "Sam2", "finish"};
+
+            actual.WithDeepEqual(expected)
+                .Assert();
+        }
+
+        [Test]
+        [ExpectedException]
+        public void Check2LongStringAssert()
+        {
+            string string1;
+            string string2;
+            DataFactory.Prepare2LongDifferentStrings(out string1, out string2);
+
+            AssertHelper.Wrapper(() => string2.WithDeepEqual(string1).Assert());
+        }
+
         [Test]
         [ExpectedException]
         public void IntTypeTesting_ShouldDeepEqual()
@@ -51,6 +74,23 @@ namespace DeepEqual_Samples
                 .WithCustomComparison(comparison)
                 .Assert();
         }
+
+        [Test]
+        [ExpectedException]
+        public void DoubleTypeTestingWithReceivedExtensionMethod()
+        {
+            const double expected = 5.0;
+            const double actual1 = 5.1;
+            const double actual2 = 5.2;
+
+            actual1.WithDeepEqual(expected)
+                .WithFloatTolerance(0.15)
+                .Assert();
+
+            actual2.WithDeepEqual(expected)
+                .WithFloatTolerance(0.15)
+                .Assert();
+        }
     }
 
     public class MyComparison : IComparison
@@ -76,6 +116,14 @@ namespace DeepEqual_Samples
                 return ComparisonResult.Pass;
 
             return ComparisonResult.Fail;
+        }
+    }
+
+    public static class DeepEqualExtensions
+    {
+        public static CompareSyntax<T1, T2> WithFloatTolerance<T1, T2>(this CompareSyntax<T1, T2> syntax, double tolerance)
+        {
+            return syntax.WithCustomComparison(new MyComparison(tolerance));
         }
     }
 }
