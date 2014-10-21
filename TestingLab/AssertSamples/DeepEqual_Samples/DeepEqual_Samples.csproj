@@ -56,9 +56,11 @@
     <Compile Include="CompareNETObjects\CompareNetObjectsSimpleTypesSamples.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="AssertHelper.cs" />
-    <Compile Include="NUnitConstraint\ContentsEqualConstraint.cs" />
+    <Compile Include="NUnitConstraint\ConstraintsSamples.cs" />
     <Compile Include="DeepEqual\DeepEqualClassSamples.cs" />
     <Compile Include="DeepEqual\DeepEqualSimpleTypesSamples.cs" />
+    <Compile Include="NUnitConstraint\CustomConstraintsSamples.cs" />
+    <Compile Include="NUnitConstraint\DeepEqualConstraint.cs" />
     <Compile Include="NUnitSamples\NUnitSamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

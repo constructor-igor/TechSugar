@@ -1,64 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using RxBasic.EnumerableSamples;
+using RxBasic.ObservableSamples;
 
 namespace RxBasic
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
-            PersonalForeachImplementation();
+            //EnumerableSamples();
+
+            ObservableSamples();
+        }       
+
+        private static void EnumerableSamples()
+        {
+            EnumerableUseCases.CustomerNaiveForeachImplementation();
             Console.WriteLine();
             Console.WriteLine();
-            StandardForeachImplementation();
+
+            EnumerableUseCases.StandardForeachImplementation();
             Console.WriteLine();
             Console.WriteLine();
-            LinqSample();
+
+            EnumerableUseCases.LinqSample();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            //EnumerableUseCases.ProblemOfNaiveImplementation();
+            //Console.WriteLine();
+            //Console.WriteLine();
+
+            EnumerableUseCases.SolveOfTheProblemByCorrectImplementation();
         }
 
-        private static void StandardForeachImplementation()
+        private static void ObservableSamples()
         {
-            Console.WriteLine("standard 'foreach' implementation");
-            var jobExecuter = new JobExecuter();
-            jobExecuter.Run();
-            foreach (WorkerResult workerResult in jobExecuter.GetResults())
+            var observableJobExecuter = new CustomerObservableJobExecuter();
+            IObserver<WorkerResult> workerObserver = new WorkerObserver();
+            using (observableJobExecuter.Subscribe(workerObserver))
             {
-                Console.WriteLine("worker: {0}", workerResult.Caption);
+                observableJobExecuter.Run();
+                observableJobExecuter.Run();
             }
-            foreach (WorkerResult workerResult in jobExecuter.GetResults())
-            {
-                Console.WriteLine("worker: {0}", workerResult.Caption);
-            }
-        }
-
-        private static void PersonalForeachImplementation()
-        {
-            Console.WriteLine("personal 'foreach' implementation");
-            var jobExecuter = new JobExecuter();
-            jobExecuter.Run();
-
-            IEnumerable<WorkerResult> results = jobExecuter.GetResults();
-            using (IEnumerator<WorkerResult> enumerator = results.GetEnumerator())
-            {
-                enumerator.Reset();
-                do
-                {
-                    Console.WriteLine("worker: {0}", enumerator.Current.Caption);
-                } while (enumerator.MoveNext());
-            }
-        }
-
-        private static void LinqSample()
-        {
-            Console.WriteLine("Linq samples");
-            var jobExecuter = new JobExecuter();
-            jobExecuter.Run();
-            Console.WriteLine("any: {0}", jobExecuter.GetResults().Any());
-            foreach (WorkerResult workerResult in jobExecuter.GetResults())
-            {
-                Console.WriteLine("worker: {0}", workerResult.Caption);
-            }   
+            observableJobExecuter.Run();
         }
     }
 }
