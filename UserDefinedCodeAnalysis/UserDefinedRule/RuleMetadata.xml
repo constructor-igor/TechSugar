@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Rules FriendlyName="My Custom FxCop Rules" >
+<!--  <Rule TypeName="EnforceHungarianNotation" Category="MyRules" CheckId="CR1000">-->
+<!--    <Name>Enforce Hungarian Notation</Name>-->
+<!--    <Description>Checks fields for compliance with Hungarian notation.</Description>-->
+<!--    <Resolution>Field {0} is not in Hungarian notation. Field name should be prefixed with '{1}'.</Resolution>-->
+<!--    <MessageLevel Certainty="100">Warning</MessageLevel>-->
+<!--    <FixCategories>NonBreaking</FixCategories>-->
+<!--    <Url />-->
+<!--    <Owner />-->
+<!--    <Email />-->
+<!--  </Rule>-->
+  <Rule TypeName="EnforceStaticLogger" Category="MyRules" CheckId="CR1001">
+    <Name>Enforce Static Logger as class member</Name>
+    <Description>Checks log fields (ILog) as static</Description>
+    <Resolution>Field {0} recommended be static, because type {1}.</Resolution>
+    <MessageLevel Certainty="101">Warning</MessageLevel>
+    <FixCategories>NonBreaking</FixCategories>
+    <Url />
+    <Owner />
+    <Email />
+  </Rule>
+  <Rule TypeName="FinalizerAsDisposeFalse" Category="MyRules" CheckId="CR1002">
+    <Name>Finalizer as Dispose(false)</Name>
+    <Description>Checks implementation of finalizer: expected Dispose(false)</Description>
+    <Resolution>Implementation of {0} finalizer recommended as Dispose(false)</Resolution>
+    <MessageLevel Certainty="102">Warning</MessageLevel>
+    <FixCategories>NonBreaking</FixCategories>
+    <Url />
+    <Owner />
+    <Email />
+  </Rule>
+  <Rule TypeName="ServiceShouldBeRegistered" Category="MyRules" CheckId="CR1003">
+    <Name>Service should be registered</Name>
+    <Description>Implemented service should be registered for external usage</Description>
+    <Resolution>Service {0} not registered</Resolution>
+    <MessageLevel Certainty="103">Warning</MessageLevel>
+    <FixCategories>NonBreaking</FixCategories>
+    <Url />
+    <Owner />
+    <Email />
+  </Rule>
+</Rules>
