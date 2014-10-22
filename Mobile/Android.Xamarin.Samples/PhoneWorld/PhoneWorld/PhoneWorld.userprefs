@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Android.test" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="PhoneWorld_Droid\MainActivity.cs">
+    <Files>
+      <File FileName="PhoneWorld_Droid\MainActivity.cs" Line="6" Column="6" />
+      <File FileName="PhoneWorld_Droid\Resources\Resource.designer.cs" Line="1" Column="1" />
+      <File FileName="PhoneWorld_Droid\Properties\AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="C:\Program Files (x86)\MSBuild\Xamarin\Android\Xamarin.Android.Common.targets" Line="1" Column="1" />
+      <File FileName="PhoneWorld_Droid\Properties\AndroidManifest.xml" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="PhoneWorld_Droid\MainActivity.cs" line="121" offsetX="487" offsetY="1920" expression="columnNames" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.ItemProperties.PhoneWorld__Droid MonoForAntroid.PreferredDevice="Nexus 4" AndroidDeviceId-Debug="192.168.56.102:5555" />
+</Properties>
