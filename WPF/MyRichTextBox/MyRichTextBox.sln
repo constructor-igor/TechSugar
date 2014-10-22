@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRichTextBox", "MyRichTextBox\MyRichTextBox.csproj", "{D1C1D03D-1789-4155-85D3-CA370529A92A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichTextBoxToolBar", "RichTextBoxToolBar\RichTextBoxToolBar.csproj", "{356B108D-E06B-4F21-9422-E89CF740E61F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{356B108D-E06B-4F21-9422-E89CF740E61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{356B108D-E06B-4F21-9422-E89CF740E61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{356B108D-E06B-4F21-9422-E89CF740E61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{356B108D-E06B-4F21-9422-E89CF740E61F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1C1D03D-1789-4155-85D3-CA370529A92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1C1D03D-1789-4155-85D3-CA370529A92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1C1D03D-1789-4155-85D3-CA370529A92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1C1D03D-1789-4155-85D3-CA370529A92A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

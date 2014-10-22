@@ -1,0 +1,260 @@
+﻿<ToolBar x:Class="RichTextBoxToolBar.RichTextBoxToolBar"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+         xmlns:System="clr-namespace:System;assembly=mscorlib"
+         xmlns:local="clr-namespace:RichTextBoxToolBar"
+         mc:Ignorable="d"
+         DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <ToolBar.Resources>
+        <ObjectDataProvider ObjectInstance="{x:Type Colors}" MethodName="GetProperties" x:Key="colorProvider" />
+        <ObjectDataProvider x:Key="systemFontSizes">
+            <ObjectDataProvider.ObjectInstance>
+                <x:Array Type="System:Double">
+                    <System:Double>8</System:Double>
+                    <System:Double>9</System:Double>
+                    <System:Double>10</System:Double>
+                    <System:Double>11</System:Double>
+                    <System:Double>12</System:Double>
+                    <System:Double>14</System:Double>
+                    <System:Double>16</System:Double>
+                    <System:Double>18</System:Double>
+                    <System:Double>20</System:Double>
+                    <System:Double>22</System:Double>
+                    <System:Double>24</System:Double>
+                    <System:Double>26</System:Double>
+                    <System:Double>28</System:Double>
+                    <System:Double>36</System:Double>
+                    <System:Double>48</System:Double>
+                    <System:Double>72</System:Double>
+                </x:Array>
+            </ObjectDataProvider.ObjectInstance>
+        </ObjectDataProvider>
+        <CollectionViewSource x:Key="systemFontFamilies" Source="{Binding Source={x:Static Fonts.SystemFontFamilies}}">
+            <CollectionViewSource.SortDescriptions>
+                <ComponentModel:SortDescription PropertyName="Source" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+        <DataTemplate x:Key="colorItemTemplate">
+            <StackPanel Orientation="Horizontal"
+                        Margin="5,0">
+                <Border BorderThickness="1"
+                        CornerRadius="2"  
+                        BorderBrush="Black"
+                        Width="25"
+                        VerticalAlignment="Stretch" 
+                        Background="{Binding Name}"/>
+                <TextBlock Text="{Binding Name}"
+                           ToolTip="{Binding Name}"
+                           Margin="8,0,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+    </ToolBar.Resources>
+    <Button x:Name="_btnUndo" 
+            IsEnabled="{Binding IsEnabledToolBarItems}"
+            Command="{x:Static ApplicationCommands.Undo}"
+            CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Undo.png"
+               Width="16" Height="16" />
+    </Button>
+    <Button x:Name="_btnRedo"
+            IsEnabled="{Binding IsEnabledToolBarItems}"
+            Command="{x:Static ApplicationCommands.Redo}"
+            CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Redo.png"
+               Width="16" Height="16" />
+    </Button>
+    <Separator />
+    <Button x:Name="_btnCut"
+            IsEnabled="{Binding IsEnabledToolBarItems}"
+            Command="{x:Static ApplicationCommands.Cut}"
+            CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Cut.png"
+               Width="16" Height="16" />
+    </Button>
+    <Button x:Name="_btnCopy"
+            IsEnabled="{Binding IsEnabledToolBarItems}"
+            Command="{x:Static ApplicationCommands.Copy}"
+            CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Copy.png"
+               Width="16" Height="16" />
+    </Button>
+    <Button x:Name="_btnPaste"
+            IsEnabled="{Binding IsEnabledToolBarItems}"
+            Command="{x:Static ApplicationCommands.Paste}"
+            CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Paste.png"
+               Width="16" Height="16" />
+    </Button>
+    <Separator />
+    <ComboBox x:Name="_cbFontFamily"
+              Width="150"
+              IsEditable="False"
+              IsEnabled="{Binding IsEnabledToolBarItems}"
+              IsTextSearchEnabled="True"
+              SelectionChanged="_cbFontFamily_SelectionChanged">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <StackPanel VirtualizingStackPanel.IsVirtualizing="True">
+                    <TextBlock 
+                        Text="{Binding Source}"
+                        ToolTip="{Binding Source}" />
+                </StackPanel>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+        <ComboBox.ItemsSource>
+            <Binding Source="{StaticResource systemFontFamilies}" />
+        </ComboBox.ItemsSource>
+    </ComboBox>
+    <ComboBox x:Name="_cbFontSize"
+              IsEnabled="{Binding IsEnabledToolBarItems}"
+              IsEditable="True"
+              IsTextSearchEnabled="False"
+              Width="45"
+              SelectionChanged="_cbFontSize_SelectionChanged"
+              PreviewKeyDown="_cbFontSize_PreviewKeyDown">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <StackPanel VirtualizingStackPanel.IsVirtualizing="True" Orientation="Horizontal">
+                    <TextBlock Text="{Binding}" ToolTip="{Binding}" />
+                </StackPanel>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+        <ComboBox.ItemsSource>
+            <Binding Source="{StaticResource systemFontSizes}" />
+        </ComboBox.ItemsSource>
+    </ComboBox>
+    <Separator />
+    <ToggleButton x:Name="_tgbtnBold"
+                  IsEnabled="{Binding IsEnabledToolBarItems}"
+                  Command="{x:Static EditingCommands.ToggleBold}"
+                  CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Bold.png"
+               Width="16" Height="16" />
+    </ToggleButton>
+    <ToggleButton x:Name="_tgbtnItalic"
+                  IsEnabled="{Binding IsEnabledToolBarItems}"
+                  Command="{x:Static EditingCommands.ToggleItalic}"
+                  CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Italic.png"
+               Width="16" Height="16" />
+    </ToggleButton>
+    <ToggleButton x:Name="_tgbtnUnderline"
+                  IsEnabled="{Binding IsEnabledToolBarItems}"
+                  Command="{x:Static EditingCommands.ToggleUnderline}"
+                  CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Underline.png"
+               Width="16" Height="16" />
+    </ToggleButton>
+    <ToggleButton x:Name="_tgbtnStrikeout"
+                  IsEnabled="{Binding IsEnabledToolBarItems}"
+                  Command="{x:Static local:EditingCommandsEx.ToggleStrikethrough}"
+                  CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Strikethrough.png" Width="16" Height="16" />
+    </ToggleButton>
+    <Separator />
+    <RadioButton x:Name="_tgbtnAlignLeft"
+                 GroupName="Alignment"
+                 IsEnabled="{Binding IsEnabledToolBarItems}"
+                 Command="{x:Static EditingCommands.AlignLeft}"
+                 CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/AlignLeft.png"
+               Width="16" Height="16" />
+    </RadioButton>
+    <RadioButton x:Name="_tgbtnAlignCenter"
+                 GroupName="Alignment"
+                 IsEnabled="{Binding IsEnabledToolBarItems}"
+                 Command="{x:Static EditingCommands.AlignCenter}"
+                 CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/AlignCenter.png"
+               Width="16" Height="16" />
+    </RadioButton>
+    <RadioButton x:Name="_tgbtnAlignRight"
+                 GroupName="Alignment"
+                 IsEnabled="{Binding IsEnabledToolBarItems}"
+                 Command="{x:Static EditingCommands.AlignRight}"
+                 CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/AlignRight.png"
+               Width="16" Height="16" />
+    </RadioButton>
+    <RadioButton x:Name="_tgbtnAlignJustify"
+                 GroupName="Alignment"
+                 IsEnabled="{Binding IsEnabledToolBarItems}"
+                 Command="{x:Static EditingCommands.AlignJustify}"
+                 CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/AlignJustify.png"
+               Width="16" Height="16" />
+    </RadioButton>
+    <Separator />
+    <Image Source="Resources/ToolBarImages/Backcolor.png"
+           Width="16" Height="16" />
+    <ComboBox x:Name="_cbBackgroundColors"
+              IsEnabled="{Binding IsEnabledToolBarItems}"
+              ItemsSource="{Binding Source={StaticResource colorProvider}}"
+              ItemTemplate="{Binding Source={StaticResource colorItemTemplate}}"
+              DisplayMemberPath="Name"
+              IsEditable="False"
+              IsTextSearchEnabled="True"
+              Width="100"
+              SelectionChanged="_cbBackgroundColors_SelectionChanged" />
+    <Image Source="Resources/ToolBarImages/Textcolor.png" Width="16" Height="16" />
+    <ComboBox x:Name="_cbForegroundColors"
+              IsEnabled="{Binding IsEnabledToolBarItems}"
+              ItemsSource="{Binding Source={StaticResource colorProvider}}"
+              ItemTemplate="{Binding Source={StaticResource colorItemTemplate}}"
+              DisplayMemberPath="Name"
+              IsEditable="False"
+              IsTextSearchEnabled="True"
+              Width="100"
+              SelectionChanged="_cbForegroundColors_SelectionChanged"/>
+    <Separator />
+    <RadioButton x:Name="_tgbtnBullets"
+                 GroupName="Marker"
+                 IsEnabled="{Binding IsEnabledToolBarItems}"
+                 Command="{x:Static EditingCommands.ToggleBullets}"
+                 CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/BulletList.png"
+               Width="16" Height="16" />
+    </RadioButton>
+    <RadioButton x:Name="_tgbtnNumbering"
+                 GroupName="Marker"
+                 IsEnabled="{Binding IsEnabledToolBarItems}"
+                 Command="{x:Static EditingCommands.ToggleNumbering}"
+                 CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/NumbersList.png"
+               Width="16" Height="16" />
+    </RadioButton>
+    <Separator/>
+    <Button x:Name="_btnIncreaseIndentation"
+            IsEnabled="{Binding IsEnabledToolBarItems}"
+            Command="{x:Static EditingCommands.IncreaseIndentation}"
+            CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/IncreaseIndentation.png"
+               Width="16" Height="16" />
+    </Button>
+    <Button x:Name="_btnDecreaseIndentation"
+            IsEnabled="{Binding IsEnabledToolBarItems}"
+            Command="{x:Static EditingCommands.DecreaseIndentation}"
+            CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/DecreaseIndentation.png" Width="16" Height="16" />
+    </Button>
+    <Separator/>
+    <RadioButton x:Name="_tgbtnSubscript"
+                 GroupName="Baseline"
+                 IsEnabled="{Binding IsEnabledToolBarItems}"
+                 Command="{x:Static EditingCommands.ToggleSubscript}"
+                 CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Subscript.png"
+               Width="16" Height="16" />
+    </RadioButton>
+    <RadioButton x:Name="_tgbtnSuperscript"
+                 GroupName="Baseline"
+                 IsEnabled="{Binding IsEnabledToolBarItems}"
+                 Command="{x:Static EditingCommands.ToggleSuperscript}"
+                 CommandTarget="{Binding CurrentEditor}">
+        <Image Source="Resources/ToolBarImages/Superscript.png"
+               Width="16" Height="16" />
+    </RadioButton>
+</ToolBar>
