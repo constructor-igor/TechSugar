@@ -1,5 +1,4 @@
-﻿using System;
-using System.Messaging;
+﻿using System.Messaging;
 
 namespace MessageQueueSamples
 {
@@ -7,44 +6,28 @@ namespace MessageQueueSamples
     //  http://www.outsystems.com/forums/discussion/6831/microsoft-message-queue-installation-for-community-edition/
     //  http://msdn.microsoft.com/en-us/library/aa967729(v=vs.110).aspx
     //
+    //  http://www.codeproject.com/Articles/5830/Using-MSMQ-from-C
+    //  http://stackoverflow.com/questions/11076790/the-bare-minimum-needed-to-write-a-msmq-sample-application
+    //  http://www.codeproject.com/Articles/481/The-Microsoft-Message-Queue
+    //  http://www.codeproject.com/Articles/3944/Programming-MSMQ-in-NET-Part
+    //  http://www.codeproject.com/Articles/356317/Using-MSMQ-Backgroundworker-Threads-in-Csharp
+    //
+    //  http://msdn.microsoft.com/en-us/library/ee960153(v=vs.110).aspx
+    //
 
     class Program
     {
         const string queuePath = @".\Private$\MessageQueueSamples";
         private static void Main()
         {
-            MessageQueue mq = MessageQueueHelper.GetMessageQueue(queuePath);
-
-            SendMessage(mq);
-            ReceiveMessage(mq);
-        }
-
-        private static void ReceiveMessage(MessageQueue mq)
-        {
-            string messageBody;
-            try
+            using (MessageQueue mq = MessageQueueHelper.GetMessageQueue(queuePath))
             {
-                Message msg = mq.Receive(new TimeSpan(0, 0, 3));
-                msg.Formatter = new XmlMessageFormatter(new[] { "System.String,mscorlib" });
-                messageBody = msg.Body.ToString();
+
+                MessageQueueCustomTypeMessageImpl.SendMessage(mq);
+                MessageQueueCustomTypeMessageImpl.ReceiveMessage(mq);
+//                MessageQueueStringMessageImpl.SendMessage(mq);
+//                MessageQueueStringMessageImpl.ReceiveMessage(mq);
             }
-            catch (Exception e)
-            {
-                messageBody = String.Format("No message ({0})", e.Message);
-            }
-            Console.WriteLine("received message: {0}", messageBody);
-        }
-
-        private static void SendMessage(MessageQueue mq)
-        {
-            var msg = new Message
-            {
-                Priority = MessagePriority.Normal,
-                Label = "Test Message",
-                Body = "This is only a test"
-            };
-            mq.Send(msg);
-            Console.WriteLine("Message sent.");
         }
     }
 
