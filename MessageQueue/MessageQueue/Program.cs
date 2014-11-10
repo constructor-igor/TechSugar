@@ -12,6 +12,7 @@ namespace MessageQueueSamples
     //  http://www.codeproject.com/Articles/3944/Programming-MSMQ-in-NET-Part
     //  http://www.codeproject.com/Articles/356317/Using-MSMQ-Backgroundworker-Threads-in-Csharp
     //
+    //  [msdn "Message Queuing (MSMQ)"] http://msdn.microsoft.com/en-us/library/ms711472(v=vs.85).aspx
     //  http://msdn.microsoft.com/en-us/library/ee960153(v=vs.110).aspx
     //
 
