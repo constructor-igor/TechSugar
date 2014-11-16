@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0" >
+  <UserData>
+    <Properties>
+      <Property Name="Time">28-10-14_10-46-42</Property>
+    </Properties>
+  </UserData>
+  <DataItem Polarization="Black">
+  
+  </DataItem>
+  <DataItem Polarization="White">
+
+  </DataItem>
+</Data>
