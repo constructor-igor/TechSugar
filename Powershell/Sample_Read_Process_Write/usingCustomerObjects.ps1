@@ -1,5 +1,5 @@
 #
-# Pay attention, $root contains absolute path where execution of the script start
+# Pay attention, $root contains absolute path where execution of the script starts
 #
 $root = "D:\My\MyProjects\@TechSugar\TechSugar.Samples\trunk\Powershell\Sample_Read_Process_Write"
 $absolutePathInterfaces = Join-Path $root "CustomerObjects\4Binaries\bin\Debug\Customer.Interfaces.dll"
@@ -11,9 +11,10 @@ $absolutePathDataProcessing = Join-Path $root "CustomerObjects\4Binaries\bin\Deb
 
 $dataStorage = ".\DataFiles"
 $dataFilter = "*.txt"
+$minimalNumberOfSymbols = 10
 
 $loadTextData = New-Object Customer.TextData.CustomerTextDataFactory
-$filter = New-Object Customer.DataProcessing.FilterTextData -argumentList 10
+$filter = New-Object Customer.DataProcessing.FilterTextData -argumentList $minimalNumberOfSymbols
 $processing = New-Object Customer.DataProcessing.WeightTextData
 
 $dataFiles = Get-ChildItem -Recurse -Path $dataStorage -Filter $dataFilter
