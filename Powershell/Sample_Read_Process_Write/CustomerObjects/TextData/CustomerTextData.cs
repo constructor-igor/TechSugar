@@ -7,15 +7,19 @@ namespace Customer.TextData
     {
         private readonly string _text;
         #region ITextData
-        public int TotalSymbols => _text.Length;
+        public int TotalSymbols
+        {
+            get { return _text.Length; }
+        }
 
         public int GetNumberOf(string term)
         {
+            int index;
             int sum = 0;
             int startIndex = 0;
-            while (_text.IndexOf(term, startIndex, StringComparison.Ordinal) != -1)
+            while ((index = _text.IndexOf(term, startIndex, StringComparison.Ordinal)) != -1)
             {
-                startIndex += term.Length;
+                startIndex = index + term.Length;
                 sum++;
             }
             return sum;

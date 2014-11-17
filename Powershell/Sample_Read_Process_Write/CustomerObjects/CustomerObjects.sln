@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.DataProcessing", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SanityTests", "SanityTests\SanityTests.csproj", "{3C8F49CA-7C25-4D77-B460-B4C4B5027991}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4Binaries", "4Binaries\4Binaries.csproj", "{98301F47-5526-48E1-A062-F9A6A2428974}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3C8F49CA-7C25-4D77-B460-B4C4B5027991}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C8F49CA-7C25-4D77-B460-B4C4B5027991}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C8F49CA-7C25-4D77-B460-B4C4B5027991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98301F47-5526-48E1-A062-F9A6A2428974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98301F47-5526-48E1-A062-F9A6A2428974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98301F47-5526-48E1-A062-F9A6A2428974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98301F47-5526-48E1-A062-F9A6A2428974}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

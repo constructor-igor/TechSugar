@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C8F49CA-7C25-4D77-B460-B4C4B5027991}</ProjectGuid>
+    <ProjectGuid>{98301F47-5526-48E1-A062-F9A6A2428974}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SanityTests</RootNamespace>
-    <AssemblyName>SanityTests</AssemblyName>
+    <RootNamespace>_4Binaries</RootNamespace>
+    <AssemblyName>4Binaries</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libraries\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,19 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TextDataTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Customer.DataProcessing\Customer.DataProcessing.csproj">
+      <Project>{43a9b5d7-bc9b-435f-9428-76fa4a1914dd}</Project>
+      <Name>Customer.DataProcessing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ICustomerData.cs\Customer.Interfaces.csproj">
-      <Project>{B74612FB-8389-439D-95A8-262D05794B88}</Project>
+      <Project>{b74612fb-8389-439d-95a8-262d05794b88}</Project>
       <Name>Customer.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\TextData\Customer.TextData.csproj">
-      <Project>{ADAA3A59-F410-40E1-8D24-F6C2C1307F87}</Project>
+      <Project>{adaa3a59-f410-40e1-8d24-f6c2c1307f87}</Project>
       <Name>Customer.TextData</Name>
     </ProjectReference>
   </ItemGroup>
