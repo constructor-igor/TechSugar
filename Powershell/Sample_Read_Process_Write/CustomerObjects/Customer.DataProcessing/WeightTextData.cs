@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Customer.Interfaces;
+﻿using Customer.Interfaces;
 
 namespace Customer.DataProcessing
 {
