@@ -145,84 +145,22 @@ namespace MainConsole
         {
             const string pathToFiles = @"..\..\..\..\DataFiles";
             const string searchPattern = "*.txt";
+            const string pathToReport = @"..\..\..\..\DataFiles\report.report";
             const int FILTER_MINIMUM_SYMBOLS = 5;
 
             var factory = new FlowBuilderFactory_v3();
             factory
                 .DataFromFolder(searchPattern)
                 .LoadData()
-                .ToConsole()
+                .Filter(FILTER_MINIMUM_SYMBOLS)
+                .Processing()
+                .ToReport()
+                .ReportToFile(new PathToFile(pathToReport))
+                //.ToConsole()
 
                 .CreateSequentialFlow()
                 .Post(new PathToFolder(pathToFiles))
                 .Wait();
-        }
-
-        public class FlowBuilderFactory_v3
-        {
-            readonly public List<IDataflowBlock> Flow = new List<IDataflowBlock>();
-
-            public FlowBuilderFactory_v3 DataFromFolder(string searchPattern)
-            {
-                var block = new TransformManyBlock<PathToFolder, PathToFile>(pathToFolder =>
-                {
-                    string[] files = Directory.GetFiles(pathToFolder.Folder, searchPattern, SearchOption.AllDirectories);
-                    var queue = new ConcurrentQueue<PathToFile>();
-                    Array.ForEach(files, file => queue.Enqueue(new PathToFile(file)));
-                    return queue;
-                });
-                Flow.Add(block);
-                return this;
-            }
-
-            public FlowBuilderFactory_v3 LoadData()
-            {
-                var block = new TransformBlock<PathToFile, BuilderCustomerData>(pathToFile =>
-                {
-                    var factory = new CustomerTextDataFactory();
-                    return new BuilderCustomerData { PathToFile = pathToFile, CustomerData = factory.LoadFromFile(pathToFile.File) };
-                });
-                Flow.Add(block);
-                return this;
-            }
-
-            public FlowBuilderFactory_v3 ToConsole()
-            {
-                var action = new ActionBlock<Object>(dataObject=> Console.WriteLine("thread: {0}, object={1}", Thread.CurrentThread.ManagedThreadId, dataObject));
-                Flow.Add(action);
-                return this;
-            }
-
-            public FlowBuilderFactory_v3 CreateSequentialFlow()
-            {
-                for (int i = 0; i < Flow.Count-1; i++)
-                {
-                    var source = Flow[i] as ISourceBlock<object>;
-                    var next = Flow[i + 1] as ITargetBlock<object>;
-                    source.LinkTo(next);
-                    source.Completion.ContinueWith(t =>
-                    {
-                        if (t.IsFaulted) 
-                            next.Fault(t.Exception);
-                        else 
-                            next.Complete();
-                    });
-                }
-                return this;
-            }
-            public FlowBuilderFactory_v3 Post<T>(T inputData)
-            {
-                var startBlock = Flow[0] as ITargetBlock<T>;
-                startBlock.Post(inputData);
-                return this;
-            }
-            public void Wait()
-            {
-                var startBlock = Flow.First() as ITargetBlock<object>;
-                var finishBlock = Flow.Last() as ITargetBlock<object>;
-                startBlock.Complete();
-                finishBlock.Completion.Wait();
-            }
-        }
+        }        
     }
 }
