@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="FilterTextData.cs" />
     <Compile Include="IDataProcessing.cs" />
+    <Compile Include="ProcessingReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeightTextData.cs" />
   </ItemGroup>

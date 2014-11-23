@@ -1,4 +1,5 @@
-﻿using Customer.Interfaces;
+﻿using System.IO;
+using Customer.Interfaces;
 
 namespace Customer.DataProcessing
 {
@@ -10,5 +11,12 @@ namespace Customer.DataProcessing
             return textData.GetNumberOf("Black") + textData.GetNumberOf("White");
         }
         #endregion
+    }
+
+    public class ItemReport
+    {
+        public string FilePath { get; set; }
+        public bool Enabled { get; set; }
+        public int Weight { get; set; }
     }
 }
