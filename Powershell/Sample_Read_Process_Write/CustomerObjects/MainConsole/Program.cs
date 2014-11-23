@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks.Dataflow;
 using Customer.DataProcessing;
 using Customer.TextData;
@@ -138,123 +137,6 @@ namespace MainConsole
             inputGenerator.Post(new FlowBuilderFactory_v2.PathToFolder {Folder = pathToFiles});
             inputGenerator.Complete();
             reportToFile.Completion.Wait();
-        }
-
-        public class FlowBuilderFactory_v2
-        {
-            public class PathToFolder
-            {
-                public string Folder { get; set; }
-            }
-            public class PathToFile
-            {
-                public string Path { get; set; }
-            }
-
-            public class BuilderCustomerData
-            {
-                public PathToFile PathToFile { get; set; }
-                public bool Enabled { get; set; }
-                public CustomerTextData CustomerData { get; set; }
-            }
-
-            public TransformManyBlock<PathToFolder, PathToFile> InputFilesGeneration(string searchPattern)
-            {
-                var block = new TransformManyBlock<PathToFolder, PathToFile>(pathToFolder =>
-                {
-                    string[] files = Directory.GetFiles(pathToFolder.Folder, searchPattern, SearchOption.AllDirectories);
-                    var queue = new ConcurrentQueue<PathToFile>();
-                    Array.ForEach(files, file => queue.Enqueue(new PathToFile {Path=file}));
-                    return queue;
-                });
-                return block;
-            }
-
-            public TransformBlock<PathToFile, BuilderCustomerData> ToCustomData()
-            {
-                var block = new TransformBlock<PathToFile, BuilderCustomerData>(pathToFile =>
-                {
-                    var factory = new CustomerTextDataFactory();
-                    return new BuilderCustomerData {PathToFile = pathToFile, CustomerData = factory.LoadFromFile(pathToFile.Path)};
-                });
-                return block;
-            }
-
-            public TransformBlock<BuilderCustomerData, BuilderCustomerData> Filter(int minimumSymbols)
-            {
-                var block = new TransformBlock<BuilderCustomerData, BuilderCustomerData>(data =>
-                {
-                    var filter = new FilterTextData(minimumSymbols);
-                    bool enabled = filter.Run(data.CustomerData);
-                    return new BuilderCustomerData
-                    {
-                        PathToFile = data.PathToFile,
-                        Enabled = enabled,
-                        CustomerData = data.CustomerData
-                    };
-                });
-                return block;
-            }
-
-            public TransformBlock<BuilderCustomerData, ItemReport> Processing()
-            {
-                var block = new TransformBlock<BuilderCustomerData, ItemReport>(data =>
-                {
-                    var weight = new WeightTextData();
-                    int result = weight.Run(data.CustomerData);
-                    return new ItemReport {Enabled = true, FilePath = data.PathToFile.Path, Weight = result};
-                });
-                return block;
-            }
-            public TransformBlock<BuilderCustomerData, ItemReport> ToIgnore()
-            {
-                var block = new TransformBlock<BuilderCustomerData, ItemReport>(data => new ItemReport { Enabled = false, FilePath = data.PathToFile.Path});
-                return block;
-            }
-
-            public BatchBlock<ItemReport> ToReportItem()
-            {
-                var block = new BatchBlock<ItemReport>(int.MaxValue);
-                return block;
-            }
-
-            public TransformBlock<ItemReport[], ProcessingReport> ToReport()
-            {
-                var block = new TransformBlock<ItemReport[], ProcessingReport>(items =>
-                    {
-                        var processingReport = new ProcessingReport();
-                        foreach (ItemReport itemReport in items)
-                        {
-                            processingReport.ReportItems.Add(itemReport);
-                        }
-                        return processingReport;
-                    });
-                return block;
-            }
-
-            public ActionBlock<ProcessingReport> ReportToFile(PathToFile pathToReportFile)
-            {
-                var block = new ActionBlock<ProcessingReport>(report =>
-                {
-                    var helper = new ProcessingReportHelper();
-                    helper.WriteTo(report, pathToReportFile.Path);
-                });
-                return block;
-            }
-            public ActionBlock<T> ToConsole<T>()
-            {
-                var action = new ActionBlock<T>(item => Console.WriteLine("thread: {0}, item: {1}", Thread.CurrentThread.ManagedThreadId, item));
-                return action;
-            }
-
-            public void ContinueWith(IDataflowBlock source, IDataflowBlock next)
-            {
-                source.Completion.ContinueWith(t =>
-                {
-                    if (t.IsFaulted) next.Fault(t.Exception);
-                    else next.Complete();
-                });
-            }
-        }
+        }        
     }
 }
