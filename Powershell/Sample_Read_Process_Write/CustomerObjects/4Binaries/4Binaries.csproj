@@ -50,6 +50,10 @@
       <Project>{b74612fb-8389-439d-95a8-262d05794b88}</Project>
       <Name>Customer.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MainConsole\MainConsole.csproj">
+      <Project>{d7bc4036-f3b1-45e8-a922-eef07276001a}</Project>
+      <Name>MainConsole</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TextData\Customer.TextData.csproj">
       <Project>{adaa3a59-f410-40e1-8d24-f6c2c1307f87}</Project>
       <Name>Customer.TextData</Name>
