@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Messaging;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace Task1.Consumer
+namespace Task2.Consumer
 {
     class Program
     {
-        const string queuePath = @".\Private$\MSMQ-Task1";
+        const string queuePath = @".\Private$\MSMQ-Task2";
         static void Main()
         {
             Console.WriteLine("'Consumer' started");
@@ -22,7 +23,7 @@ namespace Task1.Consumer
                             Message message = null;
                             try
                             {
-                                message = mq.Receive(new TimeSpan(0, 0, seconds: 3));
+                                message = mq.Receive(new TimeSpan(0, 0, seconds: 3));                                
                             }
                             catch (MessageQueueException)
                             {
@@ -34,7 +35,7 @@ namespace Task1.Consumer
                                 try
                                 {
                                     message.Formatter = new XmlMessageFormatter(new[] {typeof (ProducerMessage)});
-                                    customerMessage = (ProducerMessage) message.Body;
+                                    customerMessage = (ProducerMessage) message.Body;                                   
                                 }
                                 catch (Exception e)
                                 {
@@ -43,7 +44,10 @@ namespace Task1.Consumer
                                 if (customerMessage != null)
                                 {
                                     Console.BackgroundColor = ConsoleColor.DarkGreen;
-                                    Console.WriteLine("Received message '{0}, {1}'", customerMessage.Text, customerMessage.Duration);
+                                    Console.WriteLine("Received message '{0}' with sleep processing time '{1}'", customerMessage.Text, customerMessage.Duration);
+                                    Console.WriteLine("{0}: processing start", DateTime.Now);
+                                    Thread.Sleep(customerMessage.Duration*1000);
+                                    Console.WriteLine("{0}: processing completed", DateTime.Now);
                                     Console.ResetColor();
                                 }
                             }
