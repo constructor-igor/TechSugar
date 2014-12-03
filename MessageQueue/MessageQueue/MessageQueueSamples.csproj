@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="MessageQueueCustomTypeMessageImpl.cs" />
     <Compile Include="MessageQueueStringMessageImpl.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

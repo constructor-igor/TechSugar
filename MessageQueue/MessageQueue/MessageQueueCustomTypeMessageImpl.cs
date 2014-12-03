@@ -3,12 +3,6 @@ using System.Messaging;
 
 namespace MessageQueueSamples
 {
-    public class Person
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int ID { get; set; }
-    }
     public class MessageQueueCustomTypeMessageImpl
     {
         public static void SendMessage(MessageQueue mq)
