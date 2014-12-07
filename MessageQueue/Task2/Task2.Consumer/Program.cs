@@ -23,7 +23,7 @@ namespace Task2.Consumer
                             Message message = null;
                             try
                             {
-                                message = mq.Receive(new TimeSpan(0, 0, seconds: 3));                                
+                                message = mq.Receive(new TimeSpan(0, 0, seconds: 3));
                             }
                             catch (MessageQueueException)
                             {
@@ -35,7 +35,7 @@ namespace Task2.Consumer
                                 try
                                 {
                                     message.Formatter = new XmlMessageFormatter(new[] {typeof (ProducerMessage)});
-                                    customerMessage = (ProducerMessage) message.Body;                                   
+                                    customerMessage = (ProducerMessage) message.Body;
                                 }
                                 catch (Exception e)
                                 {
