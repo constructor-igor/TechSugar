@@ -16,11 +16,12 @@ namespace Task3.Producer
     {
         //const string queuePath = @".\Private$\MSMQ-Task3";
         const string queuePath = @"FormatName:MULTICAST=234.1.1.1:8001";
-        //const string queuePath = @"FormatName:MULTICAST=IL-IGOR-Z-W7L:8001";
         static void Main(string[] args)
         {
             using (MessageQueue mq = MessageQueueHelper.GetMessageQueue(queuePath))
             {
+                //mq.SetPermissions("ANONYMOUS LOGON", MessageQueueAccessRights.WriteMessage);
+                //mq.SetPermissions("EVERYONE", MessageQueueAccessRights.WriteMessage);
                 bool exit;
                 do
                 {
