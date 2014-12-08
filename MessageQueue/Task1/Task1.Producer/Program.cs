@@ -39,7 +39,7 @@ namespace Task1.Producer
                     {
                         Console.WriteLine("failed with '{0}' message", e.Message);
                     }
-                    catch (Exception exp)
+                    catch (Exception)
                     {
                         Console.WriteLine("check command '{0}' arguments", commands[0]);
                     }

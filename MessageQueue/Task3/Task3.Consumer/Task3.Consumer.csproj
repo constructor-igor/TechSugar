@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FFC5B9B7-EB3B-45AC-8D98-8D387330BC59}</ProjectGuid>
+    <ProjectGuid>{A0E35D9D-465F-49AA-BA68-E1D07FDEE3DA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Task3.Producer</RootNamespace>
-    <AssemblyName>Task3.Producer</AssemblyName>
+    <RootNamespace>Task3.Consumer</RootNamespace>
+    <AssemblyName>Task3.Consumer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsumerMessage.cs" />
     <Compile Include="MessageQueueHelper.cs" />
-    <Compile Include="ProducerMessage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
