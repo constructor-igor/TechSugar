@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
-using Microsoft.Hadoop;
 using Microsoft.Hadoop.MapReduce;
 using Microsoft.Hadoop.WebClient.WebHCatClient;
 
