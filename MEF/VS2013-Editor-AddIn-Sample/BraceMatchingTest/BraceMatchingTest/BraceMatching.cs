@@ -7,6 +7,11 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
 
+//
+//
+//	References
+//	- http://msdn.microsoft.com/en-us/library/ee197650.aspx
+
 namespace BraceMatchingTest
 {
     internal class BraceMatchingTagger : ITagger<TextMarkerTag>
