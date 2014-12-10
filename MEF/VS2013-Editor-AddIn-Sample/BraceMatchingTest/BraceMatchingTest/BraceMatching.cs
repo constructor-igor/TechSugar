@@ -11,6 +11,7 @@ using Microsoft.VisualStudio.Utilities;
 //
 //	References
 //	- http://msdn.microsoft.com/en-us/library/ee197650.aspx
+//  - http://msdn.microsoft.com/en-us/library/dd885119.aspx
 
 namespace BraceMatchingTest
 {
