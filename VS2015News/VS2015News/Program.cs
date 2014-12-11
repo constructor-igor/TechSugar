@@ -12,8 +12,10 @@ namespace VS2015News
         static void Main(string[] args)
         {
             DataObject dataObject = CreateDataObject();
-            string name = dataObject != null ? dataObject.Name : "unknown";
-            Console.WriteLine("name: {0}", name);
+            string name1 = dataObject == null ? "unknown" :  dataObject.Name;
+            string name2 = dataObject?.Name ?? "unknown";
+            Console.WriteLine("name1: {0}", name1);
+            Console.WriteLine("name2: {0}", name2);
 
             DataObject dataObject1 = CreateDataObject(false);
             ObjectType objectType1 = (dataObject1 == null) ? ObjectType.none :  dataObject1.ObjectType; //TODO <object>?
