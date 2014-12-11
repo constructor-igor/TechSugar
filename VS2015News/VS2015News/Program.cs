@@ -3,12 +3,15 @@
 namespace VS2015News
 {
     //
-    //  1. <object?>
+    //  1. <object>?, <event>?
+    //      http://dailydotnettips.com/2014/12/10/null-conditional-operators-in-c-6-0
     //  2. get only
     //
     //
     class Program
     {
+        private static EventHandler changed;
+
         static void Main(string[] args)
         {
             DataObject dataObject = CreateDataObject();
@@ -22,6 +25,22 @@ namespace VS2015News
             ObjectType objectType2 = dataObject1?.ObjectType ?? ObjectType.none;
             Console.WriteLine("objectType: {0}", objectType1);
             Console.WriteLine("objectType: {0}", objectType2);
+
+            DataObject dataObject2 = CreateDataObject(false);
+            string message;
+            if (dataObject2 != null && dataObject2.Message != null)
+                message = dataObject2.Message;
+            else
+                message = "unknown";
+            Console.WriteLine("message: {0}", message);
+            Console.WriteLine("message: {0}", dataObject2?.Message ?? "unknown");   //TODO <object>?
+
+            Console.WriteLine("[next].message: {0}", dataObject2?.Next?.Message ?? "unknown");   //TODO <object>?
+
+            if (changed != null)                            //TODO <event>?
+                changed(null, new EventArgs());
+
+            changed?.Invoke(null, EventArgs.Empty);
         }
 
 
@@ -39,10 +58,15 @@ namespace VS2015News
         public string Name { get; private set; }
         public ObjectType ObjectType { get; }       //TODO 'get only'
 
+        public string Message { get; set; }
+
+        public DataObject Next { get; set; }
+
         public DataObject(string name, ObjectType objectType)
         {
             Name = name;
             ObjectType = objectType;
+            Message = "message";
         }
     }
 }
