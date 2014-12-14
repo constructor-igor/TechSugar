@@ -4,7 +4,7 @@ namespace SimpleMathSample
 {
     public class Algorithm
     {
-        public double Calc(CustomMath customMath, double x, double y, double z)
+        public double Run(CustomMath customMath, double x, double y, double z)
         {
             double xy = customMath.Calc(x, y);
             if (xy < 0)

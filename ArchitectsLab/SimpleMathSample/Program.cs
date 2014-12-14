@@ -8,7 +8,7 @@ namespace SimpleMathSample
         {
             var customMath = new CustomMath();
             var algorithm = new Algorithm();
-            double r = algorithm.Calc(customMath, 10, 20, 100);
+            double r = algorithm.Run(customMath, 10, 20, 100);
             Console.WriteLine("r={0}", r);
         }
     }

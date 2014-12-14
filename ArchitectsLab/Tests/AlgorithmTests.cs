@@ -17,7 +17,7 @@ namespace Tests
             var mock = new Mock<CustomMath>();
             mock.Setup(foo => foo.Calc(It.IsAny<double>(), It.IsAny<double>())).Returns(-1);
             var algorithm = new Algorithm();
-            algorithm.Calc(mock.Object, x, y, z);
+            algorithm.Run(mock.Object, x, y, z);
         }
     }
 }
