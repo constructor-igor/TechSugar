@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Runtime.CompilerServices;
 using EngineAPI.DataEntities;
 using EngineAPI.Interfaces;
+using Microsoft.Practices.Unity;
 using Plugin.Framework;
 using Plugin.Framework.Interfaces;
 
@@ -24,6 +24,14 @@ namespace Plugins
      * 
      * */
 
+    public class Plugin_v2_Dependency: IDataEntity
+    {
+        [Dependency] public IModelDataEntity ModelEntity { get; set; }
+        [Dependency] public IMeasurementDataEntity MeasurementEntity { get; set; }
+        [Dependency] public ModelParametersDataEntity ResultParameters { get; set; }
+        //[Dependency("model_get_measurement_properties")] public ICommand Command { get; set; }
+    }
+
     [Export(typeof(ICommand))]
     public class PluginB_v2 : ICommand
     {
@@ -36,9 +44,9 @@ namespace Plugins
         public IDataEntity Run(ICommandContext commandContext)
         {
             //
-            //  Get model
+            //  dataEntities contains all necessary input data entities
             //
-            var model = commandContext.GetDataEntity<IModelDataEntity>();
+            var dataEntities = commandContext.GetDataEntity<Plugin_v2_Dependency>();
 
             //
             // Get active only measurement properties
@@ -69,8 +77,8 @@ namespace Plugins
             materialProperties = commandContext.RunCommand("get_material_properties", commandParameters, materialRange) as DataEntityContainer;
             var materialRanges2 = materialProperties.DataAs<double[]>();
 
-            double nominal1 = model.GetParameterNominal(parameter1);
-            double nominal2 = model.GetParameterNominal(parameter2);
+            double nominal1 = dataEntities.ModelEntity.GetParameterNominal(parameter1);
+            double nominal2 = dataEntities.ModelEntity.GetParameterNominal(parameter2);
 
             double resultValue1;
             double resultValue2;
@@ -89,11 +97,10 @@ namespace Plugins
             // value of parameter 1
             // value of parameter 2
 
-            var modelParametersDataEntity = new ModelParametersDataEntity();
-            modelParametersDataEntity.ParametersValues.Add(parameter1, resultValue1);
-            modelParametersDataEntity.ParametersValues.Add(parameter2, resultValue2);
+            dataEntities.ResultParameters.ParametersValues.Add(parameter1, resultValue1);
+            dataEntities.ResultParameters.ParametersValues.Add(parameter2, resultValue2);
 
-            return modelParametersDataEntity;
+            return dataEntities.ResultParameters;
         }
     }
 }
