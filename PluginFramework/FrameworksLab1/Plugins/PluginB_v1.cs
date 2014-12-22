@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Runtime.CompilerServices;
 using EngineAPI.DataEntities;
 using EngineAPI.Interfaces;
 using Plugin.Framework;
@@ -24,13 +25,13 @@ namespace Plugins
      * */
 
     [Export(typeof(ICommand))]
-    public class PluginB: ICommand
+    public class PluginB_v1: ICommand
     {
         public ICommandDescriptor Descriptor { get; private set; }
 
-        public PluginB()
+        public PluginB_v1()
         {
-            Descriptor = new CommandDescriptor("pluginB", "command B");
+            Descriptor = new CommandDescriptor("pluginB_stright", "command B");
         }
         public IDataEntity Run(ICommandContext commandContext)
         {

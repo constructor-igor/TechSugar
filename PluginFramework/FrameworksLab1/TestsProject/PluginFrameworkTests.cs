@@ -18,7 +18,7 @@ namespace TestsProject
             Model model = CreateModel();
             var measurement = new Measurement();            
             // plugin definition (unique and parameters)
-            const string commandUnique = "pluginB";
+            const string commandUnique = "pluginB_stright";
             const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
 
             var dataFramework = new DataFramework();
@@ -32,6 +32,29 @@ namespace TestsProject
 
             IDataEntity commandResult = commandFramework.RunCommand(commandUnique, commandParameters);
             Assert.IsInstanceOf<ModelParametersDataEntity>(commandResult);            
+        }
+
+        [Test]
+        public void FrameworkPlugins_Dependency()
+        {
+            // engine data objects (not plugin-able business logic)
+            Model model = CreateModel();
+            var measurement = new Measurement();
+            // plugin definition (unique and parameters)
+            const string commandUnique = "pluginB_dependency";
+            const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
+
+            var dataFramework = new DataFramework();
+            dataFramework.Add<IModelDataEntity>(new ModelDataEntity(model));
+            dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
+
+            var commandFramework = new CommandFramework(dataFramework);
+            commandFramework.AddPluginsFolder(new DataFolder(@"..\..\..\@PluginsBinaries"));
+            commandFramework.AddPluginsBinary(new DataFile(@".\EngineAPI.dll"));
+            commandFramework.Init();
+
+            IDataEntity commandResult = commandFramework.RunCommand(commandUnique, commandParameters);
+            Assert.IsInstanceOf<ModelParametersDataEntity>(commandResult);
         }
 
         private static Model CreateModel()
