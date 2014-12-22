@@ -50,9 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandCompositionHelper.cs" />
-    <Compile Include="CommandContext.cs" />
     <Compile Include="CommandDescriptor.cs" />
     <Compile Include="CommandFramework.cs" />
+    <Compile Include="DataEntityContainer.cs" />
+    <Compile Include="DataFile.cs" />
     <Compile Include="DataFolder.cs" />
     <Compile Include="DataFramework.cs" />
     <Compile Include="Interfaces\ICommand.cs" />

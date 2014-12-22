@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,8 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\MaterialsPropertiesCommand.cs" />
+    <Compile Include="Commands\MeasurementPropertiesCommand.cs" />
+    <Compile Include="DataEntities\MeasurementDataEntity.cs" />
+    <Compile Include="DataEntities\ModelParametersDataEntity.cs" />
+    <Compile Include="Interfaces\IMeasurementDataEntity.cs" />
+    <Compile Include="Interfaces\IMeasurementPropertiesEntity.cs" />
     <Compile Include="Interfaces\IModelDataEntity.cs" />
-    <Compile Include="ModelDataEntity.cs" />
+    <Compile Include="DataEntities\MeasurementPropertiesDataEntity.cs" />
+    <Compile Include="DataEntities\ModelDataEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

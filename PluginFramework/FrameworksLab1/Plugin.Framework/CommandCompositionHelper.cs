@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.ComponentModel.Composition.Primitives;
 using Plugin.Framework.Interfaces;
 
 namespace Plugin.Framework
@@ -10,7 +11,7 @@ namespace Plugin.Framework
     {
         [ImportMany]
         public Lazy<ICommand, IDictionary<string, object>>[] Commands { get; set; }
-        public CommandCompositionHelper(IEnumerable<DataFolder> pluginBinariesFolders)
+        public CommandCompositionHelper(IEnumerable<ComposablePartCatalog> pluginCatalogs)
         {
             // Creating an instance of aggregate catalog. It aggregates other catalogs
             var aggregateCatalog = new AggregateCatalog();
@@ -27,10 +28,11 @@ namespace Plugin.Framework
             //aggregateCatalog.Catalogs.Add(pluginDirectoryCatalog);
             //aggregateCatalog.Catalogs.Add(targetDirectoryCatalog);
             //aggregateCatalog.Catalogs.Add(asmCatalog);
-            foreach (DataFolder pluginsFolder in pluginBinariesFolders)
+            foreach (ComposablePartCatalog pluginsCatalog in pluginCatalogs)
             {
-                var dirCatalog = new DirectoryCatalog(pluginsFolder.Folder, "*.dll");
-                aggregateCatalog.Catalogs.Add(dirCatalog);  
+                //var dirCatalog = new DirectoryCatalog(pluginsFolder.Folder, "*.dll");
+                //aggregateCatalog.Catalogs.Add(dirCatalog);  
+                aggregateCatalog.Catalogs.Add(pluginsCatalog);  
             }
             //aggregateCatalog.Catalogs.Add(dirCatalog);
 

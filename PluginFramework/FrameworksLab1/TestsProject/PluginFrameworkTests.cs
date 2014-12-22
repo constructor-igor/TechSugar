@@ -1,6 +1,6 @@
-﻿using Engine;
-using Engine.Measurement;
-using EngineAPI;
+﻿using Engine.Measurement;
+using Engine.Model;
+using EngineAPI.DataEntities;
 using EngineAPI.Interfaces;
 using NUnit.Framework;
 using Plugin.Framework;
@@ -19,30 +19,32 @@ namespace TestsProject
             var measurement = new Measurement();            
             // plugin definition (unique and parameters)
             const string commandUnique = "pluginB";
-            const string commandParameters = "threshold=0.5";
+            const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
 
             var dataFramework = new DataFramework();
             dataFramework.Add<IModelDataEntity>(new ModelDataEntity(model));
+            dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
 
             var commandFramework = new CommandFramework(dataFramework);
             commandFramework.AddPluginsFolder(new DataFolder(@"..\..\..\@PluginsBinaries"));
+            commandFramework.AddPluginsBinary(new DataFile(@".\EngineAPI.dll"));
             commandFramework.Init();
 
             IDataEntity commandResult = commandFramework.RunCommand(commandUnique, commandParameters);
-            Assert.IsAssignableFrom<ModelDataEntity>(commandResult);
+            Assert.IsInstanceOf<ModelParametersDataEntity>(commandResult);            
         }
 
         private static Model CreateModel()
         {
             var model = new Model("model");
-            model.ModelMaterials.Add(new ModelMaterial("material_1"));
-            model.ModelMaterials.Add(new ModelMaterial("material_2"));
-            model.ModelMaterials.Add(new ModelMaterial("material_3"));
-            model.ModelMaterials.Add(new ModelMaterial("material_4"));
-            model.ModelParameters.Add(new ModelParameter("parameter_1"));
-            model.ModelParameters.Add(new ModelParameter("parameter_2"));
-            model.ModelParameters.Add(new ModelParameter("parameter_3"));
-            model.ModelParameters.Add(new ModelParameter("parameter_4"));
+            model.ModelMaterials.Add(new ModelMaterial("M1"));
+            model.ModelMaterials.Add(new ModelMaterial("M2"));
+            model.ModelMaterials.Add(new ModelMaterial("M3"));
+            model.ModelMaterials.Add(new ModelMaterial("M4"));
+            model.ModelParameters.Add(new ModelParameter("P1", 0.1));
+            model.ModelParameters.Add(new ModelParameter("P2", 0.2));
+            model.ModelParameters.Add(new ModelParameter("P3", 0.3));
+            model.ModelParameters.Add(new ModelParameter("P4", 0.4));
             return model;
         }
     }

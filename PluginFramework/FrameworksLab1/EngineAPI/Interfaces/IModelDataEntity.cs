@@ -4,5 +4,6 @@ namespace EngineAPI.Interfaces
 {
     public interface IModelDataEntity: IDataEntity
     {
+        double GetParameterNominal(string parameterName);
     }
 }
