@@ -52,6 +52,8 @@ namespace TestsProject
             commandFramework.AddPluginsFolder(new DataFolder(@"..\..\..\@PluginsBinaries"));
             commandFramework.AddPluginsBinary(new DataFile(@".\EngineAPI.dll"));
             commandFramework.Init();
+            var service = commandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
+            commandFramework.RegisterService<IMeasurementPropertiesService>(service);
 
             IDataEntity commandResult = commandFramework.RunCommand(commandUnique, commandParameters);
             Assert.IsInstanceOf<ModelParametersDataEntity>(commandResult);

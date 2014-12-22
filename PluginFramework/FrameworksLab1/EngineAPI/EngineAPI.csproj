@@ -46,6 +46,7 @@
     <Compile Include="DataEntities\ModelParametersDataEntity.cs" />
     <Compile Include="Interfaces\IMeasurementDataEntity.cs" />
     <Compile Include="Interfaces\IMeasurementPropertiesEntity.cs" />
+    <Compile Include="Interfaces\IMeasurementPropertiesService.cs" />
     <Compile Include="Interfaces\IModelDataEntity.cs" />
     <Compile Include="DataEntities\MeasurementPropertiesDataEntity.cs" />
     <Compile Include="DataEntities\ModelDataEntity.cs" />

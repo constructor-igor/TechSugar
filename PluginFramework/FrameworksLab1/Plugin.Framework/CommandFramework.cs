@@ -4,6 +4,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.IO;
 using System.Linq;
+using Microsoft.Practices.Unity;
 using Plugin.Framework.Interfaces;
 
 namespace Plugin.Framework
@@ -14,6 +15,7 @@ namespace Plugin.Framework
 
         private CommandCompositionHelper commandCompositionHelper;
         private readonly DataFramework dataFramework;
+        public readonly UnityContainer serviceUnityContainer = new UnityContainer();
 
         public CommandFramework(DataFramework dataFramework)
         {
@@ -31,7 +33,7 @@ namespace Plugin.Framework
 
         public void Init()
         {
-            commandCompositionHelper = new CommandCompositionHelper(pluginCatalogs);
+            commandCompositionHelper = new CommandCompositionHelper(pluginCatalogs);           
         }
 
         public Lazy<ICommand, IDictionary<string, object>> FindPlugin(string commandUnique)
@@ -45,64 +47,14 @@ namespace Plugin.Framework
             var commandContext = new CommandContext(dataFramework, this, commandUnique, commandParameters);
             return commandContext.RunCommand();
         }
-    }
 
-    internal class CommandContext : ICommandContext
-    {
-        private readonly DataFramework dataFramework;
-        private readonly CommandFramework commandFramework;
-        private readonly ICommand foundCommand;
-        private readonly string commandParameters;
-        private readonly List<DataEntityContainer> dataParameters = new List<DataEntityContainer>();
-        protected internal CommandContext(DataFramework dataFramework, CommandFramework commandFramework, string commandUnique, string commandParameters, DataEntityContainer dataParameter = null)
+        public void RegisterService<T>(IService service) where T: IService 
         {
-            this.dataFramework = dataFramework;
-            this.commandFramework = commandFramework;
-            this.commandParameters = commandParameters;
-            if (dataParameter!=null)
-                dataParameters.Add(dataParameter);
-            Lazy<ICommand, IDictionary<string, object>> foundPlugin = commandFramework.FindPlugin(commandUnique);
-            foundCommand = foundPlugin.Value;
+            serviceUnityContainer.RegisterInstance(typeof(T), service);
         }
-        #region ICommandContext
-        public T GetDataEntity<T>() where T : IDataEntity
+        public T GetService<T>()
         {
-            return dataFramework.GetDataEntity<T>();
-        }
-        public IDataEntity RunCommand(string commandUnique, string commandParameters)
-        {
-            var commandContext = new CommandContext(dataFramework, commandFramework, commandUnique, commandParameters);
-            return commandContext.RunCommand();
-        }
-        public IDataEntity RunCommand(string commandUnique, string commandParameters, DataEntityContainer dataParameters)
-        {
-            var commandContext = new CommandContext(dataFramework, commandFramework, commandUnique, commandParameters, dataParameters);
-            return commandContext.RunCommand();
-        }
-        public T GetCommandParameter<T>(string parameterName)
-        {
-            string[] keyValueList = commandParameters.Split(';');
-            string foundParameterKeyValue = keyValueList.First(keyValueItem => keyValueItem.Trim().ToLower().StartsWith(parameterName.ToLower() + '='));
-            string[] keyValuePair = foundParameterKeyValue.Trim().Split('=');
-            string value = keyValuePair[1];
-
-            if (typeof(T) == typeof(string))
-                return (T)(object)value;
-            if (typeof(T) == typeof(double))
-                return (T)(object)Double.Parse(value);
-            if (typeof(T) == typeof(Boolean))
-                return (T)(object)Boolean.Parse(value);
-            return (T)(object)value;
-        }
-        public DataEntityContainer GetDataParameter(string name)
-        {
-            return dataParameters.Find(dataParameter => dataParameter.Name.ToLower() == name.ToLower());
-        }
-        #endregion
-
-        public IDataEntity RunCommand()
-        {
-            return foundCommand.Run(this);
+            return serviceUnityContainer.Resolve<T>();
         }
     }
 }

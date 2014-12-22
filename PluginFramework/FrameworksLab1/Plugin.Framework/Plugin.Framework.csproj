@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandCompositionHelper.cs" />
+    <Compile Include="CommandContext.cs" />
     <Compile Include="CommandDescriptor.cs" />
     <Compile Include="CommandFramework.cs" />
     <Compile Include="DataEntityContainer.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Interfaces\ICommandContext.cs" />
     <Compile Include="Interfaces\ICommandDescriptor.cs" />
     <Compile Include="Interfaces\IDataEntity.cs" />
+    <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
