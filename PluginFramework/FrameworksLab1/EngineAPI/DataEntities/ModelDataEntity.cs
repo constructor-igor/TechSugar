@@ -15,5 +15,11 @@ namespace EngineAPI.DataEntities
             ModelParameter found = _model.ModelParameters.Find(modelParameter => modelParameter.Name.ToLower() == parameterName.ToLower());
             return found.Nominal;
         }
+
+        public void SetParametersValue(string parameterName, double parameterValue)
+        {
+            ModelParameter found = _model.ModelParameters.Find(modelParameter => modelParameter.Name.ToLower() == parameterName.ToLower());
+            found.Nominal = parameterValue;
+        }
     }
 }

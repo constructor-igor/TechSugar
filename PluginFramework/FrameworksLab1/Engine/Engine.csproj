@@ -40,6 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Measurement\Measurement.cs" />
+    <Compile Include="Model\Algorithm.cs" />
+    <Compile Include="Model\AlgorithmCommand.cs" />
+    <Compile Include="Model\AlgorithmExecuter.cs" />
+    <Compile Include="Model\IAlgorithmCommand.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\ModelMaterial.cs" />
     <Compile Include="Model\ModelParameter.cs" />
