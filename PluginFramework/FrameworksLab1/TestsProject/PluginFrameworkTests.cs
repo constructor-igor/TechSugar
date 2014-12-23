@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-using Engine.Measurement;
+﻿using Engine.Measurement;
 using Engine.Model;
 using EngineAPI.DataEntities;
 using EngineAPI.Interfaces;
-using Microsoft.Practices.Unity.Utility;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 using Plugin.Framework;
 using Plugin.Framework.Interfaces;
 
@@ -71,21 +68,8 @@ namespace TestsProject
             model.Algorithm.AddCommand(new AlgorithmCommand("engine: set1", "p1=0"));
             var measurement = new Measurement();
 
-            // create data framework
-            var dataFramework = new DataFramework();
-            var modelDataEntity = new ModelDataEntity(model);
-            dataFramework.Add<IModelDataEntity>(modelDataEntity);
-            dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
-
-            // create command framework
-            var commandFramework = new CommandFramework(dataFramework);
-            commandFramework.AddPluginsFolder(new DataFolder(@"..\..\..\@PluginsBinaries"));
-            commandFramework.AddPluginsBinary(new DataFile(@".\EngineAPI.dll"));
-            commandFramework.Init();
-            var service1 = commandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
-            commandFramework.RegisterService<IMeasurementPropertiesService>(service1);
-            var service2 = commandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
-            commandFramework.RegisterService<IMaterialPropertiesService>(service2);
+            var client = new Client {Model = model, Measurement = measurement};
+            client.Init();
 
             //
             // user inserts "user-define command" to engine's algorithm;
@@ -95,12 +79,13 @@ namespace TestsProject
             const string commandName = "Command B";
             const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";            
 
-            var command_Plugin_B_v2 = new UserDefinedCommand(commandFramework, dataFramework, commandUnique, commandName, commandParameters);
+            var command_Plugin_B_v2 = new UserDefinedCommand(client.CommandFramework, client.DataFramework, commandUnique, commandName, commandParameters);
             model.Algorithm.AddCommand(command_Plugin_B_v2);
 
             var algorithmExecuter = new AlgorithmExecuter(model);
             algorithmExecuter.Run();
 
+            var modelDataEntity = client.DataFramework.GetDataEntity<IModelDataEntity>();
             Assert.AreEqual(0.1, modelDataEntity.GetParameterNominal("P1"));
             Assert.AreEqual(0.4, modelDataEntity.GetParameterNominal("P2"));
         }
@@ -117,40 +102,6 @@ namespace TestsProject
             model.ModelParameters.Add(new ModelParameter("P3", 30));
             model.ModelParameters.Add(new ModelParameter("P4", 40));
             return model;
-        }
-
-        public class UserDefinedCommand : IAlgorithmCommand
-        {
-            private readonly CommandFramework commandFramework;
-            private readonly DataFramework dataFramework;
-            public string Name { get; set; }
-            public string Body { get; set; }
-            public void Run()
-            {
-                IDataEntity commandResult = commandFramework.RunCommand(CommandUnique, Body);
-                //TODO command returns result, ? how to place the results to correct target?
-                var modelParametersDataEntity = commandResult as ModelParametersDataEntity;
-                if (modelParametersDataEntity != null)
-                {
-                    var modelDataEntity = dataFramework.GetDataEntity<IModelDataEntity>();
-                    foreach (KeyValuePair<string, double> parameterValue in modelParametersDataEntity.ParametersValues)
-                    {
-                        modelDataEntity.SetParametersValue(parameterValue.Key, parameterValue.Value);
-                    }                    
-                }
-            }
-
-            public string CommandUnique { get; private set; }
-
-            public UserDefinedCommand(CommandFramework commandFramework, DataFramework dataFramework, string commandUnique, string commandName, string commandParameters)
-            {
-                this.commandFramework = commandFramework;
-                this.dataFramework = dataFramework;
-
-                Name = commandName;
-                Body = commandParameters;
-                CommandUnique = commandUnique;
-            }
-        }
+        }        
     }
 }
