@@ -9,7 +9,7 @@ namespace EngineAPI.Commands
 {
     [Export(typeof(ICommand))]
     [ExportMetadata("type", "API")]         // command from API layer can know Engine layer
-    public class MaterialsPropertiesCommand : ICommand
+    public class MaterialsPropertiesCommand : ICommand, IMaterialPropertiesService
     {
         public MaterialsPropertiesCommand()
         {
@@ -18,15 +18,21 @@ namespace EngineAPI.Commands
         public ICommandDescriptor Descriptor { get; private set; }
         public IDataEntity Run(ICommandContext commandContext)
         {
-            var model = (ModelDataEntity)commandContext.GetDataEntity<IModelDataEntity>();
+            var model = commandContext.GetDataEntity<IModelDataEntity>();
             var materialName = commandContext.GetCommandParameter<string>("material");
             DataEntityContainer rangeEntity = commandContext.GetDataParameter("range");
             var range = rangeEntity.DataAs<double[]>();
 
-            Model modelObject = model._model;
-            ModelMaterial foundMaterial = modelObject.ModelMaterials.Find(materialObject => materialObject.Name.ToLower() == materialName.ToLower());
-            var materialRangeDataEntity = new DataEntityContainer("range", foundMaterial.Y);
-            return materialRangeDataEntity;
+            return new DataEntityContainer("material_range", CalcRange(model, materialName, range));
         }
+
+        #region IMaterialProperties
+        public double[] CalcRange(IModelDataEntity modelDataEntity, string materialName, double[] generalRange)
+        {
+            Model modelObject = (modelDataEntity as ModelDataEntity)._model;
+            ModelMaterial foundMaterial = modelObject.ModelMaterials.Find(materialObject => materialObject.Name.ToLower() == materialName.ToLower());
+            return foundMaterial.Y;
+        }
+        #endregion
     }
 }

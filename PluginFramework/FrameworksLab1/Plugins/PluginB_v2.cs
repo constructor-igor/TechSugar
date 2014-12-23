@@ -34,6 +34,7 @@ namespace Plugins
     public class Plugin_v2_Dependency_Services
     {
         [Dependency] public IMeasurementPropertiesService MeasurementPropertiesService { get; set; }
+        [Dependency] public IMaterialPropertiesService MaterialPropertiesService { get; set; }
     }
 
     [Export(typeof(ICommand))]
@@ -54,14 +55,6 @@ namespace Plugins
             var services = commandContext.GetService<Plugin_v2_Dependency_Services>();
             IMeasurementPropertiesEntity measurementPropertiesEntity = services.MeasurementPropertiesService.GetProperties(dataEntities.ModelEntity, activeProperties: true);
 
-            //ICommandWrapper commandWrapper = commandContext.GetCommandWrapper<IMeasurementPropertiesService>();
-            //var measurementPropertiesEntity = commandWrapper.RunCommand("active=true") as IMeasurementPropertiesEntity;
-
-            //
-            // Get active only measurement properties
-            //
-            //var measurementPropertiesEntity = commandContext.RunCommand("model_get_measurement_properties", "active=true") as IMeasurementPropertiesEntity;
-
             var generalProperty = new List<double>();
             foreach (IMeasurementPropertyEntity measurementPropertyEntity in measurementPropertiesEntity.Properties)
             {
@@ -77,14 +70,8 @@ namespace Plugins
             var material2 = commandContext.GetCommandParameter<string>("material2");
             var threshold = commandContext.GetCommandParameter<double>("threshold");
 
-            string commandParameters = String.Format("material={0}", material1);
-            var materialRange = new DataEntityContainer("range", generalProperty.ToArray());
-            var materialProperties = commandContext.RunCommand("get_material_properties", commandParameters, materialRange) as DataEntityContainer;
-            var materialRanges1 = materialProperties.DataAs<double[]>();
-
-            commandParameters = String.Format("material={0}", material2);
-            materialProperties = commandContext.RunCommand("get_material_properties", commandParameters, materialRange) as DataEntityContainer;
-            var materialRanges2 = materialProperties.DataAs<double[]>();
+            double[] materialRange1 = services.MaterialPropertiesService.CalcRange(dataEntities.ModelEntity, material1, generalProperty.ToArray());
+            double[] materialRange2 = services.MaterialPropertiesService.CalcRange(dataEntities.ModelEntity, material2, generalProperty.ToArray());
 
             double nominal1 = dataEntities.ModelEntity.GetParameterNominal(parameter1);
             double nominal2 = dataEntities.ModelEntity.GetParameterNominal(parameter2);
