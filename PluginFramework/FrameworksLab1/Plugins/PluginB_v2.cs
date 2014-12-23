@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using EngineAPI.DataEntities;
 using EngineAPI.Interfaces;
@@ -35,6 +34,8 @@ namespace Plugins
     {
         [Dependency] public IMeasurementPropertiesService MeasurementPropertiesService { get; set; }
         [Dependency] public IMaterialPropertiesService MaterialPropertiesService { get; set; }
+
+        //[Dependency("calc_measurement")] public Func<IModelDataEntity, IMeasurementDataEntity> Calc { get; set; }         //TODO check thew possibility
     }
 
     [Export(typeof(ICommand))]
