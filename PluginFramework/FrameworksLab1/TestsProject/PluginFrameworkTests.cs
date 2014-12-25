@@ -1,4 +1,6 @@
-﻿using Engine.Measurement;
+﻿using System;
+using System.IO;
+using Engine.Measurement;
 using Engine.Model;
 using EngineAPI.DataEntities;
 using EngineAPI.Interfaces;
@@ -79,20 +81,40 @@ namespace TestsProject
             const string commandName = "Command B";
             const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";            
 
-            var command_Plugin_B_v2 = new UserDefinedCommand(client.CommandFramework, client.DataFramework, commandUnique, commandName, commandParameters);
+            var command_Plugin_B_v2 = new UserDefinedCommand(client, commandUnique, commandName, commandParameters);
             model.Algorithm.AddCommand(command_Plugin_B_v2);
 
-            var algorithmExecuter = new AlgorithmExecuter(model);
-            algorithmExecuter.Run();
+            var algorithmExecutor = new AlgorithmExecuter(model);
+            algorithmExecutor.Run();
 
             var modelDataEntity = client.DataFramework.GetDataEntity<IModelDataEntity>();
             Assert.AreEqual(0.1, modelDataEntity.GetParameterNominal("P1"));
             Assert.AreEqual(0.4, modelDataEntity.GetParameterNominal("P2"));
         }
 
-        private static Model CreateModel()
+        [Test]
+        public void Training_CreateModel_SaveToFile()
         {
-            var model = new Model("model");
+            var modelFile = new DataFile(Path.Combine(Path.GetTempPath(), "model.dat"));
+            Model model = CreateModel("trainingModel");
+
+            var client = new Client { Model = model, Measurement = new Measurement() };
+            client.Init();
+
+            var addMessageToHistory = new UserDefinedCommand(client, "message_to_history", "Add message to model history", "message=training");
+            var saveModelToFile = new UserDefinedCommand(client, "save_model_to_file", "Save model to file", String.Format("file={0}", modelFile.File));
+
+            model.Algorithm.AddCommand(addMessageToHistory);
+            model.Algorithm.AddCommand(saveModelToFile);
+            var algorithmExecutor = new AlgorithmExecuter(model);
+            algorithmExecutor.Run();
+
+            Assert.AreEqual("training", model.History);
+        }
+
+        private static Model CreateModel(string modelName="model")
+        {
+            var model = new Model(modelName);
             model.ModelMaterials.Add(new ModelMaterial("M1"));
             model.ModelMaterials.Add(new ModelMaterial("M2"));
             model.ModelMaterials.Add(new ModelMaterial("M3"));

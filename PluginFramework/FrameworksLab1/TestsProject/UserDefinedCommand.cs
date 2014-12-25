@@ -30,10 +30,10 @@ namespace TestsProject
 
         public string CommandUnique { get; private set; }
 
-        public UserDefinedCommand(CommandFramework commandFramework, DataFramework dataFramework, string commandUnique, string commandName, string commandParameters)
+        public UserDefinedCommand(Client client, string commandUnique, string commandName, string commandParameters)
         {
-            this.commandFramework = commandFramework;
-            this.dataFramework = dataFramework;
+            this.commandFramework = client.CommandFramework;
+            this.dataFramework = client.DataFramework;
 
             Name = commandName;
             Body = commandParameters;

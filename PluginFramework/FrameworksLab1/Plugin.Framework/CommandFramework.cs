@@ -56,5 +56,11 @@ namespace Plugin.Framework
         {
             return serviceUnityContainer.Resolve<T>();
         }
+
+        public T GetDataProvider<T>() 
+        {
+            Lazy<IDataProvider, IDictionary<string, object>> foundProvider = commandCompositionHelper.DataProviders.First(dataProvider => dataProvider.Value is T);
+            return (T)foundProvider.Value;
+        }
     }
 }

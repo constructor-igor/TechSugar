@@ -11,6 +11,9 @@ namespace Plugin.Framework
     {
         [ImportMany]
         public Lazy<ICommand, IDictionary<string, object>>[] Commands { get; set; }
+        [ImportMany]
+        public Lazy<IDataProvider, IDictionary<string, object>>[] DataProviders { get; set; }
+
         public CommandCompositionHelper(IEnumerable<ComposablePartCatalog> pluginCatalogs)
         {
             // Creating an instance of aggregate catalog. It aggregates other catalogs
