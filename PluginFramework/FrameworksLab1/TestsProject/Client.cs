@@ -8,6 +8,7 @@ namespace TestsProject
 {
     public class Client
     {
+        readonly ContainerFramework containerFramework = new ContainerFramework();
         public Model Model { get; set; }
         public Measurement Measurement { get; set; }
 
@@ -15,7 +16,7 @@ namespace TestsProject
         public CommandFramework CommandFramework { get; private set; }
         public Client()
         {
-            DataFramework = new DataFramework();
+            DataFramework = new DataFramework(containerFramework);
             CommandFramework = new CommandFramework(DataFramework);
         }
 

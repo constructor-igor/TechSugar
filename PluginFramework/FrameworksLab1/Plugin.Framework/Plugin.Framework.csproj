@@ -53,6 +53,7 @@
     <Compile Include="CommandContext.cs" />
     <Compile Include="CommandDescriptor.cs" />
     <Compile Include="CommandFramework.cs" />
+    <Compile Include="ContainerFramework.cs" />
     <Compile Include="DataEntityContainer.cs" />
     <Compile Include="DataFile.cs" />
     <Compile Include="DataFolder.cs" />

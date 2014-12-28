@@ -9,5 +9,8 @@
         IDataEntity RunCommand(string commandUnique, string commandParameters, DataEntityContainer dataParameters);
         T GetCommandParameter<T>(string parameterName);
         DataEntityContainer GetDataParameter(string name);
+
+        T Get<T>();
+        T Get<T>(string name);
     }
 }

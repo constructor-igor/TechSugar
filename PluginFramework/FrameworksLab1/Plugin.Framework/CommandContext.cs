@@ -65,6 +65,24 @@ namespace Plugin.Framework
         {
             return dataParameters.Find(dataParameter => dataParameter.Name.ToLower() == name.ToLower());
         }
+
+        public T Get<T>()
+        {
+            try
+            {
+                return dataFramework.GetDataEntity<T>();
+            }
+            catch
+            {
+                return commandFramework.GetService<T>();
+            }
+            throw new NotImplementedException();
+        }
+        public T Get<T>(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         public IDataEntity RunCommand()

@@ -23,7 +23,7 @@ namespace TestsProject
             const string commandUnique = "pluginB_stright";
             const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
 
-            var dataFramework = new DataFramework();
+            var dataFramework = new DataFramework(new ContainerFramework());
             dataFramework.Add<IModelDataEntity>(new ModelDataEntity(model));
             dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
 
@@ -46,7 +46,7 @@ namespace TestsProject
             const string commandUnique = "pluginB_dependency";
             const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
 
-            var dataFramework = new DataFramework();
+            var dataFramework = new DataFramework(new ContainerFramework());
             dataFramework.Add<IModelDataEntity>(new ModelDataEntity(model));
             dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
 
@@ -73,7 +73,7 @@ namespace TestsProject
             const string commandUnique = "pluginB_single_get";
             const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
 
-            var dataFramework = new DataFramework();
+            var dataFramework = new DataFramework(new ContainerFramework());
             dataFramework.Add<IModelDataEntity>(new ModelDataEntity(model));
             dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
 
