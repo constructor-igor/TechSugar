@@ -64,6 +64,33 @@ namespace TestsProject
         }
 
         [Test]
+        public void FrameworkPlugins_SingleContextGet()
+        {
+            // engine data objects (not plugin-able business logic)
+            Model model = CreateModel();
+            var measurement = new Measurement();
+            // plugin definition (unique and parameters)
+            const string commandUnique = "pluginB_single_get";
+            const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
+
+            var dataFramework = new DataFramework();
+            dataFramework.Add<IModelDataEntity>(new ModelDataEntity(model));
+            dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
+
+            var commandFramework = new CommandFramework(dataFramework);
+            commandFramework.AddPluginsFolder(new DataFolder(@"..\..\..\@PluginsBinaries"));
+            commandFramework.AddPluginsBinary(new DataFile(@".\EngineAPI.dll"));
+            commandFramework.Init();
+            var service1 = commandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
+            commandFramework.RegisterService<IMeasurementPropertiesService>(service1);
+            var service2 = commandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
+            commandFramework.RegisterService<IMaterialPropertiesService>(service2);
+
+            IDataEntity commandResult = commandFramework.RunCommand(commandUnique, commandParameters);
+            Assert.IsInstanceOf<ModelParametersDataEntity>(commandResult);
+        }
+
+        [Test]
         public void Algorithm_Sample()
         {
             Model model = CreateModel();

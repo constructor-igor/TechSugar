@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="PluginB_v1.cs" />
     <Compile Include="PluginB_v2.cs" />
+    <Compile Include="PluginB_v3.cs" />
     <Compile Include="PluginMessageToModelHistory.cs" />
     <Compile Include="PluginSaveModelToFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
