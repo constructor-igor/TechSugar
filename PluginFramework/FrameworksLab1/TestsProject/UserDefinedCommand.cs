@@ -16,6 +16,7 @@ namespace TestsProject
         public void Run()
         {
             IDataEntity commandResult = commandFramework.RunCommand(CommandUnique, Body);
+
             //TODO command returns result, ? how to place the results to correct target?
             var modelParametersDataEntity = commandResult as ModelParametersDataEntity;
             if (modelParametersDataEntity != null)  // somehow we need decide target of results (for example, by returned type or special attributes)

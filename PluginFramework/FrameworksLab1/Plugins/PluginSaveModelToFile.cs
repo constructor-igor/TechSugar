@@ -24,7 +24,7 @@ namespace Plugins
         public ICommandDescriptor Descriptor { get; private set; }
         public IDataEntity Run(ICommandContext commandContext)
         {
-            var dataEntities = commandContext.GetDataEntity<PluginSaveModelToFileEntities>();
+            var dataEntities = commandContext.Get<PluginSaveModelToFileEntities>();
             var filePath = commandContext.GetCommandParameter<string>("file");
 
             var dataProvider = commandContext.GetDataProvider<IDataProvider<IModelDataEntity>>();
