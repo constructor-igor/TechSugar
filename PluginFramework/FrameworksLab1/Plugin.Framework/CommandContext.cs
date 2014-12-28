@@ -19,8 +19,9 @@ namespace Plugin.Framework
             this.commandParameters = commandParameters;
             if (dataParameter!=null)
                 dataParameters.Add(dataParameter);
-            Lazy<ICommand, IDictionary<string, object>> foundPlugin = commandFramework.FindPlugin(commandUnique);
-            foundCommand = foundPlugin.Value;
+            //Lazy<ICommand, IDictionary<string, object>> foundPlugin = commandFramework.FindPlugin(commandUnique);
+            foundCommand = commandFramework.FindCommand(commandUnique);
+            //foundCommand = foundPlugin.Value;
         }
         #region ICommandContext
         public T GetDataEntity<T>() where T : IDataEntity

@@ -38,9 +38,13 @@ namespace Plugins
     [Export(typeof(ICommand))]
     public class PluginB_v3 : ICommand
     {
+        //private Plugin_v3_SingleGet_Services services;
+
+        //[ImportingConstructorAttribute]
         public PluginB_v3()
         {
             Descriptor = new CommandDescriptor("pluginB_single_get", "command B");
+            //this.services = services;
         }
 
         public ICommandDescriptor Descriptor { get; private set; }

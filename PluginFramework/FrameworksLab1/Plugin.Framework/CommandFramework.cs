@@ -42,6 +42,7 @@ namespace Plugin.Framework
                 string commandUnique = commandInstance.Descriptor.Unique;
                 //Type commandInstanceType = commandInstance.GetType();
                 containerFramework.RegisterInstance(typeof(ICommand), commandUnique, commandInstance);
+                containerFramework.RegisterInstance(commandInstance.GetType(), commandUnique, commandInstance);
 
                 var service = commandInstance as IService;
                 if (service != null)
@@ -90,10 +91,14 @@ namespace Plugin.Framework
              * */
         }
 
-        public Lazy<ICommand, IDictionary<string, object>> FindPlugin(string commandUnique)
+//        public Lazy<ICommand, IDictionary<string, object>> FindPlugin(string commandUnique)
+//        {
+//            Lazy<ICommand, IDictionary<string, object>> foundPlugin = commandCompositionHelper.Commands.First(command => command.Value.Descriptor.Unique.ToLower() == commandUnique.ToLower());
+//            return foundPlugin;
+//        }
+        public ICommand FindCommand(string commandUnique)
         {
-            Lazy<ICommand, IDictionary<string, object>> foundPlugin = commandCompositionHelper.Commands.First(command => command.Value.Descriptor.Unique.ToLower() == commandUnique.ToLower());
-            return foundPlugin;
+            return containerFramework.Get<ICommand>(commandUnique);
         }
 
         public IDataEntity RunCommand(string commandUnique, string commandParameters)
