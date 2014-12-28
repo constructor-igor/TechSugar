@@ -2,7 +2,6 @@
 using System.ComponentModel.Composition;
 using EngineAPI.DataEntities;
 using EngineAPI.Interfaces;
-using Microsoft.Practices.Unity;
 using Plugin.Framework;
 using Plugin.Framework.Interfaces;
 
@@ -53,6 +52,8 @@ namespace Plugins
             var dataEntities = commandContext.Get<Plugin_v3_SingleGet_Entities>();
             var services = commandContext.Get<Plugin_v3_SingleGet_Services>();
             IMeasurementPropertiesEntity measurementPropertiesEntity = services.MeasurementPropertiesService.GetProperties(dataEntities.ModelEntity, activeProperties: true);
+
+            //var getMaterialsCommand = commandContext.Get<ICommand>("get_material_properties");
 
             var generalProperty = new List<double>();
             foreach (IMeasurementPropertyEntity measurementPropertyEntity in measurementPropertiesEntity.Properties)

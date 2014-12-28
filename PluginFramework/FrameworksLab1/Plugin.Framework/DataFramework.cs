@@ -14,7 +14,7 @@ namespace Plugin.Framework
         }
         public void Add<T>(T dataEntity) where T: IDataEntity
         {
-            containerFramework.Add(dataEntity);
+            containerFramework.Register(dataEntity);
         }
 
         public T GetDataEntity<T>()

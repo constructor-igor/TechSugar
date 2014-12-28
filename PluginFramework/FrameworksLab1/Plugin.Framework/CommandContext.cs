@@ -80,7 +80,7 @@ namespace Plugin.Framework
         }
         public T Get<T>(string name)
         {
-            throw new NotImplementedException();
+            return commandFramework.GetService<T>(name);
         }
 
         #endregion

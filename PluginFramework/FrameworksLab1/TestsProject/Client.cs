@@ -17,7 +17,7 @@ namespace TestsProject
         public Client()
         {
             DataFramework = new DataFramework(containerFramework);
-            CommandFramework = new CommandFramework(DataFramework);
+            CommandFramework = new CommandFramework(containerFramework, DataFramework);
         }
 
         public void Init()
@@ -31,10 +31,10 @@ namespace TestsProject
 
             CommandFramework.Init();
 
-            var service1 = CommandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
-            CommandFramework.RegisterService<IMeasurementPropertiesService>(service1);
-            var service2 = CommandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
-            CommandFramework.RegisterService<IMaterialPropertiesService>(service2);
+//            var service1 = CommandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
+//            CommandFramework.RegisterService<IMeasurementPropertiesService>(service1);
+//            var service2 = CommandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
+//            CommandFramework.RegisterService<IMaterialPropertiesService>(service2);
         }
     }
 

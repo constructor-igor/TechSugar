@@ -6,7 +6,15 @@ namespace Plugin.Framework
     public class ContainerFramework: IDisposable
     {
         readonly UnityContainer unityContainer = new UnityContainer();
-        public void Add<T>(T registeredObject)
+        public void RegisterInstance(Type instanceType, object instance)
+        {
+            unityContainer.RegisterInstance(instanceType, instance);
+        }
+        public void RegisterInstance(Type instanceType, string instanceName, object instance)
+        {
+            unityContainer.RegisterInstance(instanceType, instanceName, instance);
+        }
+        public void Register<T>(T registeredObject)
         {
             unityContainer.RegisterInstance(registeredObject);
         }
@@ -15,6 +23,11 @@ namespace Plugin.Framework
         {
             return unityContainer.Resolve<T>();
         }
+        public T Get<T>(string instanceName)
+        {
+            return unityContainer.Resolve<T>(instanceName);
+        }
+
         #region IDisposable
         public void Dispose()
         {

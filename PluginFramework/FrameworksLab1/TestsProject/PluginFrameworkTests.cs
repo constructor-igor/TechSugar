@@ -23,11 +23,12 @@ namespace TestsProject
             const string commandUnique = "pluginB_stright";
             const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
 
-            var dataFramework = new DataFramework(new ContainerFramework());
+            var containerFramework = new ContainerFramework();
+            var dataFramework = new DataFramework(containerFramework);
             dataFramework.Add<IModelDataEntity>(new ModelDataEntity(model));
             dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
 
-            var commandFramework = new CommandFramework(dataFramework);
+            var commandFramework = new CommandFramework(containerFramework, dataFramework);
             commandFramework.AddPluginsFolder(new DataFolder(@"..\..\..\@PluginsBinaries"));
             commandFramework.AddPluginsBinary(new DataFile(@".\EngineAPI.dll"));
             commandFramework.Init();
@@ -46,18 +47,19 @@ namespace TestsProject
             const string commandUnique = "pluginB_dependency";
             const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
 
-            var dataFramework = new DataFramework(new ContainerFramework());
+            var containerFramework = new ContainerFramework();
+            var dataFramework = new DataFramework(containerFramework);
             dataFramework.Add<IModelDataEntity>(new ModelDataEntity(model));
             dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
 
-            var commandFramework = new CommandFramework(dataFramework);
+            var commandFramework = new CommandFramework(containerFramework, dataFramework);
             commandFramework.AddPluginsFolder(new DataFolder(@"..\..\..\@PluginsBinaries"));
             commandFramework.AddPluginsBinary(new DataFile(@".\EngineAPI.dll"));
             commandFramework.Init();
-            var service1 = commandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
-            commandFramework.RegisterService<IMeasurementPropertiesService>(service1);
-            var service2 = commandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
-            commandFramework.RegisterService<IMaterialPropertiesService>(service2);
+//            var service1 = commandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
+//            commandFramework.RegisterService<IMeasurementPropertiesService>(service1);
+//            var service2 = commandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
+//            commandFramework.RegisterService<IMaterialPropertiesService>(service2);
 
             IDataEntity commandResult = commandFramework.RunCommand(commandUnique, commandParameters);
             Assert.IsInstanceOf<ModelParametersDataEntity>(commandResult);
@@ -73,18 +75,19 @@ namespace TestsProject
             const string commandUnique = "pluginB_single_get";
             const string commandParameters = "parameter1=P1; parameter2=P2; material1=M1; material2=M2; threshold=0.4";
 
-            var dataFramework = new DataFramework(new ContainerFramework());
+            var containerFramework = new ContainerFramework();
+            var dataFramework = new DataFramework(containerFramework);
             dataFramework.Add<IModelDataEntity>(new ModelDataEntity(model));
             dataFramework.Add<IMeasurementDataEntity>(new MeasurementDataEntity(measurement));
 
-            var commandFramework = new CommandFramework(dataFramework);
+            var commandFramework = new CommandFramework(containerFramework, dataFramework);
             commandFramework.AddPluginsFolder(new DataFolder(@"..\..\..\@PluginsBinaries"));
             commandFramework.AddPluginsBinary(new DataFile(@".\EngineAPI.dll"));
             commandFramework.Init();
-            var service1 = commandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
-            commandFramework.RegisterService<IMeasurementPropertiesService>(service1);
-            var service2 = commandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
-            commandFramework.RegisterService<IMaterialPropertiesService>(service2);
+//            var service1 = commandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
+//            commandFramework.RegisterService<IMeasurementPropertiesService>(service1);
+//            var service2 = commandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
+//            commandFramework.RegisterService<IMaterialPropertiesService>(service2);
 
             IDataEntity commandResult = commandFramework.RunCommand(commandUnique, commandParameters);
             Assert.IsInstanceOf<ModelParametersDataEntity>(commandResult);

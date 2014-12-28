@@ -4,7 +4,6 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.IO;
 using System.Linq;
-using Microsoft.Practices.Unity;
 using Plugin.Framework.Interfaces;
 
 namespace Plugin.Framework
@@ -14,11 +13,13 @@ namespace Plugin.Framework
         readonly List<ComposablePartCatalog> pluginCatalogs = new List<ComposablePartCatalog>();
 
         private CommandCompositionHelper commandCompositionHelper;
+        private ContainerFramework containerFramework;
         private readonly DataFramework dataFramework;
-        public readonly UnityContainer serviceUnityContainer = new UnityContainer();
+        //public readonly UnityContainer serviceUnityContainer = new UnityContainer();
 
-        public CommandFramework(DataFramework dataFramework)
+        public CommandFramework(ContainerFramework containerFramework, DataFramework dataFramework)
         {
+            this.containerFramework = containerFramework;
             this.dataFramework = dataFramework;
         }
 
@@ -33,7 +34,42 @@ namespace Plugin.Framework
 
         public void Init()
         {
-            commandCompositionHelper = new CommandCompositionHelper(pluginCatalogs);           
+            commandCompositionHelper = new CommandCompositionHelper(pluginCatalogs);     
+
+            foreach (Lazy<ICommand, IDictionary<string, object>> command in commandCompositionHelper.Commands)
+            {
+                ICommand commandInstance = command.Value;
+                string commandUnique = commandInstance.Descriptor.Unique;
+                //Type commandInstanceType = commandInstance.GetType();
+                containerFramework.RegisterInstance(typeof(ICommand), commandUnique, commandInstance);
+
+                var service = commandInstance as IService;
+                if (service != null)
+                {
+                    foreach (Type serviceInterfaces in service.GetType().GetInterfaces())
+                    {
+                        //typeof(serviceInterfaces).GetInterfaces().Contains(typeof(IMyInterface))
+
+                        if (serviceInterfaces.GetInterface("IService")!=null)
+                        {
+                            containerFramework.RegisterInstance(serviceInterfaces, commandInstance);
+                        }
+
+                        if (serviceInterfaces.IsAssignableFrom(typeof (IService)))
+                        {
+                            containerFramework.RegisterInstance(serviceInterfaces, commandInstance);
+                        }
+                    }
+                }
+
+            }
+            /*
+             * 
+             * var service1 = CommandFramework.FindPlugin("model_get_measurement_properties").Value as IMeasurementPropertiesService;   //TODO should be implemented automatically
+            CommandFramework.RegisterService<IMeasurementPropertiesService>(service1);
+            var service2 = CommandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
+            CommandFramework.RegisterService<IMaterialPropertiesService>(service2);
+             * */
         }
 
         public Lazy<ICommand, IDictionary<string, object>> FindPlugin(string commandUnique)
@@ -48,13 +84,18 @@ namespace Plugin.Framework
             return commandContext.RunCommand();
         }
 
-        public void RegisterService<T>(IService service) where T: IService 
+        public void RegisterService<T>(IService service) where T: IService
         {
-            serviceUnityContainer.RegisterInstance(typeof(T), service);
+            containerFramework.RegisterInstance(typeof(T), service);            
         }
+
         public T GetService<T>()
         {
-            return serviceUnityContainer.Resolve<T>();
+            return containerFramework.Get<T>();
+        }
+        public T GetService<T>(string instanceName)
+        {
+            return containerFramework.Get<T>(instanceName);
         }
 
         public T GetDataProvider<T>() 
