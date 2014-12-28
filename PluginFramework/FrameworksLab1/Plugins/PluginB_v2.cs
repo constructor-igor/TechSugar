@@ -53,7 +53,8 @@ namespace Plugins
             //  dataEntities contains all necessary input data entities
             //
             var dataEntities = commandContext.GetDataEntity<Plugin_v2_Dependency_Entities>();
-            var services = commandContext.GetService<Plugin_v2_Dependency_Services>();
+            //var services = commandContext.GetService<Plugin_v2_Dependency_Services>();
+            var services = commandContext.Get<Plugin_v2_Dependency_Services>();
             IMeasurementPropertiesEntity measurementPropertiesEntity = services.MeasurementPropertiesService.GetProperties(dataEntities.ModelEntity, activeProperties: true);
 
             var generalProperty = new List<double>();

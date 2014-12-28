@@ -27,7 +27,7 @@ namespace Plugins
             var dataEntities = commandContext.Get<PluginSaveModelToFileEntities>();
             var filePath = commandContext.GetCommandParameter<string>("file");
 
-            var dataProvider = commandContext.GetDataProvider<IDataProvider<IModelDataEntity>>();
+            var dataProvider = commandContext.Get<IDataProvider<IModelDataEntity>>();
             dataProvider.ExportToFile(filePath, dataEntities.ModelDataEntity);
             return null;
         }

@@ -70,6 +70,24 @@ namespace Plugin.Framework
             var service2 = CommandFramework.FindPlugin("get_material_properties").Value as IMaterialPropertiesService;   //TODO should be implemented automatically
             CommandFramework.RegisterService<IMaterialPropertiesService>(service2);
              * */
+
+            // register data providers
+            foreach (Lazy<IDataProvider, IDictionary<string, object>> dataProvider in commandCompositionHelper.DataProviders)
+            {
+                IDataProvider dataProviderInstance = dataProvider.Value;
+                foreach (Type dataProviderInterfaces in dataProviderInstance.GetType().GetInterfaces())
+                {
+                    if (dataProviderInterfaces.IsGenericType && dataProviderInterfaces.GetGenericTypeDefinition().Name == "IDataProvider`1")
+                    {
+                        containerFramework.RegisterInstance(dataProviderInterfaces, dataProviderInstance);
+                    }
+                }
+            }
+            /*
+             *             Lazy<IDataProvider, IDictionary<string, object>> foundProvider = commandCompositionHelper.DataProviders.First(dataProvider => dataProvider.Value is T);
+            return (T)foundProvider.Value;
+
+             * */
         }
 
         public Lazy<ICommand, IDictionary<string, object>> FindPlugin(string commandUnique)
@@ -98,10 +116,10 @@ namespace Plugin.Framework
             return containerFramework.Get<T>(instanceName);
         }
 
-        public T GetDataProvider<T>() 
-        {
-            Lazy<IDataProvider, IDictionary<string, object>> foundProvider = commandCompositionHelper.DataProviders.First(dataProvider => dataProvider.Value is T);
-            return (T)foundProvider.Value;
-        }
+//        public T GetDataProvider<T>() 
+//        {
+//            Lazy<IDataProvider, IDictionary<string, object>> foundProvider = commandCompositionHelper.DataProviders.First(dataProvider => dataProvider.Value is T);
+//            return (T)foundProvider.Value;
+//        }
     }
 }

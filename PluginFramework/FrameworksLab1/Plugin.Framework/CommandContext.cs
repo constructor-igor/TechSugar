@@ -27,15 +27,11 @@ namespace Plugin.Framework
         {
             return dataFramework.GetDataEntity<T>();
         }
-        public T GetService<T>()
-        {
-            return commandFramework.GetService<T>();
-        }
+//        public T GetService<T>()
+//        {
+//            return commandFramework.GetService<T>();
+//        }
 
-        public T GetDataProvider<T>()
-        {
-            return commandFramework.GetDataProvider<T>();
-        }
         public IDataEntity RunCommand(string commandUnique, string commandParameters)
         {
             var commandContext = new CommandContext(dataFramework, commandFramework, commandUnique, commandParameters);
