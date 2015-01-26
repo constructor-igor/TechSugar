@@ -15,15 +15,16 @@ namespace AutoFixtureSamples
             Assert.That(result, Is.EqualTo(5));
         }
 
-        [Datapoint] public double zero = 0;
-        [Datapoint] public double one = 0;
-        [Datapoint] public double negative = -1;
+        [Datapoint] public double Zero = 0;
+        [Datapoint] public double One = 1;
+        [Datapoint] public double Negative = -1;
+        [Datapoints] public double[] TestPoints = {0.1, 0.2, 300};
 
         // statement-based
         [Theory]
         public void FuncTesting(double x)
         {
-            Assume.That(x >= 0.0 && x <= 100);
+            Assume.That(x >= 0.0 && x <= 1);
             double result = Func(x);
             Assert.That(result, Is.EqualTo(x*10).Within(0.00001));
         }
