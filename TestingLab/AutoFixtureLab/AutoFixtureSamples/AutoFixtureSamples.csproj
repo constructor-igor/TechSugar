@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="AutoFixtureDemoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TechSugarDemoTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
