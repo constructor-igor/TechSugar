@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Messaging;
+using Task3.Consumer;
 
 namespace Task3.Producer
 {
