@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Messaging;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ namespace Task2.Consumer
 {
     class Program
     {
+        private const int SEC1 = 1000;
         const string queuePath = @".\Private$\MSMQ-Task2";
         static void Main()
         {
@@ -43,11 +45,14 @@ namespace Task2.Consumer
                                 }
                                 if (customerMessage != null)
                                 {
+                                    Guid taskId = Guid.NewGuid();
                                     Console.BackgroundColor = ConsoleColor.DarkGreen;
-                                    Console.WriteLine("Received message '{0}' with sleep processing time '{1}'", customerMessage.Text, customerMessage.Duration);
-                                    Console.WriteLine("{0}: processing start", DateTime.Now);
-                                    Thread.Sleep(customerMessage.Duration*1000);
-                                    Console.WriteLine("{0}: processing completed", DateTime.Now);
+                                    Console.WriteLine("Received message '{0}, {1}'", customerMessage.Text, customerMessage.Duration);
+                                    Console.WriteLine("{0} starting", taskId);
+                                    Stopwatch stopwatch = new Stopwatch();
+                                    stopwatch.Start();
+                                    Thread.Sleep(customerMessage.Duration * SEC1);
+                                    Console.WriteLine("{0} completed, duration = {1}", taskId, Math.Round(stopwatch.ElapsedMilliseconds / (double)(SEC1)));
                                     Console.ResetColor();
                                 }
                             }
