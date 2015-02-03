@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Messaging;
-using Task3.Consumer;
 
 namespace Task3.Producer
 {
@@ -14,6 +13,9 @@ namespace Task3.Producer
     //  1. Multi cast support should be configured via Windows components.
     //  2. Should be manully created private queue 
     //     "I manually created a non-transactional private queue called MulticastTest and then set the Multicast address to 234.1.1.1:8001"
+    //
+    //  See short settings procedure in https://github.com/constructor-igor/TechSugar/wiki/MessageQueue or screens in subolder <solution>\Task3\Screens
+    //
     class Program
     {
         const string QUEUE_PATH = @"formatname:MULTICAST=234.1.1.1:8001";
