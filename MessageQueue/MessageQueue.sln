@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22310.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueueSamples", "MessageQueue\MessageQueueSamples.csproj", "{F85C9E60-CDD3-40F4-BC4C-BA973B257A9E}"
 EndProject
@@ -23,7 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task3-PublishSubscribe", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3.Producer", "Task3\Task3.Producer\Task3.Producer.csproj", "{FFC5B9B7-EB3B-45AC-8D98-8D387330BC59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3.Consumer", "Task3\Task3.Consumer\Task3.Consumer.csproj", "{A0E35D9D-465F-49AA-BA68-E1D07FDEE3DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3.Consumer-1", "Task3\Task3.Consumer-1\Task3.Consumer-1.csproj", "{A0E35D9D-465F-49AA-BA68-E1D07FDEE3DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3.Consumer-2", "Task3\Task3.Consumer-2\Task3.Consumer-2.csproj", "{0C4ADB15-F5DE-40D6-B420-E4AA97E15CF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{A0E35D9D-465F-49AA-BA68-E1D07FDEE3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0E35D9D-465F-49AA-BA68-E1D07FDEE3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0E35D9D-465F-49AA-BA68-E1D07FDEE3DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C4ADB15-F5DE-40D6-B420-E4AA97E15CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C4ADB15-F5DE-40D6-B420-E4AA97E15CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C4ADB15-F5DE-40D6-B420-E4AA97E15CF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C4ADB15-F5DE-40D6-B420-E4AA97E15CF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{014F2094-F1D3-4CDE-AE77-0431F49A072F} = {4BE269BA-8F97-4409-8CB8-BBDDED7B1110}
 		{FFC5B9B7-EB3B-45AC-8D98-8D387330BC59} = {014F2094-F1D3-4CDE-AE77-0431F49A072F}
 		{A0E35D9D-465F-49AA-BA68-E1D07FDEE3DA} = {014F2094-F1D3-4CDE-AE77-0431F49A072F}
+		{0C4ADB15-F5DE-40D6-B420-E4AA97E15CF3} = {014F2094-F1D3-4CDE-AE77-0431F49A072F}
 	EndGlobalSection
 EndGlobal

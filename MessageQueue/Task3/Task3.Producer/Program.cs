@@ -9,23 +9,19 @@ namespace Task3.Producer
     //  http://stackoverflow.com/questions/10435706/msmq-cannot-receive-from-multicast-queues
     //  http://technet.microsoft.com/en-us/library/cc756156(WS.10).aspx
     //  http://flylib.com/books/en/2.855.1.71/1/
-    //  
+    //  http://www.jroller.com/mrettig/entry/msmq_3_0_and_multicasting
     //
     //  1. Multi cast support should be configured via Windows components.
     //  2. Should be manully created private queue 
     //     "I manually created a non-transactional private queue called MulticastTest and then set the Multicast address to 234.1.1.1:8001"
     class Program
     {
-        //const string queuePath = @".\Private$\MSMQ-Task3";
-        //const string queuePath = @"FormatName:MULTICAST=234.1.1.1:8001";
-        const string queuePath = @"formatname:MULTICAST=234.1.1.1:8001";
-        static void Main(string[] args)
+        const string QUEUE_PATH = @"formatname:MULTICAST=234.1.1.1:8001";
+        static void Main()
         {
-            using (MessageQueue mq = MessageQueueHelper.GetMessageQueue(queuePath))
+            using (MessageQueue mq = new MessageQueue(QUEUE_PATH))
             {
                 Console.WriteLine("Format name: {0}", mq.FormatName); 
-                //mq.SetPermissions("ANONYMOUS LOGON", MessageQueueAccessRights.WriteMessage);
-                //mq.SetPermissions("EVERYONE", MessageQueueAccessRights.WriteMessage);
                 bool exit;
                 do
                 {

@@ -3,16 +3,18 @@ using System.Messaging;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Task3.Consumer
+namespace Task3.Consumer_2
 {
     class Program
     {
-        const string queuePath = @".\Private$\MSMQ-Task3";
+        const string QUEUE_PATH = @".\Private$\MSMQ-Task3-Consumer-2";
         static void Main()
         {
-            Console.WriteLine("'Consumer' started");
-            using (MessageQueue mq = MessageQueueHelper.GetMessageQueue(queuePath))
+            Console.WriteLine("'Consumer-2' started");
+            using (MessageQueue mq = MessageQueueHelper.GetMessageQueue(QUEUE_PATH))
             {
+                mq.MulticastAddress = "234.1.1.1:8001";
+                
                 bool exit;
                 do
                 {

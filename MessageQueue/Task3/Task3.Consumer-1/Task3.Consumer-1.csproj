@@ -7,8 +7,8 @@
     <ProjectGuid>{A0E35D9D-465F-49AA-BA68-E1D07FDEE3DA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Task3.Consumer</RootNamespace>
-    <AssemblyName>Task3.Consumer</AssemblyName>
+    <RootNamespace>Task3.Consumer_1</RootNamespace>
+    <AssemblyName>Task3.Consumer-1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -1,6 +1,6 @@
 ﻿using System.Messaging;
 
-namespace Task3.Consumer
+namespace Task3.Consumer_2
 {
     public class MessageQueueHelper
     {

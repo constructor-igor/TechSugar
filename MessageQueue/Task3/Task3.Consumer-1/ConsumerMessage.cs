@@ -1,4 +1,4 @@
-﻿namespace Task3.Consumer
+﻿namespace Task3.Consumer_1
 {
     public class ProducerMessage
     {
