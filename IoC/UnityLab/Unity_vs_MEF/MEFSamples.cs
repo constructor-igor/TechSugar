@@ -10,14 +10,14 @@ namespace Unity_vs_MEF
         [Test]
         public void RegisterInstanceAndResolve()
         {
-            IService instanceOfService = new ServiceAdd();
+            ServiceAdd instanceOfService = new ServiceAdd();
             var catalog = new AggregateCatalog();
             //catalog.Catalogs.Add();                       // TODO how to register instance of object?
             using (CompositionContainer mefContainer = new CompositionContainer())
             {
-                mefContainer.ComposeExportedValue<IService>("add", instanceOfService);
+                mefContainer.ComposeExportedValue<IService>(instanceOfService);
 
-                IService service = mefContainer.GetExport<IService>().Value;
+                IService service = mefContainer.GetExportedValue<IService>();
                 Assert.That(service.Calc(1, 2), Is.EqualTo(3));
             }
         }
