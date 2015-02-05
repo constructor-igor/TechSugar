@@ -58,5 +58,19 @@ namespace Unity_vs_MEF
                 Assert.That(service.Calc(1, 2), Is.EqualTo(3));
             }
         }
+        [Test]
+        public void RegisterTypeAndResolveClassWithConstructor()
+        {
+            using (UnityContainer unityContainer = new UnityContainer())
+            {
+                unityContainer.RegisterType<IService, ServiceAdd>();
+
+                ResolverOverride[] overrides = new ResolverOverride[]{new DependencyOverride(typeof(string), "title")};
+                Manager manager = unityContainer.Resolve<Manager>(overrides);
+
+                Assert.That(manager.Service.Calc(1, 2), Is.EqualTo(3));
+                Assert.That(manager.Title, Is.EqualTo("title"));
+            }
+        }
     }
 }

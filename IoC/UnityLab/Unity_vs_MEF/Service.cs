@@ -24,4 +24,17 @@ namespace Unity_vs_MEF
             return x - y;
         }
     }
+
+    [Export(typeof(Manager))]
+    public class Manager
+    {
+        public IService Service { get; private set; }
+        public string Title { get; private set; }
+
+        public Manager(IService service, string title)
+        {
+            Service = service;
+            Title = title;
+        }
+    }
 }

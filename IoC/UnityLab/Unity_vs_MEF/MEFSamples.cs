@@ -59,5 +59,18 @@ namespace Unity_vs_MEF
                 Assert.That(service.Calc(1, 2), Is.EqualTo(3));
             }
         }
+        [Test]
+        public void RegisterTypeAndResolveClassWithConstructor()
+        {
+            var catalog = new AggregateCatalog();
+            catalog.Catalogs.Add(new TypeCatalog(typeof(ServiceAdd)));
+            using (CompositionContainer mefContainer = new CompositionContainer(catalog))
+            {
+                Manager manager = mefContainer.GetExportedValue<Manager>();     // canbe created instance without registration?
+
+                Assert.That(manager.Service.Calc(1, 2), Is.EqualTo(3));
+                Assert.That(manager.Title, Is.EqualTo("title"));
+            }
+        }
     }
 }
