@@ -32,5 +32,18 @@ namespace Unity_vs_MEF
                 Assert.That(service.Calc(1, 2), Is.EqualTo(3));
             }
         }
+        [Test]
+        public void RegisterTypesAndResolveByName()
+        {
+            var catalog = new AggregateCatalog();
+            catalog.Catalogs.Add(new TypeCatalog(typeof(ServiceAdd)));
+            catalog.Catalogs.Add(new TypeCatalog(typeof(ServiceSub)));
+            using (CompositionContainer mefContainer = new CompositionContainer(catalog))
+            {
+                //IService service = mefContainer.GetExport<IService>().Value;
+                IService service = mefContainer.GetExportedValue<IService>("add");
+                Assert.That(service.Calc(1, 2), Is.EqualTo(3));
+            }
+        }
     }
 }
