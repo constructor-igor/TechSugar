@@ -11,13 +11,12 @@ namespace Unity_vs_MEF
         public void RegisterInstanceAndResolve()
         {
             ServiceAdd instanceOfService = new ServiceAdd();
-            var catalog = new AggregateCatalog();
-            //catalog.Catalogs.Add();                       // TODO how to register instance of object?
             using (CompositionContainer mefContainer = new CompositionContainer())
             {
                 mefContainer.ComposeExportedValue<IService>(instanceOfService);
 
                 IService service = mefContainer.GetExportedValue<IService>();
+                //IService service = mefContainer.GetExport<IService>().Value;
                 Assert.That(service.Calc(1, 2), Is.EqualTo(3));
             }
         }
@@ -28,7 +27,8 @@ namespace Unity_vs_MEF
             catalog.Catalogs.Add(new TypeCatalog(typeof(ServiceAdd)));
             using (CompositionContainer mefContainer = new CompositionContainer(catalog))
             {
-                IService service = mefContainer.GetExport<IService>().Value;
+                //IService service = mefContainer.GetExport<IService>().Value;
+                IService service = mefContainer.GetExportedValue<IService>();
                 Assert.That(service.Calc(1, 2), Is.EqualTo(3));
             }
         }
