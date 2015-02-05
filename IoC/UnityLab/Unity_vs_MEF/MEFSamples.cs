@@ -33,6 +33,20 @@ namespace Unity_vs_MEF
             }
         }
         [Test]
+        public void RegisterInstancesAndResolveByName()
+        {
+            using (CompositionContainer mefContainer = new CompositionContainer())
+            {
+                mefContainer.ComposeExportedValue<IService>("add", new ServiceAdd());
+                mefContainer.ComposeExportedValue<IService>("sub", new ServiceSub());
+
+                IService serviceAdd = mefContainer.GetExportedValue<IService>("add");
+                IService serviceSub = mefContainer.GetExportedValue<IService>("sub");
+                Assert.That(serviceAdd.Calc(1, 2), Is.EqualTo(3));
+                Assert.That(serviceSub.Calc(5, 2), Is.EqualTo(3));
+            }
+        }
+        [Test]
         public void RegisterTypesAndResolveByName()
         {
             var catalog = new AggregateCatalog();

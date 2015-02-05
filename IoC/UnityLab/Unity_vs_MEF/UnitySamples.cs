@@ -31,6 +31,21 @@ namespace Unity_vs_MEF
             }
         }
         [Test]
+        public void RegisterInstancesAndResolveByName()
+        {
+            using (UnityContainer unityContainer = new UnityContainer())
+            {
+                unityContainer.RegisterInstance<IService>("add", new ServiceAdd());
+                unityContainer.RegisterInstance<IService>("sub", new ServiceSub());
+
+                IService serviceAdd = unityContainer.Resolve<IService>("add");
+                Assert.That(serviceAdd.Calc(1, 2), Is.EqualTo(3));
+
+                IService serviceSub = unityContainer.Resolve<IService>("sub");
+                Assert.That(serviceSub.Calc(5, 2), Is.EqualTo(3));
+            }
+        }
+        [Test]
         public void RegisterTypesAndResolveByName()
         {
             using (UnityContainer unityContainer = new UnityContainer())
