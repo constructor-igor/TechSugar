@@ -3,17 +3,10 @@ using System.Collections.Specialized;
 using System.Configuration;
 using NUnit.Framework;
 
-/*
- * References:
- * http://blog.danskingdom.com/adding-and-accessing-custom-sections-in-your-c-app-config/
- * http://www.codeproject.com/Articles/32490/Custom-Configuration-Sections-for-Lazy-Coders
- * 
- * */
-
 namespace ConfigurationTests
 {
     [TestFixture]
-    public class CustomConfigSectionTests
+    public class CustomConfigSimpleSectionTests
     {
         [Test]
         public void ExistsSection_command_True()
