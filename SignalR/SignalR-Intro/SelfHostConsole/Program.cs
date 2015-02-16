@@ -6,6 +6,7 @@ using Microsoft.Owin.Hosting;
  * 
  * References:
  * http://www.asp.net/signalr/overview/deployment/tutorial-signalr-self-host
+ * http://metanit.com/sharp/mvc5/16.2.php
  * http://stackoverflow.com/questions/16004375/signalr-how-to-call-net-client-method-from-server
  * */
 using Owin;
@@ -28,7 +29,7 @@ namespace SelfHostConsole
 
                 IHubContext context = GlobalHost.ConnectionManager.GetHubContext<MyHub>();
 
-                string message = null;
+                string message;
                 do
                 {
                     Console.Write("Enter message: ");
