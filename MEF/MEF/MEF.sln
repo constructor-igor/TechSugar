@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomeBusinessLogic", "SomeBusinessLogic\SomeBusinessLogic.csproj", "{55A344B5-25BA-4406-A86F-7F30D74E70B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MEF-Loading-Issue", "MEF-Loading-Issue", "{1FE1C9D2-CEC2-44A5-96B1-C5FE6876D084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEF-loading-issue", "MEF-loading-issue\MEF-loading-issue.csproj", "{25C4DE4A-6E7E-4D80-8953-E740974083B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{55A344B5-25BA-4406-A86F-7F30D74E70B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55A344B5-25BA-4406-A86F-7F30D74E70B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55A344B5-25BA-4406-A86F-7F30D74E70B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25C4DE4A-6E7E-4D80-8953-E740974083B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25C4DE4A-6E7E-4D80-8953-E740974083B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25C4DE4A-6E7E-4D80-8953-E740974083B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25C4DE4A-6E7E-4D80-8953-E740974083B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +66,6 @@ Global
 		{6D91FBC4-DB19-4745-B019-D5FF6553BB97} = {F26E7AD5-852E-47D5-A8AD-0CD9EA4F0E39}
 		{DB91A820-9344-4214-B8A9-DC234255D4E3} = {F26E7AD5-852E-47D5-A8AD-0CD9EA4F0E39}
 		{3DAE4281-9D1F-4F93-B60E-5BF18115A355} = {908CED9E-939D-419B-B4A8-E0425AF4F222}
+		{25C4DE4A-6E7E-4D80-8953-E740974083B1} = {1FE1C9D2-CEC2-44A5-96B1-C5FE6876D084}
 	EndGlobalSection
 EndGlobal

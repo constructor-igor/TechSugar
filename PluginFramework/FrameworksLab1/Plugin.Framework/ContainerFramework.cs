@@ -28,6 +28,11 @@ namespace Plugin.Framework
             return unityContainer.Resolve<T>(instanceName);
         }
 
+        public object Get(Type instanceType, string instanceName)
+        {
+            return unityContainer.Resolve(instanceType, instanceName);
+        }
+
         #region IDisposable
         public void Dispose()
         {

@@ -13,6 +13,11 @@ namespace PluginSub
             return X - Y;
         }
 
+        public void Action()
+        {
+
+        }
+
         public PluginSub()
         {
             Name = "Sub";

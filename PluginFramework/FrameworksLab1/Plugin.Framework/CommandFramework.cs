@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.IO;
-using System.Linq;
 using Plugin.Framework.Interfaces;
 
 namespace Plugin.Framework
@@ -11,6 +10,7 @@ namespace Plugin.Framework
     public class CommandFramework
     {
         readonly List<ComposablePartCatalog> pluginCatalogs = new List<ComposablePartCatalog>();
+        //Dictionary<string, Type> commandsTransferDictionary = new Dictionary<string, Type>();  
 
         private CommandCompositionHelper commandCompositionHelper;
         private ContainerFramework containerFramework;
@@ -43,6 +43,7 @@ namespace Plugin.Framework
                 //Type commandInstanceType = commandInstance.GetType();
                 containerFramework.RegisterInstance(typeof(ICommand), commandUnique, commandInstance);
                 containerFramework.RegisterInstance(commandInstance.GetType(), commandUnique, commandInstance);
+                //commandsTransferDictionary.Add(commandUnique.ToLower(), commandInstance.GetType());
 
                 var service = commandInstance as IService;
                 if (service != null)
@@ -98,6 +99,8 @@ namespace Plugin.Framework
 //        }
         public ICommand FindCommand(string commandUnique)
         {
+            //Type commandType = commandsTransferDictionary[commandUnique];
+            //return containerFramework.Get(commandType, commandUnique) as ICommand;
             return containerFramework.Get<ICommand>(commandUnique);
         }
 

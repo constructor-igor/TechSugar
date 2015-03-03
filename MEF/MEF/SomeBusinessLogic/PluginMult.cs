@@ -14,6 +14,11 @@ namespace SomeBusinessLogic
             return X * Y;
         }
 
+        public void Action()
+        {
+
+        }
+
         public PluginMult()
         {
             Name = "Mult";

@@ -42,9 +42,12 @@
   <ItemGroup>
     <Compile Include="Commands\MaterialsPropertiesCommand.cs" />
     <Compile Include="Commands\MeasurementPropertiesCommand.cs" />
+    <Compile Include="Commands\ModelMaterialValidationService.cs" />
+    <Compile Include="Commands\ModelParameterValidationService.cs" />
     <Compile Include="DataEntities\MeasurementDataEntity.cs" />
     <Compile Include="DataEntities\ModelDataProvider.cs" />
     <Compile Include="DataEntities\ModelParametersDataEntity.cs" />
+    <Compile Include="Interfaces\ICommandParametersValidationService.cs" />
     <Compile Include="Interfaces\IMaterialPropertiesService.cs" />
     <Compile Include="Interfaces\IMeasurementDataEntity.cs" />
     <Compile Include="Interfaces\IMeasurementPropertiesEntity.cs" />

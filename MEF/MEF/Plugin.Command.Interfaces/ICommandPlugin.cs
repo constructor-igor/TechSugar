@@ -4,5 +4,6 @@
     {
         string Name { get; }
         double Run(double X, double Y);
+        void Action();
     }
 }

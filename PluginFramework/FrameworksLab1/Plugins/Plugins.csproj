@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelMaterialValidationService.cs" />
+    <Compile Include="ModelParameterValidationService.cs" />
     <Compile Include="PluginB_v1.cs" />
     <Compile Include="PluginB_v2.cs" />
     <Compile Include="PluginB_v3.cs" />

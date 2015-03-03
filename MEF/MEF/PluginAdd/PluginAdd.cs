@@ -16,5 +16,10 @@ namespace PluginAdd
         {
             Name = "Add";
         }
+
+        public void Action()
+        {
+            
+        }
     }
 }

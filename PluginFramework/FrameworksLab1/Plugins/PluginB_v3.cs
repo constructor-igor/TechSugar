@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using EngineAPI.DataEntities;
 using EngineAPI.Interfaces;
@@ -34,6 +35,33 @@ namespace Plugins
         }
     }
 
+    public class PluginB_v3_CommandParameters : ICommandParameters
+    {
+        [CommandParameter(Validation = typeof(ModelParameterValidationService))]
+        public string Parameter1 { get; set; }
+        [CommandParameter(Validation = typeof(ModelParameterValidationService))]
+        public string Parameter2 { get; set; }
+        [CommandParameter(Validation = typeof(ModelMaterialValidationService))]
+        public string Material1 { get; set; }
+        [CommandParameter(Validation = typeof(ModelMaterialValidationService))]
+        public string Material2 { get; set; }
+        [CommandParameter(Alias="Threshold", IsOptional = true, IsMultiple = false, DefaultValue = 0.1)]
+        public double Threshold { get; set; }
+
+        public void Verification()
+        {
+            
+        }
+
+        public void Validation(ICommandContext commandContext)
+        {
+            var validationService = commandContext.Get<ICommandParametersValidationService>();
+            validationService.Validate(this);
+
+            if (Threshold<0)
+                throw new Exception("threshold should be positive");
+        }
+    }
 
     [Export(typeof(ICommand))]
     public class PluginB_v3 : ICommand
