@@ -7,6 +7,10 @@ using Plugin.Command.Interfaces;
 
 namespace MEF_loading_issue
 {
+    /*
+     * Project created from issue http://stackoverflow.com/questions/28836436/error-when-try-load-plugin-using-mef
+     * 
+     * */
     class Program
     {
         static void Main()
