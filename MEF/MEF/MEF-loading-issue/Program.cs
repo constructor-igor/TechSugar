@@ -55,5 +55,4 @@ namespace MEF_loading_issue
             container.ComposeParts(this);
         }
     }
-    // try to load via catalog.Catalogs.Add(new AssemblyCatalog(Assembly.LoadFrom(@"C:\yosra\project\project.Plugin.Nav\bin\Debug\NavPlugin.dll")));
 }
