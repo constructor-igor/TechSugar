@@ -47,7 +47,8 @@ namespace MEF_loading_issue
 
             var pluginAssemblyCatalog = new AssemblyCatalog(@"..\..\..\@PluginBinaries\PluginAdd.dll");
             // possible workaround: load plugin assembly and create AssemblyCatalog with help of loaded assembly (not by file path)
-            //var pluginAssemblyCatalog = new AssemblyCatalog(Assembly.LoadFrom(@"..\..\..\@PluginBinaries\PluginAdd.dll"));
+            //Assembly loadedAssembly = Assembly.LoadFrom(@"..\..\..\@PluginBinaries\PluginAdd.dll");
+            //var pluginAssemblyCatalog = new AssemblyCatalog(loadedAssembly);
             aggregateCatalog.Catalogs.Add(pluginAssemblyCatalog);
 
             var container = new CompositionContainer(aggregateCatalog);
