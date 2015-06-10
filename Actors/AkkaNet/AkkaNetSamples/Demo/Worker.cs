@@ -16,7 +16,8 @@ namespace SingleImplementation
 
         public string Run(string request)
         {
-            string message = String.Format("{0}: {1}", m_count++, request);
+            string message = String.Format("{0}: {1}", m_count, request);
+            m_count = m_count + 1;
             m_repository.Save(message);
             m_mailService.Send(message);
             return message;
