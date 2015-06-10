@@ -1,3 +1,4 @@
+using System;
 using Akka.Actor;
 
 namespace Demo
@@ -10,7 +11,7 @@ namespace Demo
         {
             var responseMessage = message as ResponseMessage;
             if (responseMessage!=null)
-            {                
+            {
                 m_mailService.Send(responseMessage.Response);
                 Context.ActorSelection("/user/client").Tell(responseMessage);
             }
