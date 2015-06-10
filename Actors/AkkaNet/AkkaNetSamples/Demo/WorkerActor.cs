@@ -17,10 +17,6 @@ namespace Demo
                 ResponseMessage responseMessage = new ResponseMessage(response);
                 Context.ActorSelection("/user/repository").Tell(responseMessage);
             }
-            if (message is ResponseMessage)
-            {
-                Context.Parent.Forward(message);
-            }
         }
     }
 }
