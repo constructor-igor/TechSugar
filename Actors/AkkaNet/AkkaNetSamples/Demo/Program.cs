@@ -4,6 +4,10 @@ using Akka.Routing;
 
 namespace Demo
 {
+    //
+    //  TODO
+    //  - remoting (http://getakka.net/docs/Remoting)
+    //
     class Program
     {
         static void Main(string[] args)
