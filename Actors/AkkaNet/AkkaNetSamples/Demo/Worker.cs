@@ -1,6 +1,6 @@
 using System;
 
-namespace SingleImplementation
+namespace Demo
 {
     public class Worker
     {

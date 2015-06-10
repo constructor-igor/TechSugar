@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace SingleImplementation
+namespace Demo
 {
     public class Repository
     {

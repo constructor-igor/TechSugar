@@ -1,10 +1,18 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
+using Akka.Actor;
 
-namespace SingleImplementation
+namespace Demo
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            //LegacyExecution();
+            ActorExecution();
+        }
+
+        private static void LegacyExecution()
         {
             Client client = new Client();
             Thread t1 = new Thread(() => client.Run());
@@ -12,6 +20,15 @@ namespace SingleImplementation
 
             t1.Start();
             t2.Start();
+        }
+
+        private static void ActorExecution()
+        {
+            ActorSystem demoSystem = ActorSystem.Create("demo");
+            IActorRef workerActor = demoSystem.ActorOf(Props.Create<WorkerActor>(), "worker");
+            demoSystem.ActorOf(Props.Create(()=>new ClientActor(workerActor)));
+
+            Console.ReadLine();
         }
     }
 }

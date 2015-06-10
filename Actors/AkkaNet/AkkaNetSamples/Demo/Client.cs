@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 
-namespace SingleImplementation
+namespace Demo
 {
     public class Client
     {
