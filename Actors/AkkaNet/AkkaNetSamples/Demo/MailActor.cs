@@ -1,20 +1,18 @@
-using System;
 using Akka.Actor;
 
 namespace Demo
 {
-    public class MailActor: UntypedActor
+    public class MailActor: ReceiveActor
     {
         private readonly MailService m_mailService = new MailService();
 
-        protected override void OnReceive(object message)
+        public MailActor()
         {
-            var responseMessage = message as ResponseMessage;
-            if (responseMessage!=null)
+            Receive<ResponseMessage>(responseMessage =>
             {
                 m_mailService.Send(responseMessage.Response);
                 Context.ActorSelection("/user/client").Tell(responseMessage);
-            }
+            });
         }
     }
 }

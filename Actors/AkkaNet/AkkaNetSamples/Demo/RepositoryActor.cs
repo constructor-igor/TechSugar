@@ -12,6 +12,7 @@ namespace Demo
         }
         protected override void OnReceive(object message)
         {
+            //Context.
             ResponseMessage responseMessage = message as ResponseMessage;
             if (responseMessage!=null)
             {

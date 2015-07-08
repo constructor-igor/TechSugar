@@ -2,7 +2,7 @@
 {
     public class UserMessage
     {
-        public string Message { get; private set; }
+        public string Message { get; private set; }             // immutable
 
         public UserMessage(string message)
         {
@@ -12,7 +12,7 @@
 
     public class ResponseMessage
     {
-        public string Response { get; private set; }
+        public string Response { get; private set; }            // immutable
 
         public ResponseMessage(string response)
         {
