@@ -47,6 +47,8 @@
     <Compile Include="NUnitIssue360.cs" />
     <Compile Include="NUnitIssue524.cs" />
     <Compile Include="NUnitIssue637.cs" />
+    <Compile Include="NUnitSampleCollectionTests.cs" />
+    <Compile Include="NUnitSampleSetUpFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
