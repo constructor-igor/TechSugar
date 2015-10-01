@@ -12,14 +12,13 @@ namespace AssertSamples
     public class AssertSamplesOfObjects
     {
         [Test]
-        [ExpectedException]
         public void AssertOfObjects()
         {
             var expectedDataItem = new DataItem("title", "content");
             DataItem actualDataItem = GetExpectedDataItem("title2", "content");
 
             Assert.AreEqual(expectedDataItem.Title, actualDataItem.Title);
-            Assert.AreEqual(expectedDataItem.Content, actualDataItem.Content);
+            Assert.That(() => Assert.AreEqual(expectedDataItem.Content, actualDataItem.Content), Throws.Exception);
         }
 
         #region private methods

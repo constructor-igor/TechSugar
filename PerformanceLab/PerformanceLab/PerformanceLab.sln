@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssertSamples", "AssertSamples\AssertSamples.csproj", "{144E1CA4-D0E0-4A19-B236-03680FA00C4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerformanceLab", "PerformanceLab\PerformanceLab.csproj", "{38B94C56-8C33-4BA6-8236-64F295020C89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{144E1CA4-D0E0-4A19-B236-03680FA00C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{144E1CA4-D0E0-4A19-B236-03680FA00C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{144E1CA4-D0E0-4A19-B236-03680FA00C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{144E1CA4-D0E0-4A19-B236-03680FA00C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B94C56-8C33-4BA6-8236-64F295020C89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B94C56-8C33-4BA6-8236-64F295020C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B94C56-8C33-4BA6-8236-64F295020C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B94C56-8C33-4BA6-8236-64F295020C89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

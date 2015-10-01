@@ -12,40 +12,36 @@ namespace AssertSamples
     public class AssertSamplesOfSimpleTypes
     {
         [Test]
-        [ExpectedException]
         public void AssertSimpleType_String()
         {
             const string expectedResult = "test_5";
             string actualResults = Foo(4);
-            Assert.AreEqual(expectedResult, actualResults);
+            Assert.That(() => Assert.AreEqual(expectedResult, actualResults), Throws.Exception);
 
             Console.WriteLine("test");
         }
 
         [Test]
-        [ExpectedException]
         public void AssertSimpleType_Double()
         {
             const double expectedResult = 0.03;
             double actualResults = Foo(0.04);
-            Assert.AreEqual(expectedResult, actualResults, 0.001);
+            Assert.That(() => Assert.AreEqual(expectedResult, actualResults, 0.001), Throws.Exception);
 
             Console.WriteLine("test");
         }
 
         [Test]
-        [ExpectedException]
         public void AssertSimpleType_Int()
         {
             const int expectedResult = 30;
             int actualResults = FooInt2Int(40);
-            Assert.AreEqual(expectedResult, actualResults, 5);
+            Assert.That(() => Assert.AreEqual(expectedResult, actualResults, 5), Throws.Exception);
 
             Console.WriteLine("test");
         }
 
         [Test]
-        [ExpectedException]
         public void AssertSimpleTypes_Multi()
         {
             const string expectedResult = "test_5";
@@ -57,7 +53,7 @@ namespace AssertSamples
             int actualId = actualData.Item2;
 
             Assert.AreEqual(expectedResult, actualResult);
-            Assert.AreEqual(expectedId, actualId);
+            Assert.That(() => Assert.AreEqual(expectedId, actualId), Throws.Exception);
         }
 
         #region foo methods
