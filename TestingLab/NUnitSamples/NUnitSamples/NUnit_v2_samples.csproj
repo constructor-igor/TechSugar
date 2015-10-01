@@ -7,8 +7,8 @@
     <ProjectGuid>{41F64005-A134-4304-9BF8-ADB8FC486D7F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NUnitSamples</RootNamespace>
-    <AssemblyName>NUnitSamples</AssemblyName>
+    <RootNamespace>NUnit_v2_samples</RootNamespace>
+    <AssemblyName>NUnit_v2_samples</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NUnitIssue320.cs" />
+    <Compile Include="NUnitIssue360.cs" />
+    <Compile Include="NUnitIssue524.cs" />
+    <Compile Include="NUnitIssue637.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
