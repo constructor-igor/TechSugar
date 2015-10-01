@@ -50,6 +50,7 @@
     <Compile Include="NUnitIssue637.cs" />
     <Compile Include="NUnitIssue755.cs" />
     <Compile Include="NUnitSampleExplicit.cs" />
+    <Compile Include="NUnitSampleSetUpFixture.cs" />
     <Compile Include="NUnitSampleTheory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
