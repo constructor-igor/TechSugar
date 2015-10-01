@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitSamples", "NUnitSamples\NUnitSamples.csproj", "{41F64005-A134-4304-9BF8-ADB8FC486D7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit_v2_samples", "NUnitSamples\NUnit_v2_samples.csproj", "{41F64005-A134-4304-9BF8-ADB8FC486D7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
