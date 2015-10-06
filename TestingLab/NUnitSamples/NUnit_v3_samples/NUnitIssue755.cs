@@ -90,5 +90,4 @@ namespace NUnit_v3_samples
             Thread.Sleep(3000);
         }
     }
-
 }
