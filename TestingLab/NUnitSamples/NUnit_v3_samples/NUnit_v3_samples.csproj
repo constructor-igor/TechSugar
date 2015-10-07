@@ -60,6 +60,7 @@
     <Compile Include="NUnitSampleSetUpFixture.cs" />
     <Compile Include="NUnitSampleTheory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepeatSampleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
