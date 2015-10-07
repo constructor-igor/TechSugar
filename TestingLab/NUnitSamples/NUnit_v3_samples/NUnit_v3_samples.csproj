@@ -50,6 +50,7 @@
     <Compile Include="NUnitIssue24.cs" />
     <Compile Include="NUnitIssue320.cs" />
     <Compile Include="NUnitIssue360.cs" />
+    <Compile Include="NUnitIssue52.cs" />
     <Compile Include="NUnitIssue524.cs" />
     <Compile Include="NUnitIssue637.cs" />
     <Compile Include="NUnitIssue755.cs" />
