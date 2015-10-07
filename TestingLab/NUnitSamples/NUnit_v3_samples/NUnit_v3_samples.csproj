@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NUnitIssue144.cs" />
     <Compile Include="NUnitIssue24.cs" />
     <Compile Include="NUnitIssue320.cs" />
     <Compile Include="NUnitIssue360.cs" />
