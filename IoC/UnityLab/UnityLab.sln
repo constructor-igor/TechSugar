@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityLab", "UnityLab\UnityLab.csproj", "{CC8A9CF3-0830-483A-BCEE-9CC33FEB64EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity_vs_MEF", "Unity_vs_MEF\Unity_vs_MEF.csproj", "{FDC37951-90DB-49DF-ABA9-37A9BC71B21E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityTests", "UnityTests\UnityTests.csproj", "{DDB2D54F-1662-4B4F-9A1A-B421CFA283E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FDC37951-90DB-49DF-ABA9-37A9BC71B21E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDC37951-90DB-49DF-ABA9-37A9BC71B21E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDC37951-90DB-49DF-ABA9-37A9BC71B21E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB2D54F-1662-4B4F-9A1A-B421CFA283E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB2D54F-1662-4B4F-9A1A-B421CFA283E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB2D54F-1662-4B4F-9A1A-B421CFA283E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB2D54F-1662-4B4F-9A1A-B421CFA283E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
