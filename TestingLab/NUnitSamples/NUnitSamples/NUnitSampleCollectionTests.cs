@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 namespace NUnit_v2_samples
 {
+    [TestFixture]
     public class NUnitSampleCollectionTests
     {
         [Test]

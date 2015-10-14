@@ -59,6 +59,7 @@
     <Compile Include="NUnitSampleExplicit.cs" />
     <Compile Include="NUnitSampleSetUpFixture.cs" />
     <Compile Include="NUnitSampleTheory.cs" />
+    <Compile Include="NUnitSimpleTypesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepeatSampleTests.cs" />
   </ItemGroup>
