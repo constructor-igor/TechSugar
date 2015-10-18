@@ -10,6 +10,7 @@ namespace BenchmarkDotNetLab
     {
         private const string TEXT = "the test shows benchmark samples";
         private const string TERMIN = "benchmark";
+
         [Test]
         public void RunBenchmark()
         {
