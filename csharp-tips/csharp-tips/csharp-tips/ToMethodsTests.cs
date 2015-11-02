@@ -53,6 +53,20 @@ namespace csharp_tips
             Process.Start(filename);
         }
 
+        [Test]
+        public void FileToEmailOutlook()
+        {
+            string testDataFilePath = @"..\..\Data\test.txt";
+            string fullPathToDataFile = Path.GetFullPath(testDataFilePath);
+
+            Assert.That(File.Exists(testDataFilePath), Is.True);
+            Assert.That(File.Exists(fullPathToDataFile), Is.True);
+
+            var outlookPath = @"OUTLOOK.EXE";
+            var command = String.Format(@"/a ""{0}"" /m ""to@me.com&cc=cc@.com&subject=subject&body=body""", fullPathToDataFile);
+            Process.Start(outlookPath, command);
+        }
+
         //
         // format: mailto:some.guy@someplace.com?subject=an email&body=see attachment&attachment="/files/audio/attachment.mp3"
         //
