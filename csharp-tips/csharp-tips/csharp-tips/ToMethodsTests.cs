@@ -35,7 +35,7 @@ namespace csharp_tips
         /// https://msdn.microsoft.com/en-us/library/system.directoryservices.accountmanagement.userprincipal(v=vs.110).aspx
         ///
         [Test]
-        public void FileToEmailClient()
+        public void FileToEmailClientViaMailMessage()
         {
             string testDataFilePath = @"..\..\Data\test.txt";
 
@@ -51,6 +51,20 @@ namespace csharp_tips
             var filename = Path.Combine(Path.GetTempPath(), "mymessage.eml");
             mailMessage.Save(filename);
             Process.Start(filename);
+        }
+
+        //
+        // format: mailto:some.guy@someplace.com?subject=an email&body=see attachment&attachment="/files/audio/attachment.mp3"
+        //
+        [Test]
+        public void FileToEmailClient()
+        {
+            string testDataFilePath = @"..\..\Data\test.txt";
+            Assert.That(File.Exists(testDataFilePath), Is.True);
+            string subject = String.Format("File {0} attached", Path.GetFileName(testDataFilePath));
+            string body = "body";
+            string command = String.Format("mailto:?subject={0}&body={1}&attachment=\"{2}\"", subject, body, testDataFilePath);
+            Process.Start(command);
         }
     }
 
