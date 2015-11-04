@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
+using OpenPop.Mime;
+using OpenPop.Pop3;
 
 namespace csharp_tips
 {
@@ -31,7 +34,36 @@ namespace csharp_tips
         [Test]
         public void Test()
         {
-            
+            const string hostName = "pop.gmail.com";
+            int port = 995;
+            bool useSsl = true;
+            string userName = "USER";
+            string password = "PASSWORD";
+
+            using(Pop3Client client = new Pop3Client())
+            {
+                // Connect to the server
+                client.Connect(hostName, port, useSsl);
+
+                // Authenticate ourselves towards the server
+                client.Authenticate(userName, password);
+
+                // Get the number of messages in the inbox
+                int messageCount = client.GetMessageCount();
+
+                // We want to download all messages
+                List<Message> allMessages = new List<Message>(messageCount);
+
+                // Messages are numbered in the interval: [1, messageCount]
+                // Ergo: message numbers are 1-based.
+                // Most servers give the latest message the highest number
+                for (int i = messageCount; i > 0; i--)
+                {
+                    allMessages.Add(client.GetMessage(i));
+                }
+
+                allMessages.ForEach(m=>Console.WriteLine("Display name: {0}", m.Headers.From.DisplayName));
+            }
         }
     }
 }
