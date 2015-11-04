@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenericTests.cs" />
     <Compile Include="LazyInitializationSamples.cs" />
     <Compile Include="3rdParty\Pop3Client.cs" />
     <Compile Include="Pop3ClientTests.cs" />
