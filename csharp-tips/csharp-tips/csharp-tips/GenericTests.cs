@@ -45,6 +45,15 @@ namespace csharp_tips
                 Data = data;
             }
         }
+        public class GenericStruct<T> where T : struct
+        {
+            public T Data { get; private set; }
+
+            public GenericStruct(T data)
+            {
+                Data = data;
+            }
+        }
         public class GenericClass<T> where T : class
         {
             public T Data { get; private set; }
@@ -87,6 +96,18 @@ namespace csharp_tips
             Assert.That(objectNewInt.Data, Is.Not.SameAs(testStruct));
             Assert.That(objectNewInt.Data.X, Is.EqualTo(testStruct.X));
             Assert.That(objectNewInt.Data.Y, Is.EqualTo(testStruct.Y));
+        }
+
+        [Test]
+        public void TestGenericStruct()
+        {
+            TestStruct testStruct = new TestStruct(10, 20);
+            var objectNewInt = new GenericStruct<TestStruct>(testStruct);
+            Assert.That(objectNewInt.Data, Is.Not.SameAs(testStruct));
+            Assert.That(objectNewInt.Data.X, Is.EqualTo(testStruct.X));
+            Assert.That(objectNewInt.Data.Y, Is.EqualTo(testStruct.Y));
+
+            Assert.That(new GenericStruct<int>(10).Data, Is.EqualTo(10));
         }
         [Test]
         public void TestGenericClass()
