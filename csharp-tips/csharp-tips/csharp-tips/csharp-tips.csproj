@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LazyInitializationSamples.cs" />
+    <Compile Include="3rdParty\Pop3Client.cs" />
+    <Compile Include="Pop3ClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringBuilderTests.cs" />
     <Compile Include="StringSamples.cs" />
