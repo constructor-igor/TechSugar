@@ -18,8 +18,25 @@ namespace csharp_tips
         [Test]
         public void Test()
         {
-            POP3Client.POP3client demoPop3Client = new POP3Client.POP3client();
-            Console.WriteLine(demoPop3Client.connect("pop.gmail.com"));
+            POP3Client.POP3client demoPop3Client = new POP3Client.POP3client("pop.gmail.com", 995, "USER", "PASSWORD");
+            string status = demoPop3Client.connect();
+            Console.WriteLine("status: {0}", status);
+
+            Console.WriteLine("****Issuing STAT");
+            Console.WriteLine(demoPop3Client.STAT());
+            Console.WriteLine("****Issuing LIST");
+            Console.WriteLine(demoPop3Client.LIST());
+            Console.WriteLine("****Issuing RETR 700...this" +
+                              " will cause the POP3 server to gack a "
+                              + "hairball since there is no message 700");
+            Console.WriteLine(demoPop3Client.RETR(700));
+            // this will cause the pop3 server to throw 
+            // an error since there is no message 700
+
+            Console.WriteLine("****Issuing RETR 7");
+            Console.WriteLine(demoPop3Client.RETR(7));
+            Console.WriteLine("****Issuing QUIT");
+            Console.WriteLine(demoPop3Client.QUIT());
         }
     }
 

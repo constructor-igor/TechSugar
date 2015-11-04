@@ -12,6 +12,7 @@ namespace POP3Client
 		public string user;
 		public string pwd;
 		public string pop;
+	    int m_port = 110;
 		public bool error;
 		public connect_state state=connect_state.disc ;
 
@@ -28,19 +29,21 @@ namespace POP3Client
 			//nothing to do..just create to object	
 		}
 
-		public POP3client(string pop_server,string user_name,string password)
+		public POP3client(string pop_server, int port, string user_name, string password)
 		{
 			//put the specied server (pop_server), user (user_name) and password (password)
 			//into the appropriate properties.
 			pop=pop_server;
+		    m_port = port;
 			user=user_name;
 			pwd=password;
 		}
 
 		#region Utility Methods, some public, some private
-		public string connect (string pop_server)
+		public string connect (string pop_server, int port)
 		{
 			pop=pop_server;    //put the specified server into the pop property
+		    m_port = port;
 			return(connect()); //call the connect method
 		}
 		public string connect()
@@ -52,7 +55,7 @@ namespace POP3Client
 			//http://www.codeproject.com/csharp/popapp.asp
 
 			// create server with port 110
-			Server = new TcpClient(pop,110);								
+			Server = new TcpClient(pop, m_port);								
 		
 			try
 			{
