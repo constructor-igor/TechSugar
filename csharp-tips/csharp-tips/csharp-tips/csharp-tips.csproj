@@ -49,11 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SendToProviders\MailUtility.cs" />
+    <Compile Include="SendToProviders\EmailController.cs" />
     <Compile Include="GenericTests.cs" />
     <Compile Include="LazyInitializationSamples.cs" />
     <Compile Include="3rdParty\Pop3Client.cs" />
     <Compile Include="Pop3ClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SendToProviders\MAPI.cs" />
     <Compile Include="StringBuilderTests.cs" />
     <Compile Include="StringSamples.cs" />
     <Compile Include="ToMethodsTests.cs" />

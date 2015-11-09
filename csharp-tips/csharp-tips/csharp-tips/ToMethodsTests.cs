@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.DirectoryServices.AccountManagement;
 using System.IO;
 using System.Net.Mail;
-using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
+using csharp_tips.SendToProviders;
 using NUnit.Framework;
 
 /*
@@ -80,42 +80,31 @@ namespace csharp_tips
             string command = String.Format("mailto:?subject={0}&body={1}&attachment=\"{2}\"", subject, body, testDataFilePath);
             Process.Start(command);
         }
-    }
 
-    public static class MailUtility
-    {
-        //Extension method for MailMessage to save to a file on disk
-        public static void Save(this MailMessage message, string filename, bool addUnsentHeader = true)
+        //
+        // from comments http://www.codeproject.com/Articles/3839/SendTo-mail-recipient
+        //
+        [Test]
+        public void TestEmailController()
         {
-            using (var filestream = File.Open(filename, FileMode.Create))
-            {
-                if (addUnsentHeader)
-                {
-                    var binaryWriter = new BinaryWriter(filestream);
-                    //Write the Unsent header to the file so the mail client knows this mail must be presented in "New message" mode
-                    binaryWriter.Write(System.Text.Encoding.UTF8.GetBytes("X-Unsent: 1" + Environment.NewLine));
-                }
+            const string TEST_DATA_FILE_PATH = @"..\..\Data\test.txt";
+            int result = EmailController.SendMail(Path.GetFullPath(TEST_DATA_FILE_PATH), "send file test", "EMAIL@DOMAIL");
+            Console.WriteLine("result: {0}", result);
+        }
 
-                var assembly = typeof(SmtpClient).Assembly;
-                var mailWriterType = assembly.GetType("System.Net.Mail.MailWriter");
+        [Test]
+        public void TestMAPI()
+        {
+            const string TEST_DATA_FILE_PATH = @"..\..\Data\test.txt";
 
-                // Get reflection info for MailWriter constructor
-                var mailWriterConstructor = mailWriterType.GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, new[] { typeof(Stream) }, null);
-
-                // Construct MailWriter object with our FileStream
-                var mailWriter = mailWriterConstructor.Invoke(new object[] { filestream });
-
-                // Get reflection info for Send() method on MailMessage
-                var sendMethod = typeof(MailMessage).GetMethod("Send", BindingFlags.Instance | BindingFlags.NonPublic);
-
-                sendMethod.Invoke(message, BindingFlags.Instance | BindingFlags.NonPublic, null, new object[] { mailWriter, true, true }, null);
-
-                // Finally get reflection info for Close() method on our MailWriter
-                var closeMethod = mailWriter.GetType().GetMethod("Close", BindingFlags.Instance | BindingFlags.NonPublic);
-
-                // Call close method
-                closeMethod.Invoke(mailWriter, BindingFlags.Instance | BindingFlags.NonPublic, null, new object[] { }, null);
-            }
+            string body = "Body Content here";
+            var file = TEST_DATA_FILE_PATH;
+            string[]  attachments = { file };
+            string[] recipients = { "EMAIL@DOMAIL" };
+            string subject = "Subject here";
+            MAPI mapi = new MAPI();
+            int result = mapi.ComposeMail(recipients, subject, body, attachments);
+            Console.WriteLine("result: code={0}, status={1}", result, mapi.GetLastError());
         }
     }
 }
