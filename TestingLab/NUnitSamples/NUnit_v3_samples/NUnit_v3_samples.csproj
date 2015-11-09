@@ -34,8 +34,8 @@
       <HintPath>..\packages\Moq.4.2.1507.0118\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.0.5715.30856, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.0.0-beta-4\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.0.5790.16288, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.0-rc-2\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -56,6 +56,7 @@
     <Compile Include="NUnitIssue637.cs" />
     <Compile Include="NUnitIssue755.cs" />
     <Compile Include="NUnitIssue841.cs" />
+    <Compile Include="NUnitIssue924.cs" />
     <Compile Include="NUnitSampleExplicit.cs" />
     <Compile Include="NUnitSampleSetUpFixture.cs" />
     <Compile Include="NUnitSampleTheory.cs" />
