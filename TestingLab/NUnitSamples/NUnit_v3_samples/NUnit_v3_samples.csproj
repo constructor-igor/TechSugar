@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpectedExceptionTests.cs" />
+    <Compile Include="Infra\ExpectedExceptionAttribute.cs" />
     <Compile Include="NUnitIssue144.cs" />
     <Compile Include="NUnitIssue24.cs" />
     <Compile Include="NUnitIssue320.cs" />
