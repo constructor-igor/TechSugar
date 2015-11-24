@@ -48,6 +48,7 @@
     <Compile Include="NUnitIssue524.cs" />
     <Compile Include="NUnitIssue637.cs" />
     <Compile Include="NUnitRepeatTests.cs" />
+    <Compile Include="NUnitSameTestsNames.cs" />
     <Compile Include="NUnitSampleCollectionTests.cs" />
     <Compile Include="NUnitSampleSetUpFixture.cs" />
     <Compile Include="NUnitSimpleTypesTests.cs" />

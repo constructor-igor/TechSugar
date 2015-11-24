@@ -60,6 +60,7 @@
     <Compile Include="NUnitIssue841.cs" />
     <Compile Include="NUnitIssue924.cs" />
     <Compile Include="NUnitRepeatTests.cs" />
+    <Compile Include="NUnitSameTestsNames.cs" />
     <Compile Include="NUnitSampleExplicit.cs" />
     <Compile Include="NUnitSampleSetUpFixture.cs" />
     <Compile Include="NUnitSampleTheory.cs" />
