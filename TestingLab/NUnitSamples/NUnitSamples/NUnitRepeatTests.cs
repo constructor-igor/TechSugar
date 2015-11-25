@@ -6,7 +6,7 @@ namespace NUnit_v2_samples
     [TestFixture]
     public class NUnitRepeatTests
     {
-        private static int counter = 0;
+        //private static int counter = 0;
 
         [Test]
         [Repeat(4)]
@@ -21,5 +21,6 @@ namespace NUnit_v2_samples
         {
             Console.WriteLine("{0}, {1}", testName, counter++);
         }
+        private static int counter = 0;
     }
 }
