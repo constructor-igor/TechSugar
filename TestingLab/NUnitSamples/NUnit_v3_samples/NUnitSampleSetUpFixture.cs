@@ -15,20 +15,20 @@ namespace NUnit_v3_samples
         }
     }
 
-    [SetUpFixture]
-    public class SetUpFixture
-    {
-        [OneTimeSetUp]
-        public void SetUp()
-        {
-            Helper.ToLog("SetUpFixture.OneTimeSetUp");
-        }
-        [OneTimeTearDown]
-        public void TearDown()
-        {
-            Helper.ToLog("SetUpFixture.OneTimeTearDown");
-        }
-    }
+//    [SetUpFixture]
+//    public class SetUpFixture
+//    {
+//        [OneTimeSetUp]
+//        public void SetUp()
+//        {
+//            Helper.ToLog("SetUpFixture.OneTimeSetUp");
+//        }
+//        [OneTimeTearDown]
+//        public void TearDown()
+//        {
+//            Helper.ToLog("SetUpFixture.OneTimeTearDown");
+//        }
+//    }
 
     [TestFixture]
     public class SetUpSample1
