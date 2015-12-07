@@ -50,6 +50,7 @@
     <Compile Include="ExpectedExceptionTests.cs" />
     <Compile Include="Infra\ExpectedExceptionAttribute.cs" />
     <Compile Include="NUnitIssue1033.cs" />
+    <Compile Include="NUnitIssue1057.cs" />
     <Compile Include="NUnitIssue1111.cs" />
     <Compile Include="NUnitIssue144.cs" />
     <Compile Include="NUnitIssue24.cs" />
