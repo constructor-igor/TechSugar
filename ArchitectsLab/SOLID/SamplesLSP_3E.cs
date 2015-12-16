@@ -1,28 +1,26 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 
 namespace SOLID
 {
     [TestFixture]
-    public class SamplesLSP_3D
+    public class SamplesLSP_3E
     {
         [Test]
         public void Test_C()
         {
             C c = new C();
-            A a = ExecuteTest(c);
+            ExecuteTest(c);
         }
         [Test]
         public void Test_D()
         {
             D d = new D();
-            A a = ExecuteTest(d);
+            ExecuteTest(d);
         }
 
-        B ExecuteTest(C c)
+        void ExecuteTest(C c)
         {
-            B b = c.Foo();
-            Assert.That(b, Is.InstanceOf<B>());
-            return b;
+            c.Foo();
         }
 
         public class A
@@ -34,16 +32,15 @@ namespace SOLID
 
         public class C
         {
-            public virtual B Foo()
+            public virtual void Foo()
             {
-                return new B();
             }
         }
         public class D : C
         {
-            public override B Foo()
+            public override void Foo()
             {
-                return (B) new A();
+                Assert.Fail("cannot be created with 'protected'");
             }
         }
     }

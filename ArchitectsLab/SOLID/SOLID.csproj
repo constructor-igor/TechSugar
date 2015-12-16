@@ -48,6 +48,7 @@
     <Compile Include="SamplesLSP_3B.cs" />
     <Compile Include="SamplesLSP_3C.cs" />
     <Compile Include="SamplesLSP_3D.cs" />
+    <Compile Include="SamplesLSP_3E.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
