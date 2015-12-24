@@ -45,10 +45,8 @@
   <ItemGroup>
     <Compile Include="Observer\Album.cs" />
     <Compile Include="Observer\BillingService.cs" />
-    <Compile Include="Observer\IObserver.cs" />
-    <Compile Include="Observer\ISubject.cs" />
+    <Compile Include="Observer\CounterService.cs" />
     <Compile Include="Observer\ObserverTests.cs" />
-    <Compile Include="Observer\SubjectHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,27 +4,30 @@ namespace DesignPatterns.Observer
 {
     public class Album
     {
-        private String name;
-        private readonly ISubject m_playSubject = new SubjectHelper();
+        private readonly String m_name;
+
+        public delegate void PlayHandler(object sender);
+        public event PlayHandler PlayEvent;
 
         public Album(String name)
-        { this.name = name; }
+        { this.m_name = name; }
 
         public void Play()
         {
-            m_playSubject.Notify(this);
+            Notify();
 
             // code to play the album
         }
 
-        public String Name
+        private void Notify()
         {
-            get { return name; }
+            if (PlayEvent != null)
+                PlayEvent(this);
         }
 
-        public ISubject PlaySubject
+        public String Name
         {
-            get { return m_playSubject; }
+            get { return m_name; }
         }
     }
 }

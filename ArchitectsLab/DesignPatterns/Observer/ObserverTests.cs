@@ -19,9 +19,8 @@ namespace DesignPatterns.Observer
             CounterService counter = new CounterService();
             Album album = new Album("Up");
 
-            album.PlaySubject.AddObserver(billing);
-            album.PlaySubject.AddObserver(counter);
-
+            album.PlayEvent += billing.Update;
+            album.PlayEvent += counter.Update;
             album.Play();
         }
     }

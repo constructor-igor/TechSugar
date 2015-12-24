@@ -2,30 +2,17 @@
 
 namespace DesignPatterns.Observer
 {
-    public class BillingService : IObserver
+    public class BillingService
     {
         public void Update(object subject)
         {
-            Album album = subject as Album;
-            if (album != null)
-                GenerateCharge(album);
+            if (subject is Album)
+                GenerateCharge((Album)subject);
         }
 
-        private void GenerateCharge(Album album)
+        private void GenerateCharge(Album theAlbum)
         {
-            string name = album.Name;
-            Console.WriteLine("[BillingService] album.Name: {0}", name);
-            //code to generate charge for correct album
+            Console.WriteLine("[BillingService] album.Name: {0}", theAlbum.Name);
         }
-    }
-
-    public class CounterService : IObserver
-    {
-        #region Implementation of IObserver
-        public void Update(object subject)
-        {
-            Console.WriteLine("[CounterService] album.Name: {0}", ((Album)subject).Name);
-        }
-        #endregion
     }
 }
