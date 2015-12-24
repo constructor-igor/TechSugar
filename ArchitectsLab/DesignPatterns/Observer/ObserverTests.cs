@@ -8,15 +8,17 @@ namespace DesignPatterns.Observer
      * https://msdn.microsoft.com/en-us/library/ff648108.aspx
      * 
      * */
-    
+
     [TestFixture]
     public class ObserverTests
     {
         [Test]
         public void Client()
         {
-            BillingService service = new BillingService();
-            Album album = new Album(service, "Up");
+            BillingService billingService = new BillingService();
+            Album album = new Album("Up");
+
+            album.AddObserver(billingService);
 
             album.Play();
         }

@@ -2,27 +2,25 @@
 
 namespace DesignPatterns.Observer
 {
-    public class Album
+    public class Album: Subject
     {
-        private BillingService billing;
-        private String name;
+        private readonly String m_name;
 
-        public Album(BillingService billing, string name)
+        public Album(string name)
         {
-            this.billing = billing;
-            this.name = name;
+            m_name = name;
         }
 
         public void Play()
         {
-            billing.GenerateCharge(this);
+            Notify();
 
             // code to play the album
         }
 
         public String Name
         {
-            get { return name; }
+            get { return m_name; }
         }
     }
 }
