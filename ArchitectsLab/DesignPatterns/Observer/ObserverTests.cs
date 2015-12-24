@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using System;
+using System.Threading;
 
 namespace DesignPatterns.Observer
 {
@@ -15,12 +17,23 @@ namespace DesignPatterns.Observer
         [Test]
         public void Client()
         {
-            BillingService billing = new BillingService();
-            CounterService counter = new CounterService();
+            RunTest(true, new BillingService());
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            Thread.Sleep(5000);
+        }
+
+        public void RunTest(bool subscribe, BillingService billing)
+        {
             Album album = new Album("Up");
 
-            album.PlayEvent += billing.Update;
-            album.PlayEvent += counter.Update;
+            if (subscribe)
+            {
+                billing.SomeObject = new WeakReference(album);
+                album.PlayEvent += billing.Update;
+            }
             album.Play();
         }
     }

@@ -10,7 +10,10 @@ namespace DesignPatterns.Observer
         public event PlayHandler PlayEvent;
 
         public Album(String name)
-        { this.m_name = name; }
+        {
+            m_name = name;
+            Console.WriteLine("Album()");
+        }
 
         public void Play()
         {
@@ -28,6 +31,11 @@ namespace DesignPatterns.Observer
         public String Name
         {
             get { return m_name; }
+        }
+
+        ~Album()
+        {
+            Console.WriteLine("~Album()");
         }
     }
 }
