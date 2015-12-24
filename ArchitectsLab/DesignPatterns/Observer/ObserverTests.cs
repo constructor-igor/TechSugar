@@ -15,10 +15,12 @@ namespace DesignPatterns.Observer
         [Test]
         public void Client()
         {
-            BillingService billingService = new BillingService();
+            BillingService billing = new BillingService();
+            CounterService counter = new CounterService();
             Album album = new Album("Up");
 
-            album.AddObserver(billingService);
+            album.PlaySubject.AddObserver(billing);
+            album.PlaySubject.AddObserver(counter);
 
             album.Play();
         }

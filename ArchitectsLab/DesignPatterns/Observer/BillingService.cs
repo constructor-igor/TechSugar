@@ -1,4 +1,6 @@
-﻿namespace DesignPatterns.Observer
+﻿using System;
+
+namespace DesignPatterns.Observer
 {
     public class BillingService : IObserver
     {
@@ -12,8 +14,18 @@
         private void GenerateCharge(Album album)
         {
             string name = album.Name;
-
+            Console.WriteLine("[BillingService] album.Name: {0}", name);
             //code to generate charge for correct album
         }
+    }
+
+    public class CounterService : IObserver
+    {
+        #region Implementation of IObserver
+        public void Update(object subject)
+        {
+            Console.WriteLine("[CounterService] album.Name: {0}", ((Album)subject).Name);
+        }
+        #endregion
     }
 }
