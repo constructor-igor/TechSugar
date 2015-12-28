@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,6 +46,7 @@
   <ItemGroup>
     <Compile Include="NUnitIssue1033.cs" />
     <Compile Include="NUnitIssue1111.cs" />
+    <Compile Include="NUnitIssue1160.cs" />
     <Compile Include="NUnitIssue320.cs" />
     <Compile Include="NUnitIssue360.cs" />
     <Compile Include="NUnitIssue524.cs" />
