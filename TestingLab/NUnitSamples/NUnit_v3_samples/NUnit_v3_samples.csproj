@@ -48,9 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1056\ItemTestCaseProvider.cs" />
+    <Compile Include="1056\Program.cs" />
     <Compile Include="ExpectedExceptionTests.cs" />
     <Compile Include="Infra\ExpectedExceptionAttribute.cs" />
     <Compile Include="NUnitIssue1033.cs" />
+    <Compile Include="1056\NUnitIssue1056.cs" />
     <Compile Include="NUnitIssue1057.cs" />
     <Compile Include="NUnitIssue1102.cs" />
     <Compile Include="NUnitIssue1111.cs" />
