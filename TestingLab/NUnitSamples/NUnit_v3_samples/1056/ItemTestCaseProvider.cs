@@ -30,9 +30,32 @@ namespace NUnit_v3_samples._1056
         {
             return GetEnumerator();
         }
+
+        public static IEnumerable TestCases
+        {
+            get
+            {
+                yield return new TestCaseData(new Item {Name = "according to nunit documentation."}).SetName("1");
+                yield return new ItemTestCaseData(new Item { Name = "ItemTestCaseData" }).SetName("2");
+//                yield return ItemTestCaseData.UsingAnyItem().WithInitialQuality(1).ToBeSoldIn(1).ShouldByTomorrowHaveQualityOf(0).Item;
+//                yield return ItemTestCaseData.UsingAnyItem().WithInitialQuality(2).ToBeSoldIn(0).ShouldByTomorrowHaveQualityOf(0).Item;
+//                yield return ItemTestCaseData.UsingAnyItem().WithInitialQuality(0).ToBeSoldIn(0).ShouldByTomorrowHaveQualityOf(0).Item;
+//                yield return ItemTestCaseData.UsingAgedBrie().WithInitialQuality(0).ToBeSoldIn(1).ShouldByTomorrowHaveQualityOf(1).Item;
+//                yield return ItemTestCaseData.UsingAgedBrie().WithInitialQuality(0).ToBeSoldIn(0).ShouldByTomorrowHaveQualityOf(2).Item;
+//                yield return ItemTestCaseData.UsingAgedBrie().WithInitialQuality(50).ToBeSoldIn(1).ShouldByTomorrowHaveQualityOf(50).Item;
+//                yield return ItemTestCaseData.UsingAgedBrie().WithInitialQuality(50).ToBeSoldIn(0).ShouldByTomorrowHaveQualityOf(50).Item;
+//                yield return ItemTestCaseData.UsingSulfuras().ToBeSoldIn(0).ShouldByTomorrowHaveQualityOf(80).Item;
+//                yield return ItemTestCaseData.UsingBackstagePass().ToBeSoldIn(11).ShouldByTomorrowHaveQualityOf(1).Item;
+//                yield return ItemTestCaseData.UsingBackstagePass().ToBeSoldIn(10).ShouldByTomorrowHaveQualityOf(2).Item;
+//                yield return ItemTestCaseData.UsingBackstagePass().ToBeSoldIn(5).ShouldByTomorrowHaveQualityOf(3).Item;
+//                yield return ItemTestCaseData.UsingBackstagePass().WithInitialQuality(50).ToBeSoldIn(0).ShouldByTomorrowHaveQualityOf(0).Item;
+//                yield return ItemTestCaseData.UsingConjuredItem().WithInitialQuality(2).ToBeSoldIn(1).ShouldByTomorrowHaveQualityOf(0).Item;
+//                yield return ItemTestCaseData.UsingConjuredItem().WithInitialQuality(4).ToBeSoldIn(0).ShouldByTomorrowHaveQualityOf(0).Item;
+            }
+        }
     }
 
-    internal class ItemTestCaseData : TestCaseData
+    public class ItemTestCaseData : TestCaseData
     {
         #region ITestCaseData
         public RunState RunState { get; private set; }
@@ -64,8 +87,9 @@ namespace NUnit_v3_samples._1056
         public string IgnoreReason { get; private set; }
 
         private readonly Item _item;
+        public Item Item { get { return _item; } }
 
-        private ItemTestCaseData(Item item)
+        public ItemTestCaseData(Item item)
         {
             _item = item;
             Arguments = new[] { _item };
@@ -106,6 +130,26 @@ namespace NUnit_v3_samples._1056
         {
             Result = quality;
             return this;
+        }
+    }
+
+    public class SimpleItemTestCaseProvider : IEnumerable<ITestCaseData>
+    {
+        #region Implementation of IEnumerable
+        public IEnumerator<ITestCaseData> GetEnumerator()
+        {
+            yield return new ItemTestCaseData(new Item(){Name = "name"});
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        #endregion
+
+        public static IEnumerable TestCases
+        {
+            get { yield return new TestCaseData(new Item {Name = "name"}).SetName("CustomerName"); }
         }
     }
 }
