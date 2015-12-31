@@ -6,13 +6,13 @@ namespace NUnit_v3_samples._1056
     public class NUnitIssue1056
     {
         [TestCaseSource(typeof(ItemTestCaseProvider))]
-        public int TestItemQualityAdjustments(Item item)
+        public void TestItemQualityAdjustments(Item item)
         {
             var program = new Program();
             program.AddItem(item);
             program.UpdateQuality();
 
-            return item.Quality;
+            //return item.Quality;
         }
     }
 }

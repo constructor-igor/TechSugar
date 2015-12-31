@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 
 namespace NUnit_v3_samples._1056
 {
-    internal class ItemTestCaseProvider : IEnumerable<ITestCaseData>
+    public class ItemTestCaseProvider : IEnumerable<ITestCaseData>
     {
         public IEnumerator<ITestCaseData> GetEnumerator()
         {
@@ -31,7 +32,7 @@ namespace NUnit_v3_samples._1056
         }
     }
 
-    internal class ItemTestCaseData : ITestCaseData
+    internal class ItemTestCaseData : TestCaseData
     {
         #region ITestCaseData
         public RunState RunState { get; private set; }
