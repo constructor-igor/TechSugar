@@ -60,6 +60,7 @@
     <Compile Include="SendToProviders\MAPI.cs" />
     <Compile Include="StringBuilderTests.cs" />
     <Compile Include="StringSamples.cs" />
+    <Compile Include="TasksTests.cs" />
     <Compile Include="ToMethodsTests.cs" />
     <Compile Include="WriteTextOnAnImage.cs" />
   </ItemGroup>
