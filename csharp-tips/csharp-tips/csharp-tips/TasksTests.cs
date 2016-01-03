@@ -45,5 +45,22 @@ namespace csharp_tips
             task.Wait();
             Console.WriteLine("after wait");
         }
+        [Test]
+        public void CreateSimpleTask_FactoryStartNew_Sequence()
+        {
+            Task.Factory.StartNew(() =>
+            {
+                Console.WriteLine("task started");
+                Thread.Sleep(5*1000);
+                return 0.0;
+            })
+            .ContinueWith(r=>
+            {
+                Console.WriteLine("task completed (result={0})", r.Result);
+            })
+            .Wait();
+
+            Console.WriteLine("before exit");
+        }
     }
 }
