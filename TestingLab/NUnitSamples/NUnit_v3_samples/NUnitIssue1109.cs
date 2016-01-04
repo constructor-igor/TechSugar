@@ -7,7 +7,7 @@ namespace NUnit_v3_samples
     public class NUnitIssue1109: BaseFixture1109
     {
         [Test]
-        public void SampleTestMethod([ValueSource("MyDataSource")] int value)
+        public void SampleTestMethod([ValueSource(/*typeof(BaseFixture1109),*/ "MyDataSource")] int value)
         {
             Console.WriteLine("Value: " + value);
         }
