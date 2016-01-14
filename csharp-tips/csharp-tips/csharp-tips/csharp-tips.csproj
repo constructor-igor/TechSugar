@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LINQ\AggregateSamples.cs" />
     <Compile Include="SendToProviders\MailUtility.cs" />
     <Compile Include="SendToProviders\EmailController.cs" />
     <Compile Include="GenericTests.cs" />
