@@ -4,6 +4,9 @@ using NUnit.Framework;
 
 namespace csharp_tips
 {
+    /*
+     * http://habrahabr.ru/post/274605/
+     * */
     [TestFixture]
     public class VectorSamples
     {
