@@ -15,14 +15,14 @@ namespace TaskInUI
         private void button1_Click(object sender, EventArgs e)
         {
             Service service = new Service();
-            int expectedDuration = 3;
-            ToOutput("[Started]Start worker ({0} seconds)", expectedDuration);
+            int expectedDuration = 5;
+            ToOutput("[Started] Worker ({0} seconds)", expectedDuration);
 
             button1.Enabled = false;
             Task.Factory.StartNew(() => service.Do(expectedDuration))
-                .ContinueWith((data) =>
+                .ContinueWith(data =>
                 {
-                    ToOutput("[Completed]Start worker");
+                    ToOutput("[Completed] Worker");
                     button1.Enabled = true;
                 }, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext());
         }
@@ -30,6 +30,21 @@ namespace TaskInUI
         private void ToOutput(string text, params object[] arguments)
         {
             outputTextBox.AppendText(String.Format(text, arguments) + Environment.NewLine);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Service service = new Service();
+            int expectedDuration = 10;
+            ToOutput("[Started] Worker with progress ({0} seconds)", expectedDuration);
+
+            button1.Enabled = false;
+            Task.Factory.StartNew(() => service.Do(expectedDuration))
+                .ContinueWith(data =>
+                {
+                    ToOutput("[Completed] Worker with progress");
+                    button1.Enabled = true;
+                }, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext());
         }
     }
 }
