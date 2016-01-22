@@ -15,11 +15,11 @@ namespace TaskInUI
         private void button1_Click(object sender, EventArgs e)
         {
             Service service = new Service();
-            int epxectedDuration = 3;
-            ToOutput("[Started]Start worker ({0} seconds)", epxectedDuration);
+            int expectedDuration = 3;
+            ToOutput("[Started]Start worker ({0} seconds)", expectedDuration);
 
             button1.Enabled = false;
-            Task.Factory.StartNew(() => service.Do(epxectedDuration))
+            Task.Factory.StartNew(() => service.Do(expectedDuration))
                 .ContinueWith((data) =>
                 {
                     ToOutput("[Completed]Start worker");
