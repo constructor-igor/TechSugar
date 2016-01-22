@@ -38,12 +38,19 @@ namespace TaskInUI
             int expectedDuration = 10;
             ToOutput("[Started] Worker with progress ({0} seconds)", expectedDuration);
 
-            button1.Enabled = false;
-            Task.Factory.StartNew(() => service.Do(expectedDuration))
+            button2.Enabled = false;
+            Task.Factory.StartNew(() => service.DoWithProgress(expectedDuration,
+                progress =>
+                {
+                    Invoke((Action) delegate
+                    {
+                        ToOutput("[Progress] Worker with progress ({0})", progress);
+                    });
+                }))
                 .ContinueWith(data =>
                 {
                     ToOutput("[Completed] Worker with progress");
-                    button1.Enabled = true;
+                    button2.Enabled = true;
                 }, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext());
         }
     }

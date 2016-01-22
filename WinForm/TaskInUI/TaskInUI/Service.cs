@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Threading;
 
 namespace TaskInUI
@@ -8,6 +10,15 @@ namespace TaskInUI
         public void Do(int seconds)
         {
             Thread.Sleep(seconds*S1);
+        }
+        public void DoWithProgress(int seconds, Action<int> progress)
+        {
+            foreach (int currentSecond in Enumerable.Range(0, seconds))
+            {
+                progress(currentSecond);
+                Thread.Sleep(S1);
+            }
+            progress(seconds);
         }
     }
 }
