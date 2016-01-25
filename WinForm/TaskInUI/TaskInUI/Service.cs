@@ -11,10 +11,14 @@ namespace TaskInUI
         {
             Thread.Sleep(seconds*S1);
         }
-        public void DoWithProgress(int seconds, Action<int> progress)
+        public void DoWithProgress(int seconds, Action<int> progress, CancellationToken token)
         {
             foreach (int currentSecond in Enumerable.Range(0, seconds))
             {
+                if (token.IsCancellationRequested)
+                {
+                    return;
+                }
                 progress(currentSecond);
                 Thread.Sleep(S1);
             }

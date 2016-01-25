@@ -7,6 +7,7 @@ namespace TaskInUI
 {
     public partial class MainForm : Form
     {
+        private CancellationTokenSource m_cts;
         public MainForm()
         {
             InitializeComponent();
@@ -35,8 +36,10 @@ namespace TaskInUI
         private void button2_Click(object sender, EventArgs e)
         {
             Service service = new Service();
-            int expectedDuration = 10;
+            int expectedDuration = 10;            
             ToOutput("[Started] Worker with progress ({0} seconds)", expectedDuration);
+
+            m_cts = new CancellationTokenSource();            
 
             button2.Enabled = false;
             Task.Factory.StartNew(() => service.DoWithProgress(expectedDuration,
@@ -46,12 +49,22 @@ namespace TaskInUI
                     {
                         ToOutput("[Progress] Worker with progress ({0})", progress);
                     });
-                }))
+                }, m_cts.Token), m_cts.Token)
                 .ContinueWith(data =>
                 {
+                    if (m_cts.IsCancellationRequested)
+                        ToOutput("[Cancelled] Worker with progress");
                     ToOutput("[Completed] Worker with progress");
+                    m_cts.Dispose();
+                    m_cts = null;
                     button2.Enabled = true;
                 }, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (m_cts != null)
+                m_cts.Cancel();
         }
     }
 }
