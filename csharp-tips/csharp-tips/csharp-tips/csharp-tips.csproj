@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="LINQ\AggregateSamples.cs" />
     <Compile Include="LINQ\GroupBySamples.cs" />
+    <Compile Include="ProgressSamples.cs" />
     <Compile Include="SendToProviders\MailUtility.cs" />
     <Compile Include="SendToProviders\EmailController.cs" />
     <Compile Include="GenericTests.cs" />
