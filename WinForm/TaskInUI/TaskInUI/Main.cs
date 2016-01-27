@@ -66,5 +66,11 @@ namespace TaskInUI
             if (m_cts != null)
                 m_cts.Cancel();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string textFileContent = Resource.TextFileSample;
+            ToOutput(textFileContent);
+        }
     }
 }
