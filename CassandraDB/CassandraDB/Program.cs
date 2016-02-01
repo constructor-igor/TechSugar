@@ -34,21 +34,6 @@ namespace CassandraDB
 
             // Wait for enter key before exiting
             Console.ReadLine();
-
-//            //Create a cluster instance using 3 cassandra nodes.
-//            var cluster = Cluster.Builder()
-//              .AddContactPoints("127.0.0.1")
-//              .Build();
-//            //Create connections to the nodes using a keyspace
-//            var session = cluster.Connect("sample_keyspace");
-//            //Execute a query on a connection synchronously
-//            var rs = session.Execute("SELECT * FROM sample_table");
-//            //Iterate through the RowSet
-//            foreach (var row in rs)
-//            {
-//                var value = row.GetValue<int>("sample_int_column");
-//                //do something with the value
-//            }
         }
     }
 }
