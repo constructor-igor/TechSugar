@@ -9,9 +9,9 @@ namespace Gpu_Cudafy_Samples
     {
         public const int N = 1 * 1024;
 
-        public static void Execute()
+        public static void Execute(int deviceId)
         {
-            GPGPU gpu = CudafyHost.GetDevice(CudafyModes.Target, 0);
+            GPGPU gpu = CudafyHost.GetDevice(CudafyModes.Target, deviceId);
             eArchitecture arch = gpu.GetArchitecture();
             CudafyModule km = CudafyTranslator.Cudafy(arch);
 
