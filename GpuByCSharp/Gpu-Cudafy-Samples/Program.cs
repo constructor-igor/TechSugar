@@ -1,6 +1,8 @@
 ﻿using System;
 using Cudafy;
 using Cudafy.Host;
+using Cudafy.Maths.BLAS;
+using Cudafy.Maths.BLAS.Types;
 using Cudafy.Translator;
 
 /*
@@ -28,6 +30,43 @@ namespace Gpu_Cudafy_Samples
 
             Console.WriteLine("\r\nArrayBasicIndexing");
             ArrayBasicIndexing.Execute(deviceId);
+
+//            BlasSample(deviceId);
         }
+
+        //
+        // http://stackoverflow.com/questions/18628447/cudafy-throws-an-exception-while-testing
+        //
+        private static void BlasSample(int deviceId)
+        {
+            GPGPU gpu = CudafyHost.GetDevice(CudafyModes.Target, deviceId);
+            CudafyModes.DeviceId = deviceId;
+            eArchitecture arch = gpu.GetArchitecture();
+            CudafyModule km = CudafyTranslator.Cudafy(arch);
+            gpu.LoadModule(km);
+            
+            GPGPUBLAS blas = GPGPUBLAS.Create(gpu);
+
+            const int N = 100;
+            float[] a = new float[N];
+            float[] b = new float[N];
+            float[] c = new float[N];
+            float alpha = -1;
+            float beta = 0;
+
+            float[] device_a = gpu.CopyToDevice(a);
+            float[] device_b = gpu.CopyToDevice(b);
+            float[] device_c = gpu.CopyToDevice(c);
+
+            int m = 10;
+            int n = 10;
+            int k = 10;
+            cublasOperation Op = cublasOperation.N;            
+            blas.GEMM(m, k, n, alpha, device_a, device_b, beta, device_c, Op);
+
+            throw new NotImplementedException();
+        }
+
+        public static cublasOperation Op { get; set; }
     }
 }
