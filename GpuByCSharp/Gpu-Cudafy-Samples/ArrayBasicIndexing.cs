@@ -35,14 +35,14 @@ namespace Gpu_Cudafy_Samples
 
             for (int l = 0; l < km.Functions.Count; l++)
             {
-                string function = "add_" + l.ToString();
+                string function = string.Format("add_{0}", l);
                 Console.WriteLine(function);
 
                 // copy the arrays 'a' and 'b' to the GPU
                 gpu.CopyToDevice(a, dev_a);
                 gpu.CopyToDevice(b, dev_b);
 
-                gpu.Launch(128, 1, function, dev_a, dev_b, dev_c);
+                gpu.Launch(128, 1, function, dev_a, dev_b, dev_c);    
 
                 // copy the array 'c' back from the GPU to the CPU
                 gpu.CopyFromDevice(dev_c, c);
