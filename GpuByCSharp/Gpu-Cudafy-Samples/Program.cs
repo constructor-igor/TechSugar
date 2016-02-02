@@ -6,7 +6,7 @@ using Cudafy.Translator;
  * 
  * original samples copied from https://cudafy.codeplex.com/
  * 
- * */  
+ * */
 
 namespace Gpu_Cudafy_Samples
 {
