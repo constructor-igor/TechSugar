@@ -1,5 +1,6 @@
 ﻿using System;
 using Cudafy;
+using Cudafy.Host;
 using Cudafy.Translator;
 
 /*
@@ -20,10 +21,13 @@ namespace Gpu_Cudafy_Samples
             CudafyModes.DeviceId = deviceId;
             CudafyTranslator.Language = CudafyModes.Target == eGPUType.OpenCL ? eLanguage.OpenCL : eLanguage.Cuda;
 
+//            foreach (GPGPUProperties prop in CudafyHost.GetDeviceProperties(eGPUType.Cuda, true))
+//            {
+//                Console.WriteLine("name: {0}", prop.Name);
+//            }
+
             Console.WriteLine("\r\nArrayBasicIndexing");
             ArrayBasicIndexing.Execute(deviceId);
-
-            Console.ReadLine();
         }
     }
 }
