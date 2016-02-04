@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskInUI", "TaskInUI\TaskInUI.csproj", "{5A60FB59-3262-43D8-BF3E-CAE8B6356EF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NunitFormsTests", "NunitFormsTests\NunitFormsTests.csproj", "{03CADCD4-E5AD-4B29-BDA2-B934F59C6AAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5A60FB59-3262-43D8-BF3E-CAE8B6356EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A60FB59-3262-43D8-BF3E-CAE8B6356EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A60FB59-3262-43D8-BF3E-CAE8B6356EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03CADCD4-E5AD-4B29-BDA2-B934F59C6AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03CADCD4-E5AD-4B29-BDA2-B934F59C6AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03CADCD4-E5AD-4B29-BDA2-B934F59C6AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03CADCD4-E5AD-4B29-BDA2-B934F59C6AAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
