@@ -28,10 +28,10 @@ namespace Gpu_Cudafy_Samples
 //                Console.WriteLine("name: {0}", prop.Name);
 //            }
 
-            Console.WriteLine("\r\nArrayBasicIndexing");
-            ArrayBasicIndexing.Execute(deviceId);
+//            Console.WriteLine("\r\nArrayBasicIndexing");
+//            ArrayBasicIndexing.Execute(deviceId);
 
-//            BlasSample(deviceId);
+            BlasSample(deviceId);
         }
 
         //
