@@ -8,8 +8,9 @@ using Cudafy.Translator;
 /*
  * 
  * original samples copied from https://cudafy.codeplex.com/
- * 
- * */
+ * References:
+ * - http://stackoverflow.com/questions/35197096/cudafy-blas-samples-cannot-be-executed-with
+ * - http://stackoverflow.com/questions/18628447/cudafy-throws-an-exception-while-testing * */
 
 namespace Gpu_Cudafy_Samples
 {
