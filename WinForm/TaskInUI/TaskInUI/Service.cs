@@ -34,6 +34,7 @@ namespace TaskInUI
         {
             int currentProcent = 0;
             int fullProcent = 10;
+            int factor = 10;
             
             while (!completeProgress())
             {
@@ -41,13 +42,13 @@ namespace TaskInUI
                 {
                     return;
                 }
-                progress(currentProcent);
+                progress(currentProcent*factor);
                 currentProcent++;
                 if (currentProcent == fullProcent - 2)
                     currentProcent = 2;
                 Thread.Sleep(S1);
             }
-            progress(fullProcent);
+            progress(fullProcent*factor);
         }
     }
 }
