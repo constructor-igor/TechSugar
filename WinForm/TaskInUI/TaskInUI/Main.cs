@@ -72,5 +72,38 @@ namespace TaskInUI
             string textFileContent = Resource.TextFileSample;
             ToOutput(textFileContent);
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Service service = new Service();
+            int expectedDuration = 15;
+            ToOutput("[Started] Worker without any progress/events ({0} seconds)", expectedDuration);
+            button6.Enabled = false;
+
+            bool isCompleted = false;
+            m_cts = new CancellationTokenSource();
+
+            Task workingTask = Task.Factory.StartNew(() => service.DoWithoutProgress(expectedDuration)).ContinueWith(data =>
+                {
+                    isCompleted = true;
+                });
+
+            Task progressTask = Task.Factory.StartNew(() => service.DoLoopedProgress(
+                procent => { Invoke((Action) delegate { ToOutput("[Progress] Working process ({0}%)", procent); }); },
+                ()=>isCompleted,
+                m_cts.Token
+                )).ContinueWith(data =>
+                {
+                    m_cts.Dispose();
+                    m_cts = null;
+                    button6.Enabled = true;        
+                }, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext());
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (m_cts != null)
+                m_cts.Cancel();
+        }
     }
 }

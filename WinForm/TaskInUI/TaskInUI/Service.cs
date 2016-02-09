@@ -24,5 +24,30 @@ namespace TaskInUI
             }
             progress(seconds);
         }
+
+        public void DoWithoutProgress(int seconds)
+        {
+            Thread.Sleep(S1*seconds);
+        }
+
+        public void DoLoopedProgress(Action<int> progress, Func<bool> completeProgress, CancellationToken token)
+        {
+            int currentProcent = 0;
+            int fullProcent = 10;
+            
+            while (!completeProgress())
+            {
+                if (token.IsCancellationRequested)
+                {
+                    return;
+                }
+                progress(currentProcent);
+                currentProcent++;
+                if (currentProcent == fullProcent - 2)
+                    currentProcent = 2;
+                Thread.Sleep(S1);
+            }
+            progress(fullProcent);
+        }
     }
 }
