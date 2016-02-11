@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Xml.Serialization;
 using NUnit.Framework;
 
@@ -16,7 +17,7 @@ namespace csharp_tips
     public class XmlSerializationTests
     {
         [Test]
-        public void Test()
+        public void SimpleTest()
         {
             string temporaryFile = Path.GetTempFileName();
             try
@@ -47,5 +48,26 @@ namespace csharp_tips
                 File.Delete(temporaryFile);
             }
         }
+
+        [Test]
+        public void AdvancedTest()
+        {
+            DataObject dataObject = new DataObject { Flag = true, Id = 103, Name = "Joy" };
+            StringBuilder xmlContent = new StringBuilder(); 
+            GenericSerializer<DataObject> serializer = new GenericSerializer<DataObject>();
+            serializer.Serialize(new StringWriter(xmlContent), dataObject);
+            
+            Console.WriteLine("xml content:");
+            Console.WriteLine("{0}", xmlContent);
+
+            DataObject dataObjectFromXml = (DataObject) serializer.Deserialize(new StringReader(xmlContent.ToString()));
+
+            Console.WriteLine("data object from xml: {0}, {1}, {2}", dataObjectFromXml.Flag, dataObjectFromXml.Id, dataObjectFromXml.Name);
+        }
+    }
+
+    public class GenericSerializer<T> : XmlSerializer where T: new()
+    {
+        public GenericSerializer() : base(typeof(T)) { }
     }
 }
