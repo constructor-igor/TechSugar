@@ -80,6 +80,7 @@
     <Compile Include="ToMethodsTests.cs" />
     <Compile Include="VectorSamples.cs" />
     <Compile Include="WriteTextOnAnImage.cs" />
+    <Compile Include="XmlSerializationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
