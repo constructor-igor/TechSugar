@@ -1,6 +1,6 @@
 using System.Globalization;
 using NUnit.Framework;
-[assembly: SetCulture("")]
+//[assembly: SetCulture("")]
 
 namespace NUnit_v3_samples
 {    
