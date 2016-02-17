@@ -3,7 +3,7 @@ using System.Dynamic;
 using ImpromptuInterface;
 using NUnit.Framework;
 
-namespace csharp_tips
+namespace csharp_tips.DynamicProxySamples
 {
     /*
      * References:
@@ -22,21 +22,6 @@ namespace csharp_tips
             IDoStuff wrapper = Wrapper<IDoStuff>.Wrap<IDoStuff>(actual);
             wrapper.Foo();
         }
-    }
-
-    public interface IDoStuff
-    {
-        void Foo();
-    }
-
-    public class ActualDoStuff : IDoStuff
-    {
-        #region IDoStuff
-        public void Foo()
-        {
-            Console.WriteLine("Actual Foo");
-        }
-        #endregion
     }
 
     public class Wrapper<T> : DynamicObject
@@ -77,5 +62,5 @@ namespace csharp_tips
                 return false;
             }
         }
-    }
+    }    
 }
