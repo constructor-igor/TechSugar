@@ -13,6 +13,7 @@ namespace csharp_tips.DynamicProxySamples
      * References:
      * - https://msdn.microsoft.com/en-us/library/system.runtime.remoting.proxies.realproxy(v=VS.80).aspx
      * - http://blog.benoitblanchon.fr/realproxy/
+     * - http://stackoverflow.com/questions/15733900/dynamically-creating-a-proxy-class
      * 
      * */
     [TestFixture]
