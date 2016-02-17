@@ -66,8 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DynamicProxySamples\ActualDoStuff.cs" />
     <Compile Include="DynamicProxySamples\DynamicObjectSample.cs" />
+    <Compile Include="DynamicProxySamples\EmitSamples.cs" />
     <Compile Include="DynamicProxySamples\IDoStuff.cs" />
     <Compile Include="DynamicProxySamples\RealProxySample.cs" />
     <Compile Include="EnumTests.cs" />
