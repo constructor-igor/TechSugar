@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -11,19 +12,19 @@ namespace csharp_tips
     [TestFixture]
     public class XmlSerialization2Tests
     {
-        public enum Options { None, One, Two, Three, Default }
+        public enum Options { None, One, Two, ConstructorDefault, AttributeDefault }
         public class DataObject
         {
             public bool Flag { get; set; }
             public int Id { get; set; }
             public string Name { get; set; }
             [XmlAttribute("MyOptions")]
-            //[DefaultValue(Options.Default)]
+            [DefaultValue(Options.AttributeDefault)]
             public Options Options { get; set; }
 
             public DataObject()
             {
-                Options = Options.Default;
+                Options = Options.ConstructorDefault;
             }
         }
 
@@ -43,7 +44,7 @@ namespace csharp_tips
             using (StringReader reader = new StringReader(content.ToString()))
             {
                 DataObject actualObject = serializer.Deserialize(reader);
-                Assert.That(actualObject.Options, Is.EqualTo(Options.Default));
+                Assert.That(actualObject.Options, Is.EqualTo(Options.ConstructorDefault));
             }
         }
     }
