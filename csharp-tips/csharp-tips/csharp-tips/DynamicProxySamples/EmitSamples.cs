@@ -24,6 +24,11 @@ namespace csharp_tips.DynamicProxySamples
         }
     }
 
+    /*
+     * copied from http://www.codeproject.com/Articles/5511/Dynamic-Proxy-Creation-Using-C-Emit
+     * 
+     * */
+
     /// <summary>
     /// Factory class used to cache Types instances
     /// </summary>
