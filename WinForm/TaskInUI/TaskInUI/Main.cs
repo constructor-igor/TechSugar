@@ -80,17 +80,13 @@ namespace TaskInUI
             ToOutput("[Started] Worker without any progress/events ({0} seconds)", expectedDuration);
             button6.Enabled = false;
 
-            bool isCompleted = false;
             m_cts = new CancellationTokenSource();
 
-            Task workingTask = Task.Factory.StartNew(() => service.DoWithoutProgress(expectedDuration)).ContinueWith(data =>
-                {
-                    isCompleted = true;
-                });
+            Task workingTask = Task.Factory.StartNew(() => service.DoWithoutProgress(expectedDuration));
 
             Task progressTask = Task.Factory.StartNew(() => service.DoLoopedProgress(
                 procent => { Invoke((Action) delegate { ToOutput("[Progress] Working process ({0}%)", procent); }); },
-                ()=>isCompleted,
+                workingTask,
                 m_cts.Token
                 )).ContinueWith(data =>
                 {

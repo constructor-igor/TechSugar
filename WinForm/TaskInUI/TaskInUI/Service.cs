@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace TaskInUI
 {
@@ -30,13 +31,13 @@ namespace TaskInUI
             Thread.Sleep(S1*seconds);
         }
 
-        public void DoLoopedProgress(Action<int> progress, Func<bool> completeProgress, CancellationToken token)
+        public void DoLoopedProgress(Action<int> progress, Task workingTask, CancellationToken token)
         {
             int currentProcent = 0;
             int fullProcent = 10;
             int factor = 10;
-            
-            while (!completeProgress())
+
+            while (!workingTask.IsCompleted)
             {
                 if (token.IsCancellationRequested)
                 {
