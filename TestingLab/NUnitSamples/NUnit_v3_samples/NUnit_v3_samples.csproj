@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="1056\ItemTestCaseProvider.cs" />
     <Compile Include="1056\Program.cs" />
+    <Compile Include="AsyncSamplesTests.cs" />
     <Compile Include="ExpectedExceptionTests.cs" />
     <Compile Include="Infra\ExpectedExceptionAttribute.cs" />
     <Compile Include="NUnitIssue1033.cs" />
