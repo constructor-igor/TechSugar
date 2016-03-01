@@ -62,23 +62,4 @@ namespace NumericsSamples
             Console.WriteLine();
         }
     }
-
-    public class MyPreconditioner : IPreconditioner<float>
-    {
-        readonly IPreconditioner<float> m_actual = new ILU0Preconditioner();
-        public MyPreconditioner()
-        {            
-        }
-
-        #region IPreconditioner<float>
-        public void Initialize(Matrix<float> matrix)
-        {
-            m_actual.Initialize(matrix);
-        }
-        public void Approximate(Vector<float> rhs, Vector<float> lhs)
-        {
-            m_actual.Approximate(rhs, lhs);
-        }
-        #endregion
-    }
 }

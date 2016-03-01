@@ -37,7 +37,7 @@ namespace NumericsSamples
 
         public IPreconditioner<float> CreatePreconditioner()
         {
-            return new MyPreconditioner();
+            return new MyPreconditionerFloat();
         }
 
         /// <summary>
