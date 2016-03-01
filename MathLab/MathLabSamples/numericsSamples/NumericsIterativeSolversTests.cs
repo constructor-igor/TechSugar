@@ -22,24 +22,21 @@ namespace NumericsSamples
         {
             Matrix<float> matrix = DenseMatrix.OfArray(new[,] {{5.00f, 2.00f, -4.00f}, {3.00f, -7.00f, 6.00f}, {4.00f, 1.00f, 5.00f}});
             Vector<float> vector = new DenseVector(new[] {-7.0f, 38.0f, 43.0f});
-            CompositeSolver(matrix, vector);
+            IIterativeSolver<float> solver = new CompositeSolver(new List<IIterativeSolverSetup<float>> { new UserBiCgStabFloat() });
+            CompositeSolver(matrix, vector, solver);
         }
         [Test]
         public void CompositeSolver_SparseFloat()
         {
             Matrix<float> matrix = SparseMatrix.OfArray(new[,] {{1f, 0f, 0f}, {0f, 1f, 0f}, {0f, 0f, 1f}});
             Vector<float> vector = new DenseVector(new[] {1f, 2f, 3f});
-            CompositeSolver(matrix, vector);
+            IIterativeSolver<float> solver = new CompositeSolver(new List<IIterativeSolverSetup<float>> { new UserBiCgStabFloat() });
+            CompositeSolver(matrix, vector, solver);
         }
-        void CompositeSolver(Matrix<float> matrixA, Vector<float> vectorB)
+        void CompositeSolver<T>(Matrix<T> matrixA, Vector<T> vectorB, IIterativeSolver<T> solver) where T : struct, IEquatable<T>, IFormattable
         {
             var formatProvider = (CultureInfo)CultureInfo.InvariantCulture.Clone();
-            formatProvider.TextInfo.ListSeparator = " ";
-
-            IIterativeSolver<float> solver = new CompositeSolver(new List<IIterativeSolverSetup<float>> {new UserBiCgStabFloat()});
-
-            //Matrix<float> matrixA = SparseMatrix.OfArray(new[,] {{5.00f, 2.00f, -4.00f}, {3.00f, -7.00f, 6.00f}, {4.00f, 1.00f, 5.00f}});
-            //Vector<float> vectorB = new DenseVector(new[] {-7.0f, 38.0f, 43.0f});
+            formatProvider.TextInfo.ListSeparator = " ";            
 
             Console.WriteLine(@"Matrix 'A' with coefficients");
             Console.WriteLine(matrixA.ToString("#0.00\t", formatProvider));
@@ -48,10 +45,10 @@ namespace NumericsSamples
             Console.WriteLine(vectorB.ToString("#0.00\t", formatProvider));
             Console.WriteLine();
 
-            var iterationCountStopCriterion = new IterationCountStopCriterion<float>(1000);
-            var residualStopCriterion = new ResidualStopCriterion<float>(1e-10);
-            var monitor = new Iterator<float>(iterationCountStopCriterion, residualStopCriterion);
-            Vector<float> resultX = matrixA.SolveIterative(vectorB, solver, monitor);
+            var iterationCountStopCriterion = new IterationCountStopCriterion<T>(1000);
+            var residualStopCriterion = new ResidualStopCriterion<T>(1e-10);
+            var monitor = new Iterator<T>(iterationCountStopCriterion, residualStopCriterion);
+            Vector<T> resultX = matrixA.SolveIterative(vectorB, solver, monitor);
 
             Console.WriteLine(@"2. Solver status of the iterations");
             Console.WriteLine(monitor.Status);
