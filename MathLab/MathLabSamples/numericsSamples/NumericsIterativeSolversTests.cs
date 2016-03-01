@@ -17,13 +17,26 @@ namespace NumericsSamples
     [TestFixture]
     public class NumericsIterativeSolversTests
     {
-        [Test, TestCaseSource("MatrixVectorData")]
-        public void CompositeSolver_SparseFloat(Matrix<float> matrixA, Vector<float> vectorB)
+        [Test]
+        public void CompositeSolver_DenseFloat()
+        {
+            Matrix<float> matrix = DenseMatrix.OfArray(new[,] {{5.00f, 2.00f, -4.00f}, {3.00f, -7.00f, 6.00f}, {4.00f, 1.00f, 5.00f}});
+            Vector<float> vector = new DenseVector(new[] {-7.0f, 38.0f, 43.0f});
+            CompositeSolver(matrix, vector);
+        }
+        [Test]
+        public void CompositeSolver_SparseFloat()
+        {
+            Matrix<float> matrix = SparseMatrix.OfArray(new[,] {{1f, 0f, 0f}, {0f, 1f, 0f}, {0f, 0f, 1f}});
+            Vector<float> vector = new DenseVector(new[] {1f, 2f, 3f});
+            CompositeSolver(matrix, vector);
+        }
+        void CompositeSolver(Matrix<float> matrixA, Vector<float> vectorB)
         {
             var formatProvider = (CultureInfo)CultureInfo.InvariantCulture.Clone();
             formatProvider.TextInfo.ListSeparator = " ";
 
-            var solver = new CompositeSolver(new List<IIterativeSolverSetup<float>> { new UserBiCgStab() });
+            IIterativeSolver<float> solver = new CompositeSolver(new List<IIterativeSolverSetup<float>> {new UserBiCgStab()});
 
             //Matrix<float> matrixA = SparseMatrix.OfArray(new[,] {{5.00f, 2.00f, -4.00f}, {3.00f, -7.00f, 6.00f}, {4.00f, 1.00f, 5.00f}});
             //Vector<float> vectorB = new DenseVector(new[] {-7.0f, 38.0f, 43.0f});
@@ -38,7 +51,7 @@ namespace NumericsSamples
             var iterationCountStopCriterion = new IterationCountStopCriterion<float>(1000);
             var residualStopCriterion = new ResidualStopCriterion<float>(1e-10);
             var monitor = new Iterator<float>(iterationCountStopCriterion, residualStopCriterion);
-            var resultX = matrixA.SolveIterative(vectorB, solver, monitor);
+            Vector<float> resultX = matrixA.SolveIterative(vectorB, solver, monitor);
 
             Console.WriteLine(@"2. Solver status of the iterations");
             Console.WriteLine(monitor.Status);
@@ -48,20 +61,6 @@ namespace NumericsSamples
             Console.WriteLine(resultX.ToString("#0.00\t", formatProvider));
             Console.WriteLine();
         }
-
-        static readonly object[] MatrixVectorData =
-        {
-            new object[]
-            {
-                SparseMatrix.OfArray(new[,] {{5.00f, 2.00f, -4.00f}, {3.00f, -7.00f, 6.00f}, {4.00f, 1.00f, 5.00f}}), 
-                new DenseVector(new[] {-7.0f, 38.0f, 43.0f})
-            },
-            new object[]
-            {
-                SparseMatrix.OfArray(new[,] {{1f, 0f, 0f}, {0f, 1f, 0f}, {0f, 0f, 1f}}), 
-                new DenseVector(new[] {1f, 2f, 3f})
-            }
-        };
     }
 
     /// <summary>
@@ -97,7 +96,7 @@ namespace NumericsSamples
 
         public IPreconditioner<float> CreatePreconditioner()
         {
-            return null;
+            return new MyPreconditioner();
         }
 
         /// <summary>
@@ -117,5 +116,24 @@ namespace NumericsSamples
         {
             get { return 0.99; }
         }
+    }
+
+    public class MyPreconditioner : IPreconditioner<float>
+    {
+        readonly IPreconditioner<float> m_actual = new ILU0Preconditioner();
+        public MyPreconditioner()
+        {            
+        }
+
+        #region IPreconditioner<float>
+        public void Initialize(Matrix<float> matrix)
+        {
+            m_actual.Initialize(matrix);
+        }
+        public void Approximate(Vector<float> rhs, Vector<float> lhs)
+        {
+            m_actual.Approximate(rhs, lhs);
+        }
+        #endregion
     }
 }
