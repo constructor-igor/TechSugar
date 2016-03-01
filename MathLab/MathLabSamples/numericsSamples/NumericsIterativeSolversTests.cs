@@ -36,7 +36,7 @@ namespace NumericsSamples
             var formatProvider = (CultureInfo)CultureInfo.InvariantCulture.Clone();
             formatProvider.TextInfo.ListSeparator = " ";
 
-            IIterativeSolver<float> solver = new CompositeSolver(new List<IIterativeSolverSetup<float>> {new UserBiCgStab()});
+            IIterativeSolver<float> solver = new CompositeSolver(new List<IIterativeSolverSetup<float>> {new UserBiCgStabFloat()});
 
             //Matrix<float> matrixA = SparseMatrix.OfArray(new[,] {{5.00f, 2.00f, -4.00f}, {3.00f, -7.00f, 6.00f}, {4.00f, 1.00f, 5.00f}});
             //Vector<float> vectorB = new DenseVector(new[] {-7.0f, 38.0f, 43.0f});
@@ -60,61 +60,6 @@ namespace NumericsSamples
             Console.WriteLine(@"3. Solution result vector of the matrix equation");
             Console.WriteLine(resultX.ToString("#0.00\t", formatProvider));
             Console.WriteLine();
-        }
-    }
-
-    /// <summary>
-    /// Sample of user-defined solver setup
-    /// </summary>
-    public class UserBiCgStab : IIterativeSolverSetup<float>
-    {
-        /// <summary>
-        /// Gets the type of the solver that will be created by this setup object.
-        /// </summary>
-        public Type SolverType
-        {
-            get { return null; }
-        }
-
-        /// <summary>
-        /// Gets type of preconditioner, if any, that will be created by this setup object.
-        /// </summary>
-        public Type PreconditionerType
-        {
-            get { return null; }
-        }
-
-        /// <summary>
-        /// Creates a fully functional iterative solver with the default settings
-        /// given by this setup.
-        /// </summary>
-        /// <returns>A new <see cref="IIterativeSolver{T}"/>.</returns>
-        public IIterativeSolver<float> CreateSolver()
-        {
-            return new BiCgStab();
-        }
-
-        public IPreconditioner<float> CreatePreconditioner()
-        {
-            return new MyPreconditioner();
-        }
-
-        /// <summary>
-        /// Gets the relative speed of the solver.
-        /// </summary>
-        /// <value>Returns a value between 0 and 1, inclusive.</value>
-        public double SolutionSpeed
-        {
-            get { return 0.99; }
-        }
-
-        /// <summary>
-        /// Gets the relative reliability of the solver.
-        /// </summary>
-        /// <value>Returns a value between 0 and 1 inclusive.</value>
-        public double Reliability
-        {
-            get { return 0.99; }
         }
     }
 
