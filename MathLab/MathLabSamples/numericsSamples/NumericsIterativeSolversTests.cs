@@ -52,7 +52,7 @@ namespace NumericsSamples
         void CompositeSolver<T>(Matrix<T> matrixA, Vector<T> vectorB, IIterativeSolver<T> solver) where T : struct, IEquatable<T>, IFormattable
         {
             var formatProvider = (CultureInfo)CultureInfo.InvariantCulture.Clone();
-            formatProvider.TextInfo.ListSeparator = " ";            
+            formatProvider.TextInfo.ListSeparator = " ";
 
             Console.WriteLine(@"Matrix 'A' with coefficients");
             Console.WriteLine(matrixA.ToString("#0.00\t", formatProvider));

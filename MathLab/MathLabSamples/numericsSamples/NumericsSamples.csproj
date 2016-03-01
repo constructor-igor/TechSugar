@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="MyPreconditionerFloat.cs" />
     <Compile Include="NumericsIterativeSolversTests.cs" />
+    <Compile Include="NumericsMklIterativeSolversTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBiCgStabFloat.cs" />
   </ItemGroup>
