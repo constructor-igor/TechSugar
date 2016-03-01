@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Single;
 using MathNet.Numerics.LinearAlgebra.Single.Solvers;
 using MathNet.Numerics.LinearAlgebra.Solvers;
@@ -16,17 +17,16 @@ namespace NumericsSamples
     [TestFixture]
     public class NumericsIterativeSolversTests
     {
-        [Test]
-        public void CompositeSolver()
+        [Test, TestCaseSource("MatrixVectorData")]
+        public void CompositeSolver_SparseFloat(Matrix<float> matrixA, Vector<float> vectorB)
         {
             var formatProvider = (CultureInfo)CultureInfo.InvariantCulture.Clone();
             formatProvider.TextInfo.ListSeparator = " ";
 
-            //var solver = new CompositeSolver(SolverSetup<float>.LoadFromAssembly(Assembly.GetExecutingAssembly()));
             var solver = new CompositeSolver(new List<IIterativeSolverSetup<float>> { new UserBiCgStab() });
 
-            var matrixA = DenseMatrix.OfArray(new[,] { { 5.00f, 2.00f, -4.00f }, { 3.00f, -7.00f, 6.00f }, { 4.00f, 1.00f, 5.00f } });
-            var vectorB = new DenseVector(new[] { -7.0f, 38.0f, 43.0f });
+            //Matrix<float> matrixA = SparseMatrix.OfArray(new[,] {{5.00f, 2.00f, -4.00f}, {3.00f, -7.00f, 6.00f}, {4.00f, 1.00f, 5.00f}});
+            //Vector<float> vectorB = new DenseVector(new[] {-7.0f, 38.0f, 43.0f});
 
             Console.WriteLine(@"Matrix 'A' with coefficients");
             Console.WriteLine(matrixA.ToString("#0.00\t", formatProvider));
@@ -34,7 +34,6 @@ namespace NumericsSamples
             Console.WriteLine(@"Vector 'b' with the constant terms");
             Console.WriteLine(vectorB.ToString("#0.00\t", formatProvider));
             Console.WriteLine();
-
 
             var iterationCountStopCriterion = new IterationCountStopCriterion<float>(1000);
             var residualStopCriterion = new ResidualStopCriterion<float>(1e-10);
@@ -49,6 +48,20 @@ namespace NumericsSamples
             Console.WriteLine(resultX.ToString("#0.00\t", formatProvider));
             Console.WriteLine();
         }
+
+        static readonly object[] MatrixVectorData =
+        {
+            new object[]
+            {
+                SparseMatrix.OfArray(new[,] {{5.00f, 2.00f, -4.00f}, {3.00f, -7.00f, 6.00f}, {4.00f, 1.00f, 5.00f}}), 
+                new DenseVector(new[] {-7.0f, 38.0f, 43.0f})
+            },
+            new object[]
+            {
+                SparseMatrix.OfArray(new[,] {{1f, 0f, 0f}, {0f, 1f, 0f}, {0f, 0f, 1f}}), 
+                new DenseVector(new[] {1f, 2f, 3f})
+            }
+        };
     }
 
     /// <summary>
