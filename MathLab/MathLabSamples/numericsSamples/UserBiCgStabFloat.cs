@@ -1,4 +1,5 @@
 using System;
+using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra.Single.Solvers;
 using MathNet.Numerics.LinearAlgebra.Solvers;
 
@@ -57,5 +58,24 @@ namespace NumericsSamples
         {
             get { return 0.99; }
         }
+    }
+
+    public class UserBiCgStabComplex32 : IIterativeSolverSetup<Complex32>
+    {
+        #region IIterativeSolverSetup<Complex32>
+        public IIterativeSolver<Complex32> CreateSolver()
+        {
+            return new MathNet.Numerics.LinearAlgebra.Complex32.Solvers.BiCgStab();
+        }
+        public IPreconditioner<Complex32> CreatePreconditioner()
+        {
+            return null;
+        }
+
+        public Type SolverType { get { return null; } }
+        public Type PreconditionerType { get { return null; } }
+        public double SolutionSpeed { get { return 0.99; } }
+        public double Reliability { get { return 0.99; } }
+        #endregion
     }
 }

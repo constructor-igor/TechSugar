@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using MathNet.Numerics;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Single;
 using MathNet.Numerics.LinearAlgebra.Single.Solvers;
@@ -33,6 +34,21 @@ namespace NumericsSamples
             IIterativeSolver<float> solver = new CompositeSolver(new List<IIterativeSolverSetup<float>> { new UserBiCgStabFloat() });
             CompositeSolver(matrix, vector, solver);
         }
+
+        [Test]
+        public void CompositeSolver_SparseComplex()
+        {
+            Matrix<Complex32> matrix = MathNet.Numerics.LinearAlgebra.Complex32.SparseMatrix.OfArray(new[,]
+            {
+                { Complex32.One, Complex32.Zero, Complex32.Zero }, 
+                { Complex32.Zero, Complex32.One, Complex32.Zero }, 
+                { Complex32.Zero, Complex32.Zero, Complex32.One} 
+            });
+            Vector<Complex32> vector = new MathNet.Numerics.LinearAlgebra.Complex32.DenseVector(new[] { new Complex32(1, 0), new Complex32(2, 0), new Complex32(3, 0) });
+            IIterativeSolver<Complex32> solver = new MathNet.Numerics.LinearAlgebra.Complex32.Solvers.CompositeSolver(new List<IIterativeSolverSetup<Complex32>> { new UserBiCgStabComplex32() });
+            CompositeSolver(matrix, vector, solver);
+        }
+
         void CompositeSolver<T>(Matrix<T> matrixA, Vector<T> vectorB, IIterativeSolver<T> solver) where T : struct, IEquatable<T>, IFormattable
         {
             var formatProvider = (CultureInfo)CultureInfo.InvariantCulture.Clone();
