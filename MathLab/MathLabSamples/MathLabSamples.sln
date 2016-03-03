@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericsSamples", "numerics
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgLibSamples", "AlgLibSamples\AlgLibSamples.csproj", "{A33D552A-8B8D-4F68-BD51-B114F8F9488E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgLibMklSamples", "AlgLibMklSamples\AlgLibMklSamples.csproj", "{55D52F12-A2FE-4834-9E12-4BDD320B9ECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtremeOptimizationSamples", "ExtremeOptimizationSamples\ExtremeOptimizationSamples.csproj", "{5B770883-A9CD-4E90-AE0F-59319A718249}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A33D552A-8B8D-4F68-BD51-B114F8F9488E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A33D552A-8B8D-4F68-BD51-B114F8F9488E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A33D552A-8B8D-4F68-BD51-B114F8F9488E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55D52F12-A2FE-4834-9E12-4BDD320B9ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D52F12-A2FE-4834-9E12-4BDD320B9ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D52F12-A2FE-4834-9E12-4BDD320B9ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D52F12-A2FE-4834-9E12-4BDD320B9ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B770883-A9CD-4E90-AE0F-59319A718249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B770883-A9CD-4E90-AE0F-59319A718249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B770883-A9CD-4E90-AE0F-59319A718249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B770883-A9CD-4E90-AE0F-59319A718249}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
