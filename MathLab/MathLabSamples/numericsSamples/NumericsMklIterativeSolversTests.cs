@@ -4,6 +4,7 @@ using System.Globalization;
 using MathNet.Numerics;
 using MathNet.Numerics.Distributions;
 using MathNet.Numerics.LinearAlgebra.Complex32;
+using MathNet.Numerics.Providers.LinearAlgebra.Mkl;
 using NUnit.Framework;
 
 namespace NumericsSamples
@@ -52,6 +53,28 @@ namespace NumericsSamples
             var b = new[] { Complex32.One, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f };
             var x = new Complex32[matrix.ColumnCount * 2];
             Control.LinearAlgebraProvider.QRSolveFactored(q, a, matrix.RowCount, matrix.ColumnCount, tau, b, 2, x);            
+        }
+
+        [Test]
+        public void MklProvider()
+        {
+            MklLinearAlgebraProvider provider = new MklLinearAlgebraProvider();
+
+            var formatProvider = (CultureInfo)CultureInfo.InvariantCulture.Clone();
+            formatProvider.TextInfo.ListSeparator = " ";
+
+            var matrix = _matrices["identity"];
+            var a = new Complex32[matrix.RowCount * matrix.RowCount];
+            Array.Copy(matrix.Values, a, a.Length);
+
+            var tau = new Complex32[matrix.ColumnCount];
+            var q = new Complex32[matrix.ColumnCount * matrix.ColumnCount];
+            provider.QRFactor(a, matrix.RowCount, matrix.ColumnCount, q, tau);
+
+            var b = new[] { Complex32.One, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f };
+            var x = new Complex32[matrix.ColumnCount * 2];
+            provider.QRSolveFactored(q, a, matrix.RowCount, matrix.ColumnCount, tau, b, 2, x);            
+
         }
     }
 }
