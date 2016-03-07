@@ -1,5 +1,6 @@
 TechSugar
 =========
+>You can get much farther with c# and brain than you can with c# alone.
 
 Tech. Sugar seminars
 
