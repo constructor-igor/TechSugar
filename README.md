@@ -7,8 +7,10 @@ Tech. Sugar seminars
 **2015**
 * Resharper plugin development intro (including NUnit.That.Resharper.Plugin).
 * Introduction to Actor programming (including AKKA.NET).
+* AutoFixture test framework review.
 
 **2014**
+* Resharper (R#) Annotations overview.
 * Extensibility in the .NET Framework.
 * Eevent broker pattern. Part II "Reactive Extensions Event Broker".
 * Event broker pattern". Part I "Simple Event broker".
