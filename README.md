@@ -4,11 +4,11 @@ TechSugar
 Tech. Sugar seminars
 
 **2015**
-* Resharper plugin development intro (including NUnit.That.Resharper.Plugin)
-* "Introduction to Actor programming" (including AKKA.NET)
+* Resharper plugin development intro (including NUnit.That.Resharper.Plugin).
+* Introduction to Actor programming (including AKKA.NET).
 
 **2014**
-* "Extensibility in the .NET Framework".
+* Extensibility in the .NET Framework.
 * Eevent broker pattern. Part II "Reactive Extensions Event Broker".
 * Event broker pattern". Part I "Simple Event broker".
 * Sample of Acceptance Tests Implementation (including fit and SpecFlow).
@@ -21,4 +21,5 @@ Tech. Sugar seminars
 * Interprocess Communication Memory Mapped Files.
 
 **2011**
+* TPL Dataflow (TDF)
 * How to track an object which is Out of Scope while Debugging ?
