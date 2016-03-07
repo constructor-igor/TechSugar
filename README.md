@@ -4,6 +4,10 @@ TechSugar
 
 Tech. Sugar seminars
 
+**Waiting List**
+* Actor programming. Orlean project.
+* Micro beanchmarking.
+
 **2015**
 * Resharper plugin development intro (including NUnit.That.Resharper.Plugin).
 * Introduction to Actor programming (including AKKA.NET).
@@ -18,6 +22,7 @@ Tech. Sugar seminars
 
 **2013**
 * List visualization in QuickWatch (Visual Studio Debugger) and new word from BugAid (OzCode).
+* NCrunch is an automated concurrent testing tool for Visual Studio.
 
 **2012**
 * Introduction to mocks (including moq).
