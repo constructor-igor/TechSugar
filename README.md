@@ -12,6 +12,7 @@ Tech. Sugar seminars
 * Resharper plugin development intro (including NUnit.That.Resharper.Plugin).
 * Introduction to Actor programming (including AKKA.NET).
 * AutoFixture test framework review.
+* Google Driven Development (GDD) and power of Powershell.
 
 **2014**
 * Resharper (R#) Annotations overview.
@@ -19,20 +20,26 @@ Tech. Sugar seminars
 * Eevent broker pattern. Part II "Reactive Extensions Event Broker".
 * Event broker pattern". Part I "Simple Event broker".
 * Sample of Acceptance Tests Implementation (including fit and SpecFlow).
+* LINQ Samples.
 
 **2013**
 * List visualization in QuickWatch (Visual Studio Debugger) and new word from BugAid (OzCode).
 * NCrunch is an automated concurrent testing tool for Visual Studio.
+* Custom Actions in Final Builder.
+* Integration with TFS API.
 
 **2012**
 * Introduction to mocks (including moq).
+* Pattern IDisposable.
 * WPF application in Windows Powershell.
 * Implementing friends in C#.
 * Explicit vs Implicit interface implementation.
 * Interprocess Communication Memory Mapped Files.
+* Roslyn Code Action.
 
 **2011**
 * C# Multi Threading Programming (.NET4).
+* Isolated storage.
 * Python.
 * .NET 3.5 goodies and news.
 * SOLID (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion).
