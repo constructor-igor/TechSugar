@@ -25,4 +25,6 @@ Tech. Sugar seminars
 * Aspect (AOP) in samples: NConsoler is an open source library for building .Net console applications.
 * MEF.
 * Transaction in .NET.
+* Inversion of Control (IoC).
+* Unit testing (NUnit). Best practicies.
 * How to track an object which is Out of Scope while Debugging ?
