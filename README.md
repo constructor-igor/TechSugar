@@ -21,6 +21,24 @@ Tech. Sugar seminars
 * Interprocess Communication Memory Mapped Files.
 
 **2011**
+* C# Multi Threading Programming (.NET4).
+* Python.
+* .NET 3.5 goodies and news.
+* SOLID (Single responsibility, Open-closed, Liskov substitution, Interface segregation and Dependency inversion).
+* Unmanaged Code Marshaling. Cold War.
+* Windows HPC API.
+* WWF (Windows Workflow Foundation).
+* Unit Testing. MSTest and NUnit. Review.
+* Moles – Isolation Framework (like known Nova’s MockGenerator).
+* Fluent Interface.
+* PDC2010. Microsoft PDC 2010 - Professional Developer's Conference (include C# 5.0. Prototype, Async CTP Sample).
+* Protocol Buffers (Google's data interchange format).
+* F# Basics.
+* Reactive Extensions (Rx).
+* No SQL DB. Mongo DB.
+* Code Analyzers (free software and R# only).
+* AOP (Aspect Oriented Programming). PostSharp. “Code Contracts” (.NET4).
+* AOP. Mono Cecil.
 * TPL Dataflow (TDF).
 * Aspect (AOP) in samples: NConsoler is an open source library for building .Net console applications.
 * MEF.
@@ -28,3 +46,4 @@ Tech. Sugar seminars
 * Inversion of Control (IoC).
 * Unit testing (NUnit). Best practicies.
 * How to track an object which is Out of Scope while Debugging ?
+* ILMerge Utility. Introduction & sample.
