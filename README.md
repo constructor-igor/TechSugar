@@ -21,6 +21,8 @@ Tech. Sugar seminars
 * Interprocess Communication Memory Mapped Files.
 
 **2011**
-* Aspect in sample: NConsoler is an open source library for building .Net console applications.
 * TPL Dataflow (TDF).
+* Aspect (AOP) in samples: NConsoler is an open source library for building .Net console applications.
+* MEF.
+* Transaction in .NET.
 * How to track an object which is Out of Scope while Debugging ?
