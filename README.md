@@ -24,7 +24,7 @@ Tech. Sugar seminars
 
 **2013**
 * List visualization in QuickWatch (Visual Studio Debugger) and new word from BugAid (OzCode).
-* NCrunch is an automated concurrent testing tool for Visual Studio.
+* [NCrunch is an automated concurrent testing tool for Visual Studio.](http://www.ncrunch.net/)
 * Custom Actions in Final Builder.
 * Integration with TFS API.
 
