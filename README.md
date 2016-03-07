@@ -33,7 +33,7 @@ Tech. Sugar seminars
 * Pattern IDisposable.
 * WPF application in Windows Powershell.
 * Implementing friends in C#.
-* Explicit vs Implicit interface implementation.
+* [Explicit vs Implicit interface implementation](http://www.codeproject.com/Articles/392516/Why-I-use-explicit-interface-implementation-as-a-d).
 * Interprocess Communication Memory Mapped Files.
 * Roslyn Code Action.
 
