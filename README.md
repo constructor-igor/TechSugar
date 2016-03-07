@@ -20,5 +20,5 @@ Tech. Sugar seminars
 * Explicit vs Implicit interface implementation.
 * Interprocess Communication Memory Mapped Files.
 
-* **2011**
+**2011**
 * How to track an object which is Out of Scope while Debugging ?
