@@ -14,6 +14,9 @@ Tech. Sugar seminars
 * Event broker pattern". Part I "Simple Event broker".
 * Sample of Acceptance Tests Implementation (including fit and SpecFlow).
 
+**2013**
+* List visualization in QuickWatch (Visual Studio Debugger) and new word from BugAid (OzCode).
+
 **2012**
 * Introduction to mocks (including moq).
 * WPF application in Windows Powershell.
