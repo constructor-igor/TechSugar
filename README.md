@@ -23,7 +23,7 @@ Tech. Sugar seminars
 * LINQ Samples.
 
 **2013**
-* List visualization in QuickWatch (Visual Studio Debugger) and new word from BugAid (OzCode).
+* List visualization in QuickWatch (Visual Studio Debugger) and new word from BugAid ([OzCode](http://www.oz-code.com/)).
 * [NCrunch is an automated concurrent testing tool for Visual Studio.](http://www.ncrunch.net/)
 * Custom Actions in Final Builder.
 * Integration with TFS API.
