@@ -63,5 +63,5 @@ Tech. Sugar seminars
 * Transaction in .NET.
 * Inversion of Control (IoC).
 * Unit testing (NUnit). Best practicies.
-* [How to track an object which is Out of Scope while Debugging] (http://abhijitjana.net/2010/10/20/how-to-track-an-object-which-is-out-of-scope-while-debugging/)?
+* [How to track an object which is Out of Scope while Debugging ?] (http://abhijitjana.net/2010/10/20/how-to-track-an-object-which-is-out-of-scope-while-debugging/)
 * ILMerge Utility. Introduction & sample.
