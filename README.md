@@ -21,5 +21,6 @@ Tech. Sugar seminars
 * Interprocess Communication Memory Mapped Files.
 
 **2011**
-* TPL Dataflow (TDF)
+* Aspect in sample: NConsoler is an open source library for building .Net console applications.
+* TPL Dataflow (TDF).
 * How to track an object which is Out of Scope while Debugging ?
