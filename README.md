@@ -7,6 +7,7 @@ Tech. Sugar seminars
 **Waiting List**
 * Actor programming. Orlean project.
 * Micro beanchmarking.
+* Visual Studio Extensions.
 
 **2015**
 * Resharper plugin development intro (including NUnit.That.Resharper.Plugin).
