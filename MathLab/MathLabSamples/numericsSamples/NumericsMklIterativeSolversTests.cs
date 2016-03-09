@@ -73,8 +73,7 @@ namespace NumericsSamples
 
             var b = new[] { Complex32.One, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f };
             var x = new Complex32[matrix.ColumnCount * 2];
-            provider.QRSolveFactored(q, a, matrix.RowCount, matrix.ColumnCount, tau, b, 2, x);            
-
+            provider.QRSolveFactored(q, a, matrix.RowCount, matrix.ColumnCount, tau, b, 2, x);
         }
     }
 }
