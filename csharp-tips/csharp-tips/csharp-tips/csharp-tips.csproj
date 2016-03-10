@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,16 +29,25 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BenchmarkDotNet, Version=0.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BenchmarkDotNet.0.9.2\lib\net45\BenchmarkDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="BenchmarkIt, Version=1.2.5445.21190, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Benchmark.It.1.2.0\lib\BenchmarkIt.dll</HintPath>
       <Private>True</Private>
+      <Aliases>global</Aliases>
     </Reference>
     <Reference Include="ImpromptuInterface, Version=6.2.2.0, Culture=neutral, PublicKeyToken=0b1781c923b2975b, processorArchitecture=MSIL">
       <HintPath>..\packages\ImpromptuInterface.6.2.2\lib\net40\ImpromptuInterface.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -54,6 +64,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.1.1-beta-23516\lib\portable-net45+win8\System.Numerics.Vectors.dll</HintPath>
       <Private>True</Private>
@@ -71,6 +82,7 @@
     <Compile Include="DynamicProxySamples\IDoStuff.cs" />
     <Compile Include="DynamicProxySamples\RealProxySample.cs" />
     <Compile Include="EnumTests.cs" />
+    <Compile Include="FloatDoubleTransformTests.cs" />
     <Compile Include="LINQ\AggregateSamples.cs" />
     <Compile Include="LINQ\GroupBySamples.cs" />
     <Compile Include="ProgressSamples.cs" />
