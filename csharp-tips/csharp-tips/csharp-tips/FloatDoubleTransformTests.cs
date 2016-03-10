@@ -16,7 +16,7 @@ namespace csharp_tips
         {
             Fixture fixture = new Fixture();
             float[] floatData = fixture.CreateMany<float>(100).ToArray();
-            double[] doubleDataByStandardWay = StandardWay.CreateDoubleArray(floatData);
+            double[] doubleDataByStandardWay = ExactWay.CreateDoubleArray(floatData);
             double[] doubleDataByFastWay = FastWay.CreateDoubleArray(floatData);
 
             Assert.That(doubleDataByFastWay, Is.EquivalentTo(doubleDataByStandardWay));
@@ -25,7 +25,7 @@ namespace csharp_tips
         public void SpecialCasesTest()
         {
             float[] floatData = {0.0f, +Single.NaN, -Single.NaN, Single.MaxValue, Single.MinValue, Single.NegativeInfinity, Single.PositiveInfinity, };
-            double[] doubleDataByStandardWay = StandardWay.CreateDoubleArray(floatData);
+            double[] doubleDataByStandardWay = ExactWay.CreateDoubleArray(floatData);
             double[] doubleDataByFastWay = FastWay.CreateDoubleArray(floatData);
 
             Assert.That(doubleDataByFastWay, Is.EquivalentTo(doubleDataByStandardWay));
@@ -34,7 +34,7 @@ namespace csharp_tips
         public void SmallNumbers()
         {
             float[] floatData = { 0.0f, 1, 1e-1f, 1e-2f, 1e-3f, 1e-4f, 1e-5f };
-            double[] doubleDataByStandardWay = StandardWay.CreateDoubleArray(floatData);
+            double[] doubleDataByStandardWay = ExactWay.CreateDoubleArray(floatData);
             double[] doubleDataByFastWay = FastWay.CreateDoubleArray(floatData);
 
             Assert.That(doubleDataByFastWay, Is.EquivalentTo(doubleDataByStandardWay));
@@ -52,9 +52,9 @@ namespace csharp_tips
             BenchmarkData benchmarkData = new BenchmarkData();
             benchmarkData.SetupData();
 
-            BenchmarkIt.Benchmark.This("StandardWay", () =>
+            BenchmarkIt.Benchmark.This("ExactWay", () =>
             {
-                double[] standardResult = benchmarkData.StandardWay();
+                double[] standardResult = benchmarkData.ExactWay();
             })
             .Against.This("FastWay", () =>
             {
@@ -77,9 +77,9 @@ namespace csharp_tips
         }
 
         [Benchmark]
-        public double[] StandardWay()
+        public double[] ExactWay()
         {
-            return csharp_tips.StandardWay.CreateDoubleArray(m_floatData);
+            return csharp_tips.ExactWay.CreateDoubleArray(m_floatData);
         }
         [Benchmark]
         public double[] FastWay()
@@ -88,7 +88,7 @@ namespace csharp_tips
         }
     }
 
-    class StandardWay
+    class ExactWay
     {
         public static double[] CreateDoubleArray(float[] source)
         {
@@ -131,17 +131,12 @@ namespace csharp_tips
                 fixed (double* dp1 = newDbl)
                 {
                     dp0 = dp1;
-//                    for (int i = 0; i < numCh; i++)
-//                    {
-                        //Parallel.For(0, count, (j) =>
-                        for (int j = 0; j < count; j++)
-                        {
-                            dp0[j] = (double)fp0[j];
-                        }
-                        //});
-                        return newDbl;
+                    for (int j = 0; j < count; j++)
+                    {
+                        dp0[j] = fp0[j];
                     }
-//                }
+                    return newDbl;
+                }
             }
         }
     }
