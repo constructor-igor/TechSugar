@@ -45,6 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigSmallWindowsSample\BigModalWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BigSmallWindowsSample\BigModalWindow.Designer.cs">
+      <DependentUpon>BigModalWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BigSmallWindowsSample\BigSmallWindowsService.cs" />
+    <Compile Include="BigSmallWindowsSample\SmallModalWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BigSmallWindowsSample\SmallModalWindow.Designer.cs">
+      <DependentUpon>SmallModalWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +72,9 @@
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
     <Compile Include="Service.cs" />
+    <EmbeddedResource Include="BigSmallWindowsSample\BigModalWindow.resx">
+      <DependentUpon>BigModalWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

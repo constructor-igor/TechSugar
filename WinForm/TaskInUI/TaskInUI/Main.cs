@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TaskInUI.BigSmallWindowsSample;
 
 namespace TaskInUI
 {
@@ -100,6 +101,12 @@ namespace TaskInUI
         {
             if (m_cts != null)
                 m_cts.Cancel();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            BigSmallWindowsService service = new BigSmallWindowsService();
+            service.Run();
         }
     }
 }
