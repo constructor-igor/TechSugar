@@ -82,6 +82,7 @@
     <Compile Include="DynamicProxySamples\IDoStuff.cs" />
     <Compile Include="DynamicProxySamples\RealProxySample.cs" />
     <Compile Include="EnumTests.cs" />
+    <Compile Include="FillArrayTests.cs" />
     <Compile Include="FloatDoubleTransformTests.cs" />
     <Compile Include="LINQ\AggregateSamples.cs" />
     <Compile Include="LINQ\GroupBySamples.cs" />
