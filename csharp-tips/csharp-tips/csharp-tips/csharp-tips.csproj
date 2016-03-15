@@ -101,6 +101,7 @@
     <Compile Include="StringSamples.cs" />
     <Compile Include="TasksTests.cs" />
     <Compile Include="ToMethodsTests.cs" />
+    <Compile Include="TypeTests.cs" />
     <Compile Include="VectorSamples.cs" />
     <Compile Include="WriteTextOnAnImage.cs" />
     <Compile Include="XmlSerialization2Tests.cs" />
