@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TaskInUI.BigSmallWindowsSample;
+using TaskInUI.FilesComboBox;
 
 namespace TaskInUI
 {
@@ -107,6 +108,14 @@ namespace TaskInUI
         {
             BigSmallWindowsService service = new BigSmallWindowsService();
             service.Run();
+        }
+
+        private void btnFilesComboBox_Click(object sender, EventArgs e)
+        {
+            using (FilesComboBoxSample dlg = new FilesComboBoxSample())
+            {
+                dlg.ShowDialog();
+            }
         }
     }
 }

@@ -58,6 +58,12 @@
     <Compile Include="BigSmallWindowsSample\SmallModalWindow.Designer.cs">
       <DependentUpon>SmallModalWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="FilesComboBox\FilesComboBoxSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FilesComboBox\FilesComboBoxSample.Designer.cs">
+      <DependentUpon>FilesComboBoxSample.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Service.cs" />
     <EmbeddedResource Include="BigSmallWindowsSample\BigModalWindow.resx">
       <DependentUpon>BigModalWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FilesComboBox\FilesComboBoxSample.resx">
+      <DependentUpon>FilesComboBoxSample.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

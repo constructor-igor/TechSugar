@@ -36,14 +36,15 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.btnFilesComboBox = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // outputTextBox
             // 
             this.outputTextBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.outputTextBox.Location = new System.Drawing.Point(403, 0);
+            this.outputTextBox.Location = new System.Drawing.Point(416, 0);
             this.outputTextBox.Name = "outputTextBox";
-            this.outputTextBox.Size = new System.Drawing.Size(238, 247);
+            this.outputTextBox.Size = new System.Drawing.Size(238, 364);
             this.outputTextBox.TabIndex = 1;
             this.outputTextBox.Text = "";
             // 
@@ -117,11 +118,22 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // btnFilesComboBox
+            // 
+            this.btnFilesComboBox.Location = new System.Drawing.Point(23, 241);
+            this.btnFilesComboBox.Name = "btnFilesComboBox";
+            this.btnFilesComboBox.Size = new System.Drawing.Size(258, 36);
+            this.btnFilesComboBox.TabIndex = 9;
+            this.btnFilesComboBox.Text = "Files and Combobox";
+            this.btnFilesComboBox.UseVisualStyleBackColor = true;
+            this.btnFilesComboBox.Click += new System.EventHandler(this.btnFilesComboBox_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 247);
+            this.ClientSize = new System.Drawing.Size(654, 364);
+            this.Controls.Add(this.btnFilesComboBox);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
@@ -146,6 +158,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnFilesComboBox;
     }
 }
 
