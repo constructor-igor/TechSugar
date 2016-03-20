@@ -47,6 +47,7 @@
     <Compile Include="1056\ItemTestCaseProvider.cs" />
     <Compile Include="1056\NUnitIssue1056.cs" />
     <Compile Include="1056\Program.cs" />
+    <Compile Include="DotMemoryUnitSamples.cs" />
     <Compile Include="NUnitIssue1033.cs" />
     <Compile Include="NUnitIssue1109.cs" />
     <Compile Include="NUnitIssue1111.cs" />
