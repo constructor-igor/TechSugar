@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="ExtremeOptimizationIterativeSolversTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceivedExtremeOptimizationIterativeSolversTests.cs" />
+    <Compile Include="ReceivedSample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
