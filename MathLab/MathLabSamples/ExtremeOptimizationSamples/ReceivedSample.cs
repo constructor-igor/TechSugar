@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Extreme.Mathematics;
-using Extreme.Mathematics.Generic;
-using Extreme.Mathematics.Generic.LinearAlgebra;
+using Extreme.Mathematics.LinearAlgebra;
 using Extreme.Mathematics.LinearAlgebra.IterativeSolvers;
 using Extreme.Mathematics.LinearAlgebra.IterativeSolvers.Preconditioners;
 
@@ -12,7 +11,6 @@ namespace ExtremeOptimizationSamples
     {
         public void ExecuteSample()
         {
-
             // The line below sets the path where the native assemblies
             // are located. The "XO_LIBRARY_PATH" environment variable
             // points here, too.

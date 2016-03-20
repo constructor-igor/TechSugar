@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Extreme.Mathematics;
 using Extreme.Mathematics.LinearAlgebra;
 using Extreme.Mathematics.LinearAlgebra.IterativeSolvers;
@@ -20,18 +19,18 @@ namespace ExtremeOptimizationSamples
         public void SimpleSample_Identity()
         {
             // We load a sparse matrix and right-hand side from a data file:
-            SparseCompressedColumnMatrix matrixA = SparseCompressedColumnMatrix.CreateIdentity(3);
-            Vector vectorB = Vector.Create(new List<double> {1.0, 2.0, 3.0});
+            SparseCompressedColumnMatrix<double> matrixA = SparseCompressedColumnMatrix<double>.CreateIdentity(3);
+            Vector<double> vectorB = Vector.Create(1.0, 2.0, 3.0);
 
-            IterativeSparseSolver solver = new BiConjugateGradientSolver(matrixA);
-            DenseVector resultVector = solver.Solve(vectorB);
+            IterativeSparseSolver<double> solver = new BiConjugateGradientSolver<double>(matrixA);
+            var resultVector = solver.Solve(vectorB);
 
             Console.WriteLine("Result: {0}", resultVector);
             Console.WriteLine("Solved in {0} iterations.", solver.IterationsNeeded);
             Console.WriteLine("Estimated error: {0}", solver.SolutionReport.Error);
 
             // With incomplete LU preconditioner
-            solver.Preconditioner = new IncompleteLUPreconditioner(matrixA);
+            solver.Preconditioner = new IncompleteLUPreconditioner<double>(matrixA);
             resultVector = solver.Solve(vectorB);
 
             Console.WriteLine("Result: {0}", resultVector);
