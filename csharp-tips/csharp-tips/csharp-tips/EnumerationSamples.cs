@@ -12,13 +12,23 @@ namespace csharp_tips
         [Test]
         public void ResharperWarning()
         {
-            IEnumerable<DataFile> allFiles = Directory
+            MyDirectory myDirectory = new MyDirectory();
+            IEnumerable<DataFile> allFiles = myDirectory
                 .GetFiles(@"d:\")
                 .Select(fileName => new DataFile(fileName));
             IEnumerable<DataFile> taskFiles = allFiles
                 .Where(file => !file.FileName.EndsWith("exe"));
-            taskFiles.ForEach(file=> { Console.WriteLine("[1] file: {0}", file); });
+            taskFiles.ForEach(file=> { Console.WriteLine("[1] file: {0}", file.FileName); });
             taskFiles.ForEach(file=> { Console.WriteLine("[2] file: {0}", file); });
+        }
+
+        internal class MyDirectory
+        {
+            internal string[] GetFiles(string folder)
+            {
+                Console.WriteLine("GetFiles(\"{0}\")", folder);
+                return Directory.GetFiles(folder);
+            }
         }
 
         internal class DataFile
