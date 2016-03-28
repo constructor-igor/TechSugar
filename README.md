@@ -9,6 +9,7 @@ Tech. Sugar seminars
 * Micro beanchmarking.
 * Visual Studio Extensions.
 * Powershell in VS Debugger.
+* Unit testing and memory profiling #5
 
 **2015**
 * Resharper plugin development intro (including NUnit.That.Resharper.Plugin).
