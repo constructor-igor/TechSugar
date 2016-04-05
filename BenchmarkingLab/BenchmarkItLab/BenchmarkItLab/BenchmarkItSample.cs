@@ -28,36 +28,32 @@ namespace BenchmarkItLab
         [Test]
         public void StringBuilderCapacity()
         {
-            var list = Enumerable.Range(1, 256).ToList();
-            Benchmark
-                    .This("capacity 1", () =>
-                    {
-                        StringBuilder sb = new StringBuilder(1);
-                        list.ForEach(index => sb.Append("0"));
-                    })
-            .Against
-                    .This("capacity default(16)", () =>
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        list.ForEach(index => sb.Append("0"));
-                    })
-            .Against
-                    .This("capacity 256", () =>
-                    {
-                        StringBuilder sb = new StringBuilder(256);
-                        list.ForEach(index => sb.Append("0"));
-                    })
-            .Against
-                    .This("capacity 1024", () =>
-                    {
-                        StringBuilder sb = new StringBuilder(1024);
-                        list.ForEach(index => sb.Append("0"));
-                    })
+            List<int> list = Enumerable.Range(1, 256).ToList();
+            Benchmark.This("capacity 1", () =>
+                {
+                    StringBuilder sb = new StringBuilder(1);
+                    list.ForEach(index => sb.Append("0"));
+                })
+            .Against.This("capacity default(16)", () =>
+                {
+                    StringBuilder sb = new StringBuilder();
+                    list.ForEach(index => sb.Append("0"));
+                })
+            .Against.This("capacity 256", () =>
+                {
+                    StringBuilder sb = new StringBuilder(256);
+                    list.ForEach(index => sb.Append("0"));
+                })
+            .Against.This("capacity 1024", () =>
+                {
+                    StringBuilder sb = new StringBuilder(1024);
+                    list.ForEach(index => sb.Append("0"));
+                })
             .WithWarmup(2)
-            .For(100000)
-            .Iterations()            
+            .For(100000).Iterations()            
             .PrintComparison();
         }
+
         [Test]
         public void ToArrayToList_vs_IEnumerable()
         {
