@@ -6,9 +6,12 @@ Tech. Sugar seminars
 
 **Waiting List**
 * Actor programming. Orlean project.
-* Micro beanchmarking.
 * Visual Studio Extensions.
 * Powershell in VS Debugger.
+* Microsoft event "Build 2016".
+
+**2016**
+* Micro beanchmarking.
 * Unit testing and memory profiling #5
 
 **2015**
@@ -20,7 +23,7 @@ Tech. Sugar seminars
 **2014**
 * Resharper (R#) Annotations overview.
 * Extensibility in the .NET Framework.
-* Eevent broker pattern. Part II "Reactive Extensions Event Broker".
+* Event broker pattern. Part II "Reactive Extensions Event Broker".
 * Event broker pattern". Part I "Simple Event broker".
 * Sample of Acceptance Tests Implementation (including fit and SpecFlow).
 * LINQ Samples.
