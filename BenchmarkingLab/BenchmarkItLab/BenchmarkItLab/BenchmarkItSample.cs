@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BenchmarkIt;
@@ -12,13 +13,16 @@ namespace BenchmarkItLab
         [Test]
         public void String_Contains_vs_IndexOf()
         {
+            bool result;
             Benchmark.This("string.Contains", 
-                () => "abcdef".Contains("ef"))
+                () => result = "hello".Contains("lo"))
             .Against.This("string.IndexOf", 
-                () => "abcdef".IndexOf("ef"))
+                () => result = "hello".IndexOf("lo")>=0)
+            .Against.This("string.IndexOf & StringComparison",
+                () => result = "hello".IndexOf("lo", StringComparison.Ordinal) >= 0)
             .WithWarmup(1)
-            .For(5)
-            .Seconds().PrintComparison();
+            .For(5).Seconds()
+            .PrintComparison();
         }
 
         [Test]
