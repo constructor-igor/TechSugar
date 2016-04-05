@@ -15,8 +15,6 @@ namespace BenchmarkDotNetLab
         public void RunBenchmark()
         {
             var summary = BenchmarkRunner.Run<BenchmarkWorkingSample>();
-//            BenchmarkSettings settings = new BenchmarkSettings(warmupIterationCount:1, targetIterationCount:10);
-//            new BenchmarkRunner().RunCompetition(new BenchmarkWorkingSample(), settings);
         }
 
         [Benchmark]
