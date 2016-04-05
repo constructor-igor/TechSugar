@@ -12,10 +12,10 @@ namespace BenchmarkItLab
         [Test]
         public void String_Contains_vs_IndexOf()
         {
-            Benchmark
-                .This("string.Contains", () => "abcdef".Contains("ef"))
-            .Against
-                .This("string.IndexOf", () => "abcdef".IndexOf("ef"))
+            Benchmark.This("string.Contains", 
+                () => "abcdef".Contains("ef"))
+            .Against.This("string.IndexOf", 
+                () => "abcdef".IndexOf("ef"))
             .WithWarmup(1)
             .For(5)
             .Seconds().PrintComparison();
