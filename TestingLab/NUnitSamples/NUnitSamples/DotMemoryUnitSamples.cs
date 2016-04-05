@@ -1,4 +1,5 @@
-﻿using JetBrains.dotMemoryUnit;
+﻿using System;
+using JetBrains.dotMemoryUnit;
 using NUnit.Framework;
 
 namespace NUnit_v2_samples
@@ -9,11 +10,11 @@ namespace NUnit_v2_samples
     }
     public class Foo : IFoo
     {
-        private byte[] m_data;
+        public byte[] Data;
         #region Implementation of IFoo
         public void Run()
         {
-            m_data = new byte[1024];
+            Data = new byte[1024];
         }
 
         #endregion
@@ -52,17 +53,29 @@ namespace NUnit_v2_samples
         public void MemoryAllocationTrendTest()
         {
             IFoo foo = new Foo();
-            var memoryCheckpoint1 = dotMemory.Check();
+            MemoryCheckPoint memoryCheckpoint1 = dotMemory.Check();
 
             foo.Run();
+            IFoo foo1 = new Foo();
+            IFoo foo2 = new Foo();
 
             var memoryCheckPoint2 = dotMemory.Check(memory =>
             {
-                Assert.That(
-                    memory.GetTrafficFrom(memoryCheckpoint1)
-                        .Where(obj => obj.Interface.Is<IFoo>())
-                        .AllocatedMemory.SizeInBytes, Is.LessThan(1000));
+                long actualObjectsCount = memory
+                    .GetTrafficFrom(memoryCheckpoint1)
+                    .Where(obj => obj.Interface.Is<IFoo>()).AllocatedMemory.ObjectsCount;
+                    
+//                long actualObjectsCount = memory
+//                    .GetTrafficFrom(memoryCheckpoint1)
+//                    .Where(obj => obj.Interface.Is<IFoo>())
+//                    .AllocatedMemory;
+                Console.WriteLine("CollectedMemory.ObjectCount: {0}", actualObjectsCount);
+                Assert.That(actualObjectsCount, Is.EqualTo(2));
             });
+
+            Assert.That(foo, Is.Not.Null);
+            Assert.That(foo1, Is.Not.Null);
+            Assert.That(foo2, Is.Not.Null);
         }
     }
 }
