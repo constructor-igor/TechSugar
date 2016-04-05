@@ -1,4 +1,5 @@
-using BenchmarkDotNet;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Running;
 using BusinessLogic;
 using NUnit.Framework;
 
@@ -13,10 +14,10 @@ namespace BenchmarkDotNetLab
         [Test]
         public void RunBenchmark()
         {
-            new BenchmarkRunner().RunCompetition(new BenchmarkProblemSample());
+            var summary = BenchmarkRunner.Run<BenchmarkProblemSample>();
         }
 
-        [Benchmark]
+        [Benchmark()]
         public void IndexOfSample()
         {
             BusinessLogicImpl.IndexOfSample();

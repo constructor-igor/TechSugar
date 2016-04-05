@@ -1,6 +1,6 @@
 ﻿using System;
-using BenchmarkDotNet;
-using BenchmarkDotNet.Tasks;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Running;
 using NUnit.Framework;
 
 namespace BenchmarkDotNetLab
@@ -14,8 +14,9 @@ namespace BenchmarkDotNetLab
         [Test]
         public void RunBenchmark()
         {
-            BenchmarkSettings settings = new BenchmarkSettings(warmupIterationCount:1, targetIterationCount:10);
-            new BenchmarkRunner().RunCompetition(new BenchmarkWorkingSample(), settings);
+            var summary = BenchmarkRunner.Run<BenchmarkWorkingSample>();
+//            BenchmarkSettings settings = new BenchmarkSettings(warmupIterationCount:1, targetIterationCount:10);
+//            new BenchmarkRunner().RunCompetition(new BenchmarkWorkingSample(), settings);
         }
 
         [Benchmark]
