@@ -59,24 +59,20 @@ namespace BenchmarkItLab
         {
             IEnumerable<int> list = Create();
             int count = 1024*1024;
-            Benchmark
-                    .This("IEnumerable", () =>
-                    {
-                        count = Foo(list);
-                    })
-            .Against
-                    .This("ToArray", () =>
-                    {
-                        count = Foo(list.ToArray());
-                    })
-            .Against
-                    .This("ToList", () =>
-                    {
-                        count = Foo(list.ToList());
-                    })
+            Benchmark.This("IEnumerable", () =>
+            {
+                count = Foo(list);
+            })
+            .Against.This("ToArray", () =>
+            {
+                count = Foo(list.ToArray());
+            })
+            .Against.This("ToList", () =>
+            {
+                count = Foo(list.ToList());
+            })
             .WithWarmup(2)
-            .For(5)
-            .Seconds()
+            .For(5).Seconds()
             .PrintComparison();
             Assert.That(count, Is.EqualTo(1024*1024));
         }
