@@ -12,7 +12,7 @@ Tech. Sugar seminars
 
 **2016**
 * Micro beanchmarking.
-* Unit testing and memory profiling #5
+* [Unit testing and memory profiling] (https://github.com/constructor-igor/TechSugar/issues/5)
 
 **2015**
 * Resharper plugin development intro (including NUnit.That.Resharper.Plugin).
