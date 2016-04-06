@@ -11,8 +11,8 @@ Tech. Sugar seminars
 * Microsoft event "Build 2016".
 
 **2016**
-* Micro beanchmarking.
-* [Unit testing and memory profiling] (https://github.com/constructor-igor/TechSugar/issues/5)
+* [Micro beanchmarking.] (https://github.com/constructor-igor/TechSugar/issues/83)
+* [Unit testing and memory profiling.] (https://github.com/constructor-igor/TechSugar/issues/5)
 
 **2015**
 * Resharper plugin development intro (including NUnit.That.Resharper.Plugin).
