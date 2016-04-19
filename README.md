@@ -9,10 +9,11 @@ Tech. Sugar seminars
 * Visual Studio Extensions.
 * Powershell in VS Debugger.
 * Microsoft event "Build 2016".
+* [Hangfire — планировщик задач для .NET #134](https://github.com/constructor-igor/TechSugar/issues/134)
 
 **2016**
-* Micro beanchmarking.
-* Unit testing and memory profiling #5
+* [Micro beanchmarking.] (https://github.com/constructor-igor/TechSugar/issues/83)
+* [Unit testing and memory profiling.] (https://github.com/constructor-igor/TechSugar/issues/5)
 
 **2015**
 * Resharper plugin development intro (including NUnit.That.Resharper.Plugin).
