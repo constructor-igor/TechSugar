@@ -3,6 +3,9 @@ using Quartz.Impl;
 
 namespace QuartzClientConsole
 {
+    //
+    //  http://www.quartz-scheduler.net/documentation/quartz-2.x/tutorial/using-quartz.html
+    //
     public class HelloWorldSample
     {
         public void StartSample()
