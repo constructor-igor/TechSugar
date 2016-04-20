@@ -59,6 +59,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateSample\StateExecuter.cs" />
     <Compile Include="StateSample\StateJob.cs" />
+    <Compile Include="UserDefinedCalendarSample\CalendarJob.cs" />
+    <Compile Include="UserDefinedCalendarSample\UserDefinedCalendar.cs" />
+    <Compile Include="UserDefinedCalendarSample\UserDefinedCalendarExecuter.cs" />
     <Compile Include="UserDefinedParametersSample\UserDefinedParametersJob.cs" />
     <Compile Include="UserDefinedParametersSample\UserDefinedParametersExecuter.cs" />
   </ItemGroup>
