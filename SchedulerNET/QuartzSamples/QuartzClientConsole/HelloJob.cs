@@ -8,7 +8,7 @@ namespace QuartzClientConsole
         #region IJob
         public void Execute(IJobExecutionContext context)
         {
-            Console.WriteLine("[{0}] Hello Job", DateTime.Now);
+            Console.WriteLine("[{0}, HashCode = {1}] Hello Job", DateTime.Now, GetHashCode());
         }
         #endregion
     }
