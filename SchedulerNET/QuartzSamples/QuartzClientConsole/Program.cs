@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            new HelloWorldSample().StartSample();
-        }
-        
+            //new HelloWorldSample().StartSample();
+            new UserDefinedParametersSample().StartSample();
+        }        
     }
 }
