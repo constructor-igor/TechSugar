@@ -1,4 +1,5 @@
-﻿using QuartzClientConsole.UserDefinedParametersSample;
+﻿using QuartzClientConsole.StateSample;
+using QuartzClientConsole.UserDefinedParametersSample;
 
 namespace QuartzClientConsole
 {
@@ -7,7 +8,8 @@ namespace QuartzClientConsole
         static void Main(string[] args)
         {
             //new HelloWorldSample().StartSample();
-            new UserDefinedParametersExecuter().StartSample();
+            //new UserDefinedParametersExecuter().StartSample();
+            new StateExecuter().StartSample();
         }        
     }
 }
