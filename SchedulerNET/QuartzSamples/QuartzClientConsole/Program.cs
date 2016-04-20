@@ -1,11 +1,13 @@
-﻿namespace QuartzClientConsole
+﻿using QuartzClientConsole.UserDefinedParametersSample;
+
+namespace QuartzClientConsole
 {
     class Program
     {
         static void Main(string[] args)
         {
             //new HelloWorldSample().StartSample();
-            new UserDefinedParametersSample().StartSample();
+            new UserDefinedParametersExecuter().StartSample();
         }        
     }
 }

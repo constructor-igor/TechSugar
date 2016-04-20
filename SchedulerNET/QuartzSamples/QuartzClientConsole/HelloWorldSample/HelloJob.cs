@@ -1,7 +1,7 @@
 ﻿using System;
 using Quartz;
 
-namespace QuartzClientConsole
+namespace QuartzClientConsole.HelloWorldSample
 {
     public class HelloJob : IJob
     {

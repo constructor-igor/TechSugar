@@ -1,12 +1,12 @@
 using Quartz;
 using Quartz.Impl;
 
-namespace QuartzClientConsole
+namespace QuartzClientConsole.UserDefinedParametersSample
 {
     //
-    //  http://www.quartz-scheduler.net/documentation/quartz-2.x/tutorial/using-quartz.html
+    // http://www.quartz-scheduler.net/documentation/quartz-2.x/tutorial/more-about-jobs.html
     //
-    public class HelloWorldSample
+    public class UserDefinedParametersExecuter
     {
         public void StartSample()
         {
@@ -18,8 +18,10 @@ namespace QuartzClientConsole
             sched.Start();
 
             // define the job and tie it to our HelloJob class
-            IJobDetail job = JobBuilder.Create<HelloJob>()
+            IJobDetail job = JobBuilder.Create<UserDefinedParametersJob>()
                 .WithIdentity("myJob", "group1")
+                .UsingJobData("jobSays", "Hello World!")
+                .UsingJobData("myFloatValue", 3.141f)
                 .Build();
 
             // Trigger the job to run now, and then every 5 seconds
@@ -32,6 +34,6 @@ namespace QuartzClientConsole
                 .Build();
 
             sched.ScheduleJob(job, trigger);
-        }        
+        }
     }
 }

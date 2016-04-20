@@ -53,12 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelloJob.cs" />
-    <Compile Include="HelloWorldSample.cs" />
+    <Compile Include="HelloWorldSample\HelloJob.cs" />
+    <Compile Include="HelloWorldSample\HelloWorldExecuter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserDefinedParametersJob.cs" />
-    <Compile Include="UserDefinedParametersSample.cs" />
+    <Compile Include="UserDefinedParametersSample\UserDefinedParametersJob.cs" />
+    <Compile Include="UserDefinedParametersSample\UserDefinedParametersExecuter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="job_scheduling_data_2_0.xsd">

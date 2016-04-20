@@ -1,7 +1,7 @@
 ﻿using System;
 using Quartz;
 
-namespace QuartzClientConsole
+namespace QuartzClientConsole.UserDefinedParametersSample
 {
     public class UserDefinedParametersJob : IJob
     {
