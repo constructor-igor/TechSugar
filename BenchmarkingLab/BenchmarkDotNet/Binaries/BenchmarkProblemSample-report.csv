@@ -1,0 +1,3 @@
+Type;Method;Mode;Platform;Jit;Framework;Runtime;LaunchCount;WarmupCount;TargetCount;Affinity;Median;StdDev
+BenchmarkProblemSample;ContainsSample;Throughput;Host;Host;Host;Host;Auto;Auto;Auto;Auto;103.4612 ns;9.7814 ns
+BenchmarkProblemSample;IndexOfSample;Throughput;Host;Host;Host;Host;Auto;Auto;Auto;Auto;102.5153 ns;4.7816 ns
