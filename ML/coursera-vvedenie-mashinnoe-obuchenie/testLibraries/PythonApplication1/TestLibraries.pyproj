@@ -14,8 +14,8 @@
     <Name>TestLibraries</Name>
     <RootNamespace>PythonApplication1</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <InterpreterId>{54769722-8ff1-49ca-bbba-1ea30d9b3243}</InterpreterId>
-    <InterpreterVersion>3.4</InterpreterVersion>
+    <InterpreterId>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterPath>
     </InterpreterPath>
