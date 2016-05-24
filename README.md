@@ -10,8 +10,10 @@ Tech. Sugar seminars
 * Powershell in VS Debugger.
 * Microsoft event "Build 2016".
 * [Hangfire — планировщик задач для .NET #134](https://github.com/constructor-igor/TechSugar/issues/134)
+* [How to debug anything with Visual Studio and JetBrains dotPeek v1.2!](https://github.com/constructor-igor/TechSugar/issues/32)
 
 **2016**
+* OOP problems by Ruslan S.
 * [Micro beanchmarking.] (https://github.com/constructor-igor/TechSugar/issues/83)
 * [Unit testing and memory profiling.] (https://github.com/constructor-igor/TechSugar/issues/5)
 
