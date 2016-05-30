@@ -18,11 +18,15 @@ target = updatedData['Survived']
 #
 #updatedData = updatedData[['Pclass','Fare', 'Age', 'Sex']]
 updatedData.drop('Survived', axis=1, inplace=True)
+updatedData['Sex'] = updatedData['Sex'].map({'female': 1, 'male': 0})
 
 X = updatedData
 y = target
 clf = DecisionTreeClassifier(random_state=241)
 clf.fit(X, y)
+
+importances = clf.feature_importances_
+print("importances = %s" % (importances))
 
 #print("count: %s " % (target.count()))
 #
