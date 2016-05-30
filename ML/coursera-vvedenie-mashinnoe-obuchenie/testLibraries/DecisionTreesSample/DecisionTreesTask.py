@@ -1,6 +1,24 @@
+import numpy as np
 import pandas
 
 data = pandas.read_csv('titanic.csv', index_col='PassengerId')
+updatedData = data[['Pclass','Fare', 'Age', 'Sex', 'Survived']]
+
+#
+# http://stackoverflow.com/questions/13413590/how-to-drop-rows-of-pandas-dataframe-whose-value-of-certain-column-is-nan
+#
+#filteredData = updatedData[np.isfinite(updatedData['Pclass']) & np.isfinite(updatedData['Fare']) & np.isfinite(updatedData['Age']) & np.isfinite(updatedData['Sex']) & np.isfinite(updatedData['Survived'])]
+#filteredData = updatedData[np.isfinite(updatedData['Pclass']) & np.isfinite(updatedData['Fare'])]
+updatedData = updatedData.dropna()
+
+target = updatedData['Survived']
+#
+# http://stackoverflow.com/questions/13411544/delete-column-from-pandas-dataframe
+#
+#updatedData = updatedData[['Pclass','Fare', 'Age', 'Sex']]
+updatedData.drop('Survived', axis=1, inplace=True)
+
+print("count: %s " % (target.count()))
 
 count = data['Pclass'].value_counts()
 print count
