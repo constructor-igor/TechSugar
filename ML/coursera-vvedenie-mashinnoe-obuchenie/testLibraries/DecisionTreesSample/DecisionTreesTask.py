@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.tree import DecisionTreeClassifier
 import pandas
 
 data = pandas.read_csv('titanic.csv', index_col='PassengerId')
@@ -18,7 +19,12 @@ target = updatedData['Survived']
 #updatedData = updatedData[['Pclass','Fare', 'Age', 'Sex']]
 updatedData.drop('Survived', axis=1, inplace=True)
 
-print("count: %s " % (target.count()))
+X = updatedData
+y = target
+clf = DecisionTreeClassifier(random_state=241)
+clf.fit(X, y)
 
-count = data['Pclass'].value_counts()
-print count
+#print("count: %s " % (target.count()))
+#
+#count = data['Pclass'].value_counts()
+#print count
