@@ -6,6 +6,7 @@ clf = DecisionTreeClassifier()
 clf.fit(X, y)
 
 importances = clf.feature_importances_
+print importances
 
 testNanValue = float('nan')
 testOneValue = 1.0
