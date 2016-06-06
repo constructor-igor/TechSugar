@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Google.Apis.Prediction.v1_6;
 using Google.Apis.Prediction.v1_6.Data;
 using Google.Apis.Services;
@@ -9,7 +10,8 @@ namespace ML_sample
     {
         const string PROJECT_ID = "har-machine-learning-1333";
         const string PROJECT_NUMBER = "1024476357063";
-        const string STRORAGE_DATA = "good-test-case/testGood2.txt";
+        const string STRORAGE_DATA = "good-test-case/testGood2.csv";
+        const int PROGRESS_WAITING_TIME = 1000;
 
         static void Main(string[] args)
         {
@@ -27,9 +29,43 @@ namespace ML_sample
 
             PredictionService predictionService = new PredictionService(serviceInitializer);
 
-            Insert trainInsert = new Insert { StorageDataLocation = STRORAGE_DATA, StoragePMMLLocation = STRORAGE_DATA, Id = PROJECT_ID };
-            TrainedmodelsResource.InsertRequest insertRequest = predictionService.Trainedmodels.Insert(trainInsert, PROJECT_NUMBER);
-            Insert2 insertResponse = insertRequest.Execute();
+            var deleteRequest = predictionService.Trainedmodels.Delete(PROJECT_NUMBER, PROJECT_ID);
+            string deleteResponse = deleteRequest.Execute();
+
+            Insert insertBody = new Insert
+            {
+                StorageDataLocation = STRORAGE_DATA, StoragePMMLLocation = STRORAGE_DATA, Id = PROJECT_ID, ModelType = "REGRESSION"            
+            };
+            TrainedmodelsResource.InsertRequest insertRequest = predictionService.Trainedmodels.Insert(insertBody, PROJECT_NUMBER);
+            Insert2 insertResponse = insertRequest.Execute();            
+            Console.WriteLine("Inserted the training data for the model.");
+            Console.WriteLine("Training status: " + insertResponse.TrainingStatus);
+
+            // Wait until the training is complete
+            while (true)
+            {
+                Console.WriteLine("Getting a new training progress status...");
+                var getRequest = predictionService.Trainedmodels.Get(PROJECT_NUMBER, PROJECT_ID);
+                var getResponse = getRequest.Execute();
+                Console.WriteLine("Got a new training progress status: {0}", getResponse.TrainingStatus);
+
+                switch (getResponse.TrainingStatus)
+                {
+                    case "RUNNING":
+                        Console.WriteLine("The model training is still in progress, let us wait for {0} ms.", PROGRESS_WAITING_TIME);
+                        Thread.Sleep(PROGRESS_WAITING_TIME);
+                        break;
+                    case "DONE":
+                        Console.WriteLine("The model has been trained successfully.");
+                        break;
+                    case "ERROR: TRAINING JOB NOT FOUND":
+                        throw new Exception("the training job was not found.");
+                    case "ERROR: TOO FEW INSTANCES IN DATASET":
+                        throw new Exception("there are too few instances in the dataset.");
+                    default:
+                        throw new ArgumentException("Unknown status (error): " + getResponse.TrainingStatus);
+                }
+            }
 
             //predictionService.Trainedmodels.Predict(body, PROJECT_ID, Analyze.ModelDescriptionData)
         }
