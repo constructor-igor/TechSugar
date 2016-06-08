@@ -42,7 +42,8 @@ namespace ML_sample
             Console.WriteLine("Training status: " + insertResponse.TrainingStatus);
 
             // Wait until the training is complete
-            while (true)
+            bool trainingRunning = true;
+            while (trainingRunning)
             {
                 Console.WriteLine("Getting a new training progress status...");
                 var getRequest = predictionService.Trainedmodels.Get(PROJECT_NUMBER, PROJECT_ID);
@@ -57,6 +58,14 @@ namespace ML_sample
                         break;
                     case "DONE":
                         Console.WriteLine("The model has been trained successfully.");
+                        Insert2.ModelInfoData modelInfoData = getResponse.ModelInfo;
+                        if (modelInfoData != null)
+                        {
+                            Console.WriteLine("ModelType: {0}", modelInfoData.ModelType);
+                            Console.WriteLine("NumberInstances: {0}", modelInfoData.NumberInstances);
+                            Console.WriteLine("MeanSquaredError: {0}", modelInfoData.MeanSquaredError);                            
+                        }
+                        trainingRunning = false;
                         break;
                     case "ERROR: TRAINING JOB NOT FOUND":
                         throw new Exception("the training job was not found.");
