@@ -34,7 +34,7 @@ namespace ML_sample
 
             Insert insertBody = new Insert
             {
-                StorageDataLocation = STRORAGE_DATA, StoragePMMLLocation = STRORAGE_DATA, Id = PROJECT_ID, ModelType = "REGRESSION"            
+                StorageDataLocation = STRORAGE_DATA, /*StoragePMMLLocation = STRORAGE_DATA,*/ Id = PROJECT_ID, ModelType = "REGRESSION"            
             };
             TrainedmodelsResource.InsertRequest insertRequest = predictionService.Trainedmodels.Insert(insertBody, PROJECT_NUMBER);
             Insert2 insertResponse = insertRequest.Execute();            
