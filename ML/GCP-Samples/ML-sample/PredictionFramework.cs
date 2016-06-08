@@ -43,11 +43,11 @@ namespace ML_sample
             return deleteResponse;
         }
 
-        public Insert2 TrainRegressionModel(ProjectModelId projectModelId, string dataPath)
+        public Insert2 TrainRegressionModel(ProjectModelId projectModelId, string csvDataPathInStorage)
         {
             Insert insertBody = new Insert
             {
-                StorageDataLocation = dataPath,
+                StorageDataLocation = csvDataPathInStorage,
                 Id = projectModelId.ModelId,
                 ModelType = "REGRESSION"
             };
