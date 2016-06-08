@@ -7,7 +7,7 @@ namespace ML_sample
     class Program
     {
         const string AUTH_JSON_FILE = @"D:\@Temp\GCP_ML_Feasibility\HAR Machine Learning-41ae33f89eac.json";
-        const string MODEL_ID = "20000-test";
+        const string MODEL_ID = "20000-test";   // user-defined unique name for model
         //const string PROJECT_ID = "har-machine-learning-1333";
         const string PROJECT_NUMBER = "1024476357063";
         const string STRORAGE_DATA = "good-test-case/testGood2.csv";
@@ -28,13 +28,7 @@ namespace ML_sample
                 case "status":
                     Insert2 trainingStatus = predictionFramework.GetModelStatus(projectModelId);
                     Console.WriteLine("Training status: {0}", trainingStatus.TrainingStatus);
-                    Insert2.ModelInfoData stausModelInfoData = trainingStatus.ModelInfo;
-                    if (stausModelInfoData != null)
-                    {
-                        Console.WriteLine("ModelType: {0}", stausModelInfoData.ModelType);
-                        Console.WriteLine("NumberInstances: {0}", stausModelInfoData.NumberInstances);
-                        Console.WriteLine("MeanSquaredError: {0}", stausModelInfoData.MeanSquaredError);
-                    }
+                    ToConsole(trainingStatus.ModelInfo);
                     break;
                 case "training":
                     predictionFramework.DeleteTrainedModel(projectModelId);
@@ -56,13 +50,7 @@ namespace ML_sample
                                 break;
                             case "DONE":
                                 Console.WriteLine("The model has been trained successfully.");
-                                Insert2.ModelInfoData modelInfoData = getResponse.ModelInfo;
-                                if (modelInfoData != null)
-                                {
-                                    Console.WriteLine("ModelType: {0}", modelInfoData.ModelType);
-                                    Console.WriteLine("NumberInstances: {0}", modelInfoData.NumberInstances);
-                                    Console.WriteLine("MeanSquaredError: {0}", modelInfoData.MeanSquaredError);
-                                }
+                                ToConsole(getResponse.ModelInfo);
                                 trainingRunning = false;
                                 break;
                             case "ERROR: TRAINING JOB NOT FOUND":
@@ -76,6 +64,16 @@ namespace ML_sample
                     break;
             }
             //predictionService.Trainedmodels.Predict(body, PROJECT_ID, Analyze.ModelDescriptionData)
+        }
+
+        private static void ToConsole(Insert2.ModelInfoData modelInfoData)
+        {
+            if (modelInfoData != null)
+            {
+                Console.WriteLine("ModelType: {0}", modelInfoData.ModelType);
+                Console.WriteLine("NumberInstances: {0}", modelInfoData.NumberInstances);
+                Console.WriteLine("MeanSquaredError: {0}", modelInfoData.MeanSquaredError);
+            }
         }
     }
 }
