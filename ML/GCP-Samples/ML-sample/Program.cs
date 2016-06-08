@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
+using Google.Apis.Prediction.v1_6;
 using Google.Apis.Prediction.v1_6.Data;
 
 namespace ML_sample
@@ -18,7 +20,7 @@ namespace ML_sample
             PredictionFramework predictionFramework = new PredictionFramework();
             predictionFramework.CreatePredictionService(AUTH_JSON_FILE);
             ProjectModelId projectModelId = new ProjectModelId(PROJECT_NUMBER, MODEL_ID);
-            string command = "status";
+            string command = "predict";
 
             Console.WriteLine("Project number: {0}, Model ID: {1}", projectModelId.PojectNumber, projectModelId.ModelId);
             Console.WriteLine("Command: {0}", command);
@@ -29,6 +31,25 @@ namespace ML_sample
                     Insert2 trainingStatus = predictionFramework.GetModelStatus(projectModelId);
                     Console.WriteLine("Training status: {0}", trainingStatus.TrainingStatus);
                     ToConsole(trainingStatus.ModelInfo);
+                    break;
+                case "analyze":
+                    TrainedmodelsResource.AnalyzeRequest analyzeRequest = predictionFramework.PredictionService.Trainedmodels.Analyze(projectModelId.PojectNumber, projectModelId.ModelId);
+                    Analyze analyzeResponse = analyzeRequest.Execute();
+                    break;                    
+                case "predict":
+                    IList<object> list = new List<object>();
+                    //list.Add("270.1945417,402.4902572,1341.938939,1532.260464,372.4266548,81.66415048");
+                    list.Add("270.1945417");
+                    list.Add("402.4902572");
+                    list.Add("1341.938939");
+                    list.Add("1532.260464");
+                    list.Add("372.4266548");
+                    list.Add("81.66415048");
+                    Input predictBody = new Input {InputValue = new Input.InputData {CsvInstance = list}};
+
+                    TrainedmodelsResource.PredictRequest predictRequest = predictionFramework.PredictionService.Trainedmodels.Predict(predictBody, projectModelId.PojectNumber, projectModelId.ModelId);
+                    Output predictResponse = predictRequest.Execute();
+                    Console.WriteLine("predict output value: {0}", predictResponse.OutputValue);
                     break;
                 case "training":
                     predictionFramework.DeleteTrainedModel(projectModelId);
