@@ -25,8 +25,7 @@ namespace ML_sample
             var credentials = Google.Apis.Auth.OAuth2.GoogleCredential.GetApplicationDefaultAsync().Result;
             if (credentials.IsCreateScopedRequired)
             {
-                credentials = credentials.CreateScoped(PredictionService.Scope.DevstorageFullControl,
-                    PredictionService.Scope.Prediction);
+                credentials = credentials.CreateScoped(PredictionService.Scope.DevstorageFullControl, PredictionService.Scope.Prediction);
             }
             var serviceInitializer = new BaseClientService.Initializer()
             {
