@@ -35,16 +35,10 @@ namespace ML_sample
                 case "analyze":
                     TrainedmodelsResource.AnalyzeRequest analyzeRequest = predictionFramework.PredictionService.Trainedmodels.Analyze(projectModelId.PojectNumber, projectModelId.ModelId);
                     Analyze analyzeResponse = analyzeRequest.Execute();
-                    break;                    
+                    break;
                 case "predict":
-                    IList<object> list = new List<object>();
-                    //list.Add("270.1945417,402.4902572,1341.938939,1532.260464,372.4266548,81.66415048");
-                    list.Add("270.1945417");
-                    list.Add("402.4902572");
-                    list.Add("1341.938939");
-                    list.Add("1532.260464");
-                    list.Add("372.4266548");
-                    list.Add("81.66415048");
+                    //IList<object> list = "270.1945417,402.4902572,1341.938939,1532.260464,372.4266548,81.66415048".Split(',');
+                    IList<object> list = "288.9336446,399.7982794,1053.802145,1645.373715,499.709547,77.98642255".Split(',');
                     Input predictBody = new Input {InputValue = new Input.InputData {CsvInstance = list}};
 
                     TrainedmodelsResource.PredictRequest predictRequest = predictionFramework.PredictionService.Trainedmodels.Predict(predictBody, projectModelId.PojectNumber, projectModelId.ModelId);
