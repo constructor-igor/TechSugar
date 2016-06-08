@@ -2,7 +2,7 @@
 #
 #
 $capacity = 10
-$file = "sin-2000-training-data.csv"
+$file = [string]::Format("sin-{0}-training-data.csv", $capacity)
 remove-item -path $file -force -ErrorAction:Ignore
 
 0..$capacity | 
@@ -11,7 +11,3 @@ remove-item -path $file -force -ErrorAction:Ignore
     convertto-csv -NoTypeInformation -Delimiter "," | 
     % {$_ -replace '"',''} |
     Out-File $file
-
-#$csvContent | Out-File $file
-#| select-object @{Name="X";Expression={$_.'$_, [math]::Sin($_)'}}
-# {Name="Y";Expression={[math]::Sin($_)}}
