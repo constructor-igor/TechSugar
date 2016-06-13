@@ -13,6 +13,7 @@ Tech. Sugar seminars
 * [How to debug anything with Visual Studio and JetBrains dotPeek v1.2!](https://github.com/constructor-igor/TechSugar/issues/32)
 
 **2016**
+* Floating Point Numbers ((float(1.1) != double(1.1))) by Ruslan S.
 * OOP problems by Ruslan S.
 * [Micro beanchmarking.] (https://github.com/constructor-igor/TechSugar/issues/83)
 * [Unit testing and memory profiling.] (https://github.com/constructor-igor/TechSugar/issues/5)
