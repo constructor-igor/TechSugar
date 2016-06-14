@@ -8,7 +8,7 @@ namespace ML_sample
 {
     class Program
     {
-        const string AUTH_JSON_FILE = @"D:\@Temp\GCP_ML_Feasibility\HAR Machine Learning-41ae33f89eac.json";
+        const string AUTH_JSON_FILE = @"D:\@Temp\ML_Feasibility\GCP_ML_Feasibility\HAR Machine Learning-41ae33f89eac.json";
         const string MODEL_ID = "20000-test";   // user-defined unique name for model
         //const string PROJECT_ID = "har-machine-learning-1333";
         const string PROJECT_NUMBER = "1024476357063";
