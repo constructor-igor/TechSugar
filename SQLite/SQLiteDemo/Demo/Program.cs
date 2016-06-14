@@ -8,8 +8,8 @@ namespace Demo
         {
             string location = System.Reflection.Assembly.GetEntryAssembly().Location;
             string dbFilePath = Path.Combine(Path.GetDirectoryName(location), "demo.db");
-            var databaseContext = new Demo.DatabaseContext.DatabaseContext(dbFilePath);
+
+            var databaseContext = new DatabaseContext.DatabaseContext(dbFilePath);
         }
     }
-
 }
