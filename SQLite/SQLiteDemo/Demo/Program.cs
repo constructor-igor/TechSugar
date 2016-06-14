@@ -8,8 +8,8 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-            SqLiteDemo();
-            //SqLiteAndEntityFrameworkDemo();
+            //SqLiteDemo();
+            SqLiteAndEntityFrameworkDemo();
         }
 
         private static void SqLiteDemo()
