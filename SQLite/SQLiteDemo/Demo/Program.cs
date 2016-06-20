@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
 using System.IO;
+using Demo.DatabaseContext;
 
 namespace Demo
 {
@@ -9,7 +10,8 @@ namespace Demo
         static void Main(string[] args)
         {
             //SqLiteDemo();
-            SqLiteAndEntityFrameworkDemo();
+            //SqLiteAndEntityFrameworkDemo();
+            SqLiteCodeFirstDemo.SQLiteCodeFirstDemo();
         }
 
         private static void SqLiteDemo()
