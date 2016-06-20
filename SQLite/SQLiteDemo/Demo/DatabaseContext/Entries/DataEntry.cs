@@ -7,6 +7,7 @@ namespace Demo.DatabaseContext.Entries
     {
         [Key]
         public int Id { get; set; }
+        [MaxLength(1024*1024)]
         public String Content { get; set; }
 
         public virtual ModelEntry ModelEntry { get; set; }
