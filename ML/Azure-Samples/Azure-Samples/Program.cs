@@ -34,14 +34,13 @@ namespace Azure_Samples
             {
                 var scoreRequest = new
                 {
-
                     Inputs = new Dictionary<string, StringTable> () { 
                         { 
                             "input1", 
-                            new StringTable() 
+                            new StringTable
                             {
-                                ColumnNames = new string[] {"X", "Y"},
-                                Values = new string[,] {  { "0", "0" },  { "0", "0" },  }
+                                ColumnNames = new[] {"X", "Y"},
+                                Values = new[,] {  { "0", "0" },  { "1", "0" },  }
                             }
                         },
                     },
@@ -72,7 +71,7 @@ namespace Azure_Samples
                 {
                     Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
 
-                    // Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+                    // Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
                     Console.WriteLine(response.Headers.ToString());
 
                     string responseContent = await response.Content.ReadAsStringAsync();
