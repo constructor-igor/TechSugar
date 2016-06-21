@@ -38,7 +38,19 @@ namespace ML_sample.Commands
 //            IList<object> list = predictValues.Cast<object>().Take(30).ToArray();
             //IList<object> list = "288.9336446,399.7982794,1053.802145,1645.373715,499.709547,77.98642255".Split(',');
             List<double> originalY = new List<double>();
-            List<double> evaluated = File
+
+//            Random random = new Random(12345);
+//            List<Point> evaluatedPoints = Enumerable
+//                .Range(1, 10)
+//                .Select(index =>
+//                {
+//                    double x = ConvertToRadians(360*random.NextDouble());
+//                    double y = Math.Sin(x);
+//                    Point point = new Point {X = x, Y = y};
+//                    return point;
+//                }).ToList();
+
+            IEnumerable<Point> evaluatedPoints = File
                 .ReadAllLines(m_predictValuesFile)
                 .Select(line =>
                 {
@@ -49,7 +61,8 @@ namespace ML_sample.Commands
                     return point;
                 })
                 .Skip(100)
-                .Take(30)
+                .Take(10);
+            List<double> evaluated = evaluatedPoints
                 .Select(value =>
                 {
                     originalY.Add(value.Y);
@@ -80,5 +93,9 @@ namespace ML_sample.Commands
 //            Console.WriteLine("predict output value: {0}", predictResponse.OutputValue);
         }
         #endregion
+        public double ConvertToRadians(double angle)
+        {
+            return (Math.PI / 180) * angle;
+        }
     }
 }

@@ -7,12 +7,9 @@ namespace ML_sample
     class Program
     {
         const string AUTH_JSON_FILE = @"D:\@Temp\ML_Feasibility\GCP_ML_Feasibility\HAR Machine Learning-41ae33f89eac.json";
-        const string MODEL_ID = "20000-test";   // user-defined unique name for model
         const string PROJECT_NUMBER = "1024476357063";
-        const string STORAGE_DATA = "good-test-case/testGood2.csv";
-        const int PROGRESS_WAITING_TIME = 1000;
 
-        static void Main(string[] args)
+        static void Main()
         {
             PredictionFramework predictionFramework = new PredictionFramework();
             predictionFramework.CreatePredictionService(AUTH_JSON_FILE);
@@ -26,20 +23,6 @@ namespace ML_sample
             Console.WriteLine("Command: {0}", command.Command);
 
             command.Run();
-            
-//            switch (command)
-//            {
-//                case "predict":
-//                    //IList<object> list = "270.1945417,402.4902572,1341.938939,1532.260464,372.4266548,81.66415048".Split(',');
-//                    IList<object> list = "288.9336446,399.7982794,1053.802145,1645.373715,499.709547,77.98642255".Split(',');
-//                    Input predictBody = new Input {InputValue = new Input.InputData {CsvInstance = list}};
-//
-//                    TrainedmodelsResource.PredictRequest predictRequest = predictionFramework.PredictionService.Trainedmodels.Predict(predictBody, projectModelId.ProjectNumber, projectModelId.ModelId);
-//                    Output predictResponse = predictRequest.Execute();
-//                    Console.WriteLine("predict output value: {0}", predictResponse.OutputValue);
-//                    break;
-//            }
-//            //predictionService.Trainedmodels.Predict(body, PROJECT_ID, Analyze.ModelDescriptionData)
         }
     }
 }
