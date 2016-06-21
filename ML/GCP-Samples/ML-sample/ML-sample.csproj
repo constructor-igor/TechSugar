@@ -123,9 +123,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalysisCommand.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="PredictionFramework.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusCommand.cs" />
+    <Compile Include="TrainingCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -7,12 +7,12 @@ namespace ML_sample
 {
     public class ProjectModelId
     {
-        public readonly string PojectNumber;
+        public readonly string ProjectNumber;
         public readonly string ModelId;
 
-        public ProjectModelId(string pojectNumber, string modelId)
+        public ProjectModelId(string projectNumber, string modelId)
         {
-            PojectNumber = pojectNumber;
+            ProjectNumber = projectNumber;
             ModelId = modelId;
         }
     }
@@ -38,7 +38,7 @@ namespace ML_sample
 
         public string DeleteTrainedModel(ProjectModelId projectModelId)
         {
-            var deleteRequest = PredictionService.Trainedmodels.Delete(projectModelId.PojectNumber, projectModelId.ModelId);
+            var deleteRequest = PredictionService.Trainedmodels.Delete(projectModelId.ProjectNumber, projectModelId.ModelId);
             string deleteResponse = deleteRequest.Execute();
             return deleteResponse;
         }
@@ -51,14 +51,14 @@ namespace ML_sample
                 Id = projectModelId.ModelId,
                 ModelType = "REGRESSION"
             };
-            TrainedmodelsResource.InsertRequest insertRequest = PredictionService.Trainedmodels.Insert(insertBody, projectModelId.PojectNumber);
+            TrainedmodelsResource.InsertRequest insertRequest = PredictionService.Trainedmodels.Insert(insertBody, projectModelId.ProjectNumber);
             Insert2 insertResponse = insertRequest.Execute();
             return insertResponse;
         }
 
         public Insert2 GetModelStatus(ProjectModelId projectModelId)
         {
-            var getRequest = PredictionService.Trainedmodels.Get(projectModelId.PojectNumber, projectModelId.ModelId);
+            var getRequest = PredictionService.Trainedmodels.Get(projectModelId.ProjectNumber, projectModelId.ModelId);
             Insert2 response = getRequest.Execute();
             return response;
         }
