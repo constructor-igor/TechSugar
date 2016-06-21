@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Google.Apis.Prediction.v1_6;
-using Google.Apis.Prediction.v1_6.Data;
 using ML_sample.Commands;
 using ML_sample.Interfaces;
 
@@ -22,7 +19,8 @@ namespace ML_sample
             ProjectModelId projectModelId = new ProjectModelId(PROJECT_NUMBER, "sin-360-sanity");
             //ICommand command = new TrainingCommand(predictionFramework, projectModelId, "sanity-test-cases/sin-360-training-data.csv");
             //ICommand command = new StatusCommand(predictionFramework, projectModelId);
-            ICommand command = new AnalysisCommand(predictionFramework, projectModelId);
+            //ICommand command = new AnalysisCommand(predictionFramework, projectModelId);
+            ICommand command = new PredictCommand(predictionFramework, projectModelId, @"D:\@Temp\ML_Feasibility\Tech.Sugar-ML-in-Cloud\GCPDemo\predict-data.csv");
 
             Console.WriteLine("Project number: {0}, Model ID: {1}", projectModelId.ProjectNumber, projectModelId.ModelId);
             Console.WriteLine("Command: {0}", command.Command);
@@ -42,16 +40,6 @@ namespace ML_sample
 //                    break;
 //            }
 //            //predictionService.Trainedmodels.Predict(body, PROJECT_ID, Analyze.ModelDescriptionData)
-        }
-
-        private static void ToConsole(Insert2.ModelInfoData modelInfoData)
-        {
-            if (modelInfoData != null)
-            {
-                Console.WriteLine("ModelType: {0}", modelInfoData.ModelType);
-                Console.WriteLine("NumberInstances: {0}", modelInfoData.NumberInstances);
-                Console.WriteLine("MeanSquaredError: {0}", modelInfoData.MeanSquaredError);
-            }
         }
     }
 }
