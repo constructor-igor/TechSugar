@@ -39,18 +39,18 @@ namespace ML_sample.Commands
             //IList<object> list = "288.9336446,399.7982794,1053.802145,1645.373715,499.709547,77.98642255".Split(',');
             List<double> originalY = new List<double>();
 
-//            Random random = new Random(12345);
-//            List<Point> evaluatedPoints = Enumerable
-//                .Range(1, 10)
-//                .Select(index =>
-//                {
-//                    double x = ConvertToRadians(360*random.NextDouble());
-//                    double y = Math.Sin(x);
-//                    Point point = new Point {X = x, Y = y};
-//                    return point;
-//                }).ToList();
+            Random random = new Random(12345);
+            IEnumerable<Point> evaluatedRandomPoints = Enumerable
+                .Range(1, 10)
+                .Select(index =>
+                {
+                    double x = ConvertToRadians(360*random.NextDouble());
+                    double y = Math.Sin(x);
+                    Point point = new Point {X = x, Y = y};
+                    return point;
+                });
 
-            IEnumerable<Point> evaluatedPoints = File
+            IEnumerable<Point> evaluatedFilePoints = File
                 .ReadAllLines(m_predictValuesFile)
                 .Select(line =>
                 {
@@ -62,7 +62,8 @@ namespace ML_sample.Commands
                 })
                 .Skip(100)
                 .Take(10);
-            List<double> evaluated = evaluatedPoints
+
+            List<double> evaluated = evaluatedRandomPoints
                 .Select(value =>
                 {
                     originalY.Add(value.Y);
