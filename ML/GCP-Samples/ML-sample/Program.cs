@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Google.Apis.Prediction.v1_6;
 using Google.Apis.Prediction.v1_6.Data;
+using ML_sample.Commands;
+using ML_sample.Interfaces;
 
 namespace ML_sample
 {

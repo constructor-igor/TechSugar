@@ -1,8 +1,9 @@
 using System;
 using Google.Apis.Prediction.v1_6;
 using Google.Apis.Prediction.v1_6.Data;
+using ML_sample.Interfaces;
 
-namespace ML_sample
+namespace ML_sample.Commands
 {
     public class AnalysisCommand : ICommand
     {

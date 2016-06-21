@@ -1,4 +1,4 @@
-namespace ML_sample
+namespace ML_sample.Interfaces
 {
     public interface ICommand
     {

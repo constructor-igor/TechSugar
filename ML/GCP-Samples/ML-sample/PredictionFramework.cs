@@ -49,7 +49,7 @@ namespace ML_sample
             {
                 StorageDataLocation = csvDataPathInStorage,
                 Id = projectModelId.ModelId,
-                ModelType = "REGRESSION"
+                ModelType = "REGRESSION",
             };
             TrainedmodelsResource.InsertRequest insertRequest = PredictionService.Trainedmodels.Insert(insertBody, projectModelId.ProjectNumber);
             Insert2 insertResponse = insertRequest.Execute();
