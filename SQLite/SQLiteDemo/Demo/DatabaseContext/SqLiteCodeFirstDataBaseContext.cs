@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.SQLite;
 using System.IO;
+using System.Linq;
 using Demo.DatabaseContext.Entries;
 using SQLite.CodeFirst;
 
@@ -16,8 +17,11 @@ namespace Demo.DatabaseContext
             string dbFilePath = Path.Combine(Path.GetDirectoryName(location), "demoDb.db");
             //string dbFilePath = @"data source=.\db\demoDb\demoDb.sqlite;foreign keys=true";
 
-            SqLiteCodeFirstDataBaseContext databaseContext = new SqLiteCodeFirstDataBaseContext(dbFilePath);
+            DemoSqLiteCodeFirstDataBaseContext databaseContext = new DemoSqLiteCodeFirstDataBaseContext(dbFilePath);
             databaseContext.GetValidationErrors();
+            //ModelEntry first = databaseContext.ModelEntries.First();
+            //first.PointsEntries.Add(new PointEntry(){PointId = "pointID_0_0"});
+            //int result = databaseContext.SaveChanges();
         }
 
     }
@@ -56,5 +60,16 @@ namespace Demo.DatabaseContext
             };
             return connection;
         }
+    }
+
+    public class DemoSqLiteCodeFirstDataBaseContext : SqLiteCodeFirstDataBaseContext
+    {
+        public DemoSqLiteCodeFirstDataBaseContext(string dbFilePath) : base(dbFilePath)
+        {
+        }
+
+        public IDbSet<ModelEntry> ModelEntries { get; set; }
+        public IDbSet<PointEntry> PointEntries { get; set; }
+        public IDbSet<DataEntry> DataEntries { get; set; }
     }
 }
