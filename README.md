@@ -11,11 +11,11 @@ Tech. Sugar seminars
 * Microsoft event "Build 2016".
 * [Hangfire — планировщик задач для .NET #134](https://github.com/constructor-igor/TechSugar/issues/134)
 * [How to debug anything with Visual Studio and JetBrains dotPeek v1.2!](https://github.com/constructor-igor/TechSugar/issues/32)
-* Azure ML Demo
-* GCP ML (Predict) Demo
 * Amazon ML Demo
 
 **2016**
+* GCP ML (Predict) Demo
+* Azure ML Demo
 * Floating Point Numbers ((float(1.1) != double(1.1))) by Ruslan S. (based on [Doubles are not floats, so don’t compare them](https://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/))
 * OOP problems by Ruslan S.
 * [Micro beanchmarking.] (https://github.com/constructor-igor/TechSugar/issues/83)
