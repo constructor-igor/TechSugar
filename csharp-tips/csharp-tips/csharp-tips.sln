@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp-tips-NETv2", "csharp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp-console", "csharp-console\csharp-console.csproj", "{A2163B5C-C6AC-4615-A002-6D698FEEDE3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp-tcp-listener", "csharp-tcp-listener\csharp-tcp-listener.csproj", "{D76A3690-34C6-4F22-BB6A-C357CD340EB9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp-tcp-client", "csharp-tcp-client\csharp-tcp-client.csproj", "{EAF20D15-C158-4F56-AFDC-1E44938D4360}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tcp-samples", "tcp-samples", "{B2D0F830-5846-4985-B1EF-DB500B78FF4B}"
@@ -33,10 +31,6 @@ Global
 		{A2163B5C-C6AC-4615-A002-6D698FEEDE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2163B5C-C6AC-4615-A002-6D698FEEDE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2163B5C-C6AC-4615-A002-6D698FEEDE3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D76A3690-34C6-4F22-BB6A-C357CD340EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D76A3690-34C6-4F22-BB6A-C357CD340EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D76A3690-34C6-4F22-BB6A-C357CD340EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D76A3690-34C6-4F22-BB6A-C357CD340EB9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EAF20D15-C158-4F56-AFDC-1E44938D4360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EAF20D15-C158-4F56-AFDC-1E44938D4360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAF20D15-C158-4F56-AFDC-1E44938D4360}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,7 +40,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D76A3690-34C6-4F22-BB6A-C357CD340EB9} = {B2D0F830-5846-4985-B1EF-DB500B78FF4B}
 		{EAF20D15-C158-4F56-AFDC-1E44938D4360} = {B2D0F830-5846-4985-B1EF-DB500B78FF4B}
 	EndGlobalSection
 EndGlobal
