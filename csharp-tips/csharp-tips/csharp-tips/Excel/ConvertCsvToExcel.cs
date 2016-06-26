@@ -31,9 +31,10 @@ namespace csharp_tips.Excel
                 using (ExcelPackage package = new ExcelPackage(excelFileInfo))
                 {
                     const string WORKSHEETS_NAME = "test";
-                    const bool FIRST_ROW_IS_HEADER = true;
+                    const bool FIRST_ROW_IS_HEADER = false;
                     ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(WORKSHEETS_NAME);
-                    worksheet.Cells["A1"].LoadFromText(new FileInfo(csvFile.FileName), format, OfficeOpenXml.Table.TableStyles.Medium27, FIRST_ROW_IS_HEADER);
+                    worksheet.Cells["A1"].LoadFromText(new FileInfo(csvFile.FileName), format);
+                    //worksheet.Cells["A1"].LoadFromText(new FileInfo(csvFile.FileName), format, OfficeOpenXml.Table.TableStyles.None, FIRST_ROW_IS_HEADER);
                     package.Save();
                 }
                 Console.WriteLine("created file {0}", xlsxFile.FileName);
