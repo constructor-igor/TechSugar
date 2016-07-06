@@ -35,6 +35,18 @@ namespace csharp_tips.Excel
                     ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(WORKSHEETS_NAME);
                     worksheet.Cells["A1"].LoadFromText(new FileInfo(csvFile.FileName), format);
                     //worksheet.Cells["A1"].LoadFromText(new FileInfo(csvFile.FileName), format, OfficeOpenXml.Table.TableStyles.None, FIRST_ROW_IS_HEADER);
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        ExcelRange cell = worksheet.Cells[i+1, 2];
+                        int cellValue;
+                        if (Int32.TryParse(cell.Text, out cellValue) && cellValue>10)
+                        {
+                            cell.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                            cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Green);
+                        }
+                    }
+
                     package.Save();
                 }
                 Console.WriteLine("created file {0}", xlsxFile.FileName);
