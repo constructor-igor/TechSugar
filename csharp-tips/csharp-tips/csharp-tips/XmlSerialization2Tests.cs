@@ -213,5 +213,4 @@ namespace csharp_tips
     public class XmlReadonlyAttribute : Attribute
     {
     }
-
 }
