@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Nancy;
 
 namespace HelloWorld
 {
@@ -13,7 +9,7 @@ namespace HelloWorld
         }
     }
 
-    public class SampleModule : Nancy.NancyModule
+    public class SampleModule : NancyModule
     {
         public SampleModule()
         {
