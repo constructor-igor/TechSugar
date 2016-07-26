@@ -6,7 +6,19 @@ namespace SelfHostingSample
     {
         public RootRoutes()
         {
-            Get["/"] = parameters => "Hello World";
+            Get["/"] = Index;
+            Get["jsontest"] = JsonTest;
+        }
+
+        private dynamic Index(dynamic parameters)
+        {
+            return "Hello World";
+        }
+
+        private dynamic JsonTest(dynamic parameters)
+        {
+            var test = new { Name = "Peter Shaw", Twitter = "shawty_ds", Occupation = "Software Developer" };
+            return Response.AsJson(test);
         }
     }
 }
