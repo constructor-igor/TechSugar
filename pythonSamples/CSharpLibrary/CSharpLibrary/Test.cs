@@ -28,3 +28,14 @@ public class Test
         return "Happy Managed Coding!";
     }
 }
+
+namespace CSharpLibrary
+{
+    public class TestCSharp
+    {
+        public static string GetHello()
+        {
+            return "Hello";
+        }
+    }
+}
