@@ -1,5 +1,6 @@
 ﻿using System;
 using Nancy;
+using Nancy.ModelBinding;
 
 namespace SelfHostingSample
 {
@@ -10,6 +11,7 @@ namespace SelfHostingSample
             Get["/"] = Index;
             Get["jsontest"] = JsonTest;
             Get["hello/{name}"] = HelloName;
+            Post["posttest"] = PostTest;
         }
 
         private dynamic Index(dynamic parameters)
@@ -27,6 +29,12 @@ namespace SelfHostingSample
         {
             var name = parameters.name;
             return String.Format("Hello there {0}", name);
+        }
+
+        private dynamic PostTest(dynamic parameters)
+        {
+            var myPerson = this.Bind<Person>();
+            return String.Format("Hello there {0} with twitter handle {1} who works as a {2}", myPerson.Name, myPerson.Twitter, myPerson.Occupation);
         }
     }
 }
