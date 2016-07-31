@@ -29,7 +29,7 @@ namespace MicroServiceSamples
 
                 object r2A = new Aktion2A().Execute(modelId);
                 object r2B = new Aktion2B().Execute(modelId);
-                return string.Format("S2({0}, {1})", r2A, r2B);
+                return string.Format("S2({0}, {1}, {2})", model.ModelId, r2A, r2B);
             }
         }
         public class Aktion2A
