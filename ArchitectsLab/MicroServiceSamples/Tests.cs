@@ -21,7 +21,7 @@ namespace MicroServiceSamples
             string modelId = "1";
             StandardApproachService service = new StandardApproachService();
             string result = service.Execute(modelId);
-            Console.WriteLine("result: ", result);
+            Console.WriteLine("result: {0}", result);
         }
     }
 }
