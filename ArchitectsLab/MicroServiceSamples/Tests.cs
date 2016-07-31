@@ -8,7 +8,7 @@ namespace MicroServiceSamples
         [Test]
         public void StraightforwardApproach()
         {
-            string modelId = "1";
+            string modelId = "model1";
             StraightforwardApproachService service = new StraightforwardApproachService();
             service.Execute(modelId);
         }

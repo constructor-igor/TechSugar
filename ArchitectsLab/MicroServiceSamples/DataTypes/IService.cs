@@ -1,4 +1,4 @@
-namespace MicroServiceSamples
+namespace MicroServiceSamples.DataTypes
 {
     public interface IService
     {
