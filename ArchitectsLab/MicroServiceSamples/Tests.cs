@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace MicroServiceSamples
 {
@@ -10,15 +11,17 @@ namespace MicroServiceSamples
         {
             string modelId = "model1";
             StraightforwardApproachService service = new StraightforwardApproachService();
-            service.Execute(modelId);
+            string result = service.Execute(modelId);
+            Console.WriteLine("result: {0}", result);
         }
 
         [Test]
         public void StandardApproach()
         {
             string modelId = "1";
-            StandardApproachService standardApproachService = new StandardApproachService();
-            standardApproachService.Execute(modelId);
+            StandardApproachService service = new StandardApproachService();
+            string result = service.Execute(modelId);
+            Console.WriteLine("result: ", result);
         }
     }
 }

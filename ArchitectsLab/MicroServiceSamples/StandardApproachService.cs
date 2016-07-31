@@ -4,9 +4,9 @@ namespace MicroServiceSamples
 {
     public class StandardApproachService: IService
     {
-        public void Execute(string modelId)
+        public string Execute(string modelId)
         {
-            
+            return modelId;
         }
     }
 }
