@@ -23,5 +23,14 @@ namespace MicroServiceSamples
             string result = service.Execute(modelId);
             Console.WriteLine("result: {0}", result);
         }
+
+        [Test]
+        public void MicroServicesApproach()
+        {
+            string modelId = "1";
+            MicroServicesApproachService service = new MicroServicesApproachService();
+            string result = service.Execute(modelId);
+            Console.WriteLine("result: {0}", result);
+        }
     }
 }
