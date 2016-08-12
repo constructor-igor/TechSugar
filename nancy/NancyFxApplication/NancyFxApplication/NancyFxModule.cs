@@ -6,7 +6,7 @@ namespace NancyFxApplication
     {
         public NancyFxModule()
         {
-            Get["/"] = param => base.View["Index.html"];
+            Get["/"] = param => View["Index.html"];
 
             Get["/{Name}"] = param =>
             {
