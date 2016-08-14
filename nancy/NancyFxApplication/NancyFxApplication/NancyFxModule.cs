@@ -37,5 +37,6 @@ namespace NancyFxApplication
     public class InputData
     {
         public string User;
+        public string File;
     }
 }
