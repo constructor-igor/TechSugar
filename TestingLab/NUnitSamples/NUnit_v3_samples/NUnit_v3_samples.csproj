@@ -65,6 +65,7 @@
     <Compile Include="NUnitIssue1266.cs" />
     <Compile Include="NUnitIssue1327.cs" />
     <Compile Include="NUnitIssue144.cs" />
+    <Compile Include="NUnitIssue1738.cs" />
     <Compile Include="NUnitIssue24.cs" />
     <Compile Include="NUnitIssue320.cs" />
     <Compile Include="NUnitIssue360.cs" />
