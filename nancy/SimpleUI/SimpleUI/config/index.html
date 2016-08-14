@@ -1,0 +1,25 @@
+﻿@Master['MasterPage']
+
+@Section['Content']
+<div class="pageTitle">Edit Configuration</div>
+<form action="/config/update" method="POST">
+    <div class="grid_1 alpha caption">Update Interval</div>
+    <div class="grid_1 omega"><input type="text" name="updateInterval" value="@Model.Config.UpdateInterval" /></div>
+
+    <div class="grid_1 alpha caption">Server Name</div>
+    <div class="grid_1 omega"><input type="text" name="serverName" value="@Model.Config.ServerName" /></div>
+
+    <div class="grid_1 alpha">&nbsp;</div>
+    <div class="grid_1 omega"><input type="submit" value="Save" /></div>
+
+    @If.HasMessage;
+    <div class="grid_2 message">
+        @Model.Message
+    </div>
+    @EndIf;
+</form>
+@EndSection
+
+@Section['Other']
+
+@EndSection
