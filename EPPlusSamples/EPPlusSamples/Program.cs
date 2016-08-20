@@ -10,8 +10,6 @@ namespace EPPlusSamples
     class Program
     {
         private static readonly Color EMPTY_COLUMN_COLOR = Color.Gainsboro;
-        private static Color NUMBER_OF_FAILES = Color.Yellow;
-        private static Color NUMBER_OF_FAILES_IN_PROCENTS = Color.Red;
 
         static void Main(string[] args)
         {
