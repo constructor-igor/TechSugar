@@ -30,6 +30,20 @@ namespace EPPlusTests
             OpenAndSave(updatedExcelFile, excelFile);
         }
 
+        [Test]
+        public void ProductionFile_OpenSave_CannotBeOpened()
+        {
+            string assemblyDirectory = AssemblyDirectory;
+            string sourceProductionFile = Path.Combine(assemblyDirectory, @"..\..\sourceProductionFile.xlsx");
+            string targetProductionFile = Path.Combine(assemblyDirectory, @"..\..\targetProductionFile.xlsx");
+
+            File.Delete(targetProductionFile);
+            using (ExcelPackage package = new ExcelPackage(new FileInfo(sourceProductionFile)))
+            {
+                package.SaveAs(new FileInfo(targetProductionFile));
+            }
+        }
+
         private static void OpenAndSave(string updatedExcelFile, string excelFile)
         {
             File.Delete(updatedExcelFile);
