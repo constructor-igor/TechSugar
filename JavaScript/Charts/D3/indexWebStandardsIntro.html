@@ -1,0 +1,46 @@
+
+<html>
+<head>
+	<script type="text/javascript" src="d3/d3.min.js"></script>
+</head>
+
+<body>
+<h1 id="click-me">
+  Click on me!
+</h1>
+
+<p class="hover-me">
+  Hover over me!
+</p>
+
+<p class="hover-me">
+  OK now hover over here!
+</p>
+
+<p class="hover-me">
+  Hover here too!
+</p>
+    
+<script>
+// DOM API
+var clickMe = document.getElementById('click-me');
+clickMe.onclick = function() {
+  if (this.style.backgroundColor) {
+    this.style.backgroundColor = '';
+  } else {
+    this.style.backgroundColor = 'red';
+  }
+}
+
+// D3 Selection API. Note: it attaches the
+// callbacks to each element in the selection
+d3.selectAll('.hover-me')
+  .on('mouseover', function() {
+    this.style.backgroundColor = 'yellow';
+  })
+  .on('mouseleave', function() {
+    this.style.backgroundColor = '';
+  });
+</script>
+</body>
+</html>
