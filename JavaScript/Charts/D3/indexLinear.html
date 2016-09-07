@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<script type="text/javascript" src="d3/d3.min.js"></script>
+	</head>
+	<body>
+		<h1>D3 chart sample</h1>
+		<div id="chart"></div>
+		
+		<script>
+			var data = [
+				{ x: 400.0, y: 0.4 },
+				{ x: 410.0, y: 0.45 },
+				{ x: 420.0, y: 0.43 },
+				{ x: 500.0, y: 0.5 },
+				{ x: 600.0, y: 0.6 },
+				{ x: 700.0, y: 0.5 },
+				{ x: 900.0, y: 0.9 }
+			];
+			
+			var mainWidth = 800;
+			var mainHeight = 400;
+			var areaID = "#chart";
+			var margin = {top: 30, right: 70, bottom: 30, left: 70};
+			var width = mainWidth - margin.left - margin.right;
+			var height = mainHeight - margin.top - margin.bottom;
+			var id = "d3_simple_chart";
+			var title = "title";
+			var xAxisName = "X";
+			var yLeftAxisName = "yLeft";
+			var yRightAxisName = "yRight";
+			var color = "#ff6600";
+			
+			// definition of data range for conversion coord at scales
+			var xMin=d3.min(data, function(d) { return d.x; }),
+				xMax=d3.max(data, function(d) { return d.x; }),
+				yLeftMax=d3.max(data, function(d) { return d.y; }),
+				yRightMax=d3.max(data, function(d) { return d.y; });
+			
+			// set the scale for the transfer of real values
+			var xScale = d3.scaleLinear().range([0, width]);
+			var yScaleLeft = d3.scaleLinear().range([height, 0]);
+			var yScaleRight = d3.scaleLinear().range([height, 0]);
+			
+			xScale.domain([xMin,xMax]);
+			var xAxis = d3.axisBottom(xScale);
+			
+			yScaleLeft.domain([0, yLeftMax]);
+			yScaleRight.domain([0, yRightMax]);
+			var yAxisLeft = d3.axisLeft(yScaleLeft);
+			var yAxisRight = d3.axisRight(yScaleRight);
+			
+			var selectedObj = d3.select(areaID);
+			
+			// create svg for draving chart
+			var svg = selectedObj.append("svg")
+				.attr("width", mainWidth).attr("height", mainHeight)
+				.attr("id", id);
+
+			// outer border
+			svg.append("rect")
+				.attr("width", mainWidth).attr("height", mainHeight)
+                .style("fill", "none").style("stroke", "#ccc");	
+			
+			// create group in svg for generate graph
+			var g = svg.append("g")
+				.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .attr("class", "legend");
+			
+			 // add title and axis names
+			g.append("text").attr("x", margin.left).attr("y", 0 - (margin.top / 2))
+				.attr("text-anchor", "middle").style("font-size", "14px") 
+				.text(title);
+				
+			g.append("text").attr("x", -80).attr("dx", 40) .attr("y", mainHeight-50)
+				.attr("text-anchor", "end") 
+				.text(xAxisName);
+			g.append("text").attr("transform", "rotate(-90)")
+				.attr("x", 0) .attr("y", -38).attr("dy", 0)
+				.attr("text-anchor", "end") 
+				.text(yLeftAxisName);
+			g.append("text").attr("transform", "rotate(-90)")
+				.attr("x", 0) .attr("y", mainWidth-130).attr("dy", 40)
+				.attr("text-anchor", "end") 
+				.text(yRightAxisName);
+			
+			// add axis
+			g.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")")
+				.call(xAxis);  
+			g.append("g").attr("class", "y axis")
+				.call(yAxisLeft)
+			g.append("g").attr("class", "y axis").attr("transform", "translate(" + width + " ,0)")
+				.call(yAxisRight);
+				
+			var line = d3.line()
+				.x(function(data) { return xScale(data.x); })
+				.y(function(data) { return yScaleLeft(data.y); });
+			//line.curve();
+			line.curve(d3.curveNatural);
+			// draw line
+			g.append("path").datum(data)
+				.attr("d", line)
+				.style("fill", "none").style("stroke", color)
+				.style("stroke-width", "1px");	
+				
+		</script>
+	</body>
+</html>
