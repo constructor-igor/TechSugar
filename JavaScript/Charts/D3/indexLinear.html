@@ -5,7 +5,15 @@
 	<body>
 		<h1>D3 chart sample</h1>
 		<div id="chart"></div>
-		
+
+		<style>
+			.dot {
+				fill: white;
+				stroke: steelblue;
+				stroke-width: 1.5px;
+			}
+		</style>
+
 		<script>
 			var data = [
 				{ x: 400.0, y: 0.4 },
@@ -21,6 +29,7 @@
 			var mainHeight = 400;
 			var areaID = "#chart";
 			var margin = {top: 30, right: 70, bottom: 30, left: 70};
+			//var margin = {top: 0, right: 70, bottom: 30, left: 0};
 			var width = mainWidth - margin.left - margin.right;
 			var height = mainHeight - margin.top - margin.bottom;
 			var id = "d3_simple_chart";
@@ -31,8 +40,8 @@
 			var color = "#ff6600";
 			
 			// definition of data range for conversion coord at scales
-			var xMin=d3.min(data, function(d) { return d.x; }),
-				xMax=d3.max(data, function(d) { return d.x; }),
+			var xMin=d3.min(data, function(d) { return d.x; })-50,
+				xMax=d3.max(data, function(d) { return d.x; })+50,
 				yLeftMax=d3.max(data, function(d) { return d.y; }),
 				yRightMax=d3.max(data, function(d) { return d.y; });
 			
@@ -41,11 +50,11 @@
 			var yScaleLeft = d3.scaleLinear().range([height, 0]);
 			var yScaleRight = d3.scaleLinear().range([height, 0]);
 			
-			xScale.domain([xMin,xMax]);
+			xScale.domain([xMin, xMax]);
 			var xAxis = d3.axisBottom(xScale);
 			
-			yScaleLeft.domain([0, yLeftMax]);
-			yScaleRight.domain([0, yRightMax]);
+			yScaleLeft.domain([0, 1]);				// yLeftMax
+			yScaleRight.domain([0, 1]);				// yRightMax
 			var yAxisLeft = d3.axisLeft(yScaleLeft);
 			var yAxisRight = d3.axisRight(yScaleRight);
 			
@@ -53,25 +62,26 @@
 			
 			// create svg for draving chart
 			var svg = selectedObj.append("svg")
-				.attr("width", mainWidth).attr("height", mainHeight)
+				.attr("width", width + margin.left + margin.right)
+				.attr("height", height + margin.top + margin.bottom)
 				.attr("id", id);
 
 			// outer border
 			svg.append("rect")
-				.attr("width", mainWidth).attr("height", mainHeight)
+				.attr("width", width+100).attr("height", height+60)
                 .style("fill", "none").style("stroke", "#ccc");	
 			
 			// create group in svg for generate graph
 			var g = svg.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+				//.attr("transform", "translate(" + 0 + "," + 0 + ")")
                 .attr("class", "legend");
 			
 			 // add title and axis names
 			g.append("text").attr("x", margin.left).attr("y", 0 - (margin.top / 2))
 				.attr("text-anchor", "middle").style("font-size", "14px") 
-				.text(title);
-				
-			g.append("text").attr("x", -80).attr("dx", 40) .attr("y", mainHeight-50)
+				.text(title);				
+			g.append("text").attr("x", -80).attr("dx", 40) .attr("y", height)
 				.attr("text-anchor", "end") 
 				.text(xAxisName);
 			g.append("text").attr("transform", "rotate(-90)")
@@ -79,7 +89,7 @@
 				.attr("text-anchor", "end") 
 				.text(yLeftAxisName);
 			g.append("text").attr("transform", "rotate(-90)")
-				.attr("x", 0) .attr("y", mainWidth-130).attr("dy", 40)
+				.attr("x", 0) .attr("y", width-50).attr("dy", 40)
 				.attr("text-anchor", "end") 
 				.text(yRightAxisName);
 			
@@ -100,8 +110,16 @@
 			g.append("path").datum(data)
 				.attr("d", line)
 				.style("fill", "none").style("stroke", color)
-				.style("stroke-width", "1px");	
+				.style("stroke-width", "1px");
 				
+			svg.selectAll(".dot")
+				.data(data)
+				.enter().append("circle")
+					.attr("class", "dot")
+					.attr("cx", line.x())
+					.attr("cy", line.y())
+					.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+					.attr("r", 3.5);
 		</script>
 	</body>
 </html>
