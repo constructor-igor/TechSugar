@@ -20,6 +20,9 @@ print "test access to cell"
 print data['A5'][480]
 print data.at[480, 'A5']
 
+data_class = data['class']
+del data['class']
+
 print "describe"
 print data.describe()
 
@@ -74,11 +77,10 @@ data_numerical = data[numerical_columns]
 data_numerical = (data_numerical - data_numerical.mean()) / data_numerical.std()
 data_numerical.describe()
 
-data_class = data['class']
-del data['class']
 data = pd.concat((data_numerical, data[binary_columns], data_nonbinary, data_class), axis=1)
 data = pd.DataFrame(data, dtype=float)
 print data.shape
 print data.columns
 
-data.to_csv(trainingFilePath+"-target.csv", sep=',', header=False)
+data.to_csv(trainingFilePath+"-target.csv", sep=',', header=True, index=False)
+data.to_csv(trainingFilePath+"-target-no-header.csv", sep=',', header=False, index=False)
