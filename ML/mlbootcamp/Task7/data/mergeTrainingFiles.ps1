@@ -1,6 +1,6 @@
 
-$file1 = "@original\crx_data_train_x.csv"
-$file2 = "@original\crx_data_train_y.csv"
+$file1 = "@original\x_train.csv"
+$file2 = "@original\y_train.csv"
 $targetFile = "trainingData.csv"
 $sep = ","
 
