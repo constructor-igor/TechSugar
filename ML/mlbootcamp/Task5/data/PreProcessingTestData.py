@@ -9,6 +9,7 @@ plt.style.use('ggplot')
 
 trainingFilePath = '@original\crx_data_test_x.csv'
 targetFile = "testData.csv-target.csv"
+targetFileNoHeader = "testData.csv-target-no-header.csv"
 data = pd.read_csv(trainingFilePath, header=None, na_values='?')
 
 print data.shape
@@ -78,8 +79,10 @@ data_numerical.describe()
 #data_class = data['class']
 #del data['class']
 data = pd.concat((data_numerical, data[binary_columns], data_nonbinary), axis=1)
+del data['A7_o']
 data = pd.DataFrame(data, dtype=float)
 print data.shape
 print data.columns
 
-data.to_csv(targetFile, sep=',', header=False)
+data.to_csv(targetFile, sep=',', header=True, index=False)
+data.to_csv(targetFileNoHeader, sep=',', header=False, index=False)
