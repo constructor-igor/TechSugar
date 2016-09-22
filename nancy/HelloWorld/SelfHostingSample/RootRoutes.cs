@@ -29,8 +29,10 @@ namespace SelfHostingSample
 
         private dynamic HelloName(dynamic parameters)
         {
-            var name = parameters.name;
-            Session[nameMessageKey] = name.ToString();
+            string name = parameters.name.ToString();
+            if (name == "error")
+                throw new NameNotFoundException(name);
+            Session[nameMessageKey] = name;
             return String.Format("Hello there {0}", name);
         }
 

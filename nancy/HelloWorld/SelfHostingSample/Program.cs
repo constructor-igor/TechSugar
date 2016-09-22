@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Hosting.Self;
@@ -28,6 +29,22 @@ namespace SelfHostingSample
             {
                 base.ApplicationStartup(container, pipelines);
                 CookieBasedSessions.Enable(pipelines);
+
+                pipelines.OnError += (context, exception) =>
+                {
+                    if (exception is NameNotFoundException)
+                        return new Response
+                        {
+                            StatusCode = HttpStatusCode.NotFound,
+                            ContentType = "text/html",
+                            Contents = (stream) =>
+                            {
+                                var errorMessage = Encoding.UTF8.GetBytes(exception.Message);
+                                stream.Write(errorMessage, 0, errorMessage.Length);
+                            }
+                        };
+                    return HttpStatusCode.InternalServerError;
+                };
             }
         }
     }
