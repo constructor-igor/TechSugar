@@ -6,6 +6,7 @@ namespace SelfHostingSample
 {
     public class RootRoutes : NancyModule
     {
+        const string nameMessageKey = "name";
         public RootRoutes()
         {
             Get["/"] = Index;
@@ -16,7 +17,8 @@ namespace SelfHostingSample
 
         private dynamic Index(dynamic parameters)
         {
-            return "Hello World";
+            string message = Session[nameMessageKey] != null ? Session[nameMessageKey].ToString() : "World";
+            return String.Format("Hello {0}", message);
         }
 
         private dynamic JsonTest(dynamic parameters)
@@ -28,6 +30,7 @@ namespace SelfHostingSample
         private dynamic HelloName(dynamic parameters)
         {
             var name = parameters.name;
+            Session[nameMessageKey] = name.ToString();
             return String.Format("Hello there {0}", name);
         }
 
