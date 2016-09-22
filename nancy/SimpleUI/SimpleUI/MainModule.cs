@@ -6,7 +6,7 @@ namespace SimpleUI
     {
         public MainModule()
         {
-            Get["/"] = p => View["main.html"];
+            Get["/"] = p => View["index.html"];
         }
     }
 }
