@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILNumericsIntro", "ILNumericsIntro\ILNumericsIntro.csproj", "{8D0B1628-55EC-4443-9E5E-87198E4386F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ILNumericsTests", "ILNumericsTests\ILNumericsTests.csproj", "{F9D6C7DC-E615-4E80-AC8D-8C7C4D2A04E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D0B1628-55EC-4443-9E5E-87198E4386F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D0B1628-55EC-4443-9E5E-87198E4386F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D0B1628-55EC-4443-9E5E-87198E4386F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D0B1628-55EC-4443-9E5E-87198E4386F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9D6C7DC-E615-4E80-AC8D-8C7C4D2A04E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9D6C7DC-E615-4E80-AC8D-8C7C4D2A04E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9D6C7DC-E615-4E80-AC8D-8C7C4D2A04E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9D6C7DC-E615-4E80-AC8D-8C7C4D2A04E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
