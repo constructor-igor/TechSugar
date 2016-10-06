@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="BeforeCompile" >
+    <CallTarget Targets="ProvideLicense"></CallTarget>
+  </Target>
+  
+  <Target Name="DetectLicensedSeat">
+    <PropertyGroup>
+      <IsILNInstalled>$([MSBuild]::GetRegistryValueFromView(`HKEY_CURRENT_USER\SOFTWARE\ILNumerics\ILNumerics_Ultimate_VS`, `LicenseKey`, ``, RegistryView.Registry32))</IsILNInstalled>
+      <IsLicensedSeat Condition="($(IsILNInstalled)!='') and ($(IsILNInstalled.Trim().Length)>0)">true</IsLicensedSeat>
+      <IsLicensedSeat Condition="$(IsLicensedSeat)==''">false</IsLicensedSeat>
+    </PropertyGroup>
+    <Message Text="Building on ILNumerics licensed seat." Condition="'$(IsLicensedSeat)'=='true'" Importance="low"></Message>
+    <Message Text="Building on ILNumerics NON-licensed seat." Condition="'$(IsLicensedSeat)'!='true'" Importance="low"></Message>
+  </Target>
+  
+  <Target Name="GetStandardBuildConfig" DependsOnTargets="DetectLicensedSeat">
+    <PropertyGroup>
+      <LicfileLocation>$(MSBuildProjectDirectory)\ILNumerics_deploy\ilnumerics.lic</LicfileLocation>
+      <Pattern>%%ILLicBuildConfig=([a-zA-Z0-9]+)\|([a-zA-Z0-9]+)%%</Pattern>
+      <LicFileContent Condition="Exists('$(LicfileLocation)')">$([System.IO.File]::ReadAllText($(LicfileLocation)))</LicFileContent>
+      <LicConfig Condition="$(LicFileContent)!=''">$([System.Text.RegularExpressions.Regex]::Match($(LicFileContent),$(Pattern)).Groups[1].Value)</LicConfig>
+      <LicPlatform Condition="$(LicFileContent)!=''">$([System.Text.RegularExpressions.Regex]::Match($(LicFileContent),$(Pattern)).Groups[2].Value)</LicPlatform>
+      <LicConfig Condition="$(IsLicensedSeat)=='true'">$(Configuration)</LicConfig>
+      <LicPlatform Condition="$(IsLicensedSeat)=='true'">$(Platform)</LicPlatform>
+    </PropertyGroup>
+    <Message Text="ILNLicCompile standard configuration detected: $(LicConfig)|$(LicPlatform)" Importance="low" Condition="Exists('$(LicfileLocation)')"></Message>
+  </Target>
+  
+  <Target Name="BuildStandardConfig" DependsOnTargets="GetStandardBuildConfig">
+    <MSBuild Targets="Build"
+             Projects="$(MSBuildProjectFile)"
+             Properties="Configuration=$(LicConfig);Platform=$(LicPlatform);ILNLicCompile=true;IsLicensedSeat=$(IsLicensedSeat)"
+             Condition="($(LicConfig)!='') and ($(LicPlatform)!='')" >
+      <Output PropertyName="LicTargetName" TaskParameter="TargetOutputs"/>
+    </MSBuild>
+  </Target>
+  
+  <Target Name="ProvideLicense" DependsOnTargets="BuildStandardConfig">
+    <ItemGroup>
+      <Compile Include="ILNumerics_deploy\ilnumerics.tmplic" Condition="Exists('ILNumerics_deploy\ilnumerics.tmplic')"/>
+    </ItemGroup>
+  </Target>
+  
+  <Target Name="CleanTmpLic">
+    <Delete Files="$(MSBuildProjectDirectory)\ILNumerics_deploy\ilnumerics.tmplic" Condition="Exists('$(MSBuildProjectDirectory)\ILNumerics_deploy\ilnumerics.tmplic')" ContinueOnError="true"></Delete>
+  </Target>
+  
+  <PropertyGroup>
+    <CleanDependsOn>
+      $(CleanDependsOn);
+      CleanTmpLic;
+    </CleanDependsOn>
+  </PropertyGroup>
+</Project>

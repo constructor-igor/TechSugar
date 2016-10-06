@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="AfterCompile" DependsOnTargets="ILNDoLC;ILNDoCH;AfterLicCompileLS"></Target>
+
+  <Target Name="ILNDoLC">
+    <!-- This is executed in the BeforeBuild task of the general build target -->
+    <GetFrameworkSdkPath>
+      <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
+    </GetFrameworkSdkPath>
+    <ItemGroup>
+      <LC64ToolPath Include="$(WindowsSdkPath)**\x64\LC.exe"/>
+    </ItemGroup>
+    <PropertyGroup>
+      <!-- we need to link to 64 bit LC SDK tools manually when building for 64 bit -->
+      <Is64BitTarget Condition="('$(PlatformTarget)' != '') and ($(PlatformTarget.Contains('64')))">true</Is64BitTarget>
+      <LC64ToolDir Condition="@(LC64ToolPath) != ''">@(LC64ToolPath)</LC64ToolDir>
+      <!-- Fix 4.10: there might have been more than one lc.exe found! Take the last one: -->
+      <LC64ToolDirEntriesCount Condition="'@(LC64ToolPath->Count())' > '1'">@(LC64ToolPath->Count())</LC64ToolDirEntriesCount>
+      <LC64ToolDirEntriesCount Condition="'@(LC64ToolPath->Count())' > '1'">$([MSBuild]::Add('$(LC64ToolDirEntriesCount)',-1))</LC64ToolDirEntriesCount>
+      <LC64ToolDir Condition="'@(LC64ToolPath->Count())' > '1'">$(LC64ToolDir.Split(';')[$(LC64ToolDirEntriesCount)])</LC64ToolDir>
+      <LC64ToolDir Condition="'$(LC64ToolDir)' != ''">$(LC64ToolDir.Substring(0, $([MSBuild]::Add($(LC64ToolDir.Length),-6))))</LC64ToolDir>
+      <LCToolPath Condition="'$(Is64BitTarget)' == 'true'">$(LC64ToolDir)</LCToolPath>
+      <!-- now find the real SDK version to give correct parameters to LC task below -->
+      <SDKVersionUsed Condition="'$(WindowsSdkPath)' != ''">$([System.Text.RegularExpressions.Regex]::Match($(WindowsSdkPath).Value,`v([0-9]+)\.`).Groups[1].Value)</SDKVersionUsed>
+
+      <ILNHelperFileLocation>$(MSBuildProjectDirectory)\ILNumerics_deploy\ILNHelper.cs</ILNHelperFileLocation>
+      <ILNHelperFileLocation Condition="!Exists('$(ILNHelperFileLocation)')">$(MSBuildProjectDirectory)\ILNumerics_deploy\ILNHelper.vb</ILNHelperFileLocation>
+      <LicHelperFileContent>$([System.IO.File]::ReadAllText($(ILNHelperFileLocation)))</LicHelperFileContent>
+      <!-- Deal with unique lic helper class name -->
+      <LicHelperClassName>$([System.Text.RegularExpressions.Regex]::Match($(LicHelperFileContent),`ILLicHelper_[0-9a-zA-Z]+_`))</LicHelperClassName>
+      <LicHelperClassName Condition="$(LicHelperClassName) == ''">ILLicHelper</LicHelperClassName>
+      <LicHelperFullClassName>ILNumerics_Licensing.$(LicHelperClassName)</LicHelperFullClassName>
+      <!--for VB only: add RootNamespace to the lic helper class name (VS2010 compatibility)-->
+      <LicHelperFullClassName Condition="($(OptionStrict) != '') or ($(OptionExplicit) != '') or ($(MyType) != '')">$(RootNamespace).$(LicHelperFullClassName)</LicHelperFullClassName>
+      <LCSourcesFileName>$(MSBuildProjectDirectory)\ILNumerics_deploy\ILTempLCinput.lc</LCSourcesFileName>
+      <MainTargetAssemblyFileName>$(MSBuildProjectDirectory)\$(IntermediateOutputPath)$(TargetFilename)</MainTargetAssemblyFileName>
+      <LicCHCompileSourceFileName>ILNumerics_deploy\ilnumerics.tmplic</LicCHCompileSourceFileName>
+    </PropertyGroup>
+
+    <Message Text="ILNumerics License Compiler: 64 bit platform target detected. Using LC tools from: $(LCToolPath)"
+             Condition="'$(Is64BitTarget)' == 'true'"
+             Importance="normal"></Message>
+
+    <WriteLinesToFile File="ILNumerics_deploy\ILTempLCinput.lc" Lines="$(LicHelperFullClassName), $(TargetName)" Overwrite="true"></WriteLinesToFile>
+    <Message Text="ILNLicCompile ReferencePath: @(ReferencePath)" Importance="low"></Message>
+    <Message Text="ILNLicCompile ReferenceDependencyPaths: @(ReferenceDependencyPaths)" Importance="low"></Message>
+    <Message Text="ILNLicCompile MainTargetAssemblyFileName: $(MainTargetAssemblyFileName)" Importance="low"></Message>
+    <Message Text="ILNLicCompile Building with tools version: $(MSBuildToolsVersion)" Importance="low"></Message>
+    <!--<Delete Condition="Exists('$(LicCHCompileSourceFileName)')" Files="$(LicCHCompileSourceFileName)" ContinueOnError="true"/>-->
+    <Message Text="ILNLicCompile Building with tools version: $(MSBuildToolsVersion)" Importance="low"></Message>
+    <Message Text="ILNLicCompile LCToolPath: $(LCToolPath)" Importance="low"></Message>
+    <Message Text="ILNLicCompile MSBuildToolsPath: $(MSBuildToolsPath)" Importance="low"></Message>
+    <Message Text="ILNLicCompile MSBuildBinPath: $(MSBuildBinPath)" Importance="low"></Message>
+    <Message Text="ILNLicCompile WindowsSdkPath: $(WindowsSdkPath)" Importance="low"></Message>
+    <Message Text="ILNLicCompile LC64ToolDir: $(LC64ToolDir)" Importance="low"></Message>
+    <Message Text="ILNLicCompile MSBuildFrameworkToolsPath : $(MSBuildFrameworkToolsPath)" Importance="low"></Message>
+    <Message Text="ILNLicCompile SDKVersionUsed : $(SDKVersionUsed)" Importance="low"></Message>
+    <Message Text="ILNLicCompile SDKVersionUsed is higher than 9" Condition="'$(SDKVersionUsed)' &gt; '9'" Importance="low"></Message>
+    <Message Text="ILNLicCompile SDKVersionUsed is lower or equal to 9" Condition="'$(SDKVersionUsed)' &lt;= '9'" Importance="low"></Message>
+
+    <LC Condition="'$(SDKVersionUsed)' &gt; '9'"
+      Sources="$(LCSourcesFileName)"
+      LicenseTarget="$(TargetFileName)"
+      OutputDirectory="$(MSBuildProjectDirectory)"
+      OutputLicense="$(MSBuildProjectDirectory)\$(TargetFileName).licenses"
+      ReferencedAssemblies="@(ReferencePath);@(ReferenceDependencyPaths);$(MainTargetAssemblyFileName)"
+      NoLogo="True" ToolPath="$(LCToolPath)"
+      EnvironmentVariables="$(LCEnvironment)"
+      MSBuildArchitecture="$(LCMSBuildArchitecture)"
+      ContinueOnError="true"
+      LogStandardErrorAsError="false"
+      TargetFrameworkVersion="$(TargetFrameworkVersion)" />
+
+    <LC Condition="'$(SDKVersionUsed)' &lt;= '9'"
+      Sources="$(LCSourcesFileName)"
+      LicenseTarget="$(TargetFileName)"
+      OutputDirectory="$(MSBuildProjectDirectory)"
+      OutputLicense="$(MSBuildProjectDirectory)\$(TargetFileName).licenses"
+      ReferencedAssemblies="@(ReferencePath);@(ReferenceDependencyPaths);$(MainTargetAssemblyFileName)"
+      NoLogo="True" ToolPath="$(LCToolPath)"
+      EnvironmentVariables="$(LCEnvironment)"
+      MSBuildArchitecture="$(LCMSBuildArchitecture)"
+      ContinueOnError="true"
+      LogStandardErrorAsError="false"/>
+
+    <PropertyGroup>
+      <LicenseCompilerHasFailed Condition="'$(MSBuildLastTaskResult)' == 'false'">true</LicenseCompilerHasFailed>
+    </PropertyGroup>
+    <Message Text="The LC task completed with errors." Condition="'$(LicenseCompilerHasFailed)' == 'true'" Importance="normal"></Message>
+    <Message Text="The LC task completed without errors." Condition="'$(LicenseCompilerHasFailed)' != 'true'" Importance="low"></Message>
+  </Target>
+
+  <Target Name="ILNDoCH">
+    <!-- All Seats: copy hash -->
+    <Message Text="ILNLicCompile Licensing helper class name used: $(LicHelperClassName)" Importance="low"></Message>
+    <ReadLinesFromFile
+      File="$(LicCHCompileSourceFileName)"
+      Condition="Exists($(LicCHCompileSourceFileName))">
+      <Output PropertyName="ILNCH" TaskParameter="Lines"/>
+    </ReadLinesFromFile>
+    <Message Text="Determined code state for assembly $(MainTargetAssemblyFileName): $(ILNCH)" Importance="low" Condition="$(ILNCH.Length) > 0"></Message>
+    <Message Text="Failed to determine code state for assembly $(MainTargetAssemblyFileName)" Importance="low" Condition="$(ILNCH.Length) == 0"></Message>
+    <PropertyGroup>
+      <Pattern>(.+)\|(.+)</Pattern>
+      <LCErrorCode Condition="$(ILNCH)!=''">$([System.Text.RegularExpressions.Regex]::Match($(ILNCH),$(Pattern)).Groups[1].Value)</LCErrorCode>
+      <ILNCH Condition="$(ILNCH)!=''">$([System.Text.RegularExpressions.Regex]::Match($(ILNCH),$(Pattern)).Groups[2].Value)</ILNCH>
+      <CHFileContentVB>Namespace ILNumerics_Licensing
+        Partial Public Class {0}
+        Public Const CH = "{1}"
+        End Class
+End Namespace
+      </CHFileContentVB>
+      <CHFileContentCS>namespace ILNumerics_Licensing {{ public partial class {0} {{ public const string CH = &quot;{1}&quot;; }} }}</CHFileContentCS>
+      <CHHelperFileContent Condition="($(OptionStrict) != '') or ($(OptionExplicit) != '') or ($(MyType) != '')">$([System.String]::Format($(CHFileContentVB),$(LicHelperClassName),$(ILNCH)))</CHHelperFileContent>
+      <CHHelperFileContent Condition="'$(CHHelperFileContent)'==''">$([System.String]::Format(`$(CHFileContentCS)`,`$(LicHelperClassName)`,`$(ILNCH)`))</CHHelperFileContent>
+    </PropertyGroup>
+    <Message Text="Error code returned from LC task: $(LCErrorCode)" Importance="low"></Message>
+    <WriteLinesToFile File="$(LicCHCompileSourceFileName)" Lines="$(CHHelperFileContent)" Overwrite="true"></WriteLinesToFile>
+    <Delete Condition="Exists('$(LCSourcesFileName)')" Files="$(LCSourcesFileName)"></Delete>
+  </Target>
+
+  <Target Name="AfterLicCompileLS" Condition="(Exists('$(MSBuildProjectDirectory)\$(TargetFileName).licenses')) and ('$(LicenseCompilerHasFailed)' != 'true') and ('$(LCErrorCode)'=='Success')">
+    <!-- Licensed Seat: copy license + append config -->
+    <Move 
+      SourceFiles="$(MSBuildProjectDirectory)\$(TargetFileName).licenses"
+      DestinationFiles="$(MSBuildProjectDirectory)\ILNumerics_deploy\ilnumerics.lic"
+      OverwriteReadOnlyFiles="true"/>
+
+    <WriteLinesToFile
+          Overwrite="false"
+          ContinueOnError="true"
+          File="$(MSBuildProjectDirectory)\ILNumerics_deploy\ilnumerics.lic"
+          Lines="%%ILLicBuildConfig=$(Configuration)|$(Platform)%%"/>
+    <Delete Files="$(MSBuildProjectDirectory)\$(TargetFileName).licenses"
+            ContinueOnError="true"
+            TreatErrorsAsWarnings="true"></Delete>
+    <Message Condition="Exists('$(MSBuildProjectDirectory)\ILNumerics_deploy\ilnumerics.lic') and ($(LicenseCompilerHasFailed) != 'true')"
+          Text="Licenses compiled to: $(MSBuildProjectDirectory)\ILNumerics_deploy\ilnumerics.lic"
+          Importance="High" />
+  </Target>
+</Project>
