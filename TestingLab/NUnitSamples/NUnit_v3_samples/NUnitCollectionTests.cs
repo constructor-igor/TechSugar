@@ -22,7 +22,7 @@ namespace NUnit_v3_samples
         }
 
         [Test]
-        public void AreEqual_1024()
+        public void Assert_AreEqual_1024()
         {
             byte[,] actual = new byte[1024, 1024];
             byte[,] expected = new byte[1024, 1024];
@@ -30,12 +30,24 @@ namespace NUnit_v3_samples
             Assert.AreEqual(expected, actual);
         }
         [Test]
-        public void EquivalentTo_1024()
+        public void CollectionAssert_AreEqual_1024()
         {
             byte[,] actual = new byte[1024, 1024];
             byte[,] expected = new byte[1024, 1024];
 
-            Assert.That(actual, Is.EquivalentTo(expected));
+            CollectionAssert.AreEqual(expected, actual);
+        }
+        [Test]
+        public void Assert_That_EquivalentTo_1024()
+        {
+            byte[,] actual = new byte[1024, 1024];
+            actual[10, 10] = 10;
+            actual[20, 20] = 20;
+            byte[,] expected = new byte[1024, 1024];
+            expected[10, 10] = 10;
+            expected[20, 20] = 20;
+
+            Assert.That(actual, Is.EqualTo(expected));
         }
     }
 }
