@@ -55,6 +55,11 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\Microsoft.Office.Interop.Outlook.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Outlook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NFile.Framework, Version=0.9.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NFile.Framework.0.9.3.0\lib\net40\NFile.Framework.dll</HintPath>
       <Private>True</Private>
@@ -101,6 +106,7 @@
     <Compile Include="FloatDoubleTransformTests.cs" />
     <Compile Include="LINQ\AggregateSamples.cs" />
     <Compile Include="LINQ\GroupBySamples.cs" />
+    <Compile Include="OutlookSamples.cs" />
     <Compile Include="PLINQ\plinqSample.cs" />
     <Compile Include="PowerShellInDebuggerSamples.cs" />
     <Compile Include="ProgressSamples.cs" />
