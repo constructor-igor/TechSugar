@@ -10,6 +10,7 @@ rem	-labels=Before
 rem	-labels=After
 rem	-labels=All
 
-D:\My\@gh\nunit\nunit-console\bin\Debug\nunit3-console.exe 
+rem D:\My\@gh\nunit\nunit-console\bin\Debug\nunit3-console.exe 
+D:\My\@gh\nunit\nunit-console\bin\Debug\nunit3-console.exe NUnit_v3_samples\bin\debug\NUnit_v3_samples.dll --test=NUnit_v3_samples.RepeatSampleTests --labels=All
 rem D:\My\@gh\nunit\nunit-console\bin\Debug\nunit3-console.exe NUnit_v3_samples\bin\debug\NUnit_v3_samples.dll --test=NUnit_v3_samples.NUnitIssue1738 --labels=All
 pause

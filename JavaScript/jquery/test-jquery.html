@@ -1,8 +1,15 @@
 <html>
 
 <head>
-    <title>jQuery Hello World</title>
-    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+	<title>jQuery Hello World</title>
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+
+	<li class="vacation" data-price="300">
+		<button type="button">Get Price #1</button>
+	</li>
+	<li class="vacation" data-price="400">
+		<button type="button">Get Price #2</button>
+	</li>
 </head>
 
 <body>
@@ -10,6 +17,14 @@
 	<script type="text/javascript">
             $(document).ready(function(){
                 $("p").text("updated Test jQuery");
+                $('button').on('click', function(){
+                    var amount = $(this).parent().data('price');
+                    var price = $('<p>From $'+amount+'</p>');
+                    //var price = $('<p>From $399.8</p>');
+                    //$('.vacation').append(price);
+                    $(this).after(price);
+                    $(this).remove();
+                })
             });
         </script>
 </body>
