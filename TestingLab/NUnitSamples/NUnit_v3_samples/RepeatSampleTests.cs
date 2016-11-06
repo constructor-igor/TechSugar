@@ -32,6 +32,13 @@ namespace NUnit_v3_samples
             Assert.Pass();
         }
 
+        [Test]
+        public void SearchFailedInputInProductionCodeFromCharlie([Random(0, 10, 100)] int inputValue)
+        {
+            RunProductionCode(inputValue);
+            Assert.Pass();
+        }
+
         void RunProductionCode(int inputValue)
         {
             if (inputValue > 8) throw new NotImplementedException();
