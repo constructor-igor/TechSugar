@@ -1,0 +1,9 @@
+﻿<Window x:Class="Microsoft_Face_API.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Image x:Name="FacePhoto" HorizontalAlignment="Left" Height="240" Margin="72,25,0,0" VerticalAlignment="Top" Width="381"/>
+        <Button x:Name="button" Content="Click me" HorizontalAlignment="Left" Height="28" Margin="72,281,0,0" VerticalAlignment="Top" Width="381" Click="button_Click"/>
+    </Grid>
+</Window>
