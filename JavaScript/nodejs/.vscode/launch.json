@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}/my_parser_refactored.js",
+            "program": "${workspaceRoot}/EventEmitters.js",
             "cwd": "${workspaceRoot}",
             "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe"
         },
