@@ -6,6 +6,9 @@
 </head>
 
 <body>
+    <h1 id="bigOne"></h1>
+
+
 <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -17,6 +20,11 @@
     messagingSenderId: "648619806490"
   };
   firebase.initializeApp(config);
+
+  var bigOne = document.getElementById('bigOne');
+  var dbRef = firebase.database().ref().child('text');
+  dbRef.on('value', snap => bigOne.innerText = snap.val());
+
 </script>
 
 </body>
