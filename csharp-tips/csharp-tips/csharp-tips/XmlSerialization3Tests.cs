@@ -54,5 +54,4 @@ namespace csharp_tips
     {
         public GenericSerializer3() : base(typeof(T)) { }
     }
-
 }
