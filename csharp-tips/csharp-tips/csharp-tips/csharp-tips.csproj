@@ -107,6 +107,7 @@
     <Compile Include="FloatDoubleTransformTests.cs" />
     <Compile Include="LINQ\AggregateSamples.cs" />
     <Compile Include="LINQ\GroupBySamples.cs" />
+    <Compile Include="LINQ\TakeSample.cs" />
     <Compile Include="OutlookSamples.cs" />
     <Compile Include="PLINQ\plinqSample.cs" />
     <Compile Include="PowerShellInDebuggerSamples.cs" />
