@@ -15,6 +15,12 @@ app
 .use(bodyParser.urlencoded({ extended: false }))
 .use(bodyParser.json())
 
+.get('/info', (req, res, next) => {
+	res
+	.status(200)
+	.json({author: 'hcalendar bot', info: 'Hebrew Calendar', commands: ['hcalendar']})
+	.end();
+})
 .get('/event', (req, res, next) => {
 	res
 	.json({name: 'hcalendar bot', version: '0.0.1'})
