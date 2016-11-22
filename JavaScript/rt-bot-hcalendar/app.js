@@ -1,6 +1,9 @@
+//
+// skeleton copy&pasted from https://github.com/umputun/rt-bot/tree/master/sovet-bot
+//
 const express = require('express');
 const bodyParser = require('body-parser');
-// const rp = require('request-promise');
+// const rp = require('request-promise');	// //,"request-promise": "^4.1.1"
 
 var app = express(), port = 8080;
 
