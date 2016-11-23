@@ -17,6 +17,9 @@
 exports.civ2heb_v1 = function civ2heb_v1(day, month, year) {
 	return civ2heb(day, month, year);
 }
+exports.getHebMonth_v1 = function getHebMonth_v1(hebMonthIndex) {
+	return hebMonth[hebMonthIndex];
+} 
 
 function makeArray() {
 	this[0] = makeArray.arguments.length;

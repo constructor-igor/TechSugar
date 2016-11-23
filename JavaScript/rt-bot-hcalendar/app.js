@@ -6,8 +6,33 @@ const bodyParser = require('body-parser');
 // const rp = require('request-promise');	// //,"request-promise": "^4.1.1"
 
 var kdate = require("./kdate.js");
+var formatting = require("./formatting.js")
 
 var app = express(), port = 8080;
+
+function getHebMonthOnEnglish(hMonth)
+{
+	var monthName = kdate.getHebMonth_v1(hMonth);
+	return monthName;
+}
+function getHebMonth(hMonth)
+{
+	return getHebMonthOnEnglish(hMonth);
+}
+
+function hebDateToString(hebDate)
+{
+	var hmS = hebDate.substring(hebDate.indexOf(' ')+1, hebDate.length);
+	var hDay = parseInt(hebDate.substring(0, hebDate.indexOf(' ')));
+	var hMonth = parseInt(hmS.substring(0, hmS.indexOf(' ')))+1;
+	var hYear = hmS.substring(hmS.indexOf(' ')+1, hmS.length);
+	var hYearStr = hYear;
+
+	var hebMonthName = getHebMonth(hMonth);
+	var fullDate = formatting.FormatDay_v1(hDay) + " " + hebMonthName;
+	fullDate = fullDate + ", " + hYearStr;
+	return fullDate;
+}
 
 /*
 {text: сообщение, username: id пользователя, display_name: имя пользователя} 
@@ -39,7 +64,7 @@ app
 		var tyear = uDate.getFullYear();
 
 		var hebDate = kdate.civ2heb_v1(tday, tmonth, tyear);
-		var currentData = "currentData";
+		var currentData = hebDateToString(hebDate);
 		var data = {text: currentData, bot: "hcalendar"};
 		res
 			.status(201)
