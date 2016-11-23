@@ -5,6 +5,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // const rp = require('request-promise');	// //,"request-promise": "^4.1.1"
 
+var kdate = require("./kdate.js");
+
 var app = express(), port = 8080;
 
 /*
@@ -31,12 +33,18 @@ app
 
 	if (msg.text == "hcalendar")
 	{
+		var uDate = new Date();
+		var tday = uDate.getDate();
+		var tmonth = uDate.getMonth() + 1;
+		var tyear = uDate.getFullYear();
+
+		var hebDate = kdate.civ2heb_v1(tday, tmonth, tyear);
 		var currentData = "currentData";
 		var data = {text: currentData, bot: "hcalendar"};
 		res
-		.status(201)
-		.json(data)
-		.end();
+			.status(201)
+			.json(data)
+			.end();
 	} else{
 		res.sendStatus(417);
 	}
