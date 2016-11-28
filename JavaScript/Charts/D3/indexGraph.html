@@ -42,7 +42,7 @@ var numbers = [ 5, 4, 10, 1 ],
       { date: '2014-04-01', amount: 80 }
     ];
 
-var x = d3.time.scale()
+var x = d3.timeDay.scale()
     .domain([
       new Date(Date.parse('2014-01-01')),
       new Date(Date.parse('2014-04-01'))
