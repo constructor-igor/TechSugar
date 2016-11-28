@@ -7,11 +7,11 @@ namespace csharp_tips
     [TestFixture]
     public class HtmlToPdf
     {
-        [Test]
-        public void Test()
+        [TestCase("BookIndex")]
+        public void DemoTest(string htmlFileName)
         {
-            string sourceHtmlFile = @"..\..\htmlSamples\BookIndex.html";
-            string targetPdfFile = @"..\..\htmlSamples\BookIndex.pdf";
+            string sourceHtmlFile = String.Format(@"..\..\htmlSamples\{0}.html", htmlFileName);
+            string targetPdfFile = String.Format(@"..\..\htmlSamples\{0}.pdf", htmlFileName);
             File.WriteAllBytes(targetPdfFile, PdfSharpConvert(File.ReadAllText(sourceHtmlFile)));
         }
         public static Byte[] PdfSharpConvert(String html)
