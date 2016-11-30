@@ -115,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArraySamples.cs" />
+    <Compile Include="BufferWriterServiceTests.cs" />
     <Compile Include="CombinatorialSamples.cs" />
     <Compile Include="DynamicProxySamples\DynamicObjectSample.cs" />
     <Compile Include="DynamicProxySamples\EmitSamples.cs" />
