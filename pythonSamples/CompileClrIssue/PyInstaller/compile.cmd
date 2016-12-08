@@ -1,3 +1,3 @@
 rem PyInstaller check-clr.py --hidden-import=clr
-PyInstaller check-clr.py
+pyinstaller check-clr.py --hidden-import=clr
 pause
