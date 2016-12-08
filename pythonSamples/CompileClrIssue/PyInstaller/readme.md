@@ -52,3 +52,26 @@ compilation output:
 5325 INFO: Building COLLECT because out00-COLLECT.toc is non existent
 5325 INFO: Building COLLECT out00-COLLECT.toc
 ```
+
+When run **check-clr.exe**:
+```
+Unhandled Exception: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. 
+---> System.ArgumentNullException: Value cannot be null.
+Parameter name: key
+   at System.Collections.Generic.Dictionary`2.FindEntry(TKey key)
+   at System.Collections.Generic.Dictionary`2.TryGetValue(TKey key, TValue& value)
+   at Python.Runtime.GenericUtil.Register(Type t)
+   at Python.Runtime.AssemblyManager.ScanAssembly(Assembly assembly)
+   at Python.Runtime.AssemblyManager.Initialize()
+   at Python.Runtime.Runtime.Initialize()
+   at Python.Runtime.PythonEngine.Initialize()
+   at Python.Runtime.PythonEngine.InitExt()
+   --- End of inner exception stack trace ---
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments,
+ Signature sig, Boolean constructor)
+   at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.RuntimeType.InvokeMember(String name, BindingFlags bindingFlags, Binder binder, Object target, Object[] providedArgs, ParameterModifier[] modifiers
+, CultureInfo culture, String[] namedParams)
+   at clrModule.PyInit_clr()
+   ```
