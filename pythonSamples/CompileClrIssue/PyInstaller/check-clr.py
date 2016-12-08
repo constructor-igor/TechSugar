@@ -1,0 +1,2 @@
+import clr
+print ('ok')

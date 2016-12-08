@@ -1,0 +1,1 @@
+https://github.com/pyinstaller/pyinstaller/issues/1801
