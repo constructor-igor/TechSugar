@@ -1,0 +1,740 @@
+
+Microsoft (R) Windows Debugger Version 6.11.0001.404 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: D:\@Igor\Python\clr\dist\check-clr\check-clr.exe
+Symbol search path is: *** Invalid ***
+****************************************************************************
+* Symbol loading may be unreliable without a symbol search path.           *
+* Use .symfix to have the debugger choose a symbol path.                   *
+* After setting your symbol path, use .reload to refresh symbol locations. *
+****************************************************************************
+Executable search path is: 
+ModLoad: 00000000`00400000 00000000`00434000   image00000000`00400000
+ModLoad: 00000000`77230000 00000000`773da000   ntdll.dll
+ModLoad: 00000000`77010000 00000000`7712f000   C:\Windows\system32\kernel32.dll
+ModLoad: 000007fe`fd0b0000 000007fe`fd11a000   C:\Windows\system32\KERNELBASE.dll
+ModLoad: 000007fe`feac0000 000007fe`feb5f000   C:\Windows\system32\msvcrt.dll
+ModLoad: 000007fe`fec30000 000007fe`fec7d000   C:\Windows\system32\WS2_32.dll
+ModLoad: 000007fe`fef20000 000007fe`ff04d000   C:\Windows\system32\RPCRT4.dll
+ModLoad: 000007fe`ff0f0000 000007fe`ff0f8000   C:\Windows\system32\NSI.dll
+(1ef8.1f30): Break instruction exception - code 80000003 (first chance)
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for ntdll.dll - 
+ntdll!CsrSetPriorityClass+0x40:
+00000000`772d7980 cc              int     3
+0:000> g
+ModLoad: 00000000`64580000 00000000`64964000   D:\@Igor\Python\clr\dist\check-clr\python35.dll
+ModLoad: 000007fe`fecb0000 000007fe`fed8b000   C:\Windows\system32\ADVAPI32.dll
+ModLoad: 000007fe`fe7e0000 000007fe`fe7ff000   C:\Windows\SYSTEM32\sechost.dll
+ModLoad: 000007fe`e4800000 000007fe`e4817000   D:\@Igor\Python\clr\dist\check-clr\VCRUNTIME140.dll
+ModLoad: 000007fe`e47f0000 000007fe`e47f4000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-runtime-l1-1-0.dll
+ModLoad: 000007fe`e46f0000 000007fe`e47e2000   D:\@Igor\Python\clr\dist\check-clr\ucrtbase.DLL
+ModLoad: 000007fe`e46e0000 000007fe`e46e3000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-core-timezone-l1-1-0.dll
+ModLoad: 000007fe`e46d0000 000007fe`e46d3000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-core-file-l2-1-0.dll
+ModLoad: 000007fe`e46c0000 000007fe`e46c3000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-core-localization-l1-2-0.dll
+ModLoad: 000007fe`df730000 000007fe`df733000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-core-synch-l1-2-0.dll
+ModLoad: 000007fe`df720000 000007fe`df723000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-core-processthreads-l1-1-1.dll
+ModLoad: 000007fe`df710000 000007fe`df713000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-core-file-l1-2-0.dll
+ModLoad: 000007fe`df700000 000007fe`df704000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-string-l1-1-0.dll
+ModLoad: 000007fe`df6f0000 000007fe`df6f3000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-heap-l1-1-0.dll
+ModLoad: 000007fe`df6e0000 000007fe`df6e4000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-stdio-l1-1-0.dll
+ModLoad: 000007fe`df6d0000 000007fe`df6d4000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-convert-l1-1-0.dll
+ModLoad: 000007fe`df6c0000 000007fe`df6c5000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-math-l1-1-0.dll
+ModLoad: 000007fe`df6b0000 000007fe`df6b3000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-locale-l1-1-0.dll
+ModLoad: 000007fe`df6a0000 000007fe`df6a3000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-time-l1-1-0.dll
+ModLoad: 000007fe`df690000 000007fe`df693000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-environment-l1-1-0.dll
+ModLoad: 000007fe`df680000 000007fe`df683000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-process-l1-1-0.dll
+ModLoad: 000007fe`df670000 000007fe`df673000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-conio-l1-1-0.dll
+ModLoad: 000007fe`df660000 000007fe`df663000   D:\@Igor\Python\clr\dist\check-clr\api-ms-win-crt-filesystem-l1-1-0.dll
+ModLoad: 000007fe`fc7a0000 000007fe`fc7b8000   C:\Windows\system32\CRYPTSP.dll
+ModLoad: 000007fe`fc4a0000 000007fe`fc4e7000   C:\Windows\system32\rsaenh.dll
+ModLoad: 000007fe`fce00000 000007fe`fce0f000   C:\Windows\system32\CRYPTBASE.dll
+ModLoad: 00000000`70be0000 00000000`70c03000   D:\@Igor\Python\clr\dist\check-clr\_ctypes.pyd
+ModLoad: 000007fe`fd320000 000007fe`fd523000   C:\Windows\system32\ole32.dll
+ModLoad: 000007fe`febc0000 000007fe`fec27000   C:\Windows\system32\GDI32.dll
+ModLoad: 00000000`77130000 00000000`7722a000   C:\Windows\system32\USER32.dll
+ModLoad: 000007fe`fd530000 000007fe`fd53e000   C:\Windows\system32\LPK.dll
+ModLoad: 000007fe`ff3d0000 000007fe`ff49a000   C:\Windows\system32\USP10.dll
+ModLoad: 000007fe`fe9e0000 000007fe`feaba000   C:\Windows\system32\OLEAUT32.dll
+ModLoad: 000007fe`fec80000 000007fe`fecae000   C:\Windows\system32\IMM32.DLL
+ModLoad: 000007fe`fee10000 000007fe`fef19000   C:\Windows\system32\MSCTF.dll
+ModLoad: 000007fe`df650000 000007fe`df65a000   D:\@Igor\Python\clr\dist\check-clr\clr.pyd
+ModLoad: 000007fe`f1480000 000007fe`f14ef000   C:\Windows\SYSTEM32\MSCOREE.DLL
+ModLoad: 000007fe`f13e0000 000007fe`f1478000   C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscoreei.dll
+ModLoad: 000007fe`fe760000 000007fe`fe7d1000   C:\Windows\system32\SHLWAPI.dll
+ModLoad: 000007fe`fc040000 000007fe`fc04c000   C:\Windows\system32\VERSION.dll
+ModLoad: 000007fe`ecd40000 000007fe`ed6d0000   C:\Windows\Microsoft.NET\Framework64\v4.0.30319\clr.dll
+ModLoad: 000007fe`f1770000 000007fe`f1867000   C:\Windows\system32\MSVCR120_CLR0400.dll
+(1ef8.1f30): Unknown exception - code 04242420 (first chance)
+ModLoad: 000007fe`eb870000 000007fe`ecd34000   C:\Windows\assembly\NativeImages_v4.0.30319_64\mscorlib\6c41685bbf8bcf463c7b9ba2fcc87755\mscorlib.ni.dll
+ModLoad: 00000000`025d0000 00000000`025da000   \clrmodule.dll
+ModLoad: 00000000`025e0000 00000000`025ea000   \clrmodule.dll
+ModLoad: 000007fe`f1760000 000007fe`f1763000   C:\Windows\system32\api-ms-win-core-xstate-l2-1-0.dll
+ModLoad: 000007fe`f1650000 000007fe`f1755000   C:\Windows\Microsoft.NET\Framework64\v4.0.30319\clrjit.dll
+ModLoad: 000007fe`df620000 000007fe`df644000   Python.Runtime.dll
+ModLoad: 00000000`025f0000 00000000`02614000   Python.Runtime.dll
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+ModLoad: 000007fe`df5f0000 000007fe`df614000   Python.Runtime.dll
+ModLoad: 00000000`025f0000 00000000`02614000   Python.Runtime.dll
+ModLoad: 000007fe`df620000 000007fe`df644000   Python.Runtime.dll
+ModLoad: 00000000`025f0000 00000000`02614000   Python.Runtime.dll
+ModLoad: 000007fe`fd820000 000007fe`fd9a4000   C:\Windows\system32\urlmon.dll
+ModLoad: 000007fe`fd310000 000007fe`fd314000   C:\Windows\system32\api-ms-win-downlevel-ole32-l1-1-0.dll
+ModLoad: 000007fe`fd020000 000007fe`fd024000   C:\Windows\system32\api-ms-win-downlevel-shlwapi-l1-1-0.dll
+ModLoad: 000007fe`fd130000 000007fe`fd135000   C:\Windows\system32\api-ms-win-downlevel-advapi32-l1-1-0.dll
+ModLoad: 000007fe`fd140000 000007fe`fd144000   C:\Windows\system32\api-ms-win-downlevel-user32-l1-1-0.dll
+ModLoad: 000007fe`fd300000 000007fe`fd304000   C:\Windows\system32\api-ms-win-downlevel-version-l1-1-0.dll
+ModLoad: 000007fe`fd120000 000007fe`fd123000   C:\Windows\system32\api-ms-win-downlevel-normaliz-l1-1-0.dll
+ModLoad: 00000000`773f0000 00000000`773f3000   C:\Windows\system32\normaliz.DLL
+ModLoad: 000007fe`ff100000 000007fe`ff3ca000   C:\Windows\system32\iertutil.dll
+ModLoad: 000007fe`fd540000 000007fe`fd812000   C:\Windows\system32\WININET.dll
+ModLoad: 000007fe`fd090000 000007fe`fd0ae000   C:\Windows\system32\USERENV.dll
+ModLoad: 000007fe`fcf60000 000007fe`fcf6f000   C:\Windows\system32\profapi.dll
+ModLoad: 000007fe`fcbb0000 000007fe`fcbbb000   C:\Windows\system32\Secur32.dll
+ModLoad: 000007fe`fcd70000 000007fe`fcd95000   C:\Windows\system32\SSPICLI.DLL
+ModLoad: 000007fe`fd9b0000 000007fe`fe73a000   C:\Windows\system32\SHELL32.dll
+ModLoad: 000007fe`fae90000 000007fe`fae94000   C:\Windows\system32\api-ms-win-downlevel-advapi32-l2-1-0.dll
+ModLoad: 000007fe`eaca0000 000007fe`eb870000   C:\Windows\assembly\NativeImages_v4.0.30319_64\System\1a98622dab36ec943e1d2efab4d4ed1b\System.ni.dll
+ModLoad: 000007fe`e9420000 000007fe`e9da5000   C:\Windows\assembly\NativeImages_v4.0.30319_64\System.Core\75bb95fb5cf33cabdb0138d93ee873ed\System.Core.ni.dll
+ModLoad: 000007fe`f1630000 000007fe`f1646000   C:\Windows\Microsoft.NET\Framework64\v4.0.30319\nlssorting.dll
+ModLoad: 000007fe`df130000 000007fe`df20f000   C:\Windows\assembly\NativeImages_v4.0.30319_64\System.Security\64a5bc48b8111fa28afaeb39fd974561\System.Security.ni.dll
+ModLoad: 000007fe`e8b80000 000007fe`e9412000   C:\Windows\assembly\NativeImages_v4.0.30319_64\System.Xml\027914d2a924db92c433ddc76afbe9c0\System.Xml.ni.dll
+ModLoad: 000007fe`edad0000 000007fe`edbf1000   C:\Windows\assembly\NativeImages_v4.0.30319_64\System.Configuration\a3c9d46aa9d2cae22ba19e8ef9c0955e\System.Configuration.ni.dll
+ModLoad: 000007fe`dee20000 000007fe`df125000   C:\Windows\assembly\NativeImages_v4.0.30319_64\System.Data.SqlXml\6c30e0c0d4dce47bac411a677f0ba77d\System.Data.SqlXml.ni.dll
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+
+*** Status originated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\id_parser.cpp, line 590
+
+
+*** Status propagated: -1072365543
+***   Source File: d:\iso_whid\amd64fre\base\isolation\com\identityauthority.cpp, line 147
+
+(1ef8.1f30): C++ EH exception - code e06d7363 (first chance)
+(1ef8.1f30): CLR exception - code e0434352 (first chance)
+ntdll!ZwTerminateProcess+0xa:
+00000000`7727bffa c3              ret
