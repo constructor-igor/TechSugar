@@ -147,6 +147,7 @@
     <Compile Include="SendToProviders\MAPI.cs" />
     <Compile Include="ServiceBusSamples.cs" />
     <Compile Include="SortSamples.cs" />
+    <Compile Include="StackTraceSamples.cs" />
     <Compile Include="StringBuilderTests.cs" />
     <Compile Include="StringSamples.cs" />
     <Compile Include="TasksTests.cs" />
