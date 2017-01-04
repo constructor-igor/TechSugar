@@ -34,7 +34,7 @@ namespace csharp_tips
         }
     }
 
-    public static class LinqExtesnions
+    public static class LinqExtensions
     {
         ///<summary>Finds the index of the first item matching an expression in an enumerable.</summary>
         ///<param name="items">The enumerable to search.</param>
