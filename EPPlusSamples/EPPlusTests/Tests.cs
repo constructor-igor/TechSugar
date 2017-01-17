@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Xml;
@@ -66,8 +67,19 @@ namespace EPPlusTests
                 // Add Conditional Formatting for the cells we just filled
                 AddConditionalFormattingColorsRange(dataWorkSheet, "C1:C10", "FFF8696B", "FF63BE7B");
 
-                AddConditionalFormatting(dataWorkSheet, "A2:A20");
+                AddConditionalFormatting_Formula(dataWorkSheet, "A2:A20", 1.2);
+                AddConditionalFormatting_GreaterThan(dataWorkSheet, "B2:B20", 2.1);
 
+//                ExcelColumn columnForColor = dataWorkSheet.Column(1);
+//                columnForColor.Width = 2;
+//                columnForColor.Style.Fill.PatternType = ExcelFillStyle.Solid;
+//                columnForColor.Style.Fill.BackgroundColor.SetColor(EMPTY_COLUMN_COLOR);
+//
+//                columnForColor = dataWorkSheet.Column(3);
+//                columnForColor.Width = 2;
+//                columnForColor.Style.Fill.PatternType = ExcelFillStyle.Solid;
+//                columnForColor.Style.Fill.BackgroundColor.SetColor(EMPTY_COLUMN_COLOR);
+                
                 package.Save();
             }
         }
@@ -136,15 +148,26 @@ namespace EPPlusTests
             }
         }
 
-        public static void AddConditionalFormatting(ExcelWorksheet inWorksheet, string address)
+        public static void AddConditionalFormatting_Formula(ExcelWorksheet inWorksheet, string address, double value)
         {
             //ExcelAddress _formatRangeAddress = new ExcelAddress("B3:B10,D3:D10,F3:F10,H3:H10:J3:J10");
             ExcelAddress _formatRangeAddress = new ExcelAddress(address);
-            string _statement = "1.2";
+            string _statement = value.ToString(CultureInfo.InvariantCulture);
             //string _statement = "IF(1, 1, 0)";
             var _cond4 = inWorksheet.ConditionalFormatting.AddEqual(_formatRangeAddress);
             _cond4.Style.Fill.PatternType = ExcelFillStyle.Solid;
             _cond4.Style.Fill.BackgroundColor.Color = Color.Green;
+            _cond4.Formula = _statement;
+        }
+        public static void AddConditionalFormatting_GreaterThan(ExcelWorksheet inWorksheet, string address, double greaterTheValue)
+        {
+            //ExcelAddress _formatRangeAddress = new ExcelAddress("B3:B10,D3:D10,F3:F10,H3:H10:J3:J10");
+            ExcelAddress _formatRangeAddress = new ExcelAddress(address);
+            string _statement = greaterTheValue.ToString(CultureInfo.InvariantCulture);
+            //string _statement = "IF(1, 1, 0)";
+            var _cond4 = inWorksheet.ConditionalFormatting.AddGreaterThan(_formatRangeAddress);
+            _cond4.Style.Fill.PatternType = ExcelFillStyle.Solid;
+            _cond4.Style.Fill.BackgroundColor.Color = Color.Yellow;
             _cond4.Formula = _statement;
         }
 
