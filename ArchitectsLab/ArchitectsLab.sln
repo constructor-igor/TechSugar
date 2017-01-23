@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "consoleApplication", "conso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroServiceSamples", "MicroServiceSamples\MicroServiceSamples.csproj", "{597ED2BB-322B-4711-B168-3E257F435E2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeSolution", "TreeSolution\TreeSolution.csproj", "{2BC2E78F-CE99-43CD-80CB-29E6969E0E2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{597ED2BB-322B-4711-B168-3E257F435E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{597ED2BB-322B-4711-B168-3E257F435E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{597ED2BB-322B-4711-B168-3E257F435E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BC2E78F-CE99-43CD-80CB-29E6969E0E2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC2E78F-CE99-43CD-80CB-29E6969E0E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC2E78F-CE99-43CD-80CB-29E6969E0E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC2E78F-CE99-43CD-80CB-29E6969E0E2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
