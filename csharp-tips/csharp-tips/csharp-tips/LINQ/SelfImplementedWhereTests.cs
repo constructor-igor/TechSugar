@@ -17,6 +17,7 @@ namespace csharp_tips.LINQ
 
             Assert.That(data.WhereOdd().Count(), Is.EqualTo(50));
             Assert.That(data.WhereOdd2().Count(), Is.EqualTo(50));
+            Assert.That(data.MyWhere(v=>v>=50).Count(), Is.EqualTo(50));
         }
     }
     public static class MyLinq
@@ -37,10 +38,19 @@ namespace csharp_tips.LINQ
         public static IEnumerable<T> WhereOdd2<T>(this IEnumerable<T> source)
         {
             List<T> soureData = source.ToList();
-            for (int i = 0; i < soureData.Count(); i++)
+            for (int i = 0; i < soureData.Count; i++)
             {
                 if (IsOdd(Convert.ToInt32(soureData[i])))
                     yield return soureData[i];
+            }
+        }
+        public static IEnumerable<T> MyWhere<T>(this IEnumerable<T> source, Func<T, bool> whereFunc)
+        {
+            List<T> soureData = source.ToList();
+            foreach (T dataValue in soureData)
+            {
+                if (whereFunc(dataValue))
+                    yield return dataValue;
             }
         }
     }
