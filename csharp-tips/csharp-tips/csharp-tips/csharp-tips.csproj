@@ -130,6 +130,7 @@
     <Compile Include="HtmlToPdf.cs" />
     <Compile Include="LINQ\AggregateSamples.cs" />
     <Compile Include="LINQ\GroupBySamples.cs" />
+    <Compile Include="LINQ\SelfImplementedWhereTests.cs" />
     <Compile Include="LINQ\TakeSample.cs" />
     <Compile Include="ListSamples.cs" />
     <Compile Include="OutlookSamples.cs" />
