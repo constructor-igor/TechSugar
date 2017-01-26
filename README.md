@@ -11,7 +11,6 @@ Tech. Sugar seminars
 * Microsoft event "Build 2016".
 * [Hangfire — планировщик задач для .NET #134](https://github.com/constructor-igor/TechSugar/issues/134)
 * [How to debug anything with Visual Studio and JetBrains dotPeek v1.2!](https://github.com/constructor-igor/TechSugar/issues/32)
-* Amazon ML Demo
 
 **2016**
 * GCP ML (Predict) Demo
