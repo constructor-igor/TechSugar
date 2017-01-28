@@ -25,6 +25,15 @@ namespace csharp_tips.LINQ
             }
         }
         [Test]
+        public void ForEachForList()
+        {
+            List<int> dataList = Enumerable.Range(0, 10).ToList();
+            foreach (int dataItem in dataList)
+            {
+                Console.WriteLine(dataItem);
+            }
+        }
+        [Test]
         public void ForEachForEnumarable()
         {
             IEnumerable<int> dataEnumerable = Enumerable.Range(0, 10);
