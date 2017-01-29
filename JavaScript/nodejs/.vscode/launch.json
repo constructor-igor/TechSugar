@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}/EventEmitters.js",
+            "program": "${workspaceRoot}/my_web_server_express.js",
             "cwd": "${workspaceRoot}",
             "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe"
         },
