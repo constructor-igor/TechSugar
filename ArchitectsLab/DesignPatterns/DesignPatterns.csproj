@@ -49,6 +49,8 @@
     <Compile Include="Observer\ObserverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxy\ProxyExample.cs" />
+    <Compile Include="State\StateWithoutPattern.cs" />
+    <Compile Include="State\StateWithPattern.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
