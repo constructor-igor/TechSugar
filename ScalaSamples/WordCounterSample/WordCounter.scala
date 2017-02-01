@@ -2,6 +2,7 @@ package main
 
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkConf
+import org.apache.spark.SparkContext._
 
 object WordCounter {
 	def main(args: Array[String]) {
