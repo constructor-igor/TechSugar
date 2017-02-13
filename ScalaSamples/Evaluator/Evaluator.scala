@@ -6,7 +6,7 @@ import org.apache.spark.SparkContext._
 
 object Evaluator {
 	def main(args: Array[String]) {
-		val conf = new SparkConf().setAppName("Evaluator")
+		val conf = new SparkConf().setAppName("Language Evaluator")
 		val sc = new SparkContext(conf)
 
         val wikiDocuments = sc.hadoopRDD(jobConf,
