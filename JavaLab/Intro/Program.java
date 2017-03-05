@@ -1,4 +1,5 @@
 import java.io.Console;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
@@ -20,11 +21,20 @@ public class Program{
 
         Logger l = Logger.getLogger(Program.class.getName());
         l.info("Developer Name: " + program.getDeveloper());
+
+
+
     }
     public Program(String developer){
         this.developer = developer;
         Logger l = Logger.getLogger(getClass().getName());
         System.out.println("Program");
         l.log(Level.INFO, "Program started");
+
+        List<Program> programs1 = new ArrayList<Program>();
+        List<Program> programs2 = new ArrayList<>();
+
+        System.out.println("programs1: " + Integer.toString(programs1.size()));
+        System.out.println(String.format("programs2: %d", programs2.size()));
     }
 }
