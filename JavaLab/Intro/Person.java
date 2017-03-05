@@ -1,12 +1,28 @@
 package com.makotojava.intro;
 
+import java.io.Console;
+
 /**
  * Person
  */
 public class Person {
-    public String Name;
+    private String name;
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
     public Person(String name) {
-        this.Name = name;
+        this.name = name;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("start");
+        Person person = new Person("Joe");
+        System.out.println("Person: " + person.getName());
+        person.setName("Chandler");
+        System.out.println("Person: " + person.getName());
     }
 } 
 
