@@ -34,6 +34,14 @@ public class Program{
 
         System.out.println("programs1: " + Integer.toString(programs1.size()));
         System.out.println(String.format("programs2: %d", programs2.size()));
+
+        Set<Integer> setOfIntegers = new HashSet<Integer>();
+        setOfIntegers.add(Integer.valueOf(10));
+        setOfIntegers.add(Integer.valueOf(11));
+        setOfIntegers.add(Integer.valueOf(10));
+        for (Integer i : setOfIntegers) {
+            l.info("Integer value is: " + i);
+        }
     }
     public Program(String developer){
         this.developer = developer;
