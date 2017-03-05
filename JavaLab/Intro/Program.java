@@ -46,11 +46,30 @@ public class Program{
         l.info("hashset contains 12: " + setOfIntegers.contains(11));
         l.info("hashset contains 12: " + setOfIntegers.contains(12));
         l.info(String.format("hashset contains %d: %b", 10, setOfIntegers.contains(10)));
+
+        Map<String, Integer>mapOfIntegers = createMapOfIntegers();
+        Integer oneHundred68 = mapOfIntegers.get("168");
+        System.out.println("mapOfIntegers[168]:" + oneHundred68);
+
+        for (String key : mapOfIntegers.keySet()) {
+            Integer  value = mapOfIntegers.get(key);
+            l.info("Value keyed by '" + key + "' is '" + value + "'");
+        }
     }
     public Program(String developer){
         this.developer = developer;
         Logger l = Logger.getLogger(getClass().getName());
         System.out.println("Program");
         l.log(Level.INFO, "Program started");
+    }
+
+    public static Map<String, Integer> createMapOfIntegers() {
+        Map<String, Integer> mapOfIntegers = new HashMap<>();
+        mapOfIntegers.put("1", Integer.valueOf(1));
+        mapOfIntegers.put("2", Integer.valueOf(2));
+        mapOfIntegers.put("3", Integer.valueOf(3));
+        //...
+        mapOfIntegers.put("168", Integer.valueOf(168));
+        return mapOfIntegers;
     }
 }
