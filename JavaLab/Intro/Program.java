@@ -17,6 +17,9 @@ public class Program{
         System.out.println("Developer: " + program.getDeveloper());
         program.setDeveloper("Chandler");
         System.out.println("Developer: " + program.getDeveloper());
+
+        Logger l = Logger.getLogger(Program.class.getName());
+        l.info("Developer Name: " + program.getDeveloper());
     }
     public Program(String developer){
         this.developer = developer;
