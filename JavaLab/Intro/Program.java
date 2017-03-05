@@ -53,7 +53,7 @@ public class Program{
 
         for (String key : mapOfIntegers.keySet()) {
             Integer  value = mapOfIntegers.get(key);
-            l.info("Value keyed by '" + key + "' is '" + value + "'");
+            l.info(String.format("Value keyed by '%s' is '%d'", key, value));
         }
     }
     public Program(String developer){
