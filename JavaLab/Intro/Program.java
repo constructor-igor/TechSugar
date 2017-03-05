@@ -43,6 +43,9 @@ public class Program{
         for (Integer i : setOfIntegers) {
             l.info("Integer value is: " + i);
         }
+        l.info("hashset contains 12: " + setOfIntegers.contains(11));
+        l.info("hashset contains 12: " + setOfIntegers.contains(12));
+        l.info(String.format("hashset contains %d: %b", 10, setOfIntegers.contains(10)));
     }
     public Program(String developer){
         this.developer = developer;
