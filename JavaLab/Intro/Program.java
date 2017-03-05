@@ -37,8 +37,9 @@ public class Program{
 
         Set<Integer> setOfIntegers = new HashSet<Integer>();
         setOfIntegers.add(Integer.valueOf(10));
-        setOfIntegers.add(Integer.valueOf(11));
-        setOfIntegers.add(Integer.valueOf(10));
+        setOfIntegers.add(11);
+        setOfIntegers.add(10);
+        setOfIntegers.add(12);
         for (Integer i : setOfIntegers) {
             l.info("Integer value is: " + i);
         }
