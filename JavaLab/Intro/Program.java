@@ -22,19 +22,23 @@ public class Program{
         Logger l = Logger.getLogger(Program.class.getName());
         l.info("Developer Name: " + program.getDeveloper());
 
+        List<Program> programs1 = new ArrayList<Program>();
+        List<Program> programs2 = new ArrayList<>();
+        programs2.add(new Program("Monika"));
+        programs2.add(new Program("Ross"));
 
+        l.info("Programs2 developers list:");
+        for (Program p: programs2){
+            l.info(p.getDeveloper());
+        }
 
+        System.out.println("programs1: " + Integer.toString(programs1.size()));
+        System.out.println(String.format("programs2: %d", programs2.size()));
     }
     public Program(String developer){
         this.developer = developer;
         Logger l = Logger.getLogger(getClass().getName());
         System.out.println("Program");
         l.log(Level.INFO, "Program started");
-
-        List<Program> programs1 = new ArrayList<Program>();
-        List<Program> programs2 = new ArrayList<>();
-
-        System.out.println("programs1: " + Integer.toString(programs1.size()));
-        System.out.println(String.format("programs2: %d", programs2.size()));
     }
 }
