@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 /*
  * https://projecteuler.net/problem=8
@@ -38,17 +37,32 @@ namespace problem_0008_csharp
                 .Append("05886116467109405077541002256983155200055935729725")
                 .Append("71636269561882670428252483600823257530420752963450");
 
-            int zero = Convert.ToInt32('0');
-            List<int> allDigits = input.ToString().Select(Convert.ToInt32).Select(c=>c-zero).ToList();
-            int max = Int32.MinValue;
-            for (int i = 0; i < allDigits.Count - numberOfDigits + 1; i++)
+            RunProblem(input, numberOfDigits);
+            RunProblem(input, 13);
+        }
+
+        private static void RunProblem(StringBuilder input, int numberOfDigits)
+        {
+            byte zero = Convert.ToByte('0');
+            List<byte> allDigits = input.ToString().Select(Convert.ToByte).Select(c => c - zero).Select(Convert.ToByte).ToList();
+
+            UInt64 max = UInt64.MinValue;
+            List<byte> foundDigits = new List<byte>();
+            int foundIndex = -1;
+
+            foreach (int index in Enumerable.Range(0, allDigits.Count - numberOfDigits + 1))
             {
-                IEnumerable<int> currentDigits = allDigits.Skip(i).Take(numberOfDigits);
-                int current = currentDigits.Aggregate((x, y) => x * y);
+                List<byte> currentOriginalDigits = allDigits.Skip(index).Take(numberOfDigits).ToList();
+                IEnumerable<UInt64> currentDigits = currentOriginalDigits.Select(Convert.ToUInt64);
+                UInt64 current = currentDigits.Aggregate((x, y) => x * y);
                 if (current > max)
+                {
                     max = current;
+                    foundDigits = currentOriginalDigits;
+                    foundIndex = index;
+                }
             }
-            Console.WriteLine("result for {0} digits: {1}", numberOfDigits, max);
+            Console.WriteLine("result for {0} digits: {1} in position {2} ({3})", numberOfDigits, max, foundIndex, String.Join(",", foundDigits.Select(f => f.ToString()).ToArray()));
         }
     }
 }
