@@ -1,5 +1,8 @@
 package com.mycompany.app;
 
+import java.io.IOException;
+import java.util.logging.Logger;
+
 /**
  * https://projecteuler.net/problem=8
  *
@@ -36,20 +39,21 @@ package com.mycompany.app;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
+    private final static Logger LOGGER = Logger.getLogger(App.class.getName());
+
+    public static void main( String[] args ) throws IOException {
         System.out.println("Problem #8" );
 
         SoveProblemCase1();
         SoveProblemCase2();
         SoveProblemCase3();
     }
-    public static void SoveProblemCase1(){
+    public static void SoveProblemCase1() throws IOException {
         int numberOfDigits = 2;
         String input = "01234567899";
         SolveProblem(numberOfDigits, input);
     }
-    public static void SoveProblemCase2(){
+    public static void SoveProblemCase2() throws IOException {
         int numberOfDigits = 4;
         StringBuffer buffer= new StringBuffer();
         buffer.append("73167176531330624919225119674426574742355349194934");
@@ -74,7 +78,7 @@ public class App
         buffer.append("71636269561882670428252483600823257530420752963450");
         SolveProblem(numberOfDigits, buffer.toString());
     }
-    public static void SoveProblemCase3(){
+    public static void SoveProblemCase3() throws IOException {
         int numberOfDigits = 13;
         StringBuilder builder = new StringBuilder()
             .append("73167176531330624919225119674426574742355349194934")
@@ -100,8 +104,22 @@ public class App
         SolveProblem(numberOfDigits, builder.toString());
     }
 
-    public static long SolveProblem(int numberOfDigits, String input){
+//    public static Logger GetLogger() throws IOException {
+//        Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+//
+//        final int logFileLimit = 1024*1024;
+//        FileHandler fileTxt = new FileHandler("Logging.txt", logFileLimit, 1, true);
+//        SimpleFormatter formatterTxt = new SimpleFormatter();
+//        fileTxt.setFormatter(formatterTxt);
+//        logger.addHandler(fileTxt);
+//
+//        return logger;
+//    }
+
+    public static long SolveProblem(int numberOfDigits, String input) throws IOException {
         long maxProduct = Integer.MIN_VALUE;
+        Logger logger = ClassicSingleton.getInstance().getLogger();
+        logger.info(String.format("SolveProblem starts: numberOfDigits = %d", numberOfDigits));
 
         final byte[] allDigits = input.getBytes();
         int codeZero = '0' & 0x00FF;
@@ -117,6 +135,7 @@ public class App
             for (int j = 0; j < numberOfDigits; j++) currentProduct *= allDigits[i + j];
             if (currentProduct > maxProduct){
                 maxProduct = currentProduct;
+                logger.severe(String.format(" current max product: %d", maxProduct));
             }
         }
         System.out.println(String.format("Max product: %d", maxProduct));

@@ -2,6 +2,8 @@ package com.mycompany.app;
 
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 /**
  * Unit test for simple App.
@@ -30,8 +32,7 @@ public class AppTest
 //     * Rigourous Test :-)
 //     */
     @Test
-    public void testApp()
-    {
+    public void testApp() throws IOException {
         long maxProduct = App.SolveProblem(2, "01234567899");
         assertEquals(81, maxProduct);
     }
