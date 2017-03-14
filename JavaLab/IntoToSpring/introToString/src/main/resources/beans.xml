@@ -41,4 +41,50 @@
     </property>
   </bean>
 
+  <bean id="sequenceGeneratorSet"
+        class="com.mycompany.app.SequenceGenerator">
+    <property name="prefix" value="list-" />
+    <property name="initial" value="900" />
+    <property name="suffixes">
+      <set>
+        <value>list1</value>
+        <value>list2</value>
+        <bean class="java.net.URL">
+          <constructor-arg value="http" />
+          <constructor-arg value="www.apress.com" />
+          <constructor-arg value="/" />
+        </bean>
+        <null />
+      </set>
+    </property>
+  </bean>
+
+  <bean id="sequenceGeneratorMap"
+        class="com.mycompany.app.SequenceGenerator">
+    <property name="prefix" value="list-" />
+    <property name="initial" value="900" />
+    <property name="suffixes">
+      <map>
+        <entry>
+          <key>
+            <value>type</value>
+          </key>
+          <value>A</value>
+        </entry>
+        <entry key="type" value="B" />
+      </map>
+    </property>
+  </bean>
+
+  <bean id="aaa" class="com.mycompany.app.Battery">
+    <property name="name" value="AAA" />
+    <property name="price" value="2.5" />
+    <property name="rechargeable" value="true" />
+  </bean>
+  <bean id="cdrw" class="com.mycompany.app.Disc">
+    <property name="name" value="CD-RW" />
+    <property name="price" value="1.5" />
+    <property name="capacity" value="700" />
+  </bean>
+
 </beans>

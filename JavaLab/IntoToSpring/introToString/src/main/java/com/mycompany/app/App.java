@@ -38,5 +38,11 @@ public class App
         System.out.println(generator4.getSequence());
         System.out.println(generator4.getSequence());
         System.out.println(generator4.getSequence());
+
+        System.out.println("xxxx");
+        Product aaa = (Product) context.getBean("aaa");
+        Product cdrw = (Product) context.getBean("cdrw");
+        System.out.println(aaa);
+        System.out.println(cdrw);
     }
 }
