@@ -27,5 +27,16 @@ public class App
         System.out.println(generator2.getSequence());
         System.out.println(generator2.getSequence());
 
+        System.out.println("sequenceGeneratorShort");
+        SequenceGenerator generator3 = (SequenceGenerator) context.getBean("sequenceGeneratorShort");
+        System.out.println(generator3.getSequence());
+        System.out.println(generator3.getSequence());
+        System.out.println(generator3.getSequence());
+
+        System.out.println("sequenceGeneratorList");
+        SequenceGenerator generator4 = (SequenceGenerator) context.getBean("sequenceGeneratorList");
+        System.out.println(generator4.getSequence());
+        System.out.println(generator4.getSequence());
+        System.out.println(generator4.getSequence());
     }
 }
