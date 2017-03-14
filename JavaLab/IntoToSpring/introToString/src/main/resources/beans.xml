@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+  <!--<import resource="generators.xml"/>-->
+  <bean id="sequenceGenerator"
+        class="com.mycompany.app.SequenceGenerator">
+    <property name="prefix" value="pre-" />
+    <property name="initial" value="100000" />
+    <property name="suffixes" value="A" />
+  </bean>
+
+  <bean id="sequenceGeneratorCtor"
+        class="com.mycompany.app.SequenceGenerator">
+    <constructor-arg name="prefix" value="prector-" />
+    <constructor-arg name="initial" value="100" />
+    <constructor-arg name="suffixes" value="X" />
+  </bean>
+
+</beans>
