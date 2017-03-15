@@ -5,6 +5,8 @@ import org.apache.commons.logging.LogFactory;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 
 import java.util.Arrays;
 
@@ -21,7 +23,16 @@ public class CalculatorLoggingAspect {
     }
     @Before("execution(* ArithmeticCalculator.*(..))")
     public void logBefore(JoinPoint joinPoint) {
-        log.info("The method " + joinPoint.getSignature().getName()
-            + "() begins with " + Arrays.toString(joinPoint.getArgs()));
+        log.info(String.format("The method %s() begins with %s", joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs())));
+    }
+
+    @After("execution(* ArithmeticCalculator.*(..))")
+    public void logAfter(JoinPoint joinPoint) {
+        log.info(String.format("The method %s() ends", joinPoint.getSignature().getName()));
+    }
+
+    @AfterReturning(pointcut ="execution(* ArithmeticCalculator.*(..))", returning = "result")
+    public void logAfterReturning(JoinPoint joinPoint, Object result) {
+        log.info(String.format("The method %s(%s) ends with %s", joinPoint.getSignature().getName(), Arrays.toString(joinPoint.getArgs()), result));
     }
 }
