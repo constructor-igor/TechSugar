@@ -13,7 +13,7 @@
         ">
 
   <context:annotation-config />
-  <!--<aop:aspectj-autoproxy />-->
+  <aop:aspectj-autoproxy />
 
   <!--<import resource="generators.xml"/>-->
   <bean id="sequenceGenerator"
@@ -105,5 +105,11 @@
         class="com.mycompany.app.DatePrefixGenerator">
     <property name="pattern" value="yyyy-MM-dd" />
   </bean>
+
+  <bean id="arithmeticCalculator"
+        class="com.mycompany.app.calculator.ArithmeticCalculatorImpl" />
+  <bean id="unitCalculator"
+        class="com.mycompany.app.calculator.UnitCalculatorImpl" />
+  <bean class="com.mycompany.app.calculator.CalculatorLoggingAspect" />
 
 </beans>

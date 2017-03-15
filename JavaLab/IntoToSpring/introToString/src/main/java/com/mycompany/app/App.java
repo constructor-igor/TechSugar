@@ -1,5 +1,7 @@
 package com.mycompany.app;
 
+import com.mycompany.app.calculator.ArithmeticCalculator;
+import com.mycompany.app.calculator.UnitCalculator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -44,5 +46,18 @@ public class App
         Product cdrw = (Product) context.getBean("cdrw");
         System.out.println(aaa);
         System.out.println(cdrw);
+
+        System.out.println("AOP sample");
+        ArithmeticCalculator arithmeticCalculator =
+            (ArithmeticCalculator) context.getBean("arithmeticCalculator");
+        arithmeticCalculator.add(1, 2);
+        arithmeticCalculator.sub(4, 3);
+        arithmeticCalculator.mul(2, 3);
+        arithmeticCalculator.div(4, 2);
+
+        UnitCalculator unitCalculator =
+            (UnitCalculator) context.getBean("unitCalculator");
+        unitCalculator.kilogramToPound(10);
+        unitCalculator.kilometerToMile(5);
     }
 }
