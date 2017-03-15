@@ -1,5 +1,7 @@
 package com.mycompany.app;
 
+import org.springframework.beans.factory.annotation.Required;
+
 /**
  * Created by igor-z on 14-Mar-17.
  */
@@ -16,6 +18,7 @@ public abstract class Product {
     public void setName(String name) {
         this.name = name;
     }
+    @Required
     public void setPrice(double price) {
         this.price = price;
     }
