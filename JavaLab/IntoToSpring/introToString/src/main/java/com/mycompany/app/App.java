@@ -39,7 +39,7 @@ public class App
         System.out.println(generator4.getSequence());
         System.out.println(generator4.getSequence());
 
-        System.out.println("xxxx");
+        System.out.println("sample of inheritance classes");
         Product aaa = (Product) context.getBean("aaa");
         Product cdrw = (Product) context.getBean("cdrw");
         System.out.println(aaa);
