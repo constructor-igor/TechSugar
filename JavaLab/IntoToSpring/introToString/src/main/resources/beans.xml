@@ -14,9 +14,9 @@
 
   <bean id="sequenceGeneratorCtor"
         class="com.mycompany.app.SequenceGenerator">
-    <constructor-arg name="prefix" value="prector-" />
-    <constructor-arg name="initial" value="100" />
-    <constructor-arg name="suffixes" value="X" />
+    <constructor-arg type="java.lang.String" index="0" name="prefix" value="prector-" />
+    <constructor-arg type="int" index="2" name="initial" value="100" />
+    <constructor-arg index="1" name="suffixes" value="X" />
   </bean>
 
   <bean id="sequenceGeneratorShort"

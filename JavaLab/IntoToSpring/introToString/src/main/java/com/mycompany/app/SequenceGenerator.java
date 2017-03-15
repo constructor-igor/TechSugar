@@ -1,5 +1,6 @@
 package com.mycompany.app;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,12 @@ public class SequenceGenerator {
     public SequenceGenerator(String prefix, List<Object> suffixes, int initial) {
         this.prefix = prefix;
         this.suffixes = suffixes;
+        this.initial = initial;
+    }
+    public SequenceGenerator(String prefix, String suffix, int initial) {
+        this.prefix = prefix;
+        this.suffixes = new ArrayList<Object>();
+        this.suffixes.add(suffix);
         this.initial = initial;
     }
     public void setPrefix(String prefix) {
