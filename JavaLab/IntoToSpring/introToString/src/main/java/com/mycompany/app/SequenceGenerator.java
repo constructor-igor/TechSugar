@@ -11,6 +11,8 @@ public class SequenceGenerator {
     private List<Object> suffixes;
     private int initial;
     private int counter;
+    private PrefixGenerator prefixGenerator;
+
     public SequenceGenerator() { }
     public SequenceGenerator(String prefix, List<Object> suffixes, int initial) {
         this.prefix = prefix;
@@ -26,16 +28,21 @@ public class SequenceGenerator {
     public void setPrefix(String prefix) {
         this.prefix = prefix;
     }
-
     public void setSuffixes(List<Object> suffixes) {
         this.suffixes = suffixes;
     }
-
     public void setInitial(int initial) {
         this.initial = initial;
     }
+
+    public void setPrefixGenerator(PrefixGenerator prefixGenerator) {
+        this.prefixGenerator = prefixGenerator;
+    }
+
     public synchronized String getSequence() {
         StringBuffer buffer = new StringBuffer();
+        if (prefixGenerator!=null)
+            buffer.append(prefixGenerator.getPrefix());
         buffer.append(prefix);
         buffer.append(initial + "-" + counter++);
         for (Object suffix : suffixes) {

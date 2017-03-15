@@ -10,6 +10,9 @@
     <property name="prefix" value="pre-" />
     <property name="initial" value="100000" />
     <property name="suffixes" value="A" />
+    <property name="prefixGenerator">
+      <ref bean="datePrefixGenerator" />
+    </property>
   </bean>
 
   <bean id="sequenceGeneratorCtor"
@@ -85,6 +88,11 @@
     <property name="name" value="CD-RW" />
     <property name="price" value="1.5" />
     <property name="capacity" value="700" />
+  </bean>
+
+  <bean id="datePrefixGenerator"
+        class="com.mycompany.app.DatePrefixGenerator">
+    <property name="pattern" value="yyyy-MM-dd" />
   </bean>
 
 </beans>
