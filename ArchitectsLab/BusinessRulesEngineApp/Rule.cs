@@ -10,9 +10,9 @@ namespace BusinessRulesEngineApp
         ///
         /// Denotes the rules predictate (e.g. Name); comparison operator(e.g. ExpressionType.GreaterThan); value (e.g. "Cole")
         /// 
-        public string ComparisonPredicate { get; set; }
-        public ExpressionType ComparisonOperator { get; set; }
-        public string ComparisonValue { get; set; }
+        public readonly string ComparisonPredicate;
+        public readonly ExpressionType ComparisonOperator;
+        public readonly string ComparisonValue;
 
         /// 
         /// The rule method that 

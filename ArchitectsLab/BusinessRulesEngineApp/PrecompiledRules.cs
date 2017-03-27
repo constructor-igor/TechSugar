@@ -12,7 +12,7 @@ namespace BusinessRulesEngineApp
         ///
         /// A method used to precompile rules for a provided type
         /// 
-        public static List<Func<T, bool>> CompileRule<T>(List<T> targetEntity, List<Rule> rules)
+        public static List<Func<T, bool>> CompileRule<T>(List<Rule> rules)
         {
             var compiledRules = new List<Func<T, bool>>();
 
