@@ -45,8 +45,8 @@ namespace BusinessRulesEngineApp
             cars.ForEach(car =>
             {
                 Console.WriteLine(compiledMakeModelYearRules.TakeWhile(rule => rule(car)).Any()
-                    ? string.Concat("Car model: ", car.Model, " Passed the compiled rules engine check!")
-                    : string.Concat("Car model: ", car.Model, " Failed the compiled rules engine check!"));
+                    ? "Car model: {0} Passed the compiled rules engine check!"
+                    : "Car model: {0} Failed the compiled rules engine check!", car.Model);
             });
         }
     }
