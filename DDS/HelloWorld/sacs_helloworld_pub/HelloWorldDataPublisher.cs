@@ -29,6 +29,7 @@ using DDS.OpenSplice;
 using HelloWorldData;
 using DDSAPIHelper;
 using System.IO;
+using helloworld_infra;
 
 namespace HelloWorldDataPublisher
 {
@@ -36,6 +37,8 @@ namespace HelloWorldDataPublisher
     {
         static void Main(string[] args)
         {
+            OsplConfiguration.SetOsplConfiguration();
+
             DDSEntityManager mgr = new DDSEntityManager("HelloWorld");
             String partitionName = "HelloWorld example";
 

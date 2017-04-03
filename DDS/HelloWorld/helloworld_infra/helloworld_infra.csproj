@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1D57F20B-0A5A-4B17-9268-D4FF9418E2A5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{A51B3E47-969F-40CB-A23F-0E514A33BF34}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>sacs_helloworld_sub</RootNamespace>
-    <AssemblyName>sacs_helloworld_sub</AssemblyName>
+    <RootNamespace>helloworld_infra</RootNamespace>
+    <AssemblyName>helloworld_infra</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,10 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <FileAlignment>4096</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="dcpssacsAssembly">
-      <HintPath>..\dds-binaries\dcpssacsAssembly.dll</HintPath>
-    </Reference>
-    <Reference Include="ddsapihelper">
-      <HintPath>..\dds-binaries\ddsapihelper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,21 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelloWorldData.cs" />
-    <Compile Include="HelloWorldDataDcps.cs" />
-    <Compile Include="HelloWorldDataSplDcps.cs" />
-    <Compile Include="HelloWorldDataSubscriber.cs" />
-    <Compile Include="IHelloWorldDataDcps.cs" />
+    <Compile Include="OsplConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\helloworld_infra\helloworld_infra.csproj">
-      <Project>{A51B3E47-969F-40CB-A23F-0E514A33BF34}</Project>
-      <Name>helloworld_infra</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
