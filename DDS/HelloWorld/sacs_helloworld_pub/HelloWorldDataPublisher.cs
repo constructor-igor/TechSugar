@@ -27,8 +27,9 @@ using DDS;
 using DDS.OpenSplice;
 
 using HelloWorldData;
-using DDSAPIHelper;
+//using DDSAPIHelper;
 using System.IO;
+using helloworld_dds_api_helper;
 using helloworld_infra;
 
 namespace HelloWorldDataPublisher

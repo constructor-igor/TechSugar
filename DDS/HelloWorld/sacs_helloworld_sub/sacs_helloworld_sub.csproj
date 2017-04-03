@@ -37,9 +37,6 @@
     <Reference Include="dcpssacsAssembly">
       <HintPath>..\dds-binaries\dcpssacsAssembly.dll</HintPath>
     </Reference>
-    <Reference Include="ddsapihelper">
-      <HintPath>..\dds-binaries\ddsapihelper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,6 +57,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\helloworld_dds_api_helper\helloworld_dds_api_helper.csproj">
+      <Project>{2ACDC121-D79F-4ACA-9603-07BF4F75D22B}</Project>
+      <Name>helloworld_dds_api_helper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\helloworld_infra\helloworld_infra.csproj">
       <Project>{A51B3E47-969F-40CB-A23F-0E514A33BF34}</Project>
       <Name>helloworld_infra</Name>
