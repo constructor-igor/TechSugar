@@ -142,6 +142,7 @@
     <Compile Include="QueueSamples.cs" />
     <Compile Include="ReferenceTests.cs" />
     <Compile Include="ResharperSamples.cs" />
+    <Compile Include="RetryTests.cs" />
     <Compile Include="SendToProviders\MailUtility.cs" />
     <Compile Include="SendToProviders\EmailController.cs" />
     <Compile Include="GenericTests.cs" />
