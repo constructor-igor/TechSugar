@@ -53,7 +53,6 @@ object WikipediaRanking {
   def makeIndex(langs: List[String], rdd: RDD[WikipediaArticle]): RDD[(String, Iterable[WikipediaArticle])] = {
     val langRDD = sc.parallelize(langs)
     langRDD.map(lang=>(lang, rdd.filter(article=>article.mentionsLanguage(lang)).collect()))
-//    val r = langs.map(lang=>rdd.filter(article=>article.mentionsLanguage(lang)).map(rdd=>(lang, rdd.productIterator)))
   }
 
   /* (2) Compute the language ranking again, but now using the inverted index. Can you notice
@@ -63,7 +62,7 @@ object WikipediaRanking {
    *   several seconds.
    */
   def rankLangsUsingIndex(index: RDD[(String, Iterable[WikipediaArticle])]): List[(String, Int)] = {
-      index.map(rdd=>(rdd._1, rdd._2.count(article=>article.mentionsLanguage(rdd._1)))).collect().toList
+      index.map(value=>(value._1, value._2.count(article=>article.mentionsLanguage(value._1)))).collect().toList
   }
 
   /* (3) Use `reduceByKey` so that the computation of the index and the ranking are combined.
