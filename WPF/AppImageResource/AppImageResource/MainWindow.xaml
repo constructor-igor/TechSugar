@@ -1,0 +1,10 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Properties="clr-namespace:AppImageResource.Properties" x:Class="AppImageResource.MainWindow"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button HorizontalAlignment="Left" Margin="288,116,0,0" VerticalAlignment="Top" Width="190" Height="45" Click="Button_Click" Content="Load Image" />
+        <Image Name="image1" HorizontalAlignment="Left" Height="100" Margin="39,201,0,0" VerticalAlignment="Top" Width="100"/>
+    </Grid>
+</Window>
