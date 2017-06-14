@@ -51,11 +51,8 @@ object WikipediaRanking {
    * to the Wikipedia pages in which it occurs.
    */
   def makeIndex(langs: List[String], rdd: RDD[WikipediaArticle]): RDD[(String, Iterable[WikipediaArticle])] = {
-      val list = langs.map(lang=>(lang, rdd.filter(article=>article.mentionsLanguage(lang)).collect().toIterable))
-      sc.parallelize(list)
+      rdd.flatMap(article => {langs.filter(lang=>article.mentionsLanguage(lang)).map(lang=>(lang, article))}).groupByKey
   }
-    //    val langRDD = sc.parallelize(langs)
-    //    langRDD.map(lang=>(lang, rdd.filter(article=>article.mentionsLanguage(lang)).collect()))
 
   /* (2) Compute the language ranking again, but now using the inverted index. Can you notice
    *     a performance improvement?
@@ -64,7 +61,7 @@ object WikipediaRanking {
    *   several seconds.
    */
   def rankLangsUsingIndex(index: RDD[(String, Iterable[WikipediaArticle])]): List[(String, Int)] = {
-      index.map(value=>(value._1, value._2.count(article=>article.mentionsLanguage(value._1)))).collect().toList
+      index.map(value=>(value._1, value._2.size)).sortBy(-_._2).collect().toList
   }
 
   /* (3) Use `reduceByKey` so that the computation of the index and the ranking are combined.
@@ -77,6 +74,7 @@ object WikipediaRanking {
   def rankLangsReduceByKey(langs: List[String], rdd: RDD[WikipediaArticle]): List[(String, Int)] = {
       rdd.flatMap(article => {langs.filter(lang => article.mentionsLanguage(lang)).map((_, 1))})
           .reduceByKey((a, b) => a + b)
+          .sortBy(-_._2)
           .collect()
           .toList
   }
@@ -97,6 +95,11 @@ object WikipediaRanking {
 
     /* Output the speed of each ranking */
     println(timing)
+
+      printLanguages("Part 1: naive ranking", langsRanked);
+      printLanguages("Part 2: ranking using inverted index", langsRanked2);
+      printLanguages("Part 3: ranking using reduceByKey", langsRanked3);
+
     sc.stop()
   }
 
@@ -107,5 +110,11 @@ object WikipediaRanking {
     val stop = System.currentTimeMillis()
     timing.append(s"Processing $label took ${stop - start} ms.\n")
     result
+  }
+
+  def printLanguages(title: String, langs: List[(String, Int)]): Unit ={
+      println()
+      println(title)
+      langs.foreach(pair=>{println("language: " + pair._1 +", references: " + pair._2)})
   }
 }
