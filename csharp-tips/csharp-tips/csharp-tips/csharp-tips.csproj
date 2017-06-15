@@ -72,6 +72,10 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Outlook.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Outlook.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NFile.Framework, Version=0.9.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NFile.Framework.0.9.3.0\lib\net40\NFile.Framework.dll</HintPath>
       <Private>True</Private>
@@ -129,6 +133,7 @@
     <Compile Include="FillArrayTests.cs" />
     <Compile Include="FloatDoubleTransformTests.cs" />
     <Compile Include="HtmlToPdf.cs" />
+    <Compile Include="JsonTests.cs" />
     <Compile Include="LINQ\AggregateSamples.cs" />
     <Compile Include="LINQ\ForEachInvestigation.cs" />
     <Compile Include="LINQ\GroupBySamples.cs" />
