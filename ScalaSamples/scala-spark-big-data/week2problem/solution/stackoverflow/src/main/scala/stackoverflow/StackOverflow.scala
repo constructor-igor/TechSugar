@@ -99,7 +99,10 @@ class StackOverflow extends Serializable {
       highScore
     }
 
-    ???
+      grouped
+        .flatMap(group=>group._2)
+        .groupByKey()
+        .mapValues(values=>answerHighScore(values.toArray))
   }
 
 
