@@ -108,23 +108,31 @@ class StackOverflow extends Serializable {
 
   /** Compute the vectors for the kmeans */
   def vectorPostings(scored: RDD[(Posting, Int)]): RDD[(Int, Int)] = {
-    /** Return optional index of first language that occurs in `tags`. */
-    def firstLangInTag(tag: Option[String], ls: List[String]): Option[Int] = {
-      if (tag.isEmpty) None
-      else if (ls.isEmpty) None
-      else if (tag.get == ls.head) Some(0) // index: 0
-      else {
-        val tmp = firstLangInTag(tag, ls.tail)
-        tmp match {
-          case None => None
-          case Some(i) => Some(i + 1) // index i in ls.tail => index i+1
-        }
-      }
+//    /** Return optional index of first language that occurs in `tags`. */
+//    def firstLangInTag(tag: Option[String], ls: List[String]): Option[Int] = {
+//      if (tag.isEmpty) None
+//      else if (ls.isEmpty) None
+//      else if (tag.get == ls.head) Some(0) // index: 0
+//      else {
+//        val tmp = firstLangInTag(tag, ls.tail)
+//        tmp match {
+//          case None => None
+//          case Some(i) => Some(i + 1) // index i in ls.tail => index i+1
+//        }
+//      }
+//    }
+    def firstLangInTag(tag: String): Option[Int] = {
+        val idx = langs.indexOf(tag)
+        if (idx >= 0) Some(idx) else None
     }
+      val vectors = for {
+          (posting, score) <- scored // generates a `withFilter RDD` warning. See http://stackoverflow.com/questions/28048586/warning-while-using-rdd-in-for-comprehension
+          tag <- posting.tags
+          idx <- firstLangInTag(tag)
+      } yield (idx * langSpread, score)
 
-    ???
+      vectors.persist()
   }
-
 
   /** Sample the vectors */
   def sampleVectors(vectors: RDD[(Int, Int)]): Array[(Int, Int)] = {
