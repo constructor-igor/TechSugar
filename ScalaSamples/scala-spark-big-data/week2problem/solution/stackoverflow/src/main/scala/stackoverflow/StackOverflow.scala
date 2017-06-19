@@ -76,7 +76,11 @@ class StackOverflow extends Serializable {
 
   /** Group the questions and answers together */
   def groupedPostings(postings: RDD[Posting]): RDD[(Int, Iterable[(Posting, Posting)])] = {
-    ???
+    var questions = postings.filter(posting=>posting.postingType==1).map(question=>(question.id, question))
+    var answers = postings.filter(posting=>posting.postingType==2).filter(answer=>answer.parentId.isDefined).map(answer=>(answer.parentId.get, answer))
+    questions
+        .join(answers)
+        .groupByKey()
   }
 
 
