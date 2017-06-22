@@ -9,7 +9,6 @@ import org.apache.spark.sql.types._
 object TimeUsage {
 
   import org.apache.spark.sql.SparkSession
-  import org.apache.spark.sql.functions._
 
   val spark: SparkSession =
     SparkSession
@@ -63,7 +62,10 @@ object TimeUsage {
     * @param columnNames Column names of the DataFrame
     */
   def dfSchema(columnNames: List[String]): StructType =
-    ???
+      StructType(
+          StructField(columnNames.head, StringType, nullable = false)
+            :: columnNames.tail.map(columnName=>StructField(columnName, DoubleType, nullable = false))
+      )
 
 
   /** @return An RDD Row compatible with the schema produced by `dfSchema`
@@ -198,7 +200,6 @@ object TimeUsage {
     * Hint: you should use the `groupByKey` and `typed.avg` methods.
     */
   def timeUsageGroupedTyped(summed: Dataset[TimeUsageRow]): Dataset[TimeUsageRow] = {
-    import org.apache.spark.sql.expressions.scalalang.typed
     ???
   }
 }
