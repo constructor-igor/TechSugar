@@ -3,6 +3,7 @@ package timeusage
 import java.nio.file.Paths
 
 import org.apache.spark.sql._
+import org.apache.spark.sql.functions.when
 import org.apache.spark.sql.types._
 
 /** Main class */
@@ -156,13 +157,40 @@ object TimeUsage {
     otherColumns: List[Column],
     df: DataFrame
   ): DataFrame = {
-    val workingStatusProjection: Column = ???
-    val sexProjection: Column = ???
-    val ageProjection: Column = ???
+    val workingStatusProjection: Column =
+        when('telfs >= 1.0 && 'telfs < 3.0, "working")
+        .otherwise("not working")
+        .as("working")
 
-    val primaryNeedsProjection: Column = ???
-    val workProjection: Column = ???
-    val otherProjection: Column = ???
+      val sexProjection: Column =
+          when('tesex === 1.0, "male")
+          .otherwise("female")
+          .as("sex")
+
+    val ageProjection: Column =
+        when('teage.between(15.0, 22.0), "young")
+        .when('teage.between(23.0, 55.0), "active")
+        .otherwise("elder")
+        .as("age")
+
+    val primaryNeedsProjection: Column =
+        primaryNeedsColumns
+        .reduce(_ + _)
+        .divide(60)
+        .as("primaryNeeds")
+
+    val workProjection: Column =
+        workColumns
+        .reduce(_ + _)
+        .divide(60)
+        .as("work")
+
+    val otherProjection: Column =
+        otherColumns
+        .reduce(_ + _)
+        .divide(60)
+        .as("other")
+
     df
       .select(workingStatusProjection, sexProjection, ageProjection, primaryNeedsProjection, workProjection, otherProjection)
       .where($"telfs" <= 4) // Discard people who are not in labor force
