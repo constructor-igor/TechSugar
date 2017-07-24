@@ -1,6 +1,7 @@
 
-# Reference: https://arrow.apache.org/docs/python/parquet.html
-#           https://www.continuum.io/blog/developer-blog/introducing-fastparquet
+# Reference:
+#       https://arrow.apache.org/docs/python/parquet.html
+#       https://www.continuum.io/blog/developer-blog/introducing-fastparquet
 
 import fastparquet
 
