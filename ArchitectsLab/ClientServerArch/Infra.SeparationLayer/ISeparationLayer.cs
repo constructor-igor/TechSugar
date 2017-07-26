@@ -1,7 +1,38 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Ctor.Infra.SeparationLayer
 {
+    public interface IAsyncOperation
+    {
+        void Wait();
+    }
+
+    public class ASyncOperation : IAsyncOperation
+    {
+        private readonly Task m_task;
+
+        public ASyncOperation(Task task)
+        {
+            m_task = task;
+        }
+        #region IAsyncOperation
+        public void Wait()
+        {
+            m_task.Wait();
+        }
+        #endregion
+    }
+
+    public class DummyASyncOperation : IAsyncOperation
+    {
+        #region IAsyncOperation
+        public void Wait()
+        {
+        }
+        #endregion
+    }
+
     public class SeparationOperation<T>
     {
         private bool m_synchronously = false;
@@ -31,15 +62,23 @@ namespace Ctor.Infra.SeparationLayer
             return this;
         }
 
-        public void PostOperation()
+        public IAsyncOperation PostOperation()
         {
             if (m_synchronously)
             {
-                m_action();
+                PerformTask();
+                return new DummyASyncOperation();
             } else
             {
-                throw new NotImplementedException();
+                Task task = new Task(PerformTask);
+                task.Start();
+                return new ASyncOperation(task);
             }
+        }
+
+        private void PerformTask()
+        {
+            m_action();
         }
     }
     public interface ISeparationLayer

@@ -20,11 +20,22 @@ namespace Ctor.Client.Impl
 
             x = 30;
             y = 50;
-            SeparationOperation<IAddService> addServiceOperation = separationLayer.CreateOperation<IAddService>();
-            addServiceOperation
-                .Perform(() => { r = addServiceOperation.Service.Add(x, y); })
+            SeparationOperation<IAddService> addServiceOperation1 = separationLayer.CreateOperation<IAddService>();
+            addServiceOperation1
+                .Perform(() => { r = addServiceOperation1.Service.Add(x, y); })
                 .Synchronously()
                 .PostOperation();
+            Console.WriteLine("[addService demo] {0} + {1} => {2}", x, y, r);
+
+            x = 300;
+            y = 500;
+            SeparationOperation<IAddService> addServiceOperation2 = separationLayer.CreateOperation<IAddService>();
+            IAsyncOperation operation = addServiceOperation2
+                .Perform(() => { r = addServiceOperation2.Service.Add(x, y); })
+                .Asynchronously()
+                .PostOperation();
+            Console.WriteLine("waiting, r={0}", r);
+            operation.Wait();
             Console.WriteLine("[addService demo] {0} + {1} => {2}", x, y, r);
 
             Console.WriteLine("Client completed.");
