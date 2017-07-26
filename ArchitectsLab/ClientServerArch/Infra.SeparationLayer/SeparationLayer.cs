@@ -14,6 +14,11 @@ namespace Ctor.Infra.SeparationLayer
         {
             return (T)m_services[typeof(T)];
         }
+
+        public SeparationOperation<T> CreateOperation<T>()
+        {
+            return new SeparationOperation<T>(GetService<T>());
+        }
         #endregion
     }
 }
