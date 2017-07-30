@@ -43,6 +43,12 @@
     <Compile Include="SeparationLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Server.Interfaces\Ctor.Server.Interfaces.csproj">
+      <Project>{5AE99194-AFE0-4797-A85C-C3F4E2B8243B}</Project>
+      <Name>Ctor.Server.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
