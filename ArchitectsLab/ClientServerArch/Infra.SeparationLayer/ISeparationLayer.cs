@@ -55,6 +55,7 @@ namespace Ctor.Infra.SeparationLayer
         private Action m_cancelOperation;
         private Action<Exception> m_errorOperation;
         private readonly CancellationTokenSource m_cancellationTokenSource = new CancellationTokenSource();
+        private Action<ProgressMessage> m_progressOperation;
 
         public T Service { get; }
 
@@ -96,11 +97,20 @@ namespace Ctor.Infra.SeparationLayer
             m_errorOperation = action;
             return this;
         }
+        public SeparationOperation<T> OnProgressInvoke(Action<ProgressMessage> action)
+        {
+            m_progressOperation = action;
+            return this;
+        }
 
         public IAsyncOperation PostOperation()
         {
-            if (Service is IBaseServiceCancelled)
-                (Service as IBaseServiceCancelled).CancellationToken = m_cancellationTokenSource.Token;
+            IBaseServiceCancelled serviceCancelled = Service as IBaseServiceCancelled;
+            if (serviceCancelled != null)
+            {
+                serviceCancelled.CancellationToken = m_cancellationTokenSource.Token;
+                serviceCancelled.InvokeProgress = InvokeProgress;
+            }
             if (m_synchronously)
             {
                 PerformTask();
@@ -111,6 +121,11 @@ namespace Ctor.Infra.SeparationLayer
                 task.Start();
                 return new ASyncOperation(m_cancellationTokenSource, task);
             }
+        }
+
+        private void InvokeProgress(ProgressMessage progressMessage)
+        {
+            m_progressOperation?.Invoke(progressMessage);
         }
 
         private void PerformTask()
