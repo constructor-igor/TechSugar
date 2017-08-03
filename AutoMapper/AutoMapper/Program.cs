@@ -25,9 +25,9 @@ namespace AutoMapperConsole
     public class EngineOrder
     {
         public string Name { get; }
-        public string Id { get; }
+        public int Id { get; }
 
-        public EngineOrder(string name, string id)
+        public EngineOrder(string name, int id)
         {
             Name = name;
             Id = id;
@@ -42,16 +42,33 @@ namespace AutoMapperConsole
 
     class Program
     {
+        public class ClientEngineResolver : IValueResolver<ClientOrder, EngineOrder, int>
+        {
+            public int Resolve(ClientOrder source, EngineOrder destination, int member, ResolutionContext context)
+            {
+                return Convert.ToInt32(source.Id);
+            }
+        }
+        public class EngineClientResolver : IValueResolver<EngineOrder, ClientOrder, string>
+        {
+            public string Resolve(EngineOrder source, ClientOrder destination, string member, ResolutionContext context)
+            {
+                return source.Id.ToString();
+            }
+        }
+
         static void Main(string[] args)
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<ClientOrder, EngineOrder>();
-                cfg.CreateMap<EngineOrder, ClientOrder>();
+                cfg.CreateMap<ClientOrder, EngineOrder>()
+                    .ForMember(dest=>dest.Id, opt=> opt.ResolveUsing<ClientEngineResolver>());
+                cfg.CreateMap<EngineOrder, ClientOrder>()
+                    .ForMember(dest => dest.Id, opt => opt.ResolveUsing<EngineClientResolver>());
             });
             // or var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDto>());
 
-            ClientOrder clientOrder = new ClientOrder("Joe", "1s0");
+            ClientOrder clientOrder = new ClientOrder("Joe", "10");
 
             IMapper mapper = Mapper.Configuration.CreateMapper();
             var engineOrder = mapper.Map<EngineOrder>(clientOrder);
