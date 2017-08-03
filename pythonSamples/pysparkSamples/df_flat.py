@@ -43,6 +43,7 @@ if __name__ == "__main__":
         .builder\
         .appName("df-flat-pyspark")\
         .getOrCreate()
+    print("spark version:", spark.version)
 
     data = [
         {'key': 'key1', 'subkey': 'subkey1', 'parameter': '45', 'reference': '10'},
