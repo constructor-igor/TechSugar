@@ -10,7 +10,8 @@ from pyspark.sql.types import *
 from pyspark.sql import SQLContext, Row
 from pyspark.sql.types import FloatType
 # from pyspark.sql import 
-from pyspark.sql.functions import first, col
+# from pyspark.sql.functions import first, col
+from pyspark.sql.functions import *
 from pyspark.ml.feature import VectorAssembler
 
 
@@ -35,7 +36,6 @@ def convert_to_flat_by_pandas(df):
     return spark_df
 
 def convert_to_flat_by_sparkpy(df):
-    # subkeys = df.select("subkey").dropDuplicates().rdd.map(lambda r: r[0]).collect()
     subkeys = df.select("subkey").dropDuplicates().collect()
     subkeys = [s[0] for s in subkeys]
     print('subkeys: ', subkeys)
@@ -45,6 +45,15 @@ def convert_to_flat_by_sparkpy(df):
     spark_df = spark_df.select("label", "features")
     # spark_df = spark_df.select(spark_df.label, Vectors.dense(spark_df.features))
     return spark_df
+
+def convert_to_flat_by_sparkpy_v2(df):
+    spark_df = df.orderBy("subkey")
+    spark_df = spark_df.groupBy("key").agg(first(col("parameter")).alias("label"), collect_list("reference").alias("features"))
+    spark_df = spark_df.select("label", "features")
+    return spark_df
+    # spark_df = spark_df.select(np.asscalar(spark_df.label), [item.element for item in col("features")])
+    # spark_df = spark_df.select(np.asscalar(spark_df.label), Vectors.dense(spark_df.features))
+
 
 if __name__ == "__main__":
     print("main started")
@@ -65,7 +74,7 @@ if __name__ == "__main__":
     ]
     
     original_df = spark.createDataFrame(data)
-    print('original data:')
+    print('input data:')
     original_df.show()
 
     flat_df = convert_to_flat_by_pandas(original_df)
@@ -78,6 +87,12 @@ if __name__ == "__main__":
     print("schema of result's data frame:")
     flat_df.printSchema()
     print('result data (by sparkby):')
+    flat_df.show()    
+
+    flat_df = convert_to_flat_by_sparkpy_v2(original_df)
+    print("schema of result's data frame:")
+    flat_df.printSchema()
+    print('result data (by sparkby v2):')
     flat_df.show()    
 
     print("main completed")
