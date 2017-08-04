@@ -35,8 +35,8 @@ def convert_to_flat_by_pandas(df):
     return spark_df
 
 def convert_to_flat_by_sparkpy(df):
-    spark_df = assembler.transform(df.groupBy("key", "parameter").pivot("subkey").agg(first(col("reference"))))    
     assembler = VectorAssembler().setInputCols(["subkey1", "subkey2"]).setOutputCol("features")
+    spark_df = assembler.transform(df.groupBy("key", "parameter").pivot("subkey").agg(first(col("reference"))))    
     spark_df = spark_df.withColumnRenamed("parameter", "label")
     spark_df = spark_df.select("label", "features")
     # spark_df = spark_df.select(spark_df.label, Vectors.dense(spark_df.features))
