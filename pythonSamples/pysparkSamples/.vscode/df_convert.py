@@ -10,8 +10,6 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.sql import SQLContext, Row
 from pyspark.sql.types import FloatType
-# from pyspark.sql import 
-# from pyspark.sql.functions import first, col
 from pyspark.sql.functions import *
 from pyspark.ml.feature import VectorAssembler
 
@@ -40,12 +38,19 @@ def convert_to_flat_by_pandas(df):
 def convert_to_flat_by_sparkpy(df):
     subkeys = df.select("subkey").dropDuplicates().collect()
     subkeys = [s[0] for s in subkeys]
+
+    n = len(df.select("reference").first()[0])
+    # df = df.groupBy("key").agg(array(*[avg(col("reference")[i]) for i in range(n)]).alias("averages"))
+    df = df.groupBy("key").agg(array(*[collect_list(col("reference")[i]) for i in range(n)]).alias("averages"))
+    df.show()
+    r = df.collect()
+
+    # changedTypedf = joindf.withColumn("label", joindf["show"].cast(DoubleType()))
     assembler = VectorAssembler().setInputCols(subkeys).setOutputCol("features")
     spark_df = assembler.transform(df.groupBy("key", "parameter").pivot("subkey").agg(first(col("reference"))))
     spark_df = spark_df.withColumnRenamed("parameter", "label")
     spark_df = spark_df.select("label", "features")
     return spark_df
-    # spark_df = spark_df.select(spark_df.label, Vectors.dense(spark_df.features))
 
 def to_vector(data):
     return Vectors.dense(data)
