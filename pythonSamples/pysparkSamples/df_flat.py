@@ -38,21 +38,31 @@ def convert_to_flat_by_pandas(df):
 def convert_to_flat_by_sparkpy(df):
     subkeys = df.select("subkey").dropDuplicates().collect()
     subkeys = [s[0] for s in subkeys]
-    print('subkeys: ', subkeys)
     assembler = VectorAssembler().setInputCols(subkeys).setOutputCol("features")
     spark_df = assembler.transform(df.groupBy("key", "parameter").pivot("subkey").agg(first(col("reference"))))    
     spark_df = spark_df.withColumnRenamed("parameter", "label")
     spark_df = spark_df.select("label", "features")
-    # spark_df = spark_df.select(spark_df.label, Vectors.dense(spark_df.features))
     return spark_df
+    # spark_df = spark_df.select(spark_df.label, Vectors.dense(spark_df.features))
+
+def to_vector(data):
+    return Vectors.dense(data)
+    # vectorize = udf(to_vector, VectorUDT())
 
 def convert_to_flat_by_sparkpy_v2(df):
+    vectorize = udf(lambda vs: Vectors.dense(vs), VectorUDT())
     spark_df = df.orderBy("subkey")
     spark_df = spark_df.groupBy("key").agg(first(col("parameter")).alias("label"), collect_list("reference").alias("features"))
-    spark_df = spark_df.select("label", "features")
-    return spark_df
+    new_spark_df = spark_df.withColumn("features", vectorize(spark_df["features"]))
+    return new_spark_df
+    # spark_df = spark_df.select("label", vectorize(spark_df["features"]))
+    # spark_df = spark_df.select("label", "features")
     # spark_df = spark_df.select(np.asscalar(spark_df.label), [item.element for item in col("features")])
     # spark_df = spark_df.select(np.asscalar(spark_df.label), Vectors.dense(spark_df.features))
+    # spark_df = spark_df.select(spark_df.label, spark_df.features)
+    # spark_df = assembler.transform(spark_df)
+    # spark_df = spark_df.select((np.asscalar(spark_df.label), spark_df.features))
+    # spark_df = spark_df.select((np.asscalar(spark_df.label), Vectors.dense(spark_df.features))    
 
 
 if __name__ == "__main__":
@@ -74,6 +84,8 @@ if __name__ == "__main__":
     ]
     
     original_df = spark.createDataFrame(data)
+    print("schema of result's data frame:")
+    original_df.printSchema()
     print('input data:')
     original_df.show()
 
@@ -81,18 +93,20 @@ if __name__ == "__main__":
     print("schema of result's data frame:")
     flat_df.printSchema()
     print('result data (by pandas):')
-    flat_df.show()    
+    flat_df.show()
 
     flat_df = convert_to_flat_by_sparkpy(original_df)
     print("schema of result's data frame:")
     flat_df.printSchema()
     print('result data (by sparkby):')
     flat_df.show()    
-
+    
     flat_df = convert_to_flat_by_sparkpy_v2(original_df)
     print("schema of result's data frame:")
     flat_df.printSchema()
     print('result data (by sparkby v2):')
     flat_df.show()    
+    standard_df = flat_df.collect()
 
     print("main completed")
+    
