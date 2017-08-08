@@ -1,5 +1,6 @@
 
 import numpy as np
+from itertools import chain
 
 import findspark
 findspark.init()
@@ -71,6 +72,15 @@ def convert_to_flat_by_sparkpy_v2(df):
     # spark_df = spark_df.select((np.asscalar(spark_df.label), spark_df.features))
     # spark_df = spark_df.select((np.asscalar(spark_df.label), Vectors.dense(spark_df.features))    
 
+def convert_to_flat_by_sparkpy_v3(df):
+    vectorize = udf(lambda vs: Vectors.dense(list(chain.from_iterable(vs))), VectorUDT())
+    spark_df = df.orderBy("subkey")
+    spark_df = spark_df.groupBy("key").agg(first(col("parameter")).alias("label"), collect_list("reference").alias("features"))
+    spark_df = spark_df.withColumn('features', vectorize('features'))
+    spark_df = spark_df.select("label", "features")
+    return spark_df
+    # flatten = udf(lambda x: list(chain.from_iterable(x)), ArrayType(FloatType()))
+
 
 if __name__ == "__main__":
     print("main started")
@@ -102,18 +112,24 @@ if __name__ == "__main__":
     print('result data (by pandas):')
     flat_df.show()
 
-    flat_df = convert_to_flat_by_sparkpy(original_df)
+    # flat_df = convert_to_flat_by_sparkpy(original_df)
+    # print("schema of result's data frame:")
+    # flat_df.printSchema()
+    # print('result data (by sparkby):')
+    # flat_df.show()    
+    
+    # flat_df = convert_to_flat_by_sparkpy_v2(original_df)
+    # print("schema of result's data frame:")
+    # flat_df.printSchema()
+    # print('result data (by sparkby v2):')
+    # flat_df.show()    
+    # standard_df = flat_df.collect()
+
+    flat_df = convert_to_flat_by_sparkpy_v3(original_df)
     print("schema of result's data frame:")
     flat_df.printSchema()
     print('result data (by sparkby):')
-    flat_df.show()    
-    
-    flat_df = convert_to_flat_by_sparkpy_v2(original_df)
-    print("schema of result's data frame:")
-    flat_df.printSchema()
-    print('result data (by sparkby v2):')
-    flat_df.show()    
-    standard_df = flat_df.collect()
+    flat_df.show()
 
     print("main completed")
     
