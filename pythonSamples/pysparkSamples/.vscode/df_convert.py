@@ -1,5 +1,5 @@
-
 import numpy as np
+import time
 from itertools import chain
 
 import findspark
@@ -72,9 +72,11 @@ def convert_to_flat_by_sparkpy_v2(df):
     # spark_df = spark_df.select((np.asscalar(spark_df.label), spark_df.features))
     # spark_df = spark_df.select((np.asscalar(spark_df.label), Vectors.dense(spark_df.features))    
 
+# https://stackoverflow.com/questions/38296609/spark-functions-vs-udf-performance
 def convert_to_flat_by_sparkpy_v3(df):
     vectorize = udf(lambda vs: Vectors.dense(list(chain.from_iterable(vs))), VectorUDT())
-    spark_df = df.orderBy("subkey")
+    spark_df = df
+    spark_df = df.orderBy("key", "subkey")
     spark_df = spark_df.groupBy("key").agg(first(col("parameter")).alias("label"), collect_list("reference").alias("features"))
     spark_df = spark_df.withColumn('features', vectorize('features'))
     spark_df = spark_df.select("label", "features")
@@ -89,6 +91,7 @@ if __name__ == "__main__":
         .builder\
         .appName("df-flat-pyspark")\
         .getOrCreate()
+    spark.sparkContext.setLogLevel("WARN")
     print("spark version:", spark.version)
 
     data = [
@@ -106,11 +109,15 @@ if __name__ == "__main__":
     print('input data:')
     original_df.show()
 
+    t0 = time.time()
     flat_df = convert_to_flat_by_pandas(original_df)
     print("schema of result's data frame:")
     flat_df.printSchema()
     print('result data (by pandas):')
     flat_df.show()
+    t1 = time.time()
+    print("time: ", t1-t0)
+    print("------------------------------------------------------------------")
 
     # flat_df = convert_to_flat_by_sparkpy(original_df)
     # print("schema of result's data frame:")
@@ -125,11 +132,15 @@ if __name__ == "__main__":
     # flat_df.show()    
     # standard_df = flat_df.collect()
 
+    t0 = time.time()
     flat_df = convert_to_flat_by_sparkpy_v3(original_df)
     print("schema of result's data frame:")
     flat_df.printSchema()
     print('result data (by sparkby):')
     flat_df.show()
+    t1 = time.time()
+    print("time: ", t1-t0)
+    print("------------------------------------------------------------------")
 
     print("main completed")
     
