@@ -22,10 +22,15 @@ if __name__ == "__main__":
 
     redis_connection = connect_to_redis(host)
 
-    result = redis_connection.set('igor:simple', 'intro')
+    simple_key = 'igor:simple'
+
+    result = redis_connection.set(simple_key, 'intro')
     print('set: ', result)
 
-    result = redis_connection.get('igor:simple')
+    result = redis_connection.get(simple_key)
     print('get: ', result)
+
+    redis_connection.delete(simple_key)
+    print('get (after delete): ', redis_connection.get(simple_key))
 
     print("main completed")
