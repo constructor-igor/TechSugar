@@ -77,9 +77,8 @@ def pub_sub_3(redis_connection):
     p.subscribe(channel_key)
 
     for message in p.listen():
-        msg = p.get_message()
-        print('get_message', msg)
-        if msg['data'] == 'finish':
+        print('get_message', message)
+        if message is not None and message['data'] == b'finish':
             break
 
     p.unsubscribe(channel_key)

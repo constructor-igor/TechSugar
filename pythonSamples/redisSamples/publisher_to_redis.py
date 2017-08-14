@@ -19,4 +19,9 @@ if __name__ == "__main__":
     print('host:', host)
     redis_connection = connect_to_redis(host)
 
+    channel_key = 'igor:my-3-channel'
+    redis_connection.publish(channel_key, 'test data1')
+    redis_connection.publish(channel_key, 'test data2')
+    redis_connection.publish(channel_key, 'finish')
+
     print("[publisher to redis] main completed")
