@@ -32,7 +32,7 @@ def set_get_delete(redis_connection):
 
 def pub_sub_1(redis_connection):
     print('pub_sub1 <<<<<<<<<<<<<<<<<<<<<<')
-    channel_key = 'igor:my-first-channel'
+    channel_key = 'igor:my-1-channel'
     p = redis_connection.pubsub()
     p.subscribe(channel_key)
     time.sleep(2)
@@ -54,7 +54,7 @@ def my_handler(message):
 
 def pub_sub_2(redis_connection):
     print('pub_sub2 <<<<<<<<<<<<<<<<<<<<<<')
-    channel_key = 'igor:my-first-channel'
+    channel_key = 'igor:my-2-channel'
     p = redis_connection.pubsub()
     p.subscribe(**{channel_key: my_handler})
     time.sleep(2)
@@ -70,8 +70,24 @@ def pub_sub_2(redis_connection):
     print('pub_sub2 >>>>>>>>>>>>>>>>>>>>>>')
     return
 
+def pub_sub_3(redis_connection):
+    print('pub_sub3 <<<<<<<<<<<<<<<<<<<<<<')
+    channel_key = 'igor:my-3-channel'
+    p = redis_connection.pubsub(ignore_subscribe_messages=True)
+    p.subscribe(channel_key)
+
+    for message in p.listen():
+        msg = p.get_message()
+        print('get_message', msg)
+        if msg['data'] == 'finish':
+            break
+
+    p.unsubscribe(channel_key)
+    print('pub_sub3 >>>>>>>>>>>>>>>>>>>>>>')
+    return
+
 if __name__ == "__main__":
-    print("main started")  
+    print("main started")
     host = read_host_name()
     print('host:', host)
 
@@ -81,5 +97,6 @@ if __name__ == "__main__":
 
     pub_sub_1(redis_connection)
     pub_sub_2(redis_connection)
+    pub_sub_3(redis_connection)
 
     print("main completed")
