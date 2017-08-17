@@ -23,27 +23,33 @@ namespace Ctor.Infra.SeparationLayer
         }
 
         #region IAsyncOperation
+
         public void Cancel()
         {
             m_cancellationTokenSource?.Cancel();
         }
+
         public void Wait()
         {
             m_task.Wait();
         }
+
         #endregion
     }
 
     public class DummyASyncOperation : IAsyncOperation
     {
         #region IAsyncOperation
+
         public void Cancel()
         {
-            
+
         }
+
         public void Wait()
         {
         }
+
         #endregion
     }
 
@@ -75,6 +81,7 @@ namespace Ctor.Infra.SeparationLayer
             m_synchronously = false;
             return this;
         }
+
         public SeparationOperation<T> Synchronously()
         {
             m_synchronously = true;
@@ -86,6 +93,7 @@ namespace Ctor.Infra.SeparationLayer
             m_finishlOperation = action;
             return this;
         }
+
         public SeparationOperation<T> OnCancelInvoke(Action action)
         {
             m_cancelOperation = action;
@@ -97,6 +105,7 @@ namespace Ctor.Infra.SeparationLayer
             m_errorOperation = action;
             return this;
         }
+
         public SeparationOperation<T> OnProgressInvoke(Action<ProgressMessage> action)
         {
             m_progressOperation = action;
@@ -115,7 +124,8 @@ namespace Ctor.Infra.SeparationLayer
             {
                 PerformTask();
                 return new DummyASyncOperation();
-            } else
+            }
+            else
             {
                 Task task = new Task(PerformTask);
                 task.Start();
@@ -141,7 +151,8 @@ namespace Ctor.Infra.SeparationLayer
                 if (!m_cancellationTokenSource.IsCancellationRequested)
                 {
                     m_errorOperation?.Invoke(e);
-                } else
+                }
+                else
                 {
                     m_cancelOperation?.Invoke();
                 }
@@ -150,6 +161,7 @@ namespace Ctor.Infra.SeparationLayer
                 m_finishlOperation?.Invoke();
         }
     }
+
     public interface ISeparationLayer
     {
         void Register<T>(T service);

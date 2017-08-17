@@ -82,4 +82,14 @@ namespace Ctor.Client.Impl
             Console.WriteLine("Client completed.");
         }
     }
+
+//    public static class SeparationOperationExtensions
+//    {
+//        [Obsolete("You should never ever invoke the callbacks on the Main thread. This indicates a problem with your code")]
+//        public static SeparationOperation<T> CallbacksThroughUiThread<T>(this SeparationOperation<T> sequence)
+//        {
+//            return sequence.CallbacksThrough((action, objects) =>
+//                (Application.Current != null ? Application.Current.Dispatcher : Dispatcher.CurrentDispatcher).Invoke(action, objects));
+//        }
+//    }
 }
