@@ -21,6 +21,12 @@ namespace OperationsFactory
             serverUnity.CreateOperation("1", 21).Execute();
             serverUnity.CreateOperation("2", 22).Execute();
             serverUnity.CreateOperation("3", 23, "23").Execute();
+
+            Console.WriteLine("\nServerFactory:");
+            ServerFactory serverFactory = new ServerFactory();
+            serverFactory.CreateOperation("1", 21).Execute();
+            serverFactory.CreateOperation("2", 22).Execute();
+            serverFactory.CreateOperation("3", 23, "23").Execute();
         }
     }
 
@@ -40,6 +46,32 @@ namespace OperationsFactory
         {
             IOperation operation = m_container.Resolve<IOperation>(name, new OrderedParametersOverride(parameters));
             return operation;
+        }
+    }
+
+    public class ServerFactory
+    {
+        private readonly Dictionary<string, Func<object[], IOperation>> m_container = new Dictionary<string, Func<object[], IOperation>>();
+        public ServerFactory()
+        {            
+            m_container.Add("1", objects => new Operation1((int)objects[0]));
+            m_container.Add("2", objects => new Operation2((int)objects[0]));
+            m_container.Add("3", objects => new Operation3((int)objects[0], (string)objects[1]));
+        }
+        public IOperation CreateOperation(string name, params object[] parameters)
+        {
+            return m_container[name](parameters);
+            switch (name)
+            {
+                case "1":
+                    return new Operation1((int)parameters[0]);
+                case "2":
+                    return new Operation2((int)parameters[0]);
+                case "3":
+                    return new Operation3((int)parameters[0], (string)parameters[1]);
+                default: 
+                    throw new ArgumentException();
+            }
         }
     }
 
