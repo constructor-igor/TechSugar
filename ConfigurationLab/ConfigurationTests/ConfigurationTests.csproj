@@ -48,6 +48,7 @@
     <Compile Include="CustomConfigComplexSectionTests.cs" />
     <Compile Include="CustomConfigSimpleSectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandaloneConfigurationApproachTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
