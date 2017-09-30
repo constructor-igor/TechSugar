@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationFileTests.cs" />
     <Compile Include="CustomConfigComplexSectionTests.cs" />
     <Compile Include="CustomConfigSimpleSectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
