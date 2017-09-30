@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -77,14 +76,44 @@ namespace ConfigurationTests
         public void GetPropertiesList()
         {
             TestConfigurationClass configuration = new TestConfigurationClass { Name = "name", Sex = MySexEnum.Female};
-            List<ConfigurationProperty> configurationProperties = MyConfigManager.GetConfigurationProperties(configuration);
+            List<MyConfigurationProperty> configurationProperties = MyConfigManager.GetConfigurationProperties(configuration);
 
-            foreach (ConfigurationProperty property in configurationProperties)
+            foreach (MyConfigurationProperty property in configurationProperties)
             {
-                Console.WriteLine("Property: {0}={1} ({2})", property.Name, property.DefaultValue, property.Type);
+                Console.WriteLine("Property: {0}={1} ({2})", property.Name, property.Value, property.Type);
             }
 
-            Assert.That(configurationProperties.Count, Is.EqualTo(4));
+            Assert.That(configurationProperties.Count, Is.EqualTo(4));            
+        }
+
+//        [Test]
+//        public void SetPropertiesList()
+//        {
+//            TestConfigurationClass configuration = new TestConfigurationClass { Name = "name", Sex = MySexEnum.Female };
+//            List<ConfigurationProperty> configurationProperties = MyConfigManager.GetConfigurationProperties(configuration);
+//
+//            foreach (ConfigurationProperty property in configurationProperties)
+//            {
+//                Console.WriteLine("Property: {0}={1} ({2})", property.Name, property.DefaultValue, property.Type);
+//            }
+//
+//            configurationProperties[0]. DefaultValue = "new value";
+//
+//            Assert.That(configurationProperties.Count, Is.EqualTo(4));
+//        }
+    }
+
+    public class MyConfigurationProperty
+    {
+        public readonly string Name;
+        public readonly Type Type;
+        public readonly object Value;
+
+        public MyConfigurationProperty(string name, Type type, object value)
+        {
+            Name = name;
+            Type = type;
+            Value = value;
         }
     }
 
@@ -128,12 +157,12 @@ namespace ConfigurationTests
             }
         }
 
-        public static List<ConfigurationProperty> GetConfigurationProperties(IConfiguration configuration)
+        public static List<MyConfigurationProperty> GetConfigurationProperties(IConfiguration configuration)
         {
             return GetConfigurationProperties(string.Empty, configuration);
         }
 
-        private static List<ConfigurationProperty> GetConfigurationProperties(string parentName, object configuration)
+        private static List<MyConfigurationProperty> GetConfigurationProperties(string parentName, object configuration)
         {
             if (!string.IsNullOrEmpty(parentName))
                 parentName = parentName + ".";
@@ -141,9 +170,9 @@ namespace ConfigurationTests
                 .Where(prop => !Attribute.IsDefined(prop, typeof(XmlIgnoreAttribute)))
                 .ToList();
 
-            List<ConfigurationProperty> configurationProperties = enabledXmlProperty
+            List<MyConfigurationProperty> configurationProperties = enabledXmlProperty
                 .Where(IsSimple)
-                .Select(prop => new ConfigurationProperty(parentName + prop.Name, prop.PropertyType, prop.GetValue(configuration, null))).ToList();
+                .Select(prop => new MyConfigurationProperty(parentName + prop.Name, prop.PropertyType, prop.GetValue(configuration, null))).ToList();
             configurationProperties.AddRange(enabledXmlProperty.Where(IsSubConfiguration).SelectMany(prop =>
             {
                 object subObject = prop.GetValue(configuration, null);
@@ -159,9 +188,6 @@ namespace ConfigurationTests
 
         private static bool IsSubConfiguration(PropertyInfo prop)
         {
-
-
-
             return !IsSimple(prop) && !prop.PropertyType.FullName.StartsWith("System.");
         }
     }
