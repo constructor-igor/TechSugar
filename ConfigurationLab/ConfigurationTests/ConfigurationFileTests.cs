@@ -83,37 +83,51 @@ namespace ConfigurationTests
                 Console.WriteLine("Property: {0}={1} ({2})", property.Name, property.Value, property.Type);
             }
 
-            Assert.That(configurationProperties.Count, Is.EqualTo(4));            
+            Assert.That(configurationProperties.Count, Is.EqualTo(4));
         }
 
-//        [Test]
-//        public void SetPropertiesList()
-//        {
-//            TestConfigurationClass configuration = new TestConfigurationClass { Name = "name", Sex = MySexEnum.Female };
-//            List<ConfigurationProperty> configurationProperties = MyConfigManager.GetConfigurationProperties(configuration);
-//
-//            foreach (ConfigurationProperty property in configurationProperties)
-//            {
-//                Console.WriteLine("Property: {0}={1} ({2})", property.Name, property.DefaultValue, property.Type);
-//            }
-//
-//            configurationProperties[0]. DefaultValue = "new value";
-//
-//            Assert.That(configurationProperties.Count, Is.EqualTo(4));
-//        }
+        [Test]
+        public void SetPropertiesList()
+        {
+            TestConfigurationClass configuration = new TestConfigurationClass { Name = "name", Sex = MySexEnum.Female };
+            List<MyConfigurationProperty> configurationProperties = MyConfigManager.GetConfigurationProperties(configuration);
+            Assert.That(configurationProperties.Count, Is.EqualTo(4));
+
+            foreach (MyConfigurationProperty property in configurationProperties)
+            {
+                Console.WriteLine("Property: {0}={1} ({2})", property.Name, property.Value, property.Type);
+            }
+
+            Console.WriteLine("Updated configuration");
+            configurationProperties[0].Value = "new value";
+            configurationProperties[3].Value = "new title";
+            TestConfigurationClass updatedConfiguration = MyConfigManager.CreateConfiguration<TestConfigurationClass>(configurationProperties);
+            Assert.That(updatedConfiguration.Name, Is.EqualTo("new value"));
+            Assert.That(updatedConfiguration.SubClass.Title, Is.EqualTo("new title"));
+            List<MyConfigurationProperty> updatedConfigurationProperties = MyConfigManager.GetConfigurationProperties(updatedConfiguration);
+            foreach (MyConfigurationProperty property in updatedConfigurationProperties)
+            {
+                Console.WriteLine("Property: {0}={1} ({2})", property.Name, property.Value, property.Type);
+            }
+        }
     }
 
     public class MyConfigurationProperty
     {
         public readonly string Name;
         public readonly Type Type;
-        public readonly object Value;
+        public object Value { get; set; }
 
         public MyConfigurationProperty(string name, Type type, object value)
         {
             Name = name;
             Type = type;
             Value = value;
+        }
+
+        public MyConfigurationProperty CreateClone(string parentName)
+        {
+            return new MyConfigurationProperty(Name.Remove(0, parentName.Length+1), Type, Value);
         }
     }
 
@@ -160,6 +174,38 @@ namespace ConfigurationTests
         public static List<MyConfigurationProperty> GetConfigurationProperties(IConfiguration configuration)
         {
             return GetConfigurationProperties(string.Empty, configuration);
+        }
+
+        public static P CreateConfiguration<P>(List<MyConfigurationProperty> configurationProperties) where P: IConfiguration
+        {
+            P configurationObject = (P)Activator.CreateInstance(typeof(P), new object[] { });
+            CreateConfiguration(configurationObject, configurationProperties);
+            return configurationObject;
+        }
+
+        private static void CreateConfiguration(object configurationObject, List<MyConfigurationProperty> configurationProperties)
+        {
+            List<PropertyInfo> enabledXmlProperty = configurationObject.GetType().GetProperties()
+                .Where(prop => !Attribute.IsDefined(prop, typeof(XmlIgnoreAttribute)))
+                .ToList();
+
+            foreach (PropertyInfo propertyInfo in enabledXmlProperty)
+            {
+                MyConfigurationProperty found = configurationProperties.Find(p => p.Name == propertyInfo.Name);
+                if (found != null)
+                    propertyInfo.SetValue(configurationObject, found.Value, null);
+                if (found == null && IsSubConfiguration(propertyInfo))
+                {
+                    List<MyConfigurationProperty> subConfigurationProperties = configurationProperties
+                        .Where(p => p.Name.StartsWith(propertyInfo.Name + "."))
+                        .Select(p=>p.CreateClone(propertyInfo.Name))
+                        .ToList();
+                    Type subConfigurationType = propertyInfo.PropertyType;
+                    object subConfigurationObject = Activator.CreateInstance(subConfigurationType, new object[] { });
+                    CreateConfiguration(subConfigurationObject, subConfigurationProperties);
+                    propertyInfo.SetValue(configurationObject, subConfigurationObject, null);
+                }
+            }
         }
 
         private static List<MyConfigurationProperty> GetConfigurationProperties(string parentName, object configuration)
