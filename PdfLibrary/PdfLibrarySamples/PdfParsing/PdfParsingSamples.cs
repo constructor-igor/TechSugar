@@ -1,7 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Reflection;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using NUnit.Framework;
+using Path = System.IO.Path;
 
 namespace PdfParsing
 {
@@ -17,6 +20,7 @@ namespace PdfParsing
         public void ParsePdfSample()
         {
             string pdfFilePath = @"..\..\data\Spec.pdf";
+            pdfFilePath = Path.Combine(GetDllPath(), pdfFilePath);
             Assert.That(File.Exists(pdfFilePath), Is.True);
 
             using (PdfReader reader = new PdfReader(pdfFilePath))
@@ -29,8 +33,14 @@ namespace PdfParsing
                     text += PdfTextExtractor.GetTextFromPage(reader, page);
                 }
 
-                Assert.That(text, Is.StringStarting("Console application"));
+                Assert.That(text, Does.StartWith("Console application"));
             }
+        }
+
+        string GetDllPath()
+        {
+            Assembly assembly = Assembly.GetAssembly(typeof(PdfParsingSamples));
+            return Path.GetDirectoryName(assembly.Location);
         }
     }
 }
