@@ -7,16 +7,11 @@ using Path = System.IO.Path;
 
 namespace PdfParsing
 {
-    /*
-     * References:
-     * - http://stackoverflow.com/questions/83152/reading-pdf-documents-in-net
-     * 
-     * */
     [TestFixture]
-    public class PdfParsingSamples
+    public class PdfEditingSamples
     {
         [Test]
-        public void ParsePdfSample()
+        public void ChangeText()
         {
             string pdfFilePath = @"..\..\data\Spec.pdf";
             pdfFilePath = Path.Combine(GetDllPath(), pdfFilePath);
@@ -35,10 +30,9 @@ namespace PdfParsing
                 Assert.That(text, Does.StartWith("Console application"));
             }
         }
-
         string GetDllPath()
         {
-            Assembly assembly = Assembly.GetAssembly(typeof(PdfParsingSamples));
+            Assembly assembly = Assembly.GetAssembly(typeof(PdfEditingSamples));
             return Path.GetDirectoryName(assembly.Location);
         }
     }
