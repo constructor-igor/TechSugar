@@ -7,6 +7,7 @@ import os
 import time
 from pprint import pprint
 
+
 Scientist = collections.namedtuple('Scientist', ['name', 'field', 'born', 'nobel'])
 
 scientists = (
