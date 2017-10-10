@@ -1,0 +1,50 @@
+﻿<Activity mc:Ignorable="sap" x:Class="IsWWFUsefullSample.Activities.IsWWFUsefull" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:ia="clr-namespace:IsWWFUsefullSample.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=System" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=System" xmlns:s2="clr-namespace:System;assembly=System.Xml" xmlns:s3="clr-namespace:System;assembly=System.Core" xmlns:s4="clr-namespace:System;assembly=System.ServiceModel" xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel" xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System.Core" xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="IsLongRunning" Type="InArgument(x:Boolean)" />
+    <x:Property Name="IsChangeable" Type="InArgument(x:Boolean)" />
+    <x:Property Name="IsDesignerNecessary" Type="InArgument(x:Boolean)" />
+    <x:Property Name="Result" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>1038.4,467.2</sap:VirtualizedContainerService.HintSize>
+  <mva:VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</mva:VisualBasic.Settings>
+  <If Condition="[IsLongRunning]" sad:XamlDebuggerXmlReader.FileName="D:\Cha\My Projects\Workflow Expert product (blog)\Samples\IsWWFUsefullSample\IsWWFUsefullSample.Activities\IsWWFUsefull.xaml" sap:VirtualizedContainerService.HintSize="998.4,427.2">
+    <If.Then>
+      <Assign sap:VirtualizedContainerService.HintSize="243.2,318.4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Boolean">[Result]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+        </Assign.Value>
+      </Assign>
+    </If.Then>
+    <If.Else>
+      <If Condition="[IsChangeable]" sap:VirtualizedContainerService.HintSize="731.2,318.4">
+        <If.Then>
+          <Assign sap:VirtualizedContainerService.HintSize="243.2,209.6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[Result]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+        <If.Else>
+          <If Condition="[IsDesignerNecessary]" sap:VirtualizedContainerService.HintSize="464,209.6">
+            <If.Then>
+              <Assign sap:VirtualizedContainerService.HintSize="289.6,100.8">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[Result]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                </Assign.Value>
+              </Assign>
+            </If.Then>
+          </If>
+        </If.Else>
+      </If>
+    </If.Else>
+  </If>
+</Activity>
