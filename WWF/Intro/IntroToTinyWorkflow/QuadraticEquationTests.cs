@@ -35,8 +35,7 @@ namespace IntroToTinyWorkflow
             IWorkflow<QuadraticEquationContext> workflow = new Workflow<QuadraticEquationContext>()
                 .Do(CalculateDiscriminant)
                 .If(RootsChecking,
-                    new Workflow<QuadraticEquationContext>()
-                        .If(IfSameRoots,
+                    new Workflow<QuadraticEquationContext>().If(IfSameRoots,
                             new Workflow<QuadraticEquationContext>().Do(SameRoots), 
                             new Workflow<QuadraticEquationContext>().DoAsynch(CalculateRoot1, CalculateRoot2)),
                     new Workflow<QuadraticEquationContext>().Do(NoRoots)                
