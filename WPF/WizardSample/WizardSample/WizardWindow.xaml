@@ -1,0 +1,56 @@
+﻿<Window x:Class="WizardSample.WizardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WizardSample"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="WizardWindow" Height="350" Width="525">
+    <Grid>
+        <xctk:Wizard FinishButtonClosesWindow="True">
+            <xctk:WizardPage 
+                x:Name="IntroPage" 
+                Title="Welcome to my Wizard" 
+                Description="This Wizard will walk you though how to do something">
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="Page1" Title="Page 1" Description="This is first page in the process" 
+                             NextPage="{Binding ElementName=Page2}"
+                             PreviousPage="{Binding ElementName=IntroPage}"
+                             CanSelectNextPage="False"
+                             >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="First Name:"></TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="2" Name="FirstNameTextBox" TextChanged="FirstNameTextBox_TextChanged" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Last Name:"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="2" Name="LastNameTextBox" TextChanged="LastNameTextBox_OnTextChangedNameTextBox_TextChanged" />
+                </Grid>
+            </xctk:WizardPage>
+            
+            <xctk:WizardPage 
+                x:Name="Page2" 
+                Title="Page 2" 
+                Description="This is second page in the process" 
+                NextPage="{Binding ElementName=LastPage}"
+                PreviousPage="{Binding ElementName=Page1}" />
+
+            <xctk:WizardPage 
+                x:Name="LastPage"
+                Title="Last Page"
+                Description="This is last page in the process"
+                CanFinish="True"
+                />
+
+        </xctk:Wizard>
+    </Grid>
+</Window>
