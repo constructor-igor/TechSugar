@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4NetSample", "Log4NetSample\Log4NetSample.csproj", "{6B35928C-F180-481C-9817-4ED7BF2C6A51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeqSample", "SeqSample\SeqSample.csproj", "{7EE47537-7C24-4128-A83C-6C77608FBBCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6B35928C-F180-481C-9817-4ED7BF2C6A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B35928C-F180-481C-9817-4ED7BF2C6A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B35928C-F180-481C-9817-4ED7BF2C6A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EE47537-7C24-4128-A83C-6C77608FBBCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE47537-7C24-4128-A83C-6C77608FBBCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE47537-7C24-4128-A83C-6C77608FBBCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE47537-7C24-4128-A83C-6C77608FBBCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
