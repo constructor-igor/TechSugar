@@ -9,7 +9,7 @@ root:
   class: seqlog.structured_logging.StructuredRootLogger
   level: INFO
   handlers:
-    - seq
+    #- seq
     - console
     - file
 
@@ -20,7 +20,7 @@ loggers:
     propagate: False
     level: INFO
     handlers:
-      - seq
+      #- seq
       - console
       - file
 
