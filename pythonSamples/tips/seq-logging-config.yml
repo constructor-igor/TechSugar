@@ -1,0 +1,48 @@
+#
+# http://seqlog.readthedocs.io/en/latest/usage.html
+# 
+
+# This is the Python logging schema version (currently, only the value 1 is supported here).
+version: 1
+
+# Configure logging from scratch.
+disable_existing_loggers: True
+
+# Configure the root logger to use Seq
+root:
+  class: seqlog.structured_logging.StructuredRootLogger
+  level: INFO
+  handlers:
+  - seq
+  - console
+
+# You can also configure non-root loggers.
+loggers:
+  another_logger:
+      class: seqlog.structured_logging.StructuredLogger
+      propagate: False
+      level: INFO
+      handlers:
+      - seq
+      - console
+
+handlers:
+# Log to STDOUT
+  console:
+    class: seqlog.structured_logging.ConsoleStructuredLogHandler
+    formatter: seq
+
+# Log to Seq
+  seq:
+    class: seqlog.structured_logging.SeqLogHandler
+    formatter: seq
+
+    # Seq-specific settings (add any others you need, they're just kwargs for SeqLogHandler's constructor).
+    server_url: 'http://localhost:5341'
+    api_key: ''
+    batch_size: 1
+    auto_flush_timeout: 10000
+
+formatters:
+  seq:
+    style: '{'

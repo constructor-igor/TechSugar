@@ -57,3 +57,8 @@ if __name__ == "__main__":
     logic = Logic(main_logger)
     logic.run(2, 0)
 
+    main_logger = LoggerFactory.create_logger_by_config_file(r".\seq-logging-config.yml")
+    main_logger.info("detailed log, created by config file")
+    logic = Logic(main_logger)
+    logic.run(2, 0)
+    main_logger.info("finished")
