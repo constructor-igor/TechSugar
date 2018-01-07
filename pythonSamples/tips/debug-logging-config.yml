@@ -1,0 +1,43 @@
+# This is the Python logging schema version (currently, only the value 1 is supported here).
+version: 1
+
+# Configure logging from scratch.
+disable_existing_loggers: True
+
+# Configure the root logger to use Seq
+root:
+#  class: seqlog.structured_logging.StructuredRootLogger
+  level: DEBUG
+  handlers: [console, file]
+
+#loggers:
+#  # A non-root logger.
+#  diddly:
+#    class: seqlog.structured_logging.StructuredLogger
+#    propagate: False
+#    level: INFO
+#    handlers:
+#      - console
+#      - file
+
+handlers:
+  # Log to STDOUT
+  console:
+    class: logging.StreamHandler
+    formatter: simple
+    stream: ext://sys.stdout
+
+  # Log to file
+  file:
+    class: logging.handlers.RotatingFileHandler
+    formatter: simple
+    filename: log-samples.log
+    maxBytes: 1048576 # 1MB
+    backupCount: 2
+    encoding: utf8
+
+formatters:
+  seq:
+    style: '{'
+  simple:
+    format: '%(asctime)s %(name)s %(levelname)-5s [%(module)s.%(funcName)s()] %(message)s'
