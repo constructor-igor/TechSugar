@@ -1,11 +1,11 @@
 
 
 big_dict = {'a':1,'b':2, 'c':3, 'z':26} 
+short_keys = ['a', 'z']
 
 # 
 # straightforward way
 # 
-short_keys = ['a', 'z']
 short_dict = dict()
 for key in short_keys:
     short_dict[key] = big_dict[key]
