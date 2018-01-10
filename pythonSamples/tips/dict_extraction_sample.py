@@ -16,3 +16,12 @@ print(short_dict)
 # 
 short_dict = dict((key, big_dict[key]) for key in short_keys if key in big_dict)
 print(short_dict)
+
+# 
+# python style
+# 
+short_dict = { key:big_dict[key] for key in short_keys if key in big_dict }  
+print(short_dict)
+
+short_dict = { key:big_dict[key] for key in ['dummy'] if key in big_dict }  
+print(short_dict)
