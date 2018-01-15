@@ -11,7 +11,7 @@ namespace ML_sample.Commands
 {
     public class Point
     {
-        public double X;
+        public List<double> X;
         public double Y;
     }
     public class PredictCommand : ICommand
@@ -46,7 +46,7 @@ namespace ML_sample.Commands
                 {
                     double x = ConvertToRadians(360*random.NextDouble());
                     double y = Math.Sin(x);
-                    Point point = new Point {X = x, Y = y};
+                    Point point = new Point {X = new List<double> {x}, Y = y};
                     return point;
                 });
 
@@ -55,30 +55,31 @@ namespace ML_sample.Commands
                 .Select(line =>
                 {
                     string[] xyItems = line.Split(',');
-                    double x = Double.Parse(xyItems[1]);
-                    double y = Double.Parse(xyItems[0]);
+                    //double x = double.Parse(xyItems[1]);    //TODO
+                    List<double> x = xyItems.Skip(1).Select(double.Parse).ToList();
+                    double y = double.Parse(xyItems[0]);
                     Point point = new Point {X = x, Y = y};
                     return point;
-                })
-                .Skip(100)
-                .Take(10);
+                });
+//                .Skip(100)
+//                .Take(10);
 
-            List<double> evaluated = evaluatedRandomPoints
+            List<double> evaluated = evaluatedFilePoints
                 .Select(value =>
                 {
                     originalY.Add(value.Y);
 
-                    IList<object> list = new object[] {value.X.ToString(CultureInfo.InvariantCulture)};
+                    IList<object> list = value.X.Select(x=>x.ToString(CultureInfo.InvariantCulture)).ToArray();
                     Input predictBody = new Input {InputValue = new Input.InputData {CsvInstance = list}};
                     TrainedmodelsResource.PredictRequest predictRequest = m_predictionFramework.PredictionService.Trainedmodels.Predict(predictBody, ProjectModelId.ProjectNumber, ProjectModelId.ModelId);
                     Output predictResponse = predictRequest.Execute();
                     string responseValue = predictResponse.OutputValue;
 
-                    Console.WriteLine("X: {0}, Y: {1}, response: {2}", value.X, value.Y, responseValue);
+                    Console.WriteLine("X: {0}, Y: {1}, response: {2}, error: {3}", value.X, value.Y, responseValue, value.Y-double.Parse(responseValue));
 
                     return responseValue;
                 })
-                .Select(Double.Parse)
+                .Select(double.Parse)
                 .ToList();
 
             double error = originalY
