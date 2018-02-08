@@ -53,8 +53,9 @@ def pso2_sample():
 
 def pso2_rosen_sample():
     print("[pso2_sample] started")
-    lb = [-10] * 5
-    ub = [+10] * 5
+    dim = 5
+    lb = [-10] * dim
+    ub = [+10] * dim
     xopt, fopt = pso2.pso(rosen, lb, ub, debug=True, processes=1, maxiter=1000)
     # xopt, fopt = pso2.pso(wrapped_multi(udf_single), lb, ub, f_ieqcons=wrapped_multi(con_single), debug=True, processes=0)
     print("xopt: ", xopt)
