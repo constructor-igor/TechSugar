@@ -1,6 +1,8 @@
 # 
 # https://www.youtube.com/watch?v=EEUXKG97YRw
 # 
+# Example: Computing Nearest Neighbors
+# 
 import numpy as np
 
 print("1000 points in 3 dimensions")
