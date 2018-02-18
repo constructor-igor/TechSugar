@@ -68,8 +68,6 @@ def nlopt_sample():
     pop = algo.evolve(pop)
     print("pop: ", pop)
 
-    return
-
 
 def nlopt_parallel_sample():
     print("nlopt_parallel_sample started")
@@ -115,7 +113,7 @@ def nlopt_topology_parallel_sample():
 
 if __name__ == "__main__":
     # quick_start_demo()
-    # user_defined_problem()
+    user_defined_problem()
     # nlopt_sample()
     # nlopt_parallel_sample()
-    nlopt_topology_parallel_sample()
+    # nlopt_topology_parallel_sample()
