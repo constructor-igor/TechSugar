@@ -15,70 +15,30 @@
 
     public class Node : INode
     {
-        private string _ID;
-        private double _value;
-        private INode _leftNode;
-        private INode _rightNode;
-        private INode _root;
-
-        public string ID
-        {
-            get
-            {
-                return _ID;
-            }
-        }
-
-        public double Value
-        {
-            get
-            {
-                return _value;
-            }
-        }
-
-        public INode LeftNode
-        {
-            get
-            {
-                return _leftNode;
-            }
-        }
-
-        public INode RightNode
-        {
-            get
-            {
-                return _rightNode;
-            }
-        }
-
-        public INode Root
-        {
-            get
-            {
-                return _root;
-            }
-        }
+        public string ID { get; }
+        public double Value { get; }
+        public INode Root { get; }
+        public INode LeftNode { get; private set; }
+        public INode RightNode { get; private set; }
 
         public Node(string ID, double value, INode leftNode, INode rightNode, INode root)
         {
-            _ID = ID;
-            _value = value;
-            _leftNode = leftNode;
-            _rightNode = rightNode;
-            _root = root;
+            this.ID = ID;
+            Value = value;
+            LeftNode = leftNode;
+            RightNode = rightNode;
+            Root = root;
             IsDone = false;
         }
 
         public void SetLeftNode(INode node)
         {
-            _leftNode = node;
+            LeftNode = node;
         }
 
         public void SetRightNode(INode node)
         {
-            _rightNode = node;
+            RightNode = node;
         }
 
         public bool IsDone { get; set; }

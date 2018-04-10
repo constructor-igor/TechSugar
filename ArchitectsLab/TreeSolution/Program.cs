@@ -1,4 +1,6 @@
-﻿namespace TreeSolution
+﻿using System;
+
+namespace TreeSolution
 {
     class Program
     {
@@ -8,6 +10,7 @@
             tree.Init();
             tree.PrintTreeWithRecursion();
             tree.PrintTreeWithoutRecursion();
+            tree.PrintTreeWithoutRecursion_Stack(node=>Console.WriteLine(node.ID));
         }
     }
 }
