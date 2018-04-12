@@ -165,7 +165,6 @@
     <Compile Include="ToMethodsTests.cs" />
     <Compile Include="TypeTests.cs" />
     <Compile Include="VectorSamples.cs" />
-    <Compile Include="WeakEventPattern.cs" />
     <Compile Include="WriteTextOnAnImage.cs" />
     <Compile Include="XmlSerialization2Tests.cs" />
     <Compile Include="XmlSerialization3Tests.cs" />
