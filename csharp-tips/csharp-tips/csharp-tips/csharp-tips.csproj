@@ -140,6 +140,7 @@
     <Compile Include="LINQ\SelfImplementedWhereTests.cs" />
     <Compile Include="LINQ\TakeSample.cs" />
     <Compile Include="ListSamples.cs" />
+    <Compile Include="MutableSample.cs" />
     <Compile Include="OutlookSamples.cs" />
     <Compile Include="PLINQ\plinqSample.cs" />
     <Compile Include="PowerShellInDebuggerSamples.cs" />
