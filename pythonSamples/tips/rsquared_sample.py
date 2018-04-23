@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn.metrics import r2_score
+import scipy
 # 
 # https://www.investopedia.com/terms/r/r-squared.asp
 # 
@@ -37,3 +38,5 @@ if __name__ == "__main__":
     r, sse, tst = compute_r2(x, y)
     print("r2: ", np.power(r, 2))
     print("r2: ", get_r2_numpy_manual(x, y))
+    slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(x, y)
+    print("r2: {0}, slope: {1}".format(r_value**2, slope))
