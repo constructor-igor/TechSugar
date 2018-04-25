@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\My\%40gh\TechSugar\csharp-tips\ClickOnceSample\%40Installation\</PublishUrl>
+    <PublishUrl>\\localhost\Users\igor-z\Desktop\MyApplication\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -23,14 +23,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\server\myapplication\</InstallUrl>
+    <InstallUrl>\\localhost\Users\igor-z\Desktop\MyApplication\</InstallUrl>
     <SupportUrl>https://github.com/constructor-igor/TechSugar/issues/392</SupportUrl>
     <ErrorReportUrl>https://github.com/constructor-igor/TechSugar/issues/392</ErrorReportUrl>
     <ProductName>ClickOnceSample</ProductName>
     <PublisherName>constructor-igor</PublisherName>
     <SuiteName>tech-suger</SuiteName>
     <MinimumRequiredVersion>1.0.0.4</MinimumRequiredVersion>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
