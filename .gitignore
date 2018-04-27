@@ -192,3 +192,5 @@ pythonSamples/redisSamples/user.ini
 pythonSamples/tips/pythonnet_csharp_library.dll
 pythonSamples/tips/.mypy_cache/
 /csharp-tips/ClickOnceSample/@Installation
+kaggle/word2vec-nlp-tutorial/labeledTrainData.tsv.zip
+kaggle/word2vec-nlp-tutorial/labeledTrainData.tsv
