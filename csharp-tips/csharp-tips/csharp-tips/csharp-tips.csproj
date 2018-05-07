@@ -164,8 +164,10 @@
     <Compile Include="StringBuilderTests.cs" />
     <Compile Include="StringSamples.cs" />
     <Compile Include="TasksTests.cs" />
+    <Compile Include="ThreadTests.cs" />
     <Compile Include="ToMethodsTests.cs" />
     <Compile Include="TypeTests.cs" />
+    <Compile Include="VarTests.cs" />
     <Compile Include="VectorSamples.cs" />
     <Compile Include="WriteTextOnAnImage.cs" />
     <Compile Include="XmlSerialization2Tests.cs" />
