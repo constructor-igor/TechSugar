@@ -34,4 +34,6 @@ for var in {a, b, c}:
     message = str(var).zfill(5)
     print("message: ", message)
 
+print(f'a={a}, b={b}, c={c}, a*b={a*b}, b*c={b*c}')
+
 print("finish")
