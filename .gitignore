@@ -194,3 +194,12 @@ pythonSamples/tips/.mypy_cache/
 /csharp-tips/ClickOnceSample/@Installation
 kaggle/word2vec-nlp-tutorial/labeledTrainData.tsv.zip
 kaggle/word2vec-nlp-tutorial/labeledTrainData.tsv
+
+.mypy_cache/
+kaggle/word2vec-nlp-tutorial/is_result_SnowballStemmer.csv
+kaggle/word2vec-nlp-tutorial/iz_result_PorterStemmer.csv
+kaggle/word2vec-nlp-tutorial/iz_result_default.csv
+kaggle/word2vec-nlp-tutorial/sampleSubmission.csv
+kaggle/word2vec-nlp-tutorial/testData.tsv
+kaggle/word2vec-nlp-tutorial/testData.tsv.zip
+kaggle/word2vec-nlp-tutorial/unlabeledTrainData.tsv.zip

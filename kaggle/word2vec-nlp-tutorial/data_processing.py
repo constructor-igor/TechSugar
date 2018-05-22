@@ -8,7 +8,15 @@ import pandas as pd
 from bs4 import BeautifulSoup       # Import BeautifulSoup into your workspace
 import re
 import numpy as np
+import nltk
+from nltk.corpus import stopwords # Import the stop word list
+# from __future__ import print_function
+from nltk.stem import *
+# from nltk.stem.snowball import SnowballStemmer
 
+
+def download_nltk():
+    nltk.download(download_dir=r'D:\My\MyNLTK')
 
 def experience():
     # Reading the Data
@@ -46,6 +54,39 @@ def experience():
     words = [w for w in words if not w in stopwords]
     print("\n all words:\n", words)    
 
+# http://www.nltk.org/howto/stem.html
+def stemmer_porter_sample():
+    stemmer = PorterStemmer()
+    plurals = [
+        'caresses', 'fly', 'flies', 'dies', 'mules', 'denied', 'died', 'agreed', 'owned', 'humbled', 'sized',
+        'meeting', 'stating', 'siezing', 'itemization', 'sensational', 'traditional', 'reference', 'colonizer', 'plotted'
+    ]
+    singles = set([stemmer.stem(plural) for plural in plurals])
+    print("stemmer(PorterStemmer) {0} from {1}".format(len(singles), len(plurals)))
+    print("original: " + ' '.join(plurals))
+    print("result: " + ' '.join(singles))
+    None
+
+# http://www.nltk.org/howto/stem.html
+def stemmer_snowball_sample():
+    stemmer = SnowballStemmer('english')
+    plurals = [
+        'caresses', 'fly', 'flies', 'dies', 'mules', 'denied', 'died', 'agreed', 'owned', 'humbled', 'sized',
+        'meeting', 'stating', 'siezing', 'itemization', 'sensational', 'traditional', 'reference', 'colonizer', 'plotted'
+    ]
+    singles = set([stemmer.stem(plural) for plural in plurals])
+    print("stemmer(PorterStemmer) {0} from {1}".format(len(singles), len(plurals)))
+    print("original: " + ' '.join(plurals))
+    print("result: " + ' '.join(singles))
+    None
+
+def run_stemmer(words):
+    # stemmer = PorterStemmer()
+    stemmer = SnowballStemmer('english')
+    singles = set([stemmer.stem(word) for word in words])
+    return list(singles)
+
+
 def review_to_words(raw_review):
     stopwords =  ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're", "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', "she's", 'her', 'hers', 'herself', 'it', "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 'haven', "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
     # Function to convert a raw review to a string of words
@@ -68,13 +109,22 @@ def review_to_words(raw_review):
     # 5. Remove stop words
     meaningful_words = [w for w in words if not w in stops]   
     #
-    # 6. Join the words back into one string separated by space, 
+    # 6. Run stemmer
+    meaningful_words = run_stemmer(meaningful_words)
+    # 
+    # 7. Join the words back into one string separated by space, 
     # and return the result.
-    return( " ".join( meaningful_words )) 
+    return(" ".join(meaningful_words)) 
 
 if __name__ == "__main__":
     print("[main] started")
+    # # download_nltk()
+    # print("stopwords.words: ", stopwords.words("english"))
+    # stemmer_porter_sample()
+    # stemmer_snowball_sample()
+
     # experience()
+
     train = pd.read_csv("labeledTrainData.tsv", header=0, delimiter="\t", quoting=3)
     clean_review = review_to_words(train["review"][0] )
 
