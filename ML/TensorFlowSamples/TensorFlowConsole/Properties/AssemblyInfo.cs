@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TensorFlowSharp")]
+[assembly: AssemblyTitle("TensorFlowConsole")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TensorFlowSharp")]
+[assembly: AssemblyProduct("TensorFlowConsole")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("148e1250-71cc-4fc4-bbb8-93ac30315107")]
+[assembly: Guid("4c952593-b1db-4075-a572-8bdf75b505f6")]
 
 // Version information for an assembly consists of the following four values:
 //
