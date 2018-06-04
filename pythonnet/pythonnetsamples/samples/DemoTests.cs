@@ -37,6 +37,22 @@ namespace samples
             }
         }
 
+        [Test]
+        public void RunCustomWithNumpyMethod()
+        {
+            string moduleDirectory = GetDllLocation();
+            using (Py.GIL())
+            {
+                dynamic syspy = Py.Import("sys");
+                syspy.path.append(moduleDirectory);
+
+                dynamic customModule = Py.Import("custom");
+                dynamic run = customModule.run_np_cos;
+                double result = run(0.0);
+                Assert.That(result, Is.EqualTo(1.0));
+            }
+        }
+
         private string GetDllLocation()
         {
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
