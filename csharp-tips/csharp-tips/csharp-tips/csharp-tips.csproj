@@ -120,6 +120,7 @@
   <ItemGroup>
     <Compile Include="ArraySamples.cs" />
     <Compile Include="ArrayTrimSamples.cs" />
+    <Compile Include="ASyncSamples.cs" />
     <Compile Include="AttributeSamples.cs" />
     <Compile Include="BufferWriterServiceTests.cs" />
     <Compile Include="CombinatorialSamples.cs" />
