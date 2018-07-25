@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="LocationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplitterTests.cs" />
+    <Compile Include="TestsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ctor.location.framework\ctor.location.framework.csproj">

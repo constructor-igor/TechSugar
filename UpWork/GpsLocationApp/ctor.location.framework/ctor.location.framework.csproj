@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Location.cs" />
+    <Compile Include="Location.DataConversion.cs" />
+    <Compile Include="LocationImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplitterHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
