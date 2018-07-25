@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ctor.location.framework", "ctor.location.framework\ctor.location.framework.csproj", "{B39DE1DA-AA2C-4582-9BE7-45E629566ABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ctor.location.tests", "ctor.location.test\ctor.location.tests.csproj", "{20922506-54BC-4FA2-AF92-9701EF6F82EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B39DE1DA-AA2C-4582-9BE7-45E629566ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B39DE1DA-AA2C-4582-9BE7-45E629566ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B39DE1DA-AA2C-4582-9BE7-45E629566ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B39DE1DA-AA2C-4582-9BE7-45E629566ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20922506-54BC-4FA2-AF92-9701EF6F82EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20922506-54BC-4FA2-AF92-9701EF6F82EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20922506-54BC-4FA2-AF92-9701EF6F82EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20922506-54BC-4FA2-AF92-9701EF6F82EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal
