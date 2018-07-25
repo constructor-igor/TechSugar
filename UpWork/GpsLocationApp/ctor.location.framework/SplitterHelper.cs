@@ -7,10 +7,7 @@ namespace ctor.location.framework
     {
         public static string[] Splitter(string inputLine)
         {
-            if (inputLine.Contains("\""))
-                return SplitCSV(inputLine);
-            else
-                return inputLine.Split(',');
+            return SplitCSV(inputLine);
             //return Regex.Split(inputLine, ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
         }
         public static string[] SplitCSV(string input)
