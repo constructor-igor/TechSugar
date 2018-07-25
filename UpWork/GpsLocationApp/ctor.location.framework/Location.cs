@@ -47,7 +47,7 @@ namespace ctor.location.framework
             string direction = "";
             string nearestGeographicalName = Locations[minIndex].GeographicalName;
 
-            return $"{distanceInMiles:#.#} mi {direction} {nearestGeographicalName}";
+            return $"{distanceInMiles:0.0} mi {direction} {nearestGeographicalName}";
         }
     }
 }
