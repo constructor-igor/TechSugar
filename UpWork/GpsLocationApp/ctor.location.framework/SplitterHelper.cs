@@ -5,14 +5,14 @@ namespace ctor.location.framework
 {
     public class SplitterHelper
     {
+        static readonly Regex csvSplit = new Regex("(?:^|,)(\"(?:[^\"]+|\"\")*\"|[^,]*)", RegexOptions.Compiled);
         public static string[] Splitter(string inputLine)
         {
-            return SplitCSV(inputLine);
+            return inputLine.Contains("\"") ? SplitCSV(inputLine) : inputLine.Split(',');
             //return Regex.Split(inputLine, ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
         }
         public static string[] SplitCSV(string input)
-        {
-            Regex csvSplit = new Regex("(?:^|,)(\"(?:[^\"]+|\"\")*\"|[^,]*)", RegexOptions.Compiled);
+        {            
             List<string> list = new List<string>();
             foreach (Match match in csvSplit.Matches(input))
             {
