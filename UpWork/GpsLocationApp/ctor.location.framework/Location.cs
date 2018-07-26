@@ -1,4 +1,6 @@
-﻿using System.Device.Location;
+﻿using System.Collections.Generic;
+using System.Device.Location;
+using System.Linq;
 
 namespace ctor.location.framework
 {
@@ -26,26 +28,21 @@ namespace ctor.location.framework
 
         }
 
-        public string GetNearestLocation(double latitude, double longitude)
+        public string GetNearestLocation(double latitude, double longitude, int k)
         {
             GeoCoordinate actualCoordinate = new GeoCoordinate(latitude, longitude);
-            double minDistance = double.MaxValue;
-            int minIndex = -1;
 
-            for (int i = 0; i < Locations.Length; i++)
-            {
-                LocationEntity entity = Locations[i];
-                double entityDistance = actualCoordinate.GetDistanceTo(entity.Coordinate);
-                if (minDistance > entityDistance)
-                {
-                    minDistance = entityDistance;
-                    minIndex = i;
-                }
-            }
+            List<LocationEntity> orderedLocations = Locations.ToList().OrderBy(entity => actualCoordinate.GetDistanceTo(entity.Coordinate)).ToList();
+
+            List<LocationEntity> kNearest = orderedLocations.Take(k).ToList();
+            List<IGrouping<string, LocationEntity>> grouped = kNearest.GroupBy(entity => entity.GeographicalName).OrderBy(g => g.Count()).ToList();
+            IGrouping<string, LocationEntity> nearestList = grouped.First();
+            LocationEntity nearest = nearestList.OrderBy(entity => actualCoordinate.GetDistanceTo(entity.Coordinate)).First();
+            double minDistance = actualCoordinate.GetDistanceTo(nearest.Coordinate);
+            var nearestGeographicalName = nearestList.Key;
 
             double distanceInMiles = DataConversion.ConvertMetersToMiles(minDistance);
             string direction = "";
-            string nearestGeographicalName = Locations[minIndex].GeographicalName;
 
             return $"{distanceInMiles:0.0} mi {direction} {nearestGeographicalName}";
         }
