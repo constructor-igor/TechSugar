@@ -99,7 +99,7 @@ if __name__ == "__main__":
     print("schema of result's data frame:")
     flat_df.printSchema()
     print('result data (by sparkby):')
-    flat_df.show()    
+    flat_df.show()
     
     flat_df = convert_to_flat_by_sparkpy_v2(original_df)
     print("schema of result's data frame:")
