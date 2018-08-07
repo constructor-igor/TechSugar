@@ -9,11 +9,11 @@ if __name__ == "__main__":
     print('[main] started')
     spark = SparkSession\
         .builder\
-        .appName("df-flat-pyspark")\
+        .appName("pyspark-samples")\
         .getOrCreate()
-    print("spark version:", spark.version)    
+    print("spark version:", spark.version)
     sc = spark.sparkContext
-    
+
     rdd = sc.parallelize([1, 2, 3, 4, 5])
     print(rdd.collect())
 
