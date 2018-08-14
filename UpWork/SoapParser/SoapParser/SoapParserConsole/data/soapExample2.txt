@@ -1,0 +1,192 @@
+<SOAP-ENV:Envelope
+xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<SOAP-ENV:Body>
+<apSrvCustGetResponse xmlns="urn:eTimeWS:eTimeWS">
+<result xsi:nil="true" />
+<dsContext>
+<ttContext>
+<contextGroup>PARAM</contextGroup>
+<contextName>pcIgnoredInServiceFieldsList</contextName>
+<contextValue />
+<contextOperator />
+<contextType />
+</ttContext>
+<ttContext>
+<contextGroup>PARAM</contextGroup>
+<contextName>pcSessionID</contextName>
+<contextValue>admin.8c4a11bf-a8e0-3e9e-df11-84e3cd76215d.bJZfvubladuiXKMj</contextValue>
+<contextOperator />
+<contextType />
+</ttContext>
+<ttContext>
+<contextGroup>PARAM</contextGroup>
+<contextName>pcStatus</contextName>
+<contextValue />
+<contextOperator />
+<contextType />
+</ttContext>
+<ttContext>
+<contextGroup>PARAM</contextGroup>
+<contextName>pcUserID</contextName>
+<contextValue>admin</contextValue>
+<contextOperator />
+<contextType />
+</ttContext>
+<ttContext>
+<contextGroup>PARAM</contextGroup>
+<contextName>pcWhere</contextName>
+<contextValue />
+<contextOperator />
+<contextType />
+</ttContext>
+<ttContext>
+<contextGroup>PARAM</contextGroup>
+<contextName>piBranchID</contextName>
+<contextValue>2</contextValue>
+<contextOperator />
+<contextType />
+</ttContext>
+<ttContext>
+<contextGroup>PARAM</contextGroup>
+<contextName>piCompanyID</contextName>
+<contextValue>9</contextValue>
+<contextOperator />
+<contextType />
+</ttContext>
+<ttContext>
+<contextGroup>PARAM</contextGroup>
+<contextName>plBatchKeySearchOK</contextName>
+<contextValue>YES</contextValue>
+<contextOperator />
+<contextType />
+</ttContext>
+</dsContext>
+<dsCustomer>
+<ttCustomer>
+<cid>9</cid>
+<bid>2</bid>
+<uid>13</uid>
+<csname>Really Retail Inc</csname>
+<csshort>RRI</csshort>
+<rstat>A</rstat>
+<addr>692 12th Ave</addr>
+<addr />
+<addr />
+<addr />
+<city>Philadelphia</city>
+<stcd>PA</stcd>
+<zip>19059</zip>
+<cycd>USA</cycd>
+<phone>215-555-1111</phone>
+<phone>215-555-1112</phone>
+<faxno>215-555-1113</faxno>
+<telexno>215-555-1114</telexno>
+<webadd>www.reallyretail.com</webadd>
+<emailid>contact@reallyretail.com</emailid>
+<csince>2006-10-21</csince>
+<cend xsi:nil="true" />
+<cssrvrp />
+<dtstart xsi:nil="true" />
+<dtend xsi:nil="true" />
+<cnextrev xsi:nil="true" />
+<exported>false</exported>
+<expdate xsi:nil="true" />
+<consite>false</consite>
+<baddrsam>false</baddrsam>
+<psrvat />
+<sbillat>Garry Knox</sbillat>
+<baddr>692 12th Ave</baddr>
+<baddr />
+<baddr />
+<bcity>Philadelphia</bcity>
+<bstcd>PA</bstcd>
+<bzip>19059</bzip>
+<bcycd>USA</bcycd>
+<ref1 />
+<ref2 />
+<ref3 />
+<ref4 />
+<ref5 />
+<ref6 />
+<ref7 />
+<ref8 />
+<ref9 />
+<ref10 />
+<cruser>admin</cruser>
+<crdate>2010-10-28</crdate>
+<crtime>34697</crtime>
+<psblfrcd />
+<disp_crtime>09:38:17</disp_crtime>
+<cObjectName />
+<cValmess />
+<cChkNew />
+<iImport>0</iImport>
+<DbRow>0x000000000001460d</DbRow>
+</ttCustomer>
+<ttCustomer>
+<cid>9</cid>
+<bid>2</bid>
+<uid>14</uid>
+<csname>Western Wholesale Inc</csname>
+<csshort>WWI</csshort>
+<rstat>A</rstat>
+<addr>510 16th Ave</addr>
+<addr />
+<addr />
+<addr />
+<city>Philadelphia</city>
+<stcd>PA</stcd>
+<zip>19059</zip>
+<cycd>USA</cycd>
+<phone>215-555-3000</phone>
+<phone>215-555-3001</phone>
+<faxno>215-555-3002</faxno>
+<telexno>215-555-3003</telexno>
+<webadd>westwholesales.com</webadd>
+<emailid>sales@westwholesales.com</emailid>
+<csince>2007-05-04</csince>
+<cend xsi:nil="true" />
+<cssrvrp />
+<dtstart xsi:nil="true" />
+<dtend xsi:nil="true" />
+<cnextrev xsi:nil="true" />
+<exported>false</exported>
+<expdate xsi:nil="true" />
+<consite>false</consite>
+<baddrsam>false</baddrsam>
+<psrvat>Main Office</psrvat>
+<sbillat>Darren Lock</sbillat>
+<baddr>510 16th Ave</baddr>
+<baddr />
+<baddr />
+<bcity>Philadelphia</bcity>
+<bstcd>PA</bstcd>
+<bzip>19059</bzip>
+<bcycd>USA</bcycd>
+<ref1 />
+<ref2 />
+<ref3 />
+<ref4 />
+<ref5 />
+<ref6 />
+<ref7 />
+<ref8 />
+<ref9 />
+<ref10 />
+<cruser>admin</cruser>
+<crdate>2010-10-27</crdate>
+<crtime>51268</crtime>
+<psblfrcd />
+<disp_crtime>14:14:28</disp_crtime>
+<cObjectName />
+<cValmess />
+<cChkNew />
+<iImport>0</iImport>
+<DbRow>0x000000000001460f</DbRow>
+</ttCustomer>
+</dsCustomer>
+</apSrvCustGetResponse>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
