@@ -109,6 +109,7 @@
       <HintPath>..\packages\System.Numerics.Vectors.4.1.1-beta-23516\lib\portable-net45+win8\System.Numerics.Vectors.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -165,6 +166,7 @@
     <Compile Include="StringBuilderTests.cs" />
     <Compile Include="StringSamples.cs" />
     <Compile Include="TasksTests.cs" />
+    <Compile Include="TheLiskovSubstitutionPrincipleTests.cs" />
     <Compile Include="ThreadTests.cs" />
     <Compile Include="ToMethodsTests.cs" />
     <Compile Include="TypeTests.cs" />
