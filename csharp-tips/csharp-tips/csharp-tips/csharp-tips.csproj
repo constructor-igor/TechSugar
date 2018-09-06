@@ -161,12 +161,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendToProviders\MAPI.cs" />
     <Compile Include="ServiceBusSamples.cs" />
+    <Compile Include="SOLID\OpenClosedPrincipleTests.cs" />
     <Compile Include="SortSamples.cs" />
     <Compile Include="StackTraceSamples.cs" />
     <Compile Include="StringBuilderTests.cs" />
     <Compile Include="StringSamples.cs" />
     <Compile Include="TasksTests.cs" />
-    <Compile Include="TheLiskovSubstitutionPrincipleTests.cs" />
+    <Compile Include="SOLID\TheLiskovSubstitutionPrincipleTests.cs" />
     <Compile Include="ThreadTests.cs" />
     <Compile Include="ToMethodsTests.cs" />
     <Compile Include="TypeTests.cs" />
