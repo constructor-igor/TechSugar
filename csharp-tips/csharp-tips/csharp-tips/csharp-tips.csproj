@@ -135,6 +135,7 @@
     <Compile Include="EnumTests.cs" />
     <Compile Include="Excel\ConvertCsvToExcel.cs" />
     <Compile Include="FillArrayTests.cs" />
+    <Compile Include="FinalizerTests.cs" />
     <Compile Include="FloatDoubleTransformTests.cs" />
     <Compile Include="HtmlToPdf.cs" />
     <Compile Include="JsonTests.cs" />
