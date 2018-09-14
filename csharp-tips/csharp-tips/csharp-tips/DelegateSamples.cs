@@ -35,11 +35,18 @@ namespace csharp_tips
         [Test]
         public void DelegateSample_Manager()
         {
-            MyDelegate fooDelegate = foo1;
+            MyDelegate fooDelegate = new MyDelegate(foo1);
             fooDelegate += foo2;
             Manager manager = new Manager(fooDelegate);
             int result = manager.Run(10, 20);
             Console.WriteLine($"Run(10, 20) = {result}");
+        }
+        [Test]
+        public void DelegateSample_Algebra()
+        {
+            MyDelegate fooDelegate = new MyDelegate(foo1);
+            fooDelegate = fooDelegate + foo2;
+            fooDelegate(1);
         }
 
         bool foo1(int p)
