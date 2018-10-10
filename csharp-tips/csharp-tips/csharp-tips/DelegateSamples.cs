@@ -49,6 +49,20 @@ namespace csharp_tips
             fooDelegate(1);
         }
 
+        [Test]
+        public void EventSample_Manager()
+        {
+            MyDelegate fooDelegate = new MyDelegate(foo1);
+            fooDelegate += foo2;
+            Manager manager = new Manager(fooDelegate);
+            manager.MyEvent += foo3;
+            manager.MyEvent += foo4;
+            //manager.MyDelegateMethod = null;      // possible
+            //manager.MyEvent = null;               // compilation error
+            int result = manager.Run(10, 20);
+            Console.WriteLine($"Run(10, 20) = {result}");
+        }
+
         bool foo1(int p)
         {
             bool result = p > 0;
@@ -61,20 +75,43 @@ namespace csharp_tips
             Console.WriteLine($"foo2({p}) = {result}");
             return result;
         }
+        bool foo3(int p)
+        {
+            bool result = p > 0;
+            Console.WriteLine($"foo3({p}) = {result}");
+            return result;
+        }
+        bool foo4(int p)
+        {
+            bool result = p > 0;
+            Console.WriteLine($"foo4({p}) = {result}");
+            return result;
+        }
     }
 
     public class Manager
     {
-        private readonly MyDelegate m_myDelegateMethod;
+        public MyDelegate MyDelegateMethod;
+        private MyDelegate m_eventMethod;
+        public event MyDelegate MyEvent
+        {
+            add { m_eventMethod += value; }
+            remove { m_eventMethod -= value; }
+        }
+
         public Manager(MyDelegate myDelegateMethod)
         {
-            m_myDelegateMethod = myDelegateMethod;
+            MyDelegateMethod = myDelegateMethod;
         }
 
         public int Run(int x, int y)
         {
             int result = x + y;
-            m_myDelegateMethod(result);
+            MyDelegateMethod(result);
+            if (m_eventMethod != null)
+            {
+                m_eventMethod(result);
+            }
             return result;
         }
     }
