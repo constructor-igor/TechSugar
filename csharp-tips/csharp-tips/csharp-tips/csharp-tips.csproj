@@ -125,6 +125,7 @@
     <Compile Include="AttributeSamples.cs" />
     <Compile Include="BufferWriterServiceTests.cs" />
     <Compile Include="CombinatorialSamples.cs" />
+    <Compile Include="ConcurrentDictionaryTests.cs" />
     <Compile Include="DeadLockSample.cs" />
     <Compile Include="DelegateSamples.cs" />
     <Compile Include="DynamicProxySamples\DynamicObjectSample.cs" />
