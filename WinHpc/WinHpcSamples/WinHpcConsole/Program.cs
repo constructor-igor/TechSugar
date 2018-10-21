@@ -14,12 +14,17 @@ namespace WinHpcConsole
             string serverName = Console.ReadLine();
             Console.Write("user: ");
             string user = Console.ReadLine();
+            Console.Write("job template (<Enter> - 'default'): ");
+            string jobTemplate = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(jobTemplate))
+                jobTemplate = "Default";
 
             IScheduler scheduler = new Scheduler();
 
             scheduler.Connect(serverName);
             ISchedulerJob job = scheduler.CreateJob();
-            ISchedulerTask task = job.CreateTask();
+            job.SetJobTemplate(jobTemplate);
+            ISchedulerTask task = job.CreateTask();            
             task.CommandLine = "dir";
             job.AddTask(task);
 
