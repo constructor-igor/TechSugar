@@ -139,6 +139,7 @@
     <Compile Include="FinalizerTests.cs" />
     <Compile Include="FloatDoubleTransformTests.cs" />
     <Compile Include="HtmlToPdf.cs" />
+    <Compile Include="ImageGenerationSamples.cs" />
     <Compile Include="JsonTests.cs" />
     <Compile Include="LINQ\AggregateSamples.cs" />
     <Compile Include="LINQ\ForEachInvestigation.cs" />
