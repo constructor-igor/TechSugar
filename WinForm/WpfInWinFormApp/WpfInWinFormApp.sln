@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfInWinFormApp", "WpfInWinFormApp\WpfInWinFormApp.csproj", "{5EE69598-B72E-4CC0-A309-089CF947D3D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfUserControlLibrary", "WpfUserControlLibrary\WpfUserControlLibrary.csproj", "{8D9AB063-4CED-46FC-B37D-8857C8E9ED6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication", "WpfApplication\WpfApplication.csproj", "{FAC03FFB-7B0C-4438-B4DE-FF73E513CC1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EE69598-B72E-4CC0-A309-089CF947D3D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE69598-B72E-4CC0-A309-089CF947D3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE69598-B72E-4CC0-A309-089CF947D3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE69598-B72E-4CC0-A309-089CF947D3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9AB063-4CED-46FC-B37D-8857C8E9ED6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9AB063-4CED-46FC-B37D-8857C8E9ED6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9AB063-4CED-46FC-B37D-8857C8E9ED6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9AB063-4CED-46FC-B37D-8857C8E9ED6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAC03FFB-7B0C-4438-B4DE-FF73E513CC1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAC03FFB-7B0C-4438-B4DE-FF73E513CC1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAC03FFB-7B0C-4438-B4DE-FF73E513CC1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAC03FFB-7B0C-4438-B4DE-FF73E513CC1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal
