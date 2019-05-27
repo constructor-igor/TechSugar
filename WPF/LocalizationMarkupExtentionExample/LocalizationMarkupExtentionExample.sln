@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.76
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationMarkupExtensionExample", "LocalizationMarkupExtentionExample\LocalizationMarkupExtensionExample.csproj", "{14365BD7-F6A0-496B-BF8E-E47A9BA4F2CF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalzationWithPackage", "LocalzationWithPackage\LocalzationWithPackage.csproj", "{9BB3F5E6-AB8E-404B-AF6B-5E8F1978D253}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +15,11 @@ Global
 		{14365BD7-F6A0-496B-BF8E-E47A9BA4F2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14365BD7-F6A0-496B-BF8E-E47A9BA4F2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14365BD7-F6A0-496B-BF8E-E47A9BA4F2CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BB3F5E6-AB8E-404B-AF6B-5E8F1978D253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BB3F5E6-AB8E-404B-AF6B-5E8F1978D253}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BB3F5E6-AB8E-404B-AF6B-5E8F1978D253}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BB3F5E6-AB8E-404B-AF6B-5E8F1978D253}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal
