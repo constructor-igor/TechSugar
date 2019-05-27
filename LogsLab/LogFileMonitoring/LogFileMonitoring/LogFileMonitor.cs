@@ -10,14 +10,14 @@ using System.Timers;
 
 namespace LogFileMonitoring
 {
-    public class LogFileMonitorLineEventArgs
+    public class LogFileMonitorLineMsg
     {
         public string[] Lines;
     }
 
     public class LogFileMonitor: IDisposable
     {
-        public Action<LogFileMonitorLineEventArgs> OnLine;
+        public Action<LogFileMonitorLineMsg> OnLine;
 
         // file path + delimiter internals
         readonly string m_path;
@@ -53,7 +53,7 @@ namespace LogFileMonitoring
                 _isCheckingLog = false;
         }
 
-        public LogFileMonitor(string path, Action<LogFileMonitorLineEventArgs> online, string delimiter = "\r\n")
+        public LogFileMonitor(string path, Action<LogFileMonitorLineMsg> online, string delimiter = "\r\n")
         {
             m_path = path;
             m_delimiter = delimiter;
@@ -103,7 +103,7 @@ namespace LogFileMonitoring
                             if (newData.IndexOf(m_delimiter, StringComparison.Ordinal) == -1)
                             {
                                 _buffer += newData;
-                                newData = String.Empty;
+                                newData = string.Empty;
                             }
                             else
                             {
@@ -118,10 +118,7 @@ namespace LogFileMonitoring
                         var lines = newData.Split(new[] { m_delimiter }, StringSplitOptions.RemoveEmptyEntries);
 
                         // send back to caller, NOTE: this is done from a different thread!
-                        foreach (var line in lines)
-                        {
-                            OnLine(new LogFileMonitorLineEventArgs {Lines = lines });
-                        }
+                        OnLine(new LogFileMonitorLineMsg {Lines = lines });
                     }
 
                     // set the new current position

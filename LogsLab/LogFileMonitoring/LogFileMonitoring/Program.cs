@@ -8,7 +8,7 @@ namespace LogFileMonitoring
 {
     class Program
     {
-        private static void LinesToConsole(LogFileMonitorLineEventArgs msg)
+        private static void LinesToConsole(LogFileMonitorLineMsg msg)
         {
             foreach (string line in msg.Lines)
             {
