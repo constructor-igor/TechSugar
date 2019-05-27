@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationMarkupExtensionExample", "LocalizationMarkupExtentionExample\LocalizationMarkupExtensionExample.csproj", "{14365BD7-F6A0-496B-BF8E-E47A9BA4F2CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationInfra", "LocalizationInfra\LocalizationInfra.csproj", "{4E795BEB-57A4-4099-B33B-8C926792FF49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{06939577-70D5-4D12-AF5D-3CC914357B74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{14365BD7-F6A0-496B-BF8E-E47A9BA4F2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14365BD7-F6A0-496B-BF8E-E47A9BA4F2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14365BD7-F6A0-496B-BF8E-E47A9BA4F2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E795BEB-57A4-4099-B33B-8C926792FF49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E795BEB-57A4-4099-B33B-8C926792FF49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E795BEB-57A4-4099-B33B-8C926792FF49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E795BEB-57A4-4099-B33B-8C926792FF49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06939577-70D5-4D12-AF5D-3CC914357B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06939577-70D5-4D12-AF5D-3CC914357B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06939577-70D5-4D12-AF5D-3CC914357B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06939577-70D5-4D12-AF5D-3CC914357B74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
