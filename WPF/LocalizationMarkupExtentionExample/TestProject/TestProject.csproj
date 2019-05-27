@@ -50,6 +50,7 @@
     <Compile Include="ResxTranslationProviderTests.cs" />
     <Compile Include="SanityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TranslationManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
