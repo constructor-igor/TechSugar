@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationInfra", "Locali
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{06939577-70D5-4D12-AF5D-3CC914357B74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalizationData", "LocalizationData\LocalizationData.csproj", "{7F0FFC27-04E7-46ED-A5B3-A4C4543DE5B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{06939577-70D5-4D12-AF5D-3CC914357B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06939577-70D5-4D12-AF5D-3CC914357B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06939577-70D5-4D12-AF5D-3CC914357B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F0FFC27-04E7-46ED-A5B3-A4C4543DE5B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F0FFC27-04E7-46ED-A5B3-A4C4543DE5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F0FFC27-04E7-46ED-A5B3-A4C4543DE5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0FFC27-04E7-46ED-A5B3-A4C4543DE5B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

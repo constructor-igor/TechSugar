@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using LocalizationInfra.Properties;
 
@@ -26,6 +27,16 @@ namespace LocalizationInfra
                 };
                 return _translationManager;
             }
+        }
+
+        public static void CreateInstanceFrom(string baseName, Assembly assembly)
+        {
+            ResxTranslationProvider provider = new ResxTranslationProvider(baseName, assembly);
+            _translationManager = new TranslationManager
+            {
+                TranslationProvider = provider,
+                CurrentLanguage = Settings.Default.Culture
+            };
         }
         public CultureInfo CurrentLanguage
         {

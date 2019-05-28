@@ -47,7 +47,6 @@ namespace TestProject
             Assert.That(instance.CurrentLanguage.EnglishName, Is.EqualTo("German (Germany)"));
             string sendValueGermany = instance.Translate("Send");
             Assert.That(sendValueGermany, Is.EqualTo("Senden"));
-
         }
 
         private CultureInfo FindCultureByName(string cultureEnglishName)
