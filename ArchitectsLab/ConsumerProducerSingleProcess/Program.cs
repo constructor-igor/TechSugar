@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -47,7 +48,7 @@ namespace ConsumerProducerSingleProcess
             {
                 using (new BackgroundColor(color))
                 {
-                    Console.WriteLine(message);
+                    Console.WriteLine($"[{Thread.CurrentThread.ManagedThreadId}] {DateTime.Now} {message}");
                 }
             }
         }
@@ -59,23 +60,40 @@ namespace ConsumerProducerSingleProcess
                 {
                     Message message = new Message($"{i}");
                     messages.Add(message);
-                    PrintMessage($"{DateTime.Now} Created message {message.Id}", ConsoleColor.DarkYellow);
+                    PrintMessage($"Created message {message.Id}", ConsoleColor.DarkYellow);
                     Thread.Sleep(1000);
                 }
             });
 
-            Task consumer = Task.Factory.StartNew(action: () =>
+            Task[] consumers = Enumerable.Range(0, 3).Select(index =>
             {
-                while (true)
+                int consumerIndex = index;
+                Task consumer = Task.Factory.StartNew(action: () =>
                 {
-                    Message message = messages.Take();
-                    PrintMessage($"[{Thread.CurrentThread.ManagedThreadId}] {DateTime.Now} Processed message {message.Id}", ConsoleColor.DarkGreen);
-                    Thread.Sleep(2000);
-                }
-            });
+                    while (true)
+                    {
+                        Message message = messages.Take();
+                        PrintMessage($"C{consumerIndex} Processed message {message.Id}", ConsoleColor.DarkGreen);
+                        Thread.Sleep(2000);
+                    }
+                });
+                return consumer;
+            }).ToArray();
+
+//            Task consumer = Task.Factory.StartNew(action: () =>
+//            {
+//                while (true)
+//                {
+//                    Message message = messages.Take();
+//                    PrintMessage($"Processed message {message.Id}", ConsoleColor.DarkGreen);
+//                    Thread.Sleep(2000);
+//                }
+//            });
+
 
             producer.Wait();
-            consumer.Wait();
+            Task.WhenAll(consumers);
+//            consumer.Wait();
         }
     }
 }
