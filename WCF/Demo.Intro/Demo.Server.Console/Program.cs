@@ -170,7 +170,7 @@ namespace Demo.Server.Console
     {
         static void Main(string[] args)
         {
-            ServiceHost host = CreateServiceHost(typeof(Demo.Contracts.IHelloWorldService), typeof(Demo.Server.Console.HelloWorldService));
+            ServiceHost host = CreateServiceHost(typeof(IHelloWorldService), typeof(HelloWorldService));
             //ServiceHost host = new ServiceHost(typeof(Demo.Server.Console.HelloWorldService));
 
             host.Open();

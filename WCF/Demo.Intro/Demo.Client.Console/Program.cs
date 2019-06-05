@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using Demo.Contracts;
@@ -22,7 +21,7 @@ namespace demo.client.console
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Client started");            
+            Console.WriteLine("Client started");            
 
             ServiceProxy proxy = new ServiceProxy();
             Console.WriteLine(proxy.Service.GetMessage("Jon"));
@@ -38,8 +37,8 @@ namespace demo.client.console
             int data = 10;
             do
             {                
-                System.Console.WriteLine("Press any key to exit...");
-                key = System.Console.ReadKey();
+                Console.WriteLine("Press any key to exit...");
+                key = Console.ReadKey();
                 switch (key.Key)
                 {
                     case ConsoleKey.N:
