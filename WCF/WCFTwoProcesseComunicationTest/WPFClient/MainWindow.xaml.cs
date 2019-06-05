@@ -44,16 +44,14 @@ namespace WPFClient
         }
         void LogErrorMessage(string msg)
         {
-            LogMessage(
-                msg);
+            LogMessage(msg);
         }
         void LogMessage(string msg)
         {
             string newMsg =
-                System.Environment.NewLine +
-                DateTime.Now.ToLocalTime().ToString() + " - " +
-                msg +
-                System.Environment.NewLine;
+                Environment.NewLine +
+                DateTime.Now.ToLocalTime() + " - " + msg +
+                Environment.NewLine;
 
             logger.AppendText(newMsg);
         }
@@ -70,7 +68,6 @@ namespace WPFClient
             try
             {
                 string msg = tbMessage.Text;
-
                 tbMessage.Text = string.Empty;
 
                 _chatSrv.SendMessage(tbUser.Text, msg);

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="WPF Client (MainWindow)" Height="350" Width="525">
     <Grid>
         <StackPanel>
             <RichTextBox x:Name="logger"></RichTextBox>
