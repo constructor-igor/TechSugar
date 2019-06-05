@@ -127,9 +127,11 @@ namespace Demo.Server.Console
     {
         public string ConvertMessageToText(HelloWordMessage message)
         {
-            if (message is TextHelloWorldMessage textMessage)
+            TextHelloWorldMessage textMessage = message as TextHelloWorldMessage;
+            if (textMessage!=null)
                 return $"[{textMessage.TimeStamp}][{textMessage.MessageType}] {textMessage.Id}: {textMessage.MessageText}";
-            if (message is DigitalHelloWorldMessage digitalMessage)
+            DigitalHelloWorldMessage digitalMessage = message as DigitalHelloWorldMessage;
+            if (digitalMessage!=null)
                 return $"[{digitalMessage.TimeStamp}][{digitalMessage.MessageType}] {digitalMessage.Id}: {digitalMessage.MessageData}";
             return $"unknown message {message.GetType()}";
         }
