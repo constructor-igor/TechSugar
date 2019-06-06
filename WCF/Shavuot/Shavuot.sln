@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shavuot.Contract", "ShavuotContract\Shavuot.Contract.csproj", "{389FEF51-E577-41D0-BAD8-8FFEF1BABC83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shavuot.Service", "Shavuot.Service\Shavuot.Service.csproj", "{C211C01B-1E3C-4EB0-8969-467BD605F4E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shavuot.ServiceHostingApp", "Shavuot.ServiceHostingApp\Shavuot.ServiceHostingApp.csproj", "{EC130A58-AEE7-4709-9202-5A3D6664A0B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shavuot.Client", "Shavuot.Client\Shavuot.Client.csproj", "{B46D8137-B4C0-4CBF-8B27-F4CB703B3D8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shavuot.Viewer", "Shavuot.Viewer\Shavuot.Viewer.csproj", "{EB93779F-CCF9-4AAF-A9AB-C223B2E1BD74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{389FEF51-E577-41D0-BAD8-8FFEF1BABC83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{389FEF51-E577-41D0-BAD8-8FFEF1BABC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{389FEF51-E577-41D0-BAD8-8FFEF1BABC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{389FEF51-E577-41D0-BAD8-8FFEF1BABC83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C211C01B-1E3C-4EB0-8969-467BD605F4E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C211C01B-1E3C-4EB0-8969-467BD605F4E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C211C01B-1E3C-4EB0-8969-467BD605F4E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C211C01B-1E3C-4EB0-8969-467BD605F4E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC130A58-AEE7-4709-9202-5A3D6664A0B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC130A58-AEE7-4709-9202-5A3D6664A0B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC130A58-AEE7-4709-9202-5A3D6664A0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC130A58-AEE7-4709-9202-5A3D6664A0B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B46D8137-B4C0-4CBF-8B27-F4CB703B3D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46D8137-B4C0-4CBF-8B27-F4CB703B3D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46D8137-B4C0-4CBF-8B27-F4CB703B3D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46D8137-B4C0-4CBF-8B27-F4CB703B3D8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB93779F-CCF9-4AAF-A9AB-C223B2E1BD74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB93779F-CCF9-4AAF-A9AB-C223B2E1BD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB93779F-CCF9-4AAF-A9AB-C223B2E1BD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB93779F-CCF9-4AAF-A9AB-C223B2E1BD74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal
