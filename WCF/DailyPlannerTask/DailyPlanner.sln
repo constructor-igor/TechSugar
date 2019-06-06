@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyPlannerService", "DailyPlannerService\DailyPlannerService.csproj", "{BCBD02FA-4EB7-48A5-B83E-1101F187371B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyPlannerClient", "DailyPlannerClient\DailyPlannerClient.csproj", "{96EF7EBC-4E6F-40DE-870F-69ACEF62FB4F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BCBD02FA-4EB7-48A5-B83E-1101F187371B} = {BCBD02FA-4EB7-48A5-B83E-1101F187371B}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCBD02FA-4EB7-48A5-B83E-1101F187371B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBD02FA-4EB7-48A5-B83E-1101F187371B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBD02FA-4EB7-48A5-B83E-1101F187371B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBD02FA-4EB7-48A5-B83E-1101F187371B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96EF7EBC-4E6F-40DE-870F-69ACEF62FB4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96EF7EBC-4E6F-40DE-870F-69ACEF62FB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96EF7EBC-4E6F-40DE-870F-69ACEF62FB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96EF7EBC-4E6F-40DE-870F-69ACEF62FB4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB0AD8B7-A408-40B1-B3C3-27055F21FB50}
+	EndGlobalSection
+EndGlobal

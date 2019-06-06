@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5b7b0ae2-c8be-4784-9341-27158cf17c08" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/DailyPlannerService/CalendarService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="2ccc3255-2574-4eb0-9964-4b2dd6268bb1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/DailyPlannerService/CalendarService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="07026b5e-243b-4dba-8ab6-1a6f31447322" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/DailyPlannerService/CalendarService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="14e504bc-ca83-4854-8b68-796f36da60f4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/DailyPlannerService/CalendarService/mex" />
+    <MetadataFile FileName="DailyPlannerService.xsd" MetadataType="Schema" ID="4538304f-902f-4977-aeba-904740230602" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/DailyPlannerService/CalendarService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="2836fb23-692c-41ed-8436-6d41bcdb42fb" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/DailyPlannerService/CalendarService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

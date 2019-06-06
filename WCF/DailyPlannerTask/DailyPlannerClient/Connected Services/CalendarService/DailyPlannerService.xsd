@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DailyPlannerService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DailyPlannerService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Calendar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfCalendarItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Calendar" nillable="true" type="tns:Calendar" />
+  <xs:complexType name="ArrayOfCalendarItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CalendarItem" nillable="true" type="tns:CalendarItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCalendarItem" nillable="true" type="tns:ArrayOfCalendarItem" />
+  <xs:complexType name="CalendarItem">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Items" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CalendarItem" nillable="true" type="tns:CalendarItem" />
+  <xs:complexType name="UserItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndHourIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="StartHourIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserItem" nillable="true" type="tns:UserItem" />
+</xs:schema>
