@@ -23,9 +23,22 @@ namespace Shavuot.Contract
     }
 
     [ServiceContract]
+    public interface IShavuotServiceCallback
+    {
+        [OperationContract(IsOneWay = true)]
+        void OnNewMessage(Message message);
+    }
+
+    [ServiceContract(SessionMode = SessionMode.Required, CallbackContract = typeof(IShavuotServiceCallback))]
     public interface IShavuotService
     {
         [OperationContract]
         void Greeting(Message message);
+
+        [OperationContract]
+        bool Subscribe();
+
+        [OperationContract]
+        bool Unsubscribe();
     }
 }

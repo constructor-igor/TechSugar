@@ -4,13 +4,23 @@ using Shavuot.Contract;
 
 namespace Shavuot.Client
 {
+    public class CallBack : IShavuotServiceCallback
+    {
+        #region IShavuotServiceCallback
+        public void OnNewMessage(Message message)
+        {
+            
+        }
+        #endregion
+    }
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("[Shavuot.Client] started");
-            ChannelFactory<IShavuotService> cf = new ChannelFactory<IShavuotService>("ShavuotServiceEndpoint");
-            IShavuotService proxy = cf.CreateChannel();
+            Type callBackType = typeof(CallBack);
+            DuplexChannelFactory<IShavuotService> cf = new DuplexChannelFactory<IShavuotService>(callBackType, "ShavuotServiceEndpoint");
+            IShavuotService proxy = cf. CreateChannel(new InstanceContext(new CallBack()));
 
             string message = "";
             do
