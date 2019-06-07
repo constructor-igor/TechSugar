@@ -18,7 +18,7 @@ namespace Shavuot.Client
                 Console.Write("Message (<Enter> - finish): ");
                 message = Console.ReadLine();
                 if (message!="")
-                    proxy.Greeting(message);
+                    proxy.Greeting(new Message(message));
             } while (message != "");
         }
     }

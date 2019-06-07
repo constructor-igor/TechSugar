@@ -8,7 +8,7 @@ namespace Shavuot.Service
     public class ShavuotService: IShavuotService
     {
         #region IShavuotService
-        public void Greeting(string message)
+        public void Greeting(Message message)
         {
             Console.WriteLine($"[ShavuotService.Greeting] {message}");
         }
