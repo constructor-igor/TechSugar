@@ -17,9 +17,10 @@ namespace Shavuot.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("[Shavuot.Client] started");
+            const string endPointName = "TCPIP"; //"ShavuotServiceEndpoint"; //"TCPIP";
+            Console.WriteLine($"[Shavuot.Client] started with end-point {endPointName}");
             Type callBackType = typeof(CallBack);
-            DuplexChannelFactory<IShavuotService> cf = new DuplexChannelFactory<IShavuotService>(callBackType, "ShavuotServiceEndpoint");
+            DuplexChannelFactory<IShavuotService> cf = new DuplexChannelFactory<IShavuotService>(callBackType, endPointName);
             IShavuotService proxy = cf. CreateChannel(new InstanceContext(new CallBack()));
 
             string message = "";

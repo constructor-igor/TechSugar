@@ -17,11 +17,12 @@ namespace Shavuot.Viewer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("[Shavuot.Viewer] started");
+            const string endPointName = "TCPIP"; //"ShavuotServiceEndpoint"; //"TCPIP";
+            Console.WriteLine($"[Shavuot.Viewer] started with end-point {endPointName}");
 
             IShavuotServiceCallback viewer = new ShavuotViewer();
             Type callBackType = typeof(ShavuotViewer);
-            DuplexChannelFactory<IShavuotService> cf = new DuplexChannelFactory<IShavuotService>(viewer, "ShavuotServiceEndpoint");
+            DuplexChannelFactory<IShavuotService> cf = new DuplexChannelFactory<IShavuotService>(viewer, endPointName);
             IShavuotService proxy = cf.CreateChannel(new InstanceContext(viewer));
 
             bool subscribed = proxy.Subscribe();
