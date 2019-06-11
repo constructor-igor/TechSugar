@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleSample.Client", "Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleSample.Watchdog", "ConsoleSample.Watchdog\ConsoleSample.Watchdog.csproj", "{E14E204B-B1D7-4213-BA80-01E99432C517}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceSample.Watchdog", "ServiceSample.Watchdog\ServiceSample.Watchdog.csproj", "{909EEC2E-EFF5-4F67-8DAE-AA971885F106}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E14E204B-B1D7-4213-BA80-01E99432C517}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E14E204B-B1D7-4213-BA80-01E99432C517}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E14E204B-B1D7-4213-BA80-01E99432C517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{909EEC2E-EFF5-4F67-8DAE-AA971885F106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{909EEC2E-EFF5-4F67-8DAE-AA971885F106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{909EEC2E-EFF5-4F67-8DAE-AA971885F106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{909EEC2E-EFF5-4F67-8DAE-AA971885F106}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
