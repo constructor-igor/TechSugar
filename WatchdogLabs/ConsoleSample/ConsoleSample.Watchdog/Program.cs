@@ -6,7 +6,12 @@ using System.Linq;
 /*
  * Reference: https://stackoverflow.com/questions/11146381/whats-the-best-way-to-watchdog-a-desktop-application
  *
- *
+ * form post:
+ * I finally implemented a the solution suggested by @A_nto2 and it achieved exactly what I was looking for:
+ * I now have a Windows Service that monitors a list of processes and whenever they are down,
+ * they are launched again automatically using the active user's credentials and session, so the GUI is visible.
+ * However, since the links he posted shown VC++ code,
+ * I'm sharing my C# implementation for anyone dealing with the same issue:
  */
 
 namespace ConsoleSample.Watchdog
