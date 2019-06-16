@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace NDaemon.App
+namespace NDaemon.Framework.Watchdog
 {
     public class ApplicationWatchdogDefinitionBuilder
     {

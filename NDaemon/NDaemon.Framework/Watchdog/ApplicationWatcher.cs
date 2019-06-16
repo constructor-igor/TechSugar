@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using NLog;
 
-namespace NDaemon.App
+namespace NDaemon.Framework.Watchdog
 {
     public class ApplicationWatcher: IDisposable
     {
@@ -33,7 +33,7 @@ namespace NDaemon.App
                             WorkingDirectory = m_applicationDefinition.WorkingDirectory
                         };
                         Process.Start(startInfo);
-                        m_logger.Info($"Started monitoed application {m_applicationDefinition.FullMonitoredPath}");
+                        m_logger.Info($"Started monitored application {m_applicationDefinition.FullMonitoredPath}");
                     }
                 }
                 Thread.Sleep(m_applicationDefinition.TimeIntervalMs);

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace NDaemon.App
+namespace NDaemon.Framework.Watchdog
 {
     public class ApplicationWatchdogDefinition
     {

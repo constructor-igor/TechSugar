@@ -52,9 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationWatchdogDefinition.cs" />
-    <Compile Include="ApplicationWatchdogDefinitionBuilder.cs" />
-    <Compile Include="ApplicationWatcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,6 +64,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NDaemon.Framework\NDaemon.Framework.csproj">
+      <Project>{4D6F3847-4B4C-42BB-8CBF-67BE96A0BB94}</Project>
+      <Name>NDaemon.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
