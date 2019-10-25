@@ -4,8 +4,8 @@ namespace DesignPatterns.Visitor
 {
     public interface IEmployeeVisitor
     {
-        void AcceptHourlyEmployee(HourlyEmployee hourlyEmployee);
-        void AcceptSalariedEmployee(SalariedEmployee salariedEmployee);
+        void VisitHourlyEmployee(HourlyEmployee hourlyEmployee);
+        void VisitSalariedEmployee(SalariedEmployee salariedEmployee);
     }
 
     public class SalaryReportGenerationVisitor : IEmployeeVisitor
@@ -16,30 +16,37 @@ namespace DesignPatterns.Visitor
             ReportContent = new StringBuilder();
             ReportContent.AppendLine($"{"Emp number",-10} | {"Name",-10} | {"hours",-10} | {"pay",-10} ");
         }
-        #region Implementation of IEmployeeVisitor
-        public void AcceptHourlyEmployee(HourlyEmployee hourlyEmployee)
+        #region IEmployeeVisitor
+        public void VisitHourlyEmployee(HourlyEmployee hourlyEmployee)
         {
             ReportContent.AppendLine($"{hourlyEmployee.Id,-10} | {hourlyEmployee.Name,-10} | {hourlyEmployee.Hours,-10} | {hourlyEmployee.Hours * hourlyEmployee.PerHour,-10}");
         }
-        public void AcceptSalariedEmployee(SalariedEmployee salariedEmployee)
+        public void VisitSalariedEmployee(SalariedEmployee salariedEmployee)
         {
             ReportContent.AppendLine($"{salariedEmployee.Id,-10} | {salariedEmployee.Name,-10} | {salariedEmployee.Hours,-10} | {salariedEmployee.Hours * salariedEmployee.Salary,-10}");
         }
         #endregion
     }
 
-    public abstract class Employee
+    public interface IEmployee
     {
-        public readonly string Id;
-        public readonly string Name;
+        string Id { get; }
+        string Name { get; }
+        void Accept(IEmployeeVisitor visitor);
+    }
+    public abstract class Employee: IEmployee
+    {
+        #region IEmployee
+        public string Id { get; }
+        public string Name { get; }
+        public abstract void Accept(IEmployeeVisitor visitor);
+        #endregion
 
         protected Employee(string id, string name)
         {
             Id = id;
             Name = name;
         }
-
-        public abstract void Accept(IEmployeeVisitor visitor);
     }
     public class HourlyEmployee : Employee
     {
@@ -55,7 +62,7 @@ namespace DesignPatterns.Visitor
         #region Employee
         public override void Accept(IEmployeeVisitor visitor)
         {
-            visitor.AcceptHourlyEmployee(this);
+            visitor.VisitHourlyEmployee(this);
         }
         #endregion
     }
@@ -73,7 +80,7 @@ namespace DesignPatterns.Visitor
         #region Employee
         public override void Accept(IEmployeeVisitor visitor)
         {
-            visitor.AcceptSalariedEmployee(this);
+            visitor.VisitSalariedEmployee(this);
         }
         #endregion
     }

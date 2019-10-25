@@ -31,10 +31,10 @@ namespace DesignPatterns.Visitor
         {
             HourlyEmployee hourlyEmployee = new HourlyEmployee("1429", "John Doe", 32, 50);
             SalariedEmployee salariedEmployee = new SalariedEmployee("1532", "James Cole", 50, 3000);
-            List<Employee> employees = new List<Employee> { hourlyEmployee, salariedEmployee };
+            List<IEmployee> employees = new List<IEmployee> { hourlyEmployee, salariedEmployee };
 
             SalaryReportGenerationVisitor reportGeneration = new SalaryReportGenerationVisitor();
-            foreach (Employee employee in employees)
+            foreach (IEmployee employee in employees)
             {
                 employee.Accept(reportGeneration);
             }
