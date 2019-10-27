@@ -28,6 +28,26 @@ namespace DesignPatterns.Visitor
         #endregion
     }
 
+    public class SalaryDetailedReportGenerationVisitor : IEmployeeVisitor
+    {
+        public readonly StringBuilder ReportContent;
+        public SalaryDetailedReportGenerationVisitor()
+        {
+            ReportContent = new StringBuilder();
+            ReportContent.AppendLine($"{"Emp number",-10} | {"Name",-10} | {"hours",-10} | {"pay",-10} | {"description", 10}");
+        }
+        #region IEmployeeVisitor
+        public void VisitHourlyEmployee(HourlyEmployee hourlyEmployee)
+        {
+            ReportContent.AppendLine($"{hourlyEmployee.Id,-10} | {hourlyEmployee.Name,-10} | {hourlyEmployee.Hours,-10} | {hourlyEmployee.Hours * hourlyEmployee.PerHour,-10}, | {"low", -10}");
+        }
+        public void VisitSalariedEmployee(SalariedEmployee salariedEmployee)
+        {
+            ReportContent.AppendLine($"{salariedEmployee.Id,-10} | {salariedEmployee.Name,-10} | {salariedEmployee.Hours,-10} | {salariedEmployee.Hours * salariedEmployee.Salary,-10} | {"high", -10}");
+        }
+        #endregion
+    }
+
     public interface IEmployee
     {
         string Id { get; }
