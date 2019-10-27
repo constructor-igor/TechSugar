@@ -1,11 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithm", "GeneticAlgorithm\GeneticAlgorithm.csproj", "{9986C48E-7C4C-4EF8-BAC5-C1BFF86521CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageAlgs", "ImageAlgs\ImageAlgs.csproj", "{8C99F365-7036-484F-AFA2-EF4B9E62175E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeAlgs", "TreeAlgs\TreeAlgs.csproj", "{AA724AF9-CC10-4C7D-AA22-5823EE9D1B18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayAlgs", "ArrayAlgs\ArrayAlgs.csproj", "{15CBE59D-275C-4CB3-91AD-81ADB7A8CDDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrefixTask", "PrefixTask\PrefixTask.csproj", "{A1370E2F-512C-400C-B19B-BDED647FEE1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NOD", "NOD\NOD.csproj", "{C456B57A-BFD9-4C32-A5E7-2ACB6B745959}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t1", "ConsoleApplication1\t1.csproj", "{26D0CD71-6AC0-4D60-95BC-7038F9838C15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChineseRemainderTheorem", "ChineseRemainderTheorem\ChineseRemainderTheorem.csproj", "{4F58A148-5571-4388-8212-1F12A3464694}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +33,30 @@ Global
 		{8C99F365-7036-484F-AFA2-EF4B9E62175E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C99F365-7036-484F-AFA2-EF4B9E62175E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C99F365-7036-484F-AFA2-EF4B9E62175E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA724AF9-CC10-4C7D-AA22-5823EE9D1B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA724AF9-CC10-4C7D-AA22-5823EE9D1B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA724AF9-CC10-4C7D-AA22-5823EE9D1B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA724AF9-CC10-4C7D-AA22-5823EE9D1B18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15CBE59D-275C-4CB3-91AD-81ADB7A8CDDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15CBE59D-275C-4CB3-91AD-81ADB7A8CDDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15CBE59D-275C-4CB3-91AD-81ADB7A8CDDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15CBE59D-275C-4CB3-91AD-81ADB7A8CDDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1370E2F-512C-400C-B19B-BDED647FEE1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1370E2F-512C-400C-B19B-BDED647FEE1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1370E2F-512C-400C-B19B-BDED647FEE1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1370E2F-512C-400C-B19B-BDED647FEE1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C456B57A-BFD9-4C32-A5E7-2ACB6B745959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C456B57A-BFD9-4C32-A5E7-2ACB6B745959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C456B57A-BFD9-4C32-A5E7-2ACB6B745959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C456B57A-BFD9-4C32-A5E7-2ACB6B745959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26D0CD71-6AC0-4D60-95BC-7038F9838C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D0CD71-6AC0-4D60-95BC-7038F9838C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26D0CD71-6AC0-4D60-95BC-7038F9838C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26D0CD71-6AC0-4D60-95BC-7038F9838C15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F58A148-5571-4388-8212-1F12A3464694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F58A148-5571-4388-8212-1F12A3464694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F58A148-5571-4388-8212-1F12A3464694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F58A148-5571-4388-8212-1F12A3464694}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
