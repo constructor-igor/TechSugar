@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tcp-samples", "tcp-samples"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeakEventsDemo", "WeakEventsDemo\WeakEventsDemo.csproj", "{351C0E5E-F914-4A6E-83E9-093753FC40D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deployment-sample", "deployment-sample\deployment-sample.csproj", "{1BF73E6E-038E-4121-8089-F3F4005A8E02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{351C0E5E-F914-4A6E-83E9-093753FC40D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{351C0E5E-F914-4A6E-83E9-093753FC40D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{351C0E5E-F914-4A6E-83E9-093753FC40D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BF73E6E-038E-4121-8089-F3F4005A8E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF73E6E-038E-4121-8089-F3F4005A8E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF73E6E-038E-4121-8089-F3F4005A8E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF73E6E-038E-4121-8089-F3F4005A8E02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
