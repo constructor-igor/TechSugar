@@ -124,7 +124,9 @@
     <Compile Include="ArrayTrimSamples.cs" />
     <Compile Include="ASyncSamples.cs" />
     <Compile Include="AttributeSamples.cs" />
+    <Compile Include="BinaryFilesTests.cs" />
     <Compile Include="BufferWriterServiceTests.cs" />
+    <Compile Include="CloneTests.cs" />
     <Compile Include="CombinatorialSamples.cs" />
     <Compile Include="ConcurrentDictionaryTests.cs" />
     <Compile Include="DeadLockSample.cs" />
@@ -154,6 +156,7 @@
     <Compile Include="PowerShellInDebuggerSamples.cs" />
     <Compile Include="ProgressSamples.cs" />
     <Compile Include="QueueSamples.cs" />
+    <Compile Include="ReadingFileTests.cs" />
     <Compile Include="ReferenceTests.cs" />
     <Compile Include="ResharperSamples.cs" />
     <Compile Include="RetryTests.cs" />
