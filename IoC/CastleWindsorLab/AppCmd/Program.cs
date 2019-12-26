@@ -3,7 +3,6 @@ using System.IO;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Configuration.Interpreters;
-using Castle.Windsor.Installer;
 using Plugin.Demo.Interfaces;
 
 /*
@@ -13,20 +12,52 @@ using Plugin.Demo.Interfaces;
 
 namespace AppCmd
 {
+    public class MyRootService
+    {
+        public void Run(string title)
+        {
+            Console.WriteLine($"[{title}] MyRootService.Run()");
+        }
+    }
+    public class MyChildService
+    {
+        public void Run(string title)
+        {
+            Console.WriteLine($"[{title}] MyChildService.Run()");
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
             string pluginsFolder = Path.GetFullPath(@"..\..\..\Plugins");
             AssemblyFilter assemblyFilter = new AssemblyFilter(pluginsFolder);
-            var container = new WindsorContainer();
-            container.Register(Classes.FromAssemblyInDirectory(assemblyFilter).BasedOn<IDemoPlugin>().WithService.FromInterface());
-            IDemoPlugin[] plugins = container.ResolveAll<IDemoPlugin>();
+            var rootContainer = new WindsorContainer();
+            rootContainer.Register(Component.For<MyRootService>());
+            rootContainer.Register(Classes.FromAssemblyInDirectory(assemblyFilter).BasedOn<IDemoPlugin>().WithService.FromInterface());
+            IDemoPlugin[] plugins = rootContainer.ResolveAll<IDemoPlugin>();
             Console.WriteLine($"In folder {pluginsFolder} found {plugins.Length} plugins.");
 
             foreach (IDemoPlugin plugin in plugins)
             {
                 plugin.Run(null);
+            }
+            rootContainer.Resolve<MyRootService>().Run("root");
+
+            WindsorContainer childContainer = new WindsorContainer();
+            childContainer.Register(Component.For<MyChildService>());
+            rootContainer.AddChildContainer(childContainer);
+            childContainer.Resolve<MyRootService>().Run("child");
+            childContainer.Resolve<MyChildService>().Run("child");
+
+            try
+            {
+                Console.WriteLine("trying to resolve MyChildContainer in root container...");
+                rootContainer.Resolve<MyChildService>().Run("root");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Cannot resolve in root: {e.Message}");
             }
 
             Console.WriteLine("Press Enter to exit.");
