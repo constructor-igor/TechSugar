@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 
 namespace TimeDisplayApp
@@ -23,13 +24,14 @@ namespace TimeDisplayApp
 
         static void DisplayTime()
         {
+            Process currentProcess = Process.GetCurrentProcess();
             try
             {
                 while (true)
                 {
                     // Get the current time and display it
                     DateTime currentTime = DateTime.Now;
-                    Console.WriteLine("Current Time: " + currentTime.ToString("HH:mm:ss"));
+                    Console.WriteLine($"Process: {currentProcess.ProcessName}({currentProcess.Id}), Current Time: " + currentTime.ToString("HH:mm:ss"));
 
                     // Pause the thread for 5 seconds
                     Thread.Sleep(5000);
