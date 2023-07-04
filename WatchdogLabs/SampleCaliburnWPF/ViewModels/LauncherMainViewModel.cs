@@ -52,9 +52,9 @@ namespace SampleCaliburnWPF.ViewModels
         {
             ProcessItems.Clear();
 
-            foreach (KeyValuePair<string, ProcessData> processWatcherProcess in processWatcher.Processes)
+            foreach (ProcessData processData in processWatcher.Processes)
             {
-                ProcessItems.Add(new ProcessItemViewModel(eventAggregator, processWatcherProcess.Value));
+                ProcessItems.Add(new ProcessItemViewModel(eventAggregator, processData));
             }
         }
 

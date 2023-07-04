@@ -24,15 +24,36 @@ namespace SampleCaliburnWPF.Watcher
 
     public class ProcessData
     {
-        public Process Process { get; }
+        public ProcessDefinition ProcessDefinition { get; private set; }
+        public Process Process { get; private set; }
 
-        public string ProcessName { get ; }
+        public string ProcessName { get { return ProcessDefinition.Name; } }
         public bool IsRunning { get; set; }
 
-        public ProcessData(Process process, string processName)
+        public ProcessData(ProcessDefinition processDefinition)
+        {
+            ProcessDefinition = processDefinition;
+        }
+        public void SetRunningProcess(Process process)
         {
             Process = process;
-            ProcessName = processName;
+            IsRunning = true;
+        }
+        public void Start()
+        {
+            if (!IsRunning)
+            {
+                Process = Process.Start(ProcessDefinition.ProcessPath);
+                IsRunning = true;
+            }
+        }
+        public void Stop()
+        {
+            if (IsRunning)
+            {
+                Process.Kill();
+                IsRunning = false;
+            }
         }
     }
 }
