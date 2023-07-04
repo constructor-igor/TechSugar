@@ -22,9 +22,15 @@ namespace SampleCaliburnWPF.Watcher
         }
     }
 
+    public enum ProcessState
+    {
+        Running,
+        Stopped
+    }
     public class ProcessData
     {
         public ProcessDefinition ProcessDefinition { get; private set; }
+        public ProcessState State { get; private set; }
         public Process Process { get; private set; }
 
         public string ProcessName { get { return ProcessDefinition.Name; } }
@@ -33,10 +39,12 @@ namespace SampleCaliburnWPF.Watcher
         public ProcessData(ProcessDefinition processDefinition)
         {
             ProcessDefinition = processDefinition;
+            State = ProcessState.Stopped;
         }
         public void SetRunningProcess(Process process)
         {
             Process = process;
+            State = ProcessState.Running;
             IsRunning = true;
         }
         public void Start()
@@ -52,6 +60,7 @@ namespace SampleCaliburnWPF.Watcher
             if (IsRunning)
             {
                 Process.Kill();
+                State = ProcessState.Stopped;
                 IsRunning = false;
             }
         }

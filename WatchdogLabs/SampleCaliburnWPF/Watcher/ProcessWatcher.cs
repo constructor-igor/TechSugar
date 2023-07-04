@@ -34,10 +34,15 @@ public class ProcessWatcher
         {
             Process[] foundProcesses = Process.GetProcessesByName(processData.ProcessName);
             bool found = foundProcesses.Length>0;
+            processData.IsRunning = found;
             if (found)
             {
                 processData.SetRunningProcess(foundProcesses[0]);
-            }            
+            }
+            else if (processData.State == ProcessState.Running)
+            {
+                processData.Start();    
+            }
         }
     }
 
