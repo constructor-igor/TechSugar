@@ -27,6 +27,12 @@ namespace WatchdogApp
 
         static void RunProgram(string programPath)
         {
+            string exeFolder = Environment.ProcessPath;
+            Console.WriteLine($"Process path: {exeFolder}");
+            Console.WriteLine($"BaseDirectory: {System.AppDomain.CurrentDomain.BaseDirectory}");
+            Console.WriteLine($"GetCurrentDirectory: {Directory.GetCurrentDirectory()}");
+
+
             while (true)
             {
                 try
