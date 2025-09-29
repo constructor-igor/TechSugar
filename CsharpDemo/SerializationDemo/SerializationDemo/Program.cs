@@ -88,7 +88,8 @@ namespace SerializationDemo
         static void Main(string[] args)
         {
             CustomData root = CreateCustomData();
-            ICustomSerializer serializer = new SystemSerializer();
+            ICustomSerializer serializer = new GeneralSystemSerializer();
+            //ICustomSerializer serializer = new SystemSerializer();
             //ICustomSerializer serializer = new NewtonSerializer();
             string jsonContent = serializer.Serialize(root);
             Console.WriteLine($"Serialized content: {jsonContent}");
