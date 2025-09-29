@@ -42,7 +42,11 @@ namespace SerializationDemo
         public string Name;
     }
 
-    public class CustomSubData : BaseCustomSubData
+    public class CustomSubData1 : BaseCustomSubData
+    {
+
+    }
+    public class CustomSubData2 : BaseCustomSubData
     {
 
     }
@@ -68,12 +72,14 @@ namespace SerializationDemo
     {
         static CustomData CreateCustomData()
         {
-            ICustomSubData customSubData = new CustomSubData { Name = "SubDataInterface" };
+            ICustomSubData customSubData1 = new CustomSubData1 { Name = "SubDataInterface1" };
+            ICustomSubData customSubData2 = new CustomSubData2 { Name = "SubDataInterface2" };
             CustomData root = new CustomData("Root");
             root.A1 = new N1.A { Name = "N1_A" };
             root.A2 = new N2.A { Name = "N2_A" };
             root.MyMessage = new MyMessage { Position = new Position { X = 1, Y = 2, Z = 3 } };
-            root.SubDataList.Add(customSubData);
+            root.SubDataList.Add(customSubData1);
+            root.SubDataList.Add(customSubData2);
             MyMessage myMessage = new MyMessage{Position = new Position {X=10, Y=20, Z=30}};
             root.Next = new CustomData("Child") { Next = root, MyMessage = myMessage};
             return root;
