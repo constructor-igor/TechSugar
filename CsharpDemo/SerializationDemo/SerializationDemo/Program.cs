@@ -18,6 +18,21 @@ namespace N2
 
 namespace SerializationDemo
 {
+    public interface IPosition
+    {
+
+    }
+    public class Position: IPosition
+    {
+        public double X;
+        public double Y;
+        public double Z;
+    }
+    public class MyMessage
+    {
+        public IPosition Position {get;set;}
+    }
+
     public interface ICustomSubData
     {
 
@@ -39,6 +54,7 @@ namespace SerializationDemo
         public N1.A A1;
         public N2.A A2;
         public List<ICustomSubData> SubDataList = new List<ICustomSubData>();
+        public MyMessage MyMessage;
 
         public CustomData()
         {
@@ -56,16 +72,18 @@ namespace SerializationDemo
             CustomData root = new CustomData("Root");
             root.A1 = new N1.A { Name = "N1_A" };
             root.A2 = new N2.A { Name = "N2_A" };
+            root.MyMessage = new MyMessage { Position = new Position { X = 1, Y = 2, Z = 3 } };
             root.SubDataList.Add(customSubData);
-            root.Next = new CustomData("Child") { Next = root };
+            MyMessage myMessage = new MyMessage{Position = new Position {X=10, Y=20, Z=30}};
+            root.Next = new CustomData("Child") { Next = root, MyMessage = myMessage};
             return root;
         }
 
         static void Main(string[] args)
         {
             CustomData root = CreateCustomData();
-            //ICustomSerializer serializer = new SystemSerializer();
-            ICustomSerializer serializer = new NewtonSerializer();
+            ICustomSerializer serializer = new SystemSerializer();
+            //ICustomSerializer serializer = new NewtonSerializer();
             string jsonContent = serializer.Serialize(root);
             Console.WriteLine($"Serialized content: {jsonContent}");
 
