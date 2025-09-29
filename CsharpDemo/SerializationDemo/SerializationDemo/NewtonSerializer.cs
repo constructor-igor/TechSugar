@@ -13,7 +13,6 @@ namespace SerializationDemo
 
         public string Serialize(CustomData data)
         {
-
             string json = JsonConvert.SerializeObject(data, m_settings);
             return json;
         }
