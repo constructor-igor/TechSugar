@@ -39,17 +39,25 @@ namespace SerializationDemo
         public N1.A A1;
         public N2.A A2;
         public List<ICustomSubData> SubDataList = new List<ICustomSubData>();
+
+        public CustomData()
+        {
+        }
+        public CustomData(string name)
+        {
+            Name = name;
+        }
     }
     internal class Program
     {
         static CustomData CreateCustomData()
         {
             ICustomSubData customSubData = new CustomSubData { Name = "SubDataInterface" };
-            CustomData root = new CustomData { Name = "Root" };
+            CustomData root = new CustomData("Root");
             root.A1 = new N1.A { Name = "N1_A" };
             root.A2 = new N2.A { Name = "N2_A" };
             root.SubDataList.Add(customSubData);
-            root.Next = new CustomData { Name = "Child", Next = root };
+            root.Next = new CustomData("Child") { Next = root };
             return root;
         }
 
@@ -61,8 +69,15 @@ namespace SerializationDemo
             string jsonContent = serializer.Serialize(root);
             Console.WriteLine($"Serialized content: {jsonContent}");
 
-            CustomData deserialized = serializer.Deserialize(jsonContent);
-            Console.WriteLine($"Deserialized content: Name={deserialized.Name}, Next.Name={deserialized.Next.Name}, Next.Next.Name={deserialized.Next.Next.Name}");
+            try
+            {
+                CustomData deserialized = serializer.Deserialize(jsonContent);
+                Console.WriteLine($"Deserialized content: Name={deserialized.Name}, Next.Name={deserialized.Next.Name}, Next.Next.Name={deserialized.Next.Next.Name}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Deserialization failed: {ex}");
+            }
         }
     }
 }
