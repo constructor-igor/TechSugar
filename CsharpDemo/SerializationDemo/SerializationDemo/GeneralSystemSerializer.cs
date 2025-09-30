@@ -46,6 +46,8 @@ namespace SerializationDemo
             var actualType = value.GetType();
             var typeName = actualType.AssemblyQualifiedName;
 
+            JsonElement element = JsonSerializer.SerializeToElement(value, value.GetType(), options);
+
             using (var doc = JsonDocument.Parse(JsonSerializer.Serialize(value, actualType, options)))
             {
                 writer.WriteStartObject();
@@ -56,6 +58,7 @@ namespace SerializationDemo
                 {
                     property.WriteTo(writer);
                 }
+
                 writer.WriteEndObject();
             }
         }

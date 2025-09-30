@@ -58,6 +58,7 @@ namespace SerializationDemo
         public N1.A A1;
         public N2.A A2;
         public List<ICustomSubData> SubDataList = new List<ICustomSubData>();
+        public List<ICustomSubData> DummyList = null;
         public MyMessage MyMessage;
 
         public CustomData()
