@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 
 namespace SerializationDemo
 {
@@ -8,31 +10,32 @@ namespace SerializationDemo
     {
         public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var localOptions = new JsonSerializerOptions
-            {
-                IncludeFields = true
-            };
-
+            var localOptions = CreateReadSafetyOptions(options);
+        
             using (var doc = JsonDocument.ParseValue(ref reader))
             {
                 var root = doc.RootElement;
-
+        
                 if (!root.TryGetProperty("$type", out var typeProperty))
                 {
                     throw new JsonException("Missing $type property for polymorphic deserialization.");
                 }
-
+        
                 var typeName = typeProperty.GetString();
                 var actualType = Type.GetType(typeName);
-
+        
                 if (actualType == null)
                 {
                     throw new JsonException($"Unable to resolve type '{typeName}'.");
                 }
 
-                var json = root.GetRawText();
-                var result = JsonSerializer.Deserialize(json, actualType, localOptions);
-
+                var fixedJson = FixLists(root).GetRawText();
+                //string fixedJson = root.GetRawText();
+                var result = JsonSerializer.Deserialize(fixedJson, actualType, localOptions);
+    
+                // var json = root.GetRawText();
+                // var result = JsonSerializer.Deserialize(json, actualType, localOptions);
+                
                 if (result == null)
                 {
                     throw new JsonException("Deserialization returned null.");
@@ -40,27 +43,93 @@ namespace SerializationDemo
                 return (T)result;
             }
         }
-
+    
         public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
         {
             var actualType = value.GetType();
             var typeName = actualType.AssemblyQualifiedName;
+            var localOptions = CreateWriteSafetyOptions(options);
 
-            JsonElement element = JsonSerializer.SerializeToElement(value, value.GetType(), options);
-
-            using (var doc = JsonDocument.Parse(JsonSerializer.Serialize(value, actualType, options)))
+            using (var doc = JsonDocument.Parse(JsonSerializer.Serialize(value, actualType, localOptions)))
             {
                 writer.WriteStartObject();
-                // Write type info
                 writer.WriteString("$type", typeName);
-                // Write all properties
                 foreach (var property in doc.RootElement.EnumerateObject())
                 {
                     property.WriteTo(writer);
                 }
-
                 writer.WriteEndObject();
             }
+        }
+
+        private JsonSerializerOptions CreateReadSafetyOptions(JsonSerializerOptions options)
+        {
+            var safeOptions = new JsonSerializerOptions
+            {
+                IncludeFields = true,
+            };
+            for (int i = safeOptions.Converters.Count - 1; i >= 0; i--)
+            {
+                if (safeOptions.Converters[i].GetType() == this.GetType())
+                    safeOptions.Converters.RemoveAt(i);
+            }
+            return safeOptions;
+        }
+
+        private JsonSerializerOptions CreateWriteSafetyOptions(JsonSerializerOptions options)
+        {
+            var safeOptions = new JsonSerializerOptions(options);
+            for (int i = safeOptions.Converters.Count - 1; i >= 0; i--)
+            {
+                if (safeOptions.Converters[i].GetType() == this.GetType())
+                    safeOptions.Converters.RemoveAt(i);
+            }
+            return safeOptions;
+        }
+        
+        private JsonElement FixLists(JsonElement element)
+        {
+            if (element.ValueKind == JsonValueKind.Object)
+            {
+                using (var doc = JsonDocument.Parse("{}"))
+                {
+                    var obj = new Dictionary<string, JsonElement>();
+    
+                    foreach (var prop in element.EnumerateObject())
+                    {
+                        if (prop.Value.ValueKind == JsonValueKind.Object &&
+                            prop.Value.TryGetProperty("$values", out var values))
+                        {
+                            // Replace object with $values array
+                            obj[prop.Name] = values;
+                        }
+                        else
+                        {
+                            obj[prop.Name] = FixLists(prop.Value);
+                        }
+                    }
+    
+                    var json = JsonSerializer.Serialize(obj);
+                    using (var newDoc = JsonDocument.Parse(json))
+                    {
+                        return newDoc.RootElement.Clone();
+                    }
+                }
+            } else
+            if (element.ValueKind == JsonValueKind.Array)
+            {
+                var list = new List<JsonElement>();
+                foreach (var item in element.EnumerateArray())
+                {
+                    list.Add(FixLists(item));
+                }
+                var json = JsonSerializer.Serialize(list);
+                using (var newDoc = JsonDocument.Parse(json))
+                {
+                    return newDoc.RootElement.Clone();
+                }
+            }
+            return element.Clone();
         }
     }
 
@@ -75,17 +144,29 @@ namespace SerializationDemo
                 ReferenceHandler = ReferenceHandler.Preserve,
                 IncludeFields = true
             };
-            m_options.Converters.Add(new GeneralConverter<IPosition>());
-            m_options.Converters.Add(new GeneralConverter<ICustomSubData>());
+            // m_options = new JsonSerializerOptions
+            // {
+            //     WriteIndented = true,
+            //     ReferenceHandler = ReferenceHandler.Preserve,
+            //     IncludeFields = true,
+            //     TypeInfoResolver = new DefaultJsonTypeInfoResolver
+            //     {
+            //         Modifiers = { ti => ti.PolymorphismOptions = new JsonPolymorphismOptions { TypeDiscriminatorPropertyName = "$type" } }
+            //     }
+            // };
+
+            // m_options.Converters.Add(new GeneralConverter<ICustomData>());
+            // m_options.Converters.Add(new GeneralConverter<IPosition>());
+            // m_options.Converters.Add(new GeneralConverter<ICustomSubData>());
         }
-        public string Serialize(CustomData data)
+        public string Serialize<T>(T data)
         {
             string jsonContent = JsonSerializer.Serialize(data, m_options);
             return jsonContent;
         }
-        public CustomData Deserialize(string jsonContent)
+        public T Deserialize<T>(string jsonContent)
         {
-            CustomData deserialized = JsonSerializer.Deserialize<CustomData>(jsonContent, m_options);
+            T deserialized = JsonSerializer.Deserialize<T>(jsonContent, m_options);
             return deserialized;
         }
     }

@@ -2,7 +2,7 @@
 {
     public interface ICustomSerializer
     {
-        string Serialize(CustomData data);
-        CustomData Deserialize(string jsonContent);
+        string Serialize<T>(T data);
+        T Deserialize<T>(string jsonContent);
     }
 }

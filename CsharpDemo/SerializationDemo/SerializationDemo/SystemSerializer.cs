@@ -85,14 +85,14 @@ namespace SerializationDemo
             m_options.Converters.Add(new PositionConverter());
             m_options.Converters.Add(new CustomSubDataConverter());
         }
-        public string Serialize(CustomData data)
+        public string Serialize<T>(T data)
         {
             string jsonContent = JsonSerializer.Serialize(data, m_options);
             return jsonContent;
         }
-        public CustomData Deserialize(string jsonContent)
+        public T Deserialize<T>(string jsonContent)
         {
-            CustomData deserialized = JsonSerializer.Deserialize<CustomData>(jsonContent, m_options);
+            T deserialized = JsonSerializer.Deserialize<T>(jsonContent, m_options);
             return deserialized;
         }
     }
