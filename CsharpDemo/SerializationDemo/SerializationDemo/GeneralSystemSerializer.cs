@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Text.Json.Serialization.Metadata;
+
 
 namespace SerializationDemo
 {
@@ -10,17 +10,18 @@ namespace SerializationDemo
     {
         public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var localOptions = CreateReadSafetyOptions(options);
-        
+            //var localOptions = CreateReadSafetyOptions(options);
+            var localOptions = options;
+
             using (var doc = JsonDocument.ParseValue(ref reader))
             {
                 var root = doc.RootElement;
-        
+
                 if (!root.TryGetProperty("$type", out var typeProperty))
                 {
                     throw new JsonException("Missing $type property for polymorphic deserialization.");
                 }
-        
+
                 var typeName = typeProperty.GetString();
                 var actualType = Type.GetType(typeName);
         
@@ -48,7 +49,8 @@ namespace SerializationDemo
         {
             var actualType = value.GetType();
             var typeName = actualType.AssemblyQualifiedName;
-            var localOptions = CreateWriteSafetyOptions(options);
+            //var localOptions = CreateWriteSafetyOptions(options);
+            var localOptions = options;
 
             using (var doc = JsonDocument.Parse(JsonSerializer.Serialize(value, actualType, localOptions)))
             {
@@ -141,23 +143,17 @@ namespace SerializationDemo
             m_options = new JsonSerializerOptions
             {
                 WriteIndented = true, // for pretty printing
-                ReferenceHandler = ReferenceHandler.Preserve,
-                IncludeFields = true
+                //ReferenceHandler = ReferenceHandler.Preserve,
+                //ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                IncludeFields = true,
             };
-            // m_options = new JsonSerializerOptions
-            // {
-            //     WriteIndented = true,
-            //     ReferenceHandler = ReferenceHandler.Preserve,
-            //     IncludeFields = true,
-            //     TypeInfoResolver = new DefaultJsonTypeInfoResolver
-            //     {
-            //         Modifiers = { ti => ti.PolymorphismOptions = new JsonPolymorphismOptions { TypeDiscriminatorPropertyName = "$type" } }
-            //     }
-            // };
-
             // m_options.Converters.Add(new GeneralConverter<ICustomData>());
             // m_options.Converters.Add(new GeneralConverter<IPosition>());
             // m_options.Converters.Add(new GeneralConverter<ICustomSubData>());
+        }
+        public void AddConverter<T>()
+        {
+            m_options.Converters.Add(new GeneralConverter<T>());
         }
         public string Serialize<T>(T data)
         {

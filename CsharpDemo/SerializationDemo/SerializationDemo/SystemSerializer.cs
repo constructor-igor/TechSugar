@@ -95,5 +95,10 @@ namespace SerializationDemo
             T deserialized = JsonSerializer.Deserialize<T>(jsonContent, m_options);
             return deserialized;
         }
+
+        public void AddConverter<T>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
