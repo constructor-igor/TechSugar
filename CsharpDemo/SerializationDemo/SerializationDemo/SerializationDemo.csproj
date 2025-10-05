@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCase2.cs" />
     <Compile Include="DataCase1.cs" />
     <Compile Include="DataCase9.cs" />
     <Compile Include="DataCaseInterfaces.cs" />

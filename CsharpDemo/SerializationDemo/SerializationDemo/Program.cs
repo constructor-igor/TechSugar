@@ -6,7 +6,7 @@ namespace SerializationDemo
 {
     internal class Program
     {
-        static void TestCase1<T>(IDataCaseFactory<T> customDataFactory, bool circleReference, ICustomSerializer serializer)
+        static bool TestCase<T>(IDataCaseFactory<T> customDataFactory, bool circleReference, ICustomSerializer serializer)
         {
             try
             {
@@ -19,26 +19,30 @@ namespace SerializationDemo
                 T deserialized = serializer.Deserialize<T>(jsonContent);
                 customDataFactory.Compare(root, deserialized);
                 Console.WriteLine($"[{serializer.GetType()}][circle ({circleReference}] Finihsed test case");
+                return true;
             }
             catch (Exception ex) {
                 Console.WriteLine($"[{serializer.GetType()}][circle ({circleReference}] Failed test case with error {ex.Message} in {ex.StackTrace}");
+                return false;
             }
         }
 
         static void Main(string[] args)
         {
+            List<bool> list = new List<bool>();
             var customDataFactory1 = new DataCase1Factory();
-            //TestCase1(false, new GeneralSystemSerializer());
-            //TestCase1(true, new GeneralSystemSerializer());
-            TestCase1(customDataFactory1, false, new NewtonSerializer());
-            TestCase1(customDataFactory1, true, new NewtonSerializer());
+            list.Add(TestCase(customDataFactory1, false, new NewtonSerializer()));
+            list.Add(TestCase(customDataFactory1, true, new NewtonSerializer()));
+
+            var customDataFactory2 = new DataCase2Factory();
+            list.Add(TestCase(customDataFactory2, false, new NewtonSerializer()));
+            list.Add(TestCase(customDataFactory2, true, new NewtonSerializer()));
 
             var customDataFactory9 = new DataCase9Factory();
-            ////TestCase1(false, new GeneralSystemSerializer());
-            ////TestCase1(true, new GeneralSystemSerializer());
-            TestCase1(customDataFactory9, false, new NewtonSerializer());
-            TestCase1(customDataFactory9, true, new NewtonSerializer());
+            list.Add(TestCase(customDataFactory9, false, new NewtonSerializer()));
+            list.Add(TestCase(customDataFactory9, true, new NewtonSerializer()));
 
+            Console.WriteLine($"{string.Join(",", list)}");
         }
     }
 }

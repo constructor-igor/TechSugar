@@ -12,7 +12,8 @@ namespace SerializationDemo
             Formatting = Formatting.Indented,
             PreserveReferencesHandling = PreserveReferencesHandling.All,
             ObjectCreationHandling = ObjectCreationHandling.Replace,
-            ContractResolver = new ArrayAsListContractResolver()
+            ContractResolver = new ArrayAsListContractResolver(),
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
         };
 
         public string Serialize<T>(T data)
