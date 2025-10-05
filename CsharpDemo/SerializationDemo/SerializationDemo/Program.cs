@@ -43,6 +43,20 @@ namespace SerializationDemo
             list.Add(TestCase(customDataFactory9, true, new NewtonSerializer()));
 
             Console.WriteLine($"{string.Join(",", list)}");
+
+            CustomData c = new CustomData();
+            c.Name = "Joe";
+            NewtonSerializer serializer = new NewtonSerializer();
+            string jsonContent = serializer.Serialize(c);
+            object deserialized = serializer.Deserialize<object>(jsonContent);
+            Type deserializedType = deserialized.GetType();
+            Console.WriteLine($"{deserializedType}");
+            CustomData typedObject = deserialized as CustomData;
+            if (typedObject != null)
+            {
+                Console.WriteLine(typedObject.Name);
+            }
+
         }
     }
 }
